@@ -101,12 +101,15 @@
                 <div *ngIf="row.avatar.length > 0; else customAvatar">
                   <img
                     class="rounded-circle mr-1"
-                    src="{{ row.avatar }}"
+                    src="assets/images/portrait/small/avatar-s-11.jpg"
                     height="32"
                     width="32"
                     alt="datatable-avatar"
                   />
+                <img src="data:image/jpg;base64, {{row.avatar}}"/>
                 </div>
+                
+                
                 <ng-template #customAvatar>
                   <div
                     class="avatar mr-1 ml-0"
@@ -130,19 +133,20 @@
           </ngx-datatable-column>
           <ngx-datatable-column name="Email" prop="email" [width]="200"></ngx-datatable-column>
           <ngx-datatable-column name="Role" prop="role" [width]="100">
-            <ng-template let-role="value" ngx-datatable-cell-template>
-              <div>
+<!--             <ng-template let-role="value" ngx-datatable-cell-template> -->
+            <ng-template let-row="row" let-name="value" ngx-datatable-cell-template>
+              <div  *ngFor="let userroles of row.roles; let i = index">
                 <i
                   class="feather font-medium-3"
                   [ngClass]="{
-                    'icon-edit-2 text-info': role == 'Editor',
-                    'icon-settings text-warning': role == 'Author',
-                    'icon-database text-success': role == 'Maintainer',
-                    'icon-user text-primary': role == 'Subscriber',
-                    'icon-slack text-danger': role == 'Admin'
+                    'icon-edit-2 text-info': userroles.name == 'Editor',
+                    'icon-settings text-warning': userroles.name == 'Author',
+                    'icon-database text-success': userroles.name == 'Maintainer',
+                    'icon-user text-primary': userroles.name == 'Subscriber',
+                    'icon-slack text-danger': userroles.name == 'Admin'
                   }"
                 ></i>
-                {{ role }}
+                {{userroles.name}}
               </div>
             </ng-template>
           </ngx-datatable-column>

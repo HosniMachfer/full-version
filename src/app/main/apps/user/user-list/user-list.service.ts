@@ -43,6 +43,9 @@ export class UserListService implements Resolve<any> {
     return new Promise((resolve, reject) => {
       this._httpClient.get(`${environment.apiUrl}`+'/all-users').subscribe((response: any) => {
         this.rows = response;
+        console.log(" ############################################");
+        console.log(this.rows[0].roles);
+        console.log(" ############################################");
         this.onUserListChanged.next(this.rows);
         resolve(this.rows);
       }, reject);

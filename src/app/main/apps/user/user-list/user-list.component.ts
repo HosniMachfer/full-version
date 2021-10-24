@@ -186,6 +186,7 @@ export class UserListComponent implements OnInit {
           this._userListService.onUserListChanged.pipe(takeUntil(this._unsubscribeAll)).subscribe(response => {
             this.rows = response;
             this.tempData = this.rows;
+            console.log(" ################# ngOnInit() ###########################");
           });
         }, 450);
       } else {

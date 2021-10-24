@@ -33,6 +33,7 @@ export class NewUserSidebarComponent implements OnInit {
    */
   submit(form) {
     if (form.valid) {
+    console.log("Ajouter nouveau utilisateur");
       this.toggleSidebar('new-user-sidebar');
     }
   }

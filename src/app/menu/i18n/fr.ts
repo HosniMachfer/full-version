@@ -23,16 +23,16 @@ export const locale = {
         },
         ECOMMERCE: {
           COLLAPSIBLE: 'commerce électronique',
-          SHOP: 'Magasin',
-          DETAIL: 'Des détails',
-          WISHLIST: 'Liste de souhaits',
+          SHOP: 'Gestion usines',
+          DETAIL: 'Gestion recycleurs',
+          WISHLIST: 'Gestion collecteurs',
           CHECKOUT: 'Vérifier'
         },
         USER: {
-          COLLAPSIBLE: 'Utilisateur',
-          LIST: 'Lister',
-          VIEW: 'Vue',
-          EDIT: 'Éditer'
+          COLLAPSIBLE: 'RH',
+          LIST: 'Gestion utilisateurs',
+          VIEW: 'Gestion roles',
+          EDIT: 'Gestion PrivilÉge'
         },        
 		GESTIONDECHETS: {
           COLLAPSIBLE: 'Gestion dechet',
