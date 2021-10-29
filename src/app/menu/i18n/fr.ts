@@ -31,8 +31,8 @@ export const locale = {
         USER: {
           COLLAPSIBLE: 'RH',
           LIST: 'Gestion utilisateurs',
-          VIEW: 'Gestion roles',
-          EDIT: 'Gestion PrivilÉge'
+          VIEW: 'View',
+          EDIT: 'Edit'
         },        
 		GESTIONDECHETS: {
           COLLAPSIBLE: 'Gestion dechet',

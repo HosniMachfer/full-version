@@ -23,6 +23,7 @@ export class NewUserSidebarComponent implements OnInit {
    * @param name
    */
   toggleSidebar(name): void {
+  console.log("Ajouter nouveau utilisateur 222222222222");
     this._coreSidebarService.getSidebarRegistry(name).toggleOpen();
   }
 
