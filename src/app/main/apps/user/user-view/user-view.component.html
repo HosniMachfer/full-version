@@ -94,7 +94,19 @@
                         <i data-feather="star" class="mr-1"></i>
                         <span class="card-text user-info-title font-weight-bold mb-0">Role</span>
                       </div>
-                      <p class="card-text mb-0">{{ data.role }}</p>
+               <p  *ngFor="let userroles of data.roles; let i = index">
+                <i
+                  class="feather font-medium-3"
+                  [ngClass]="{
+                    'icon-edit-2 text-info': userroles.name == 'Editor',
+                    'icon-settings text-warning': userroles.name == 'Author',
+                    'icon-database text-success': userroles.name == 'Maintainer',
+                    'icon-user text-primary': userroles.name == 'Subscriber',
+                    'icon-slack text-danger': userroles.name == 'Admin'
+                  }"
+                ></i>
+                {{userroles.name}}
+              </p>
                     </div>
                     <div class="d-flex flex-wrap my-50">
                       <div class="user-info-title">

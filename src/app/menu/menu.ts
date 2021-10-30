@@ -9,7 +9,7 @@ export const menu: CoreMenu[] = [
     title: 'Dashboard',
     translate: 'MENU.DASHBOARD.COLLAPSIBLE',
     type: 'item',
-    // role: ['Admin'], //? To hide collapsible based on user role
+    role: ['Admin'], //? To hide collapsible based on user role
     icon: 'home',
 	url: 'dashboard/ecommerce',
    },

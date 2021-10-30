@@ -138,18 +138,6 @@
                       </div>
                       <div class="col-md-4">
                         <div class="form-group">
-                          <label for="role">Role</label>
-                          <select class="form-control" [(ngModel)]="currentRow.role" name="role" id="role">
-                            <option>Maintainer</option>
-                            <option>Subscriber</option>
-                            <option>Author</option>
-                            <option>Editor</option>
-                            <option>Admin</option>
-                          </select>
-                        </div>
-                      </div>
-                      <div class="col-md-4">
-                        <div class="form-group">
                           <label for="company">Company</label>
                           <input
                             type="text"
@@ -161,6 +149,11 @@
                           />
                         </div>
                       </div>
+                      
+
+	                  
+
+                      
                       <div class="col-12">
                         <div class="table-responsive border rounded mt-1">
                           <h6 class="py-1 mx-1 mb-0 font-medium-2">
@@ -630,6 +623,41 @@
           <div [ngbNavOutlet]="nav" class="mt-2"></div>
         </div>
       </div>
+      
+       <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header">
+              <h4 class="card-title">Multiple Select</h4>
+            </div>
+
+            <div class="card-body">
+              <div class="row">
+                <div class="col-sm-6 col-12">
+                  <label>Basic Multi select</label>
+
+                  <div class="form-group">
+                    <!-- Basic Multi select -->
+                    <ng-select
+                      [items]="listetRoles"
+                      [multiple]="true"
+                      [closeOnSelect]="false"
+                      [searchable]="true"
+                      bindLabel="name"
+                      placeholder="Select people"
+                      [(ngModel)]="currentRow.roles"
+                    >
+                    </ng-select>
+                    <!--/ Basic Multi select -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      
     </section>
     <!-- users edit ends -->
   </div>

@@ -34,14 +34,14 @@ export class AuthenticationService {
    *  Confirms if user is admin
    */
   get isAdmin() {
-    return this.currentUser && this.currentUserSubject.value.roles[0] === 'Admin';
+    return false;
   }
 
   /**
    *  Confirms if user is client
    */
   get isClient() {
-    return this.currentUser && this.currentUserSubject.value.roles[0] === 'Client';
+    return true;
   }
 
   /**
