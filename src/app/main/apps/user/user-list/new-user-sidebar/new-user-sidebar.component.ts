@@ -1,13 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { CoreSidebarService } from '@core/components/core-sidebar/core-sidebar.service';
 
+import { UserEditService } from 'app/main/apps/user/user-edit/user-edit.service';
+
 @Component({
   selector: 'app-new-user-sidebar',
   templateUrl: './new-user-sidebar.component.html'
 })
 export class NewUserSidebarComponent implements OnInit {
-  public fullname;
-  public username;
+  public fullName;
+  public firstName;
   public email;
 
   /**
@@ -15,7 +17,7 @@ export class NewUserSidebarComponent implements OnInit {
    *
    * @param {CoreSidebarService} _coreSidebarService
    */
-  constructor(private _coreSidebarService: CoreSidebarService) {}
+  constructor(private _userEditService: UserEditService,private _coreSidebarService: CoreSidebarService) {}
 
   /**
    * Toggle the sidebar
@@ -35,7 +37,20 @@ export class NewUserSidebarComponent implements OnInit {
   submit(form) {
     if (form.valid) {
     console.log("Ajouter nouveau utilisateur");
-      this.toggleSidebar('new-user-sidebar');
+    this.toggleSidebar('new-user-sidebar');
+    
+    console.log(form.value);
+      
+       this._userEditService.create(form.value)
+      .subscribe(
+        response => {
+         // this.router.navigate(['/users']);
+         console.log(" OKKKKKKKKKKKKKKKKKKKKKKKKKK");
+        },
+        error => {
+        console.log(" ERROR ");
+          console.log(error);
+        });
     }
   }
 

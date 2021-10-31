@@ -243,6 +243,20 @@ export class UserEditComponent implements OnInit, OnDestroy {
   submit(form) {
     if (form.valid) {
       console.log('Submitted...!');
+      
+      console.log(this.currentRow);
+      
+      
+      this._userEditService.create(this.currentRow)
+      .subscribe(
+        response => {
+         // this.router.navigate(['/users']);
+         console.log(" OKKKKKKKKKKKKKKKKKKKKKKKKKK");
+        },
+        error => {
+        console.log(" ERROR ");
+          console.log(error);
+        });
     }
   }
 

@@ -15,6 +15,10 @@ export class ErrorInterceptor implements HttpInterceptor {
   constructor(private _router: Router, private _authenticationService: AuthenticationService) {}
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+  
+   console.log("-----------------------------");
+   console.log(request);
+   console.log("-----------------------------");
     return next.handle(request).pipe(
       catchError(err => {
         if ([401, 403].indexOf(err.status) !== -1) {
