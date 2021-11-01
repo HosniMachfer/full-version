@@ -50,30 +50,28 @@ export const menu: CoreMenu[] = [
         title: 'Pages',
         translate: 'MENU.PAGES.SECTION',
         type: 'collapsible',
-        icon: 'file-text',
+        icon: 'users',
         children: [
           {
-            id: 'authentication',
-            title: 'Authentication',
+            id: 'user',
+            title: 'User',
             translate: 'MENU.PAGES.AUTH.COLLAPSIBLE',
             type: 'collapsible',
-            icon: 'circle',
+            icon: 'user',
             children: [
               {
                 id: 'forgot-password-v2',
                 title: 'Forgot Password V2',
                 translate: 'MENU.PAGES.AUTH.FORGOTPASSWORD2',
                 type: 'item',
-                url: 'pages/authentication/forgot-password-v2',
-                openInNewTab: true
+                url: 'pages/authentication/forgot-password-v2'
               },
               {
                 id: 'reset-password-v2',
                 title: 'Reset Password V2',
                 translate: 'MENU.PAGES.AUTH.RESETPASSWORD2',
                 type: 'item',
-                url: 'pages/authentication/reset-password-v2',
-                openInNewTab: true
+                url: 'pages/authentication/reset-password-v2'
               },
               {
 	            id: 'account-settings',
@@ -89,7 +87,7 @@ export const menu: CoreMenu[] = [
             title: 'Users',
             translate: 'MENU.APPS.RH.USERS',
             type: 'item',
-             icon: 'user',
+            icon: 'users',
             url: 'apps/user/user-list'
           },
           {
@@ -97,7 +95,7 @@ export const menu: CoreMenu[] = [
             title: 'Roles',
             translate: 'MENU.APPS.RH.ROLES',
             type: 'item',
-            icon: 'box',
+            icon: 'eye',
             url: 'apps/user/user-list'
           },
           {
@@ -105,7 +103,7 @@ export const menu: CoreMenu[] = [
             title: 'Privileges',
             translate: 'MENU.APPS.RH.PRIVILEGES',
             type: 'item',
-             icon: 'user',
+             icon: 'user-x',
             url: 'apps/user/user-list'
           }
         ]
