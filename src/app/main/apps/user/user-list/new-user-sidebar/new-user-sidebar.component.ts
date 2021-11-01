@@ -25,7 +25,6 @@ export class NewUserSidebarComponent implements OnInit {
    * @param name
    */
   toggleSidebar(name): void {
-  console.log("Ajouter nouveau utilisateur 222222222222");
     this._coreSidebarService.getSidebarRegistry(name).toggleOpen();
   }
 
@@ -36,19 +35,13 @@ export class NewUserSidebarComponent implements OnInit {
    */
   submit(form) {
     if (form.valid) {
-    console.log("Ajouter nouveau utilisateur");
     this.toggleSidebar('new-user-sidebar');
-    
-    console.log(form.value);
-      
        this._userEditService.create(form.value)
       .subscribe(
         response => {
          // this.router.navigate(['/users']);
-         console.log(" OKKKKKKKKKKKKKKKKKKKKKKKKKK");
         },
         error => {
-        console.log(" ERROR ");
           console.log(error);
         });
     }

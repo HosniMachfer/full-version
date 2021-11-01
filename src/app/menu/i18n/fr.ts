@@ -9,7 +9,7 @@ export const locale = {
         ECOMMERCE: 'commerce électronique'
       },
       APPS: {
-        SECTION: 'Applications et pages',
+        SECTION: 'Module admin',
         EMAIL: 'E-mail',
         CHAT: 'Discuter',
         TODO: 'À faire',
@@ -23,28 +23,22 @@ export const locale = {
         },
         ECOMMERCE: {
           COLLAPSIBLE: 'commerce électronique',
-          SHOP: 'Gestion usines',
-          DETAIL: 'Gestion recycleurs',
-          WISHLIST: 'Gestion collecteurs',
+          SHOP: 'Magasin',
+          DETAIL: 'Des détails',
+          WISHLIST: 'Liste de souhaits',
           CHECKOUT: 'Vérifier'
         },
-        USER: {
+        RH: {
           COLLAPSIBLE: 'RH',
-          LIST: 'Gestion utilisateurs',
-          VIEW: 'View',
-          EDIT: 'Edit'
-        },        
-		GESTIONDECHETS: {
-          COLLAPSIBLE: 'Gestion dechet',
-          LIST: 'Lister',
-          VIEW: 'Vue',
-          EDIT: 'Éditer'
-        }
+          USERS: 'Gestion utilsateurs',
+          ROLES: 'Gestion roles',
+          PRIVILEGES: 'Gestion privileges'
+        },
       },
       PAGES: {
-        SECTION: 'Des pages',
+        SECTION: 'RH',
         AUTH: {
-          COLLAPSIBLE: 'Authentification',
+          COLLAPSIBLE: 'Gestion compte',
           LOGIN1: 'Connexion V1',
           LOGIN2: 'Connexion V2',
           REGISTER1: 'Enregistrer V1',
@@ -183,7 +177,7 @@ export const locale = {
         MAPS: 'Google Maps'
       },
       OTHERS: {
-        SECTION: 'Autres',
+        SECTION: 'Gestion dechets',
         LEVELS: {
           COLLAPSIBLE: 'Niveaux de menu',
           SECOND: 'Deuxième niveau',

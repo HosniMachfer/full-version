@@ -37,7 +37,7 @@ const routes: Routes = [
     data: { animation: 'UserListComponent' }
   },
   {
-    path: 'user-view/:id',
+    path: 'user-list/user-view/:id',
     component: UserViewComponent,
     resolve: {
       data: UserViewService,
@@ -46,7 +46,7 @@ const routes: Routes = [
     data: { path: 'view/:id', animation: 'UserViewComponent' }
   },
   {
-    path: 'user-edit/:id',
+    path: 'user-list/user-edit/:id',
     component: UserEditComponent,
     resolve: {
       ues: UserEditService
@@ -54,12 +54,12 @@ const routes: Routes = [
     data: { animation: 'UserEditComponent' }
   },
   {
-    path: 'user-view',
-    redirectTo: '/apps/user/user-view/2' // Redirection
+    path: 'user-list/user-view',
+    redirectTo: '/apps/user/user-list' // Redirection
   },
   {
-    path: 'user-edit',
-    redirectTo: '/apps/user/user-edit/2' // Redirection
+    path: 'user-list/user-edit',
+    redirectTo: '/apps/user/user-list' // Redirection
   }
 ];
 

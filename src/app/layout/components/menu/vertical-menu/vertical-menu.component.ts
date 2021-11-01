@@ -51,6 +51,9 @@ export class VerticalMenuComponent implements OnInit, OnDestroy {
    * On Init
    */
   ngOnInit(): void {
+  
+    console.log("##################################");
+  
     // Subscribe config change
     this._coreConfigService.config.pipe(takeUntil(this._unsubscribeAll)).subscribe(config => {
       this.coreConfig = config;
@@ -127,6 +130,8 @@ export class VerticalMenuComponent implements OnInit, OnDestroy {
    * Toggle sidebar collapsed status
    */
   toggleSidebarCollapsible(): void {
+  console.log("##################################");
+  
     // Get the current menu state
     this._coreConfigService
       .getConfig()

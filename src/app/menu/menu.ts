@@ -8,11 +8,35 @@ export const menu: CoreMenu[] = [
     id: 'dashboard',
     title: 'Dashboard',
     translate: 'MENU.DASHBOARD.COLLAPSIBLE',
-    type: 'item',
-    role: ['Admin'], //? To hide collapsible based on user role
+    type: 'collapsible',
+    // role: ['Admin'], //? To hide collapsible based on user role
     icon: 'home',
-	url: 'dashboard/ecommerce',
-   },
+    badge: {
+      title: '2',
+      translate: 'MENU.DASHBOARD.BADGE',
+      classes: 'badge-light-warning badge-pill'
+    },
+    children: [
+      {
+        id: 'analytics',
+        title: 'Analytics',
+        translate: 'MENU.DASHBOARD.ANALYTICS',
+        type: 'item',
+        role: ['Admin'], //? To set multiple role: ['Admin', 'Client']
+        icon: 'circle',
+        url: 'dashboard/analytics'
+      },
+      {
+        // If role is not assigned will be display to all
+        id: 'ecommerce',
+        title: 'eCommerce',
+        translate: 'MENU.DASHBOARD.ECOMMERCE',
+        type: 'item',
+        icon: 'circle',
+        url: 'dashboard/ecommerce'
+      }
+    ]
+  },
   // Apps & Pages
   {
     id: 'apps',
@@ -20,80 +44,161 @@ export const menu: CoreMenu[] = [
     title: 'Apps & Pages',
     translate: 'MENU.APPS.SECTION',
     icon: 'package',
-    children: [
+    children: [      
       {
-        id: 'users',
-        title: 'User',
-        translate: 'MENU.APPS.USER.COLLAPSIBLE',
+        id: 'pages',
+        title: 'Pages',
+        translate: 'MENU.PAGES.SECTION',
         type: 'collapsible',
-        icon: 'user',
+        icon: 'file-text',
         children: [
           {
-            id: 'list',
-            title: 'List',
-            translate: 'MENU.APPS.USER.LIST',
-            type: 'item',
+            id: 'authentication',
+            title: 'Authentication',
+            translate: 'MENU.PAGES.AUTH.COLLAPSIBLE',
+            type: 'collapsible',
             icon: 'circle',
+            children: [
+              {
+                id: 'forgot-password-v2',
+                title: 'Forgot Password V2',
+                translate: 'MENU.PAGES.AUTH.FORGOTPASSWORD2',
+                type: 'item',
+                url: 'pages/authentication/forgot-password-v2',
+                openInNewTab: true
+              },
+              {
+                id: 'reset-password-v2',
+                title: 'Reset Password V2',
+                translate: 'MENU.PAGES.AUTH.RESETPASSWORD2',
+                type: 'item',
+                url: 'pages/authentication/reset-password-v2',
+                openInNewTab: true
+              },
+              {
+	            id: 'account-settings',
+	            title: 'Account Settings',
+	            translate: 'MENU.PAGES.ACCOUNTSETTINGS',
+	            type: 'item',
+	            url: 'pages/account-settings'
+	          }
+            ]
+          },
+          {
+            id: 'users',
+            title: 'Users',
+            translate: 'MENU.APPS.RH.USERS',
+            type: 'item',
+             icon: 'user',
             url: 'apps/user/user-list'
           },
           {
-            id: 'view',
-            title: 'View',
-            translate: 'MENU.APPS.USER.VIEW',
+            id: 'roles',
+            title: 'Roles',
+            translate: 'MENU.APPS.RH.ROLES',
             type: 'item',
-            icon: 'circle',
-            url: 'apps/user/user-view'
+            icon: 'box',
+            url: 'apps/user/user-list'
           },
           {
-            id: 'edit',
-            title: 'Edit',
-            translate: 'MENU.APPS.USER.EDIT',
+            id: 'privileges',
+            title: 'Privileges',
+            translate: 'MENU.APPS.RH.PRIVILEGES',
             type: 'item',
+             icon: 'user',
+            url: 'apps/user/user-list'
+          }
+        ]
+      }
+      
+
+    ]
+  },
+  
+  // Others
+  {
+    id: 'others',
+    type: 'section',
+    title: 'Others',
+    translate: 'MENU.OTHERS.SECTION',
+    icon: 'box',
+    children: [
+      {
+        id: 'knowledgeBase',
+        title: 'Knowledge Base',
+        translate: 'MENU.PAGES.KB',
+        type: 'item',
+        icon: 'circle',
+        url: 'pages/knowledge-base'
+      },
+      {
+        id: 'menu-levels',
+        title: 'Menu Levels',
+        translate: 'MENU.OTHERS.LEVELS.COLLAPSIBLE',
+        icon: 'menu',
+        type: 'collapsible',
+        children: [
+          {
+            id: 'second-level',
+            title: 'Second Level',
+            translate: 'MENU.OTHERS.LEVELS.SECOND',
             icon: 'circle',
-            url: 'apps/user/user-edit'
+            type: 'item',
+            url: '#'
+          },
+          {
+            id: 'second-level1',
+            title: 'Second Level',
+            translate: 'MENU.OTHERS.LEVELS.SECOND1.COLLAPSIBLE',
+            icon: 'circle',
+            type: 'collapsible',
+            children: [
+              {
+                id: 'third-level',
+                title: 'Third Level',
+                translate: 'MENU.OTHERS.LEVELS.SECOND1.THIRD',
+                type: 'item',
+                url: '#'
+              },
+              {
+                id: 'third-level1',
+                title: 'Third Level',
+                translate: 'MENU.OTHERS.LEVELS.SECOND1.THIRD1',
+                type: 'item',
+                url: '#'
+              }
+            ]
           }
         ]
       },
-	        {
-        id: 'e-commerce',
-        title: 'eCommerce',
-        translate: 'MENU.APPS.GESTIONDECHETS.COLLAPSIBLE',
-        type: 'collapsible',
-        icon: 'shopping-cart',
-        children: [
-          {
-            id: 'shop',
-            title: 'Shop',
-            translate: 'MENU.APPS.ECOMMERCE.SHOP',
-            type: 'item',
-            icon: 'circle',
-            url: 'apps/e-commerce/shop'
-          },
-          {
-            id: 'details',
-            title: 'Details',
-            translate: 'MENU.APPS.ECOMMERCE.DETAIL',
-            type: 'item',
-            icon: 'circle',
-            url: 'apps/e-commerce/details'
-          },
-          {
-            id: 'wishList',
-            title: 'Wish List',
-            translate: 'MENU.APPS.ECOMMERCE.WISHLIST',
-            type: 'item',
-            icon: 'circle',
-            url: 'apps/e-commerce/wishlist'
-          },
-          {
-            id: 'checkout',
-            title: 'Checkout',
-            translate: 'MENU.APPS.ECOMMERCE.CHECKOUT',
-            type: 'item',
-            icon: 'circle',
-            url: 'apps/e-commerce/checkout'
-          }
-        ]
+      {
+        id: 'disabled-menu',
+        title: 'Disabled Menu',
+        translate: 'MENU.OTHERS.DISABLED',
+        icon: 'eye-off',
+        type: 'item',
+        url: '#',
+        disabled: true
+      },
+      {
+        id: 'documentation',
+        title: 'Documentation',
+        translate: 'MENU.OTHERS.DOCUMENTATION',
+        icon: 'file-text',
+        type: 'item',
+        url: 'https://pixinvent.com/demo/vuexy-angular-admin-dashboard-template/documentation',
+        externalUrl: true,
+        openInNewTab: true
+      },
+      {
+        id: 'raise-support',
+        title: 'Raise Support',
+        translate: 'MENU.OTHERS.SUPPORT',
+        icon: 'life-buoy',
+        type: 'item',
+        url: 'https://pixinvent.ticksy.com/',
+        externalUrl: true,
+        openInNewTab: true
       }
     ]
   }

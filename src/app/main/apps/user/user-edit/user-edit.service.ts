@@ -53,11 +53,6 @@ export class UserEditService implements Resolve<any> {
  
   
 create(data: any): Observable<any> {
-console.log("-------------------------------");
-console.log(`${environment.apiUrl}`+'/add-user');
-console.log("-------------------------------");
-console.log(data);
-console.log("-------------------------------");
     return this._httpClient.post(`${environment.apiUrl}`+'/add-user', data);
 }
 
