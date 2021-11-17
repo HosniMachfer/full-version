@@ -96,7 +96,7 @@ export const menu: CoreMenu[] = [
             translate: 'MENU.APPS.RH.ROLES',
             type: 'item',
             icon: 'eye',
-            url: 'apps/user/user-list'
+            url: 'apps/role/role-list'
           },
           {
             id: 'privileges',
@@ -104,7 +104,7 @@ export const menu: CoreMenu[] = [
             translate: 'MENU.APPS.RH.PRIVILEGES',
             type: 'item',
              icon: 'user-x',
-            url: 'apps/user/user-list'
+            url: 'apps/privilege/privilege-list'
           }
         ]
       }
