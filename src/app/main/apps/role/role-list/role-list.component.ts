@@ -1,6 +1,9 @@
 import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { ColumnMode, DatatableComponent } from '@swimlane/ngx-datatable';
 
+import { RoleListService } from 'app/main/apps/role/role-list/role-list.service';
+
+
 @Component({
   selector: 'app-role-list',
   templateUrl: './role-list.component.html',
@@ -40,9 +43,21 @@ export class RoleListComponent implements OnInit {
     { name: 'Team', value: 'Team' }
   ];
   
-constructor() { }
+constructor(private roleListService: RoleListService) { }
 
-ngOnInit(): void {}
+ngOnInit(): void {
+
+	this.roleListService.getAll()
+	      .subscribe(
+	        data => {
+	          this.rows = data;
+	        },
+	        error => {
+	        console.log(" ici de la merde");
+	          console.log(error);
+	        });
+
+}
   
 filterUpdate(event) {}
 filterByStatus(event) {}

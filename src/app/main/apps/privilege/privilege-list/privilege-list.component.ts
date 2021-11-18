@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { ColumnMode, DatatableComponent } from '@swimlane/ngx-datatable';
 
+import { PrivilegeListService } from 'app/main/apps/privilege/privilege-list/privilege-list.service';
+
 @Component({
   selector: 'app-privilege-list',
   templateUrl: './privilege-list.component.html',
@@ -38,8 +40,17 @@ export class PrivilegeListComponent implements OnInit {
     { name: 'Enterprise', value: 'Enterprise' },
     { name: 'Team', value: 'Team' }
   ];
- constructor() { }
- ngOnInit(): void {}
+ constructor(private privilegeListService: PrivilegeListService) { }
+ ngOnInit(): void {
+ this.privilegeListService.getAll()
+	      .subscribe(
+	        data => {
+	          this.rows = data;
+	        },
+	        error => {
+	        console.log(" ici de la merde");
+	          console.log(error);
+	        });}
  filterUpdate(event) {}
  filterByStatus(event) {}
  filterByRole(event) {}

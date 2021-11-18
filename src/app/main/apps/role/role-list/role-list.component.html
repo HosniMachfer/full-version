@@ -95,25 +95,25 @@
           [footerHeight]="50"
           [scrollbarH]="true"
         >
-          <ngx-datatable-column name="Code role" prop="email" [width]="200"></ngx-datatable-column>
-          <ngx-datatable-column name="Libellet role" prop="role" [width]="100">
+          
+          <ngx-datatable-column name="Libellet role" prop="name" [width]="100">
             <ng-template let-row="row" let-name="value" ngx-datatable-cell-template>
-              <div  *ngFor="let userroles of row.roles; let i = index">
                 <i
                   class="feather font-medium-3"
                   [ngClass]="{
-                    'icon-edit-2 text-info': userroles.name == 'Editor',
-                    'icon-settings text-warning': userroles.name == 'Author',
-                    'icon-database text-success': userroles.name == 'Maintainer',
-                    'icon-user text-primary': userroles.name == 'Subscriber',
-                    'icon-slack text-danger': userroles.name == 'Admin'
+                    'icon-edit-2 text-info': name == 'Editor',
+                    'icon-settings text-warning': name == 'Author',
+                    'icon-database text-success': name == 'Maintainer',
+                    'icon-user text-primary': name == 'Subscriber',
+                    'icon-slack text-danger': name == 'Admin'
                   }"
                 ></i>
-                {{userroles.name}}
-              </div>
+                {{name}}
             </ng-template>
           </ngx-datatable-column>
-          <ngx-datatable-column name="Description" prop="currentPlan" [width]="100"></ngx-datatable-column>
+          
+          <ngx-datatable-column name="Code role" prop="name" [width]="200"></ngx-datatable-column>
+          <ngx-datatable-column name="Description role" prop="currentPlan" [width]="100"></ngx-datatable-column>
           <ngx-datatable-column name="Status" prop="status" [width]="50">
             <ng-template let-status="value" ngx-datatable-cell-template>
               <div
@@ -128,7 +128,7 @@
               </div>
             </ng-template>
           </ngx-datatable-column>
-          <ngx-datatable-column name="Date creation" [width]="40" [sortable]="false">
+          <ngx-datatable-column name="Action" [width]="40" [sortable]="false">
             <ng-template ngx-datatable-cell-template let-row="row">
               <div ngbDropdown container="body">
                 <button ngbDropdownToggle type="button" class="btn icon-btn btn-sm hide-arrow" rippleEffect>
