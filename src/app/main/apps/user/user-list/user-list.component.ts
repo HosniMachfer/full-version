@@ -9,6 +9,16 @@ import { CoreSidebarService } from '@core/components/core-sidebar/core-sidebar.s
 
 import { UserListService } from 'app/main/apps/user/user-list/user-list.service';
 
+import { TranslateService } from '@ngx-translate/core';
+
+import { CoreTranslationService } from '@core/services/translation.service';
+
+import { locale as english } from 'app/main/apps/user/i18n/en';
+import { locale as french } from 'app/main/apps/user/i18n/fr';
+import { locale as german } from 'app/main/apps/user/i18n/de';
+import { locale as portuguese } from 'app/main/apps/user/i18n/pt';
+
+
 @Component({
   selector: 'app-user-list',
   templateUrl: './user-list.component.html',
@@ -16,6 +26,8 @@ import { UserListService } from 'app/main/apps/user/user-list/user-list.service'
   encapsulation: ViewEncapsulation.None
 })
 export class UserListComponent implements OnInit {
+  languageOptions: any;
+  public selectedLanguage: any;
   // Public
   public sidebarToggleRef = false;
   public rows;
@@ -72,9 +84,41 @@ export class UserListComponent implements OnInit {
   constructor(
     private _userListService: UserListService,
     private _coreSidebarService: CoreSidebarService,
-    private _coreConfigService: CoreConfigService
+    private _coreConfigService: CoreConfigService,
+    private _coreTranslationService: CoreTranslationService, public _translateService: TranslateService
   ) {
+  
+  
+   
+    
+    
+    
     this._unsubscribeAll = new Subject();
+    
+    
+    this.languageOptions = {
+      en: {
+        title: 'English',
+        flag: 'us'
+      },
+      fr: {
+        title: 'French',
+        flag: 'fr'
+      },
+      de: {
+        title: 'German',
+        flag: 'de'
+      },
+      pt: {
+        title: 'Portuguese',
+        flag: 'pt'
+      }
+    };
+
+    this._coreTranslationService.translate(english, french, german, portuguese);
+    
+    
+    
   }
 
   // Public Methods
@@ -178,6 +222,20 @@ export class UserListComponent implements OnInit {
    * On init
    */
   ngOnInit(): void {
+  
+  
+  
+     this.selectedLanguage = this._translateService.currentLang;
+      console.log("i18ni18ni18ni18ni18ni18ni18ni18ni18ni18ni18n");
+   // console.log(_translateService.currentLang);
+     console.log(this.selectedLanguage);
+    console.log("i18ni18ni18ni18ni18ni18ni18ni18ni18ni18ni18n");
+    
+    this._translateService.use(this.selectedLanguage);
+
+    this._coreConfigService.setConfig({ app: { appLanguage: this.selectedLanguage } }, { emitEvent: true });
+    
+    
     // Subscribe config change
     this._coreConfigService.config.pipe(takeUntil(this._unsubscribeAll)).subscribe(config => {
       //! If we have zoomIn route Transition then load datatable after 450ms(Transition will finish in 400ms)

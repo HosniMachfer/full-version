@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 
+import { TranslateModule } from '@ngx-translate/core';
+
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
@@ -77,7 +79,8 @@ const routes: Routes = [
     CorePipesModule,
     CoreDirectivesModule,
     InvoiceModule,
-    CoreSidebarModule
+    CoreSidebarModule,
+    TranslateModule
   ],
   providers: [UserListService, UserViewService, UserEditService]
 })
