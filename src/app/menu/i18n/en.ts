@@ -3,193 +3,193 @@ export const locale = {
   data: {
     MENU: {
       DASHBOARD: {
-        COLLAPSIBLE: 'Dashboards',
+        COLLAPSIBLE: 'Dashboard',
         BADGE: '2',
         ANALYTICS: 'Analytics',
         ECOMMERCE: 'eCommerce'
       },
       APPS: {
-        SECTION: 'Apps & Pages',
-        EMAIL: 'Email',
-        CHAT: 'Chat',
-        TODO: 'Todo',
-        CALENDAR: 'Calendar',
+        SECTION: 'Module admin',
+        EMAIL: 'E-mail',
+        CHAT: 'Discuter',
+        TODO: 'À faire',
+        CALENDAR: 'Calendrier',
         INVOICE: {
-          COLLAPSIBLE: 'Invoice',
-          LIST: 'List',
-          PREVIEW: 'Preview',
-          EDIT: 'Edit',
-          ADD: 'Add'
+          COLLAPSIBLE: "Facture d'achat",
+          LIST: 'Lister',
+          PREVIEW: 'Aperçu',
+          EDIT: 'Éditer',
+          ADD: 'Ajouter'
         },
         ECOMMERCE: {
-          COLLAPSIBLE: 'eCommerce',
-          SHOP: 'Shop',
-          DETAIL: 'Details',
-          WISHLIST: 'Wish List',
-          CHECKOUT: 'Checkout'
+          COLLAPSIBLE: 'commerce électronique',
+          SHOP: 'Magasin',
+          DETAIL: 'Des détails',
+          WISHLIST: 'Liste de souhaits',
+          CHECKOUT: 'Vérifier'
         },
-        USER: {
-          COLLAPSIBLE: 'User',
-          LIST: 'List',
-          VIEW: 'View',
-          EDIT: 'Edit'
-        }
+        RH: {
+          COLLAPSIBLE: 'RH',
+          USERS: 'Management users',
+          ROLES: 'Management roles',
+          PRIVILEGES: 'Management privileges'
+        },
       },
       PAGES: {
-        SECTION: 'Pages',
+        SECTION: 'RH',
         AUTH: {
-          COLLAPSIBLE: 'Authentication',
-          LOGIN1: 'Login V1',
-          LOGIN2: 'Login V2',
-          REGISTER1: 'Register V1',
-          REGISTER2: 'Register V2',
-          FORGOTPASSWORD1: 'Forgot Password V1',
-          FORGOTPASSWORD2: 'Forgot Password V2',
-          RESETPASSWORD1: 'Reset Password V1',
-          RESETPASSWORD2: 'Reset Password V2'
+          COLLAPSIBLE: 'Gestion compte',
+          LOGIN1: 'Connexion V1',
+          LOGIN2: 'Connexion V2',
+          REGISTER1: 'Enregistrer V1',
+          REGISTER2: "S'inscrire V2",
+          FORGOTPASSWORD1: 'Mot de passe oublié V1',
+          FORGOTPASSWORD2: 'Mot de passe oublié V2',
+          RESETPASSWORD1: 'Réinitialiser le mot de passe V1',
+          RESETPASSWORD2: 'Réinitialiser le mot de passe V2'
         },
-        ACCOUNTSETTINGS: 'Account Settings',
-        PROFILE: 'Profile',
+        ACCOUNTSETTINGS: 'Paramètres du compte',
+        PROFILE: 'Profil',
         FAQ: 'FAQ',
-        KB: 'Knowledge Base',
-        PRICING: 'Pricing',
+        KB: 'Base de connaissances',
+        PRICING: 'Tarification',
         BLOG: {
           COLLAPSIBLE: 'Blog',
-          LIST: 'List',
-          DETAILS: 'Details',
-          EDIT: 'Edit'
+          LIST: 'Lister',
+          DETAILS: 'Des détails',
+          EDIT: 'Éditer'
         },
         MAIL: {
-          COLLAPSIBLE: 'Mail Template',
-          WELCOME: 'Welcome',
-          RESET: 'Reset Password',
-          VERIFY: 'Verify',
-          DEACTIVATE: 'Deactivate',
-          INVOICE: 'Invoice',
-          PROMOTIONAL: 'Promotional'
+          COLLAPSIBLE: 'Modèle de courrier',
+          WELCOME: 'Bienvenue',
+          RESET: 'réinitialiser le mot de passe',
+          VERIFY: 'Vérifier',
+          DEACTIVATE: 'Désactiver',
+          INVOICE: "Facture d'achat",
+          PROMOTIONAL: 'Promotionnel'
         },
         MISC: {
-          COLLAPSIBLE: 'Miscellaneous',
-          COMINGSOON: 'Coming Soon',
-          NOTAUTH: 'Not Authorized',
+          COLLAPSIBLE: 'Divers',
+          COMINGSOON: 'Arrive bientôt',
+          NOTAUTH: 'Pas autorisé',
           MAINTENANCE: 'Maintenance',
-          ERROR: 'Error'
+          ERROR: 'Erreur'
         }
       },
       UI: {
-        SECTION: 'User Interface',
-        TYPOGRAPHY: 'Typography',
-        COLORS: 'Colors',
-        FEATHER: 'Feather',
+        SECTION: 'Interface utilisateur',
+        TYPOGRAPHY: 'Typographie',
+        COLORS: 'Couleurs',
+        FEATHER: 'Plume',
         CARDS: {
-          COLLAPSIBLE: 'Cards',
-          BADGE: 'New',
-          BASIC: 'Basic',
-          ADVANCE: 'Advance',
-          STATISTICS: 'Statistics',
-          ANALYTICS: 'Analytics',
+          COLLAPSIBLE: 'Cartes',
+          BADGE: 'Nouveau',
+          BASIC: 'De base',
+          ADVANCE: 'Avance',
+          STATISTICS: 'Statistiques',
+          ANALYTICS: 'Analytique',
           ACTIONS: 'Actions'
         },
         COMPONENTS: {
-          COLLAPSIBLE: 'Components',
-          ALERTS: 'Alerts',
+          COLLAPSIBLE: 'Composants',
+          ALERTS: 'Alertes',
           AVATAR: 'Avatar',
           BADGES: 'Badges',
-          BREADCRUMBS: 'Breadcrumbs',
-          BUTTONS: 'Buttons',
-          CAROUSEL: 'Carousel',
-          COLLAPSE: 'Collapse',
-          DIVIDER: 'Divider',
-          DROPDOWNS: 'Dropdowns',
-          GROUP: 'List Group',
-          OBJECTS: 'Media Objects',
-          MODALS: 'Modals',
+          BREADCRUMBS: 'Chapelure',
+          BUTTONS: 'Boutons',
+          CAROUSEL: 'Carrousel',
+          COLLAPSE: "S'effondrer",
+          DIVIDER: 'Diviseur',
+          DROPDOWNS: 'Listes déroulantes',
+          GROUP: 'Groupe de listes',
+          OBJECTS: 'Objets multimédias',
+          MODALS: 'Modaux',
           COMPONENT: 'Navs',
           PAGINATION: 'Pagination',
-          PBADGES: 'Pill Badges',
-          PILLS: 'Pills',
-          POPOVERS: 'Popovers',
-          PROGRESS: 'Progress',
-          RATINGS: 'Ratings',
-          SPINNER: 'Spinner',
-          TABS: 'Tabs',
-          TIMELINE: 'Timeline',
+          PBADGES: 'Badges de pilules',
+          PILLS: 'Pilules',
+          POPOVERS: 'popovers',
+          PROGRESS: 'Le progrès',
+          RATINGS: 'Évaluations',
+          SPINNER: 'Fileur',
+          TABS: 'Onglets',
+          TIMELINE: 'Chronologie',
           TOASTS: 'Toasts',
-          TOOLTIPS: 'Tooltips'
+          TOOLTIPS: 'Info-bulles'
         },
         EX: {
           COLLAPSIBLE: 'Extension',
-          SWEET_ALERTS: 'Sweet Alerts',
+          SWEET_ALERTS: 'Alertes douces',
           BLOCKUI: 'BlockUI',
           TOASTER: 'Toastr',
-          SLIDER: 'Slider',
-          DRAGDROP: 'Drag & Drop',
+          SLIDER: 'Glissière',
+          DRAGDROP: 'Glisser-déposer',
           TOUR: 'Tour',
-          CLIPBOARD: 'Clipboard',
-          MEDIAPLAYER: 'Media Player',
-          CONTEXTMENU: 'Context Menu',
+          CLIPBOARD: 'Presse-papiers',
+          MEDIAPLAYER: 'Lecteur multimédia',
+          CONTEXTMENU: 'Menu contextuel',
           SWIPER: 'Swiper',
-          TREEVIEW: 'Tree View',
+          TREEVIEW: 'Vue arborescente',
           I18N: 'I18n'
         },
         LAYOUTS: {
-          COLLAPSIBLE: 'Page Layouts',
-          COLLAPSED_MENU: 'Collapsed Menu',
-          BOXED_LAYOUT: 'Boxed Layout',
-          WITHOUT_MENU: 'Without Menu',
-          LAYOUT_EMPTY: 'Layout Empty',
-          LAYOUT_BLANK: 'Layout Blank'
+          COLLAPSIBLE: 'Mises en page',
+          COLLAPSED_MENU: 'Menu réduit',
+          BOXED_LAYOUT: 'Disposition encadrée',
+          WITHOUT_MENU: 'Sans menu',
+          LAYOUT_EMPTY: 'Disposition vide',
+          LAYOUT_BLANK: 'Mise en page vierge'
         }
       },
       FT: {
-        SECTION: 'Forms & Tables',
+        SECTION: 'Formulaires et tableaux',
         ELEMENT: {
-          COLLAPSIBLE: 'Form Elements',
-          INPUT: 'Input',
-          INPUTGROUPS: 'Input Groups',
-          INPUTMASK: 'Input Mask',
+          COLLAPSIBLE: 'Éléments de formulaire',
+          INPUT: 'Saisir',
+          INPUTGROUPS: "Groupes d'entrée",
+          INPUTMASK: 'Masque de saisie',
           TEXTAREA: 'Textarea',
-          CHECKBOX: 'Checkbox',
+          CHECKBOX: 'Case à cocher',
           RADIO: 'Radio',
-          SWITCH: 'Switch',
-          SELECT: 'Select',
-          NUMBERINPUT: 'Number Input',
-          FILEUPLOADER: 'File Uploader',
-          QUILLEDITOR: 'Quill Editor',
+          SWITCH: 'Changer',
+          SELECT: 'Sélectionner',
+          NUMBERINPUT: 'Entrée numérique',
+          FILEUPLOADER: 'Téléchargeur de fichiers',
+          QUILLEDITOR: 'Éditeur de plumes',
           FLATPICKER: 'Flatpicker',
-          DATETIMEPICKER: 'Date & Time Picker'
+          DATETIMEPICKER: "Sélecteur de date et d'heure"
         },
-        LAYOUTS: 'Form Layouts',
-        WIZARD: 'Form Wizard',
-        VALIDATION: 'Form Validations',
-        REPEATER: 'Form Repeater',
+        LAYOUTS: 'Dispositions de formulaire',
+        WIZARD: 'Assistant de formulaire',
+        VALIDATION: 'Validations de formulaire',
+        REPEATER: 'Répéteur de formulaire',
         TABLE: 'Table',
         DATATABLES: 'DataTables'
       },
       CM: {
-        SECTION: 'Charts & Maps',
+        SECTION: 'Graphiques et cartes',
         CHARTS: {
-          COLLAPSIBLE: 'Charts',
+          COLLAPSIBLE: 'Graphiques',
           BADGE: '2',
-          APEX: 'Apex',
-          CHARTJS: 'ChartJS'
+          APEX: 'Sommet',
+          CHARTJS: 'GraphiqueJS'
         },
         MAPS: 'Google Maps'
       },
       OTHERS: {
-        SECTION: 'Others',
+        SECTION: 'Gestion dechets',
         LEVELS: {
-          COLLAPSIBLE: 'Menu Levels',
-          SECOND: 'Second Level',
+          COLLAPSIBLE: 'Niveaux de menu',
+          SECOND: 'Deuxième niveau',
           SECOND1: {
-            COLLAPSIBLE: 'Second Level',
-            THIRD: 'Third Level',
-            THIRD1: 'Third Level'
+            COLLAPSIBLE: 'Deuxième niveau',
+            THIRD: 'Troisième niveau',
+            THIRD1: 'Troisième niveau'
           }
         },
-        DISABLED: 'Disabled Menu',
+        DISABLED: 'Menu désactivé',
         DOCUMENTATION: 'Documentation',
-        SUPPORT: 'Raise Support'
+        SUPPORT: 'Augmenter le soutien'
       }
     }
   }

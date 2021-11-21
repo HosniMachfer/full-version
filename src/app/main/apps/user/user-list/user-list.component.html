@@ -4,7 +4,7 @@
     <section class="users-list-wrapper">
       <!-- users filter start -->
       <div class="card">
-        <h5 class="card-header">Search Filter</h5>
+        <h5 class="card-header">{{ 'filtres.title' | translate }}</h5>
         <div class="card-body">
           <div class="users-list-filter">
             <form>
@@ -16,20 +16,8 @@
                       [(ngModel)]="selectedRole"
                       name="selectedRole"
                       bindLabel="name"
-                      placeholder="Select Role"
+                      placeholder="{{ 'filtres.filtreRole' | translate }}"
                       (change)="filterByRole($event)"
-                    ></ng-select>
-                  </fieldset>
-                </div>
-                <div class="col-12 col-md-4">
-                  <fieldset class="form-group">
-                    <ng-select
-                      [items]="selectPlan"
-                      [(ngModel)]="selectedPlan"
-                      name="selectedPlan"
-                      bindLabel="name"
-                      placeholder="Select Plan"
-                      (change)="filterByPlan($event)"
                     ></ng-select>
                   </fieldset>
                 </div>
@@ -40,7 +28,7 @@
                       [(ngModel)]="selectedStatus"
                       name="selectedStatus"
                       bindLabel="name"
-                      placeholder="Select Status"
+                      placeholder="{{ 'filtres.filtreStatus' | translate }}"
                       (change)="filterByStatus($event)"
                     ></ng-select>
                   </fieldset>
@@ -56,22 +44,21 @@
         <div class="row">
           <div class="col-md-6 col-12">
             <div class="d-flex justify-content-between align-items-center m-1">
-              <label class="d-flex align-items-center"
-                >Show
+              <label class="d-flex align-items-center">{{ 'datatable.taille' | translate }}
                 <select class="form-control mx-25" [(ngModel)]="selectedOption">
                   <option value="10">10</option>
                   <option value="25">25</option>
                   <option value="50">50</option>
                   <option value="100">100</option>
                 </select>
-                entries</label
+                {{ 'datatable.ligne' | translate }}</label
               >
             </div>
           </div>
           <div class="col-md-6 col-12 d-flex justify-content-start justify-content-md-end">
             <div class="d-flex align-items-center justify-content-end pr-1 pb-1 pb-md-0">
               <label class="d-flex align-items-center ml-1 ml-md-0"
-                >Search:<input
+                >{{ 'datatable.filtre' | translate }}:<input
                   [(ngModel)]="searchValue"
                   name="searchValue"
                   type="search"
@@ -80,7 +67,7 @@
               /></label>
               <button class="btn btn-primary ml-1" rippleEffect (click)="toggleSidebar('new-user-sidebar')">
                 <i data-feather="plus" class="d-sm-none d-inline-block mr-0 mr-sm-1"></i
-                ><span class="d-none d-sm-inline-block">Add New User</span>
+                ><span class="d-none d-sm-inline-block">{{'buttons.addNewUser' | translate}}</span>
               </button>
             </div>
           </div>
@@ -95,7 +82,7 @@
           [footerHeight]="50"
           [scrollbarH]="true"
         >
-          <ngx-datatable-column name="User" prop="fullName" [width]="200">
+          <ngx-datatable-column name="{{ 'datatable.columns.user' | translate }}" prop="fullName" [width]="200">
             <ng-template let-row="row" let-name="value" ngx-datatable-cell-template>
               <div class="d-flex align-items-center">
                 <div *ngIf="row.avatar.length > 0; else customAvatar">
@@ -183,10 +170,6 @@
             </ng-template>
           </ngx-datatable-column>
         </ngx-datatable>
-         <div class="card-localization border rounded mt-3 p-2">
-          <h5 class="mb-1">{{ 'CARD.TITLE' | translate }}</h5>
-          <div class="card-text">{{ 'CARD.TEXT' | translate }}</div>
-        </div>
       </div>
     </section>
     <!--/ User List -->
