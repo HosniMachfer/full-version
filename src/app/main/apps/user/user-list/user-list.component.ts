@@ -154,6 +154,7 @@ export class UserListComponent implements OnInit {
    * @param name
    */
   toggleSidebar(name): void {
+   console.log(name);
     this._coreSidebarService.getSidebarRegistry(name).toggleOpen();
   }
 

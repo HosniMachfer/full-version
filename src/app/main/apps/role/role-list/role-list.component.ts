@@ -3,6 +3,7 @@ import { ColumnMode, DatatableComponent } from '@swimlane/ngx-datatable';
 
 import { RoleListService } from 'app/main/apps/role/role-list/role-list.service';
 
+import { CoreSidebarService } from '@core/components/core-sidebar/core-sidebar.service';
 
 @Component({
   selector: 'app-role-list',
@@ -43,7 +44,7 @@ export class RoleListComponent implements OnInit {
     { name: 'Team', value: 'Team' }
   ];
   
-constructor(private roleListService: RoleListService) { }
+constructor(private roleListService: RoleListService,private _coreSidebarService: CoreSidebarService) { }
 
 ngOnInit(): void {
 
@@ -57,6 +58,11 @@ ngOnInit(): void {
 	          console.log(error);
 	        });
 
+}
+  
+  
+toggleSidebar(name): void {
+    this._coreSidebarService.getSidebarRegistry(name).toggleOpen();
 }
   
 filterUpdate(event) {}

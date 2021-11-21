@@ -20,6 +20,9 @@ import { CommonModule } from '@angular/common';
 import { RoleListComponent } from './role-list/role-list.component';
 import { RoleListService } from 'app/main/apps/role/role-list/role-list.service';
 
+import { NewRoleSidebarComponent } from 'app/main/apps/role/role-list/new-role-sidebar/new-role-sidebar.component';
+import { UserEditService } from 'app/main/apps/user/user-edit/user-edit.service';
+
 // routing
 const routes: Routes = [
   {path: 'role-list',component: RoleListComponent}
@@ -28,7 +31,7 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-    RoleListComponent
+    RoleListComponent,NewRoleSidebarComponent
   ],
   imports: [
     CommonModule,
@@ -44,6 +47,6 @@ const routes: Routes = [
     InvoiceModule,
     CoreSidebarModule
   ],
-  providers: [RoleListService]
+  providers: [RoleListService, UserEditService]
 })
 export class RoleModule { }

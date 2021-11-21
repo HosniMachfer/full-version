@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { ColumnMode, DatatableComponent } from '@swimlane/ngx-datatable';
 
 import { PrivilegeListService } from 'app/main/apps/privilege/privilege-list/privilege-list.service';
+import { CoreSidebarService } from '@core/components/core-sidebar/core-sidebar.service';
 
 @Component({
   selector: 'app-privilege-list',
@@ -40,7 +41,7 @@ export class PrivilegeListComponent implements OnInit {
     { name: 'Enterprise', value: 'Enterprise' },
     { name: 'Team', value: 'Team' }
   ];
- constructor(private privilegeListService: PrivilegeListService) { }
+ constructor(private privilegeListService: PrivilegeListService,private _coreSidebarService: CoreSidebarService) { }
  ngOnInit(): void {
  this.privilegeListService.getAll()
 	      .subscribe(
@@ -51,6 +52,13 @@ export class PrivilegeListComponent implements OnInit {
 	        console.log(" ici de la merde");
 	          console.log(error);
 	        });}
+	        
+	        
+toggleSidebar(name): void {
+  console.log(name);
+    this._coreSidebarService.getSidebarRegistry(name).toggleOpen();
+}
+
  filterUpdate(event) {}
  filterByStatus(event) {}
  filterByRole(event) {}

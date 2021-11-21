@@ -19,6 +19,11 @@ import { CommonModule } from '@angular/common';
 
 import { PrivilegeListComponent } from './privilege-list/privilege-list.component';
 import { PrivilegeListService } from 'app/main/apps/privilege/privilege-list/privilege-list.service';
+
+import { NewPrivilegeSidebarComponent } from 'app/main/apps/privilege/privilege-list/new-privilege-sidebar/new-privilege-sidebar.component';
+import { UserEditService } from 'app/main/apps/user/user-edit/user-edit.service';
+
+
 // routing
 const routes: Routes = [
   {path: 'privilege-list',component: PrivilegeListComponent}
@@ -26,7 +31,7 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-    PrivilegeListComponent
+    PrivilegeListComponent,NewPrivilegeSidebarComponent
   ],
   imports: [
     CommonModule,
@@ -42,6 +47,6 @@ const routes: Routes = [
     InvoiceModule,
     CoreSidebarModule
   ],
-  providers: [PrivilegeListService]
+  providers: [PrivilegeListService, UserEditService]
 })
 export class PrivilegeModule { }
