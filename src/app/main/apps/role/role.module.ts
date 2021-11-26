@@ -22,6 +22,7 @@ import { RoleListService } from 'app/main/apps/role/role-list/role-list.service'
 
 import { NewRoleSidebarComponent } from 'app/main/apps/role/role-list/new-role-sidebar/new-role-sidebar.component';
 import { UserEditService } from 'app/main/apps/user/user-edit/user-edit.service';
+import { TranslateModule } from '@ngx-translate/core';
 
 // routing
 const routes: Routes = [
@@ -45,7 +46,8 @@ const routes: Routes = [
     CorePipesModule,
     CoreDirectivesModule,
     InvoiceModule,
-    CoreSidebarModule
+    CoreSidebarModule,
+    TranslateModule
   ],
   providers: [RoleListService, UserEditService]
 })

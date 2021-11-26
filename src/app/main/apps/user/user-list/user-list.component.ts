@@ -88,13 +88,7 @@ export class UserListComponent implements OnInit {
     private _coreTranslationService: CoreTranslationService, public _translateService: TranslateService
   ) {
   
-  
-   
-    
-    
-    
     this._unsubscribeAll = new Subject();
-    
     
     this.languageOptions = {
       en: {

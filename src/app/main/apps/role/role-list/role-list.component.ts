@@ -5,6 +5,14 @@ import { RoleListService } from 'app/main/apps/role/role-list/role-list.service'
 
 import { CoreSidebarService } from '@core/components/core-sidebar/core-sidebar.service';
 
+import { CoreTranslationService } from '@core/services/translation.service';
+
+import { locale as english } from 'app/main/apps/role/i18n/en';
+import { locale as french } from 'app/main/apps/role/i18n/fr';
+import { locale as german } from 'app/main/apps/role/i18n/de';
+import { locale as portuguese } from 'app/main/apps/role/i18n/pt';
+
+
 @Component({
   selector: 'app-role-list',
   templateUrl: './role-list.component.html',
@@ -12,7 +20,7 @@ import { CoreSidebarService } from '@core/components/core-sidebar/core-sidebar.s
   encapsulation: ViewEncapsulation.None
 })
 export class RoleListComponent implements OnInit {
-  
+  languageOptions: any;
   public selectedRole = [];
   public selectedPlan = [];
   public selectedStatus = [];
@@ -44,7 +52,28 @@ export class RoleListComponent implements OnInit {
     { name: 'Team', value: 'Team' }
   ];
   
-constructor(private roleListService: RoleListService,private _coreSidebarService: CoreSidebarService) { }
+constructor(private roleListService: RoleListService,private _coreSidebarService: CoreSidebarService,private _coreTranslationService: CoreTranslationService) {
+
+    this.languageOptions = {
+      en: {
+        title: 'English',
+        flag: 'us'
+      },
+      fr: {
+        title: 'French',
+        flag: 'fr'
+      },
+      de: {
+        title: 'German',
+        flag: 'de'
+      },
+      pt: {
+        title: 'Portuguese',
+        flag: 'pt'
+      }
+    };
+
+    this._coreTranslationService.translate(english, french, german, portuguese); }
 
 ngOnInit(): void {
 

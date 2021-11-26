@@ -23,6 +23,7 @@ import { PrivilegeListService } from 'app/main/apps/privilege/privilege-list/pri
 import { NewPrivilegeSidebarComponent } from 'app/main/apps/privilege/privilege-list/new-privilege-sidebar/new-privilege-sidebar.component';
 import { UserEditService } from 'app/main/apps/user/user-edit/user-edit.service';
 
+import { TranslateModule } from '@ngx-translate/core';
 
 // routing
 const routes: Routes = [
@@ -45,7 +46,8 @@ const routes: Routes = [
     CorePipesModule,
     CoreDirectivesModule,
     InvoiceModule,
-    CoreSidebarModule
+    CoreSidebarModule,
+    TranslateModule
   ],
   providers: [PrivilegeListService, UserEditService]
 })

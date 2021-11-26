@@ -16,7 +16,7 @@ export const locale = {
         filtreStatus:'Select Status'
     },
     buttons: {
-    	addNewUser : 'Add new User'
+    	addNewUser : 'Add new role'
     }
   }
 };

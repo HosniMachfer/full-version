@@ -22,7 +22,7 @@ export const menu: CoreMenu[] = [
         title: 'Analytics',
         translate: 'MENU.DASHBOARD.ANALYTICS',
         type: 'item',
-        role: ['Admin'], //? To set multiple role: ['Admin', 'Client']
+        //role: ['Admin'], //? To set multiple role: ['Admin', 'Client']
         icon: 'circle',
         url: 'dashboard/analytics'
       },
@@ -130,46 +130,6 @@ export const menu: CoreMenu[] = [
         url: 'pages/knowledge-base'
       },
       {
-        id: 'menu-levels',
-        title: 'Menu Levels',
-        translate: 'MENU.OTHERS.LEVELS.COLLAPSIBLE',
-        icon: 'menu',
-        type: 'collapsible',
-        children: [
-          {
-            id: 'second-level',
-            title: 'Second Level',
-            translate: 'MENU.OTHERS.LEVELS.SECOND',
-            icon: 'circle',
-            type: 'item',
-            url: '#'
-          },
-          {
-            id: 'second-level1',
-            title: 'Second Level',
-            translate: 'MENU.OTHERS.LEVELS.SECOND1.COLLAPSIBLE',
-            icon: 'circle',
-            type: 'collapsible',
-            children: [
-              {
-                id: 'third-level',
-                title: 'Third Level',
-                translate: 'MENU.OTHERS.LEVELS.SECOND1.THIRD',
-                type: 'item',
-                url: '#'
-              },
-              {
-                id: 'third-level1',
-                title: 'Third Level',
-                translate: 'MENU.OTHERS.LEVELS.SECOND1.THIRD1',
-                type: 'item',
-                url: '#'
-              }
-            ]
-          }
-        ]
-      },
-      {
         id: 'disabled-menu',
         title: 'Disabled Menu',
         translate: 'MENU.OTHERS.DISABLED',
@@ -177,26 +137,6 @@ export const menu: CoreMenu[] = [
         type: 'item',
         url: '#',
         disabled: true
-      },
-      {
-        id: 'documentation',
-        title: 'Documentation',
-        translate: 'MENU.OTHERS.DOCUMENTATION',
-        icon: 'file-text',
-        type: 'item',
-        url: 'https://pixinvent.com/demo/vuexy-angular-admin-dashboard-template/documentation',
-        externalUrl: true,
-        openInNewTab: true
-      },
-      {
-        id: 'raise-support',
-        title: 'Raise Support',
-        translate: 'MENU.OTHERS.SUPPORT',
-        icon: 'life-buoy',
-        type: 'item',
-        url: 'https://pixinvent.ticksy.com/',
-        externalUrl: true,
-        openInNewTab: true
       }
     ]
   }
