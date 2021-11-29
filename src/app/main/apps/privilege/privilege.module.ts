@@ -21,7 +21,7 @@ import { PrivilegeListComponent } from './privilege-list/privilege-list.componen
 import { PrivilegeListService } from 'app/main/apps/privilege/privilege-list/privilege-list.service';
 
 import { NewPrivilegeSidebarComponent } from 'app/main/apps/privilege/privilege-list/new-privilege-sidebar/new-privilege-sidebar.component';
-import { UserEditService } from 'app/main/apps/user/user-edit/user-edit.service';
+import { PrivilegeEditService } from 'app/main/apps/privilege/privilege-edit/privilege-edit.service';
 
 import { TranslateModule } from '@ngx-translate/core';
 
@@ -49,6 +49,6 @@ const routes: Routes = [
     CoreSidebarModule,
     TranslateModule
   ],
-  providers: [PrivilegeListService, UserEditService]
+  providers: [PrivilegeListService, PrivilegeEditService]
 })
 export class PrivilegeModule { }

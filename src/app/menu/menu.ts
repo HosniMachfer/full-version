@@ -107,6 +107,39 @@ export const menu: CoreMenu[] = [
             url: 'apps/privilege/privilege-list'
           }
         ]
+      },
+      {
+        id: 'pages',
+        title: 'Pages',
+        translate: 'MENU.GESTIONDECHETS.SECTION',
+        type: 'collapsible',
+        icon: 'layers',
+        children: [
+            {
+              id: 'usines',
+              title: 'Usines',
+              translate: 'MENU.APPS.GESTIONDECHET.USINES',
+              type: 'item',
+              icon: 'users',
+              url: 'apps/usine/usine-list'
+            },
+            {
+              id: 'collecteurs',
+              title: 'Collecteurs',
+              translate: 'MENU.APPS.GESTIONDECHET.COLLECTEURS',
+              type: 'item',
+              icon: 'truck',
+              url: 'apps/collecteurs/collecteurs-list'
+            },
+            {
+              id: 'recycleurs',
+              title: 'Recycleurs',
+              translate: 'MENU.APPS.GESTIONDECHET.RECYCLEURS',
+              type: 'item',
+              icon: 'refresh-cw',
+              url: 'apps/recycleur/recycleur-list'
+            }
+        ]
       }
       
 

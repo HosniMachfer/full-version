@@ -34,6 +34,11 @@ export const locale = {
           ROLES: 'Gestion roles',
           PRIVILEGES: 'Gestion privileges'
         },
+        GESTIONDECHET:{
+          USINES: 'Gestion usines',
+          COLLECTEURS:'Gestion collecteurs',
+          RECYCLEURS:'Gestion recycleurs',
+        }
       },
       PAGES: {
         SECTION: 'RH',
@@ -176,8 +181,23 @@ export const locale = {
         },
         MAPS: 'Google Maps'
       },
-      OTHERS: {
+      GESTIONDECHETS: {
         SECTION: 'Gestion dechets',
+        LEVELS: {
+          COLLAPSIBLE: 'Niveaux de menu',
+          SECOND: 'Deuxième niveau',
+          SECOND1: {
+            COLLAPSIBLE: 'Deuxième niveau',
+            THIRD: 'Troisième niveau',
+            THIRD1: 'Troisième niveau'
+          }
+        },
+        DISABLED: 'Menu désactivé',
+        DOCUMENTATION: 'Documentation',
+        SUPPORT: 'Augmenter le soutien'
+      },
+      OTHERS: {
+        SECTION: 'Other',
         LEVELS: {
           COLLAPSIBLE: 'Niveaux de menu',
           SECOND: 'Deuxième niveau',

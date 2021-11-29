@@ -1,23 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 import { CoreSidebarService } from '@core/components/core-sidebar/core-sidebar.service';
 
-import { UserEditService } from 'app/main/apps/user/user-edit/user-edit.service';
+import { PrivilegeEditService } from 'app/main/apps/privilege/privilege-edit/privilege-edit.service';
+import { RoleListService } from 'app/main/apps/role/role-list/role-list.service';
+
 
 @Component({
   selector: 'app-new-privilege-sidebar',
   templateUrl: './new-privilege-sidebar.component.html'
 })
 export class NewPrivilegeSidebarComponent implements OnInit {
-  public fullName;
-  public firstName;
-  public email;
+  public name;
+  public code;
+  public roles = [];
+  public select_roles = [];
 
   /**
    * Constructor
    *
    * @param {CoreSidebarService} _coreSidebarService
    */
-  constructor(private _roleEditService: UserEditService, private _coreSidebarService: CoreSidebarService) {}
+  constructor(private _privilegeEditService: PrivilegeEditService, private _coreSidebarService: CoreSidebarService,private _roleListService: RoleListService) {}
 
   /**
    * Toggle the sidebar
@@ -36,7 +39,7 @@ export class NewPrivilegeSidebarComponent implements OnInit {
   submit(form) {
     if (form.valid) {
     this.toggleSidebar('new-privilege-sidebar');
-       this._roleEditService.create(form.value)
+       this._privilegeEditService.create(form.value)
       .subscribe(
         response => {
          // this.router.navigate(['/roles']);
@@ -47,5 +50,15 @@ export class NewPrivilegeSidebarComponent implements OnInit {
     }
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this._roleListService.getAll()
+	      .subscribe(
+	        data => {
+	          this.roles = data;
+	        },
+	        error => {
+	        console.log(" ici de la merde");
+	          console.log(error);
+	        });
+  }
 }

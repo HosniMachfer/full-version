@@ -17,6 +17,19 @@ export const locale = {
     },
     buttons: {
     	addNewUser : 'Ajouter un nouveau privilege'
-    }
+    },
+    fnp : {
+        title : 'Formulaire nouveau privilege',
+        champs:{
+	        libellet: 'Libellet',
+	        code : 'Code',
+	        description: 'Description',
+	        statut : 'Statut'
+        },    
+	    buttons: {
+	    	validation : 'Valider',
+			cancel : 'Continuer'	    	
+	    }
   }
+}  
 };
