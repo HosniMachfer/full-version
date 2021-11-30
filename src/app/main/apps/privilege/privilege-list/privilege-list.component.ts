@@ -77,7 +77,8 @@ export class PrivilegeListComponent implements OnInit {
  this.privilegeListService.getAll()
 	      .subscribe(
 	        data => {
-	          this.rows = data;
+            this.rows = data;
+            console.log(this.rows);
 	        },
 	        error => {
 	        console.log(" ici de la merde");

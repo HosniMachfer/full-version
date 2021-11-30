@@ -19,12 +19,12 @@ interface BrandObject {
 }
 
 @Component({
-  selector: 'app-user-edit',
-  templateUrl: './user-edit.component.html',
-  styleUrls: ['./user-edit.component.scss'],
+  selector: 'app-privilege-edit',
+  templateUrl: './privilege-edit.component.html',
+  styleUrls: ['./privilege-edit.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class UserEditComponent implements OnInit, OnDestroy {
+export class PrivilegeEditComponent implements OnInit, OnDestroy {
   // Public
   public url = this.router.url;
   public urlLastValue;

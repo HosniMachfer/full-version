@@ -46,22 +46,12 @@
           
           <ngx-datatable-column name="Libellet privilege" prop="name" [width]="100">
             <ng-template let-row="row" let-name="value" ngx-datatable-cell-template>
-                <i
-                  class="feather font-medium-3"
-                  [ngClass]="{
-                    'icon-edit-2 text-info': name == 'Editor',
-                    'icon-settings text-warning': name == 'Author',
-                    'icon-database text-success': name == 'Maintainer',
-                    'icon-user text-primary': name == 'Subscriber',
-                    'icon-slack text-danger': name == 'Admin'
-                  }"
-                ></i>
                 {{name}}
             </ng-template>
           </ngx-datatable-column>
           
-          <ngx-datatable-column name="Code privilege" prop="name" [width]="200"></ngx-datatable-column>
-          <ngx-datatable-column name="Description privilege" prop="currentPlan" [width]="100"></ngx-datatable-column>
+          <ngx-datatable-column name="Code privilege" prop="code" [width]="50"></ngx-datatable-column>
+          <ngx-datatable-column name="Description privilege" prop="description"></ngx-datatable-column>
           <ngx-datatable-column name="Status" prop="status" [width]="50">
             <ng-template let-status="value" ngx-datatable-cell-template>
               <div
@@ -83,9 +73,9 @@
                   <span [data-feather]="'more-vertical'" [class]="'cursor-pointer'"></span>
                 </button>
                 <div ngbDropdownMenu>
-                  <a routerLink="/apps/user/user-list/user-view/{{ row.id }}" ngbDropdownItem
+                  <a routerLink="/apps/privilege/privilege-list/privilege-view/{{ row.id }}" ngbDropdownItem
                     ><span [data-feather]="'file-text'" [size]="16" [class]="'mr-50'"></span> Details</a
-                  ><a routerLink="/apps/user/user-list/user-edit/{{ row.id }}" ngbDropdownItem
+                  ><a routerLink="/apps/privilege/privilege-list/privilege-edit/{{ row.id }}" ngbDropdownItem
                     ><span [data-feather]="'edit'" [size]="16" [class]="'mr-50'"></span> Edit</a
                   ><a href="javascript:;" ngbDropdownItem
                     ><span [data-feather]="'trash'" [size]="16" [class]="'mr-50'"></span> Delete</a

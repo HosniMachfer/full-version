@@ -18,6 +18,7 @@ import { InvoiceModule } from 'app/main/apps/invoice/invoice.module';
 import { CommonModule } from '@angular/common';
 
 import { PrivilegeListComponent } from './privilege-list/privilege-list.component';
+import { PrivilegeEditComponent } from './privilege-edit/privilege-edit.component';
 import { PrivilegeListService } from 'app/main/apps/privilege/privilege-list/privilege-list.service';
 
 import { NewPrivilegeSidebarComponent } from 'app/main/apps/privilege/privilege-list/new-privilege-sidebar/new-privilege-sidebar.component';
@@ -27,12 +28,13 @@ import { TranslateModule } from '@ngx-translate/core';
 
 // routing
 const routes: Routes = [
-  {path: 'privilege-list',component: PrivilegeListComponent}
+  {path: 'privilege-list',component: PrivilegeListComponent},
+  {path: 'privilege-list/privilege-edit',   redirectTo: '/apps/privilege/privilege-list' }
 ];
 
 @NgModule({
   declarations: [
-    PrivilegeListComponent,NewPrivilegeSidebarComponent
+    PrivilegeListComponent,NewPrivilegeSidebarComponent,PrivilegeEditComponent
   ],
   imports: [
     CommonModule,
