@@ -29,7 +29,7 @@ import { TranslateModule } from '@ngx-translate/core';
 // routing
 const routes: Routes = [
   {path: 'privilege-list',component: PrivilegeListComponent},
-  {path: 'privilege-list/privilege-edit',   redirectTo: '/apps/privilege/privilege-list' }
+  {path: 'privilege-list/privilege-edit/:id',   component: PrivilegeEditComponent }
 ];
 
 @NgModule({
