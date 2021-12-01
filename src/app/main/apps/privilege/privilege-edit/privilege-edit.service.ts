@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
 
@@ -8,10 +8,14 @@ import { BehaviorSubject, Observable } from 'rxjs';
 
 import { Person, DataService } from 'app/main/forms/form-elements/select/data.service';
 
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json'})
+};
+
 @Injectable()
 export class PrivilegeEditService implements Resolve<any> {
   public apiData: any;
-  public onUserEditChanged: BehaviorSubject<any>;
+  public onPrivilegeEditChanged: BehaviorSubject<any>;
 
   /**
    * Constructor
@@ -20,7 +24,7 @@ export class PrivilegeEditService implements Resolve<any> {
    */
   constructor(private _httpClient: HttpClient) {
     // Set the defaults
-    this.onUserEditChanged = new BehaviorSubject({});
+    this.onPrivilegeEditChanged = new BehaviorSubject({});
   }
 
   /**
@@ -43,15 +47,18 @@ export class PrivilegeEditService implements Resolve<any> {
    */
   getApiData(): Promise<any[]> {
     return new Promise((resolve, reject) => {
-      this._httpClient.get(`${environment.apiUrl}`+'/all-users').subscribe((response: any) => {
+      this._httpClient.get(`${environment.apiUrl}`+'/privileges').subscribe((response: any) => {
         this.apiData = response;
-        this.onUserEditChanged.next(this.apiData);
+        this.onPrivilegeEditChanged.next(this.apiData);
         resolve(this.apiData);
       }, reject);
     });
   }
  
-  
+getAll(): Observable<any[]> {
+    return this._httpClient.get<any[]>(`${environment.apiUrl}`+'/privileges',  httpOptions);
+}
+
 create(data: any): Observable<any> {
   console.log("------------------------------------");
   console.log(data);

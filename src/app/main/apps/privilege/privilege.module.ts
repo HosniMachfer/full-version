@@ -19,22 +19,35 @@ import { CommonModule } from '@angular/common';
 
 import { PrivilegeListComponent } from './privilege-list/privilege-list.component';
 import { PrivilegeEditComponent } from './privilege-edit/privilege-edit.component';
+import { PrivilegeViewComponent } from './privilege-view/privilege-view.component';
 import { PrivilegeListService } from 'app/main/apps/privilege/privilege-list/privilege-list.service';
 
 import { NewPrivilegeSidebarComponent } from 'app/main/apps/privilege/privilege-list/new-privilege-sidebar/new-privilege-sidebar.component';
 import { PrivilegeEditService } from 'app/main/apps/privilege/privilege-edit/privilege-edit.service';
+import{ PrivilegeViewService } from 'app/main/apps/privilege/privilege-view/privilege-view.service';
 
 import { TranslateModule } from '@ngx-translate/core';
 
 // routing
 const routes: Routes = [
-  {path: 'privilege-list',component: PrivilegeListComponent},
-  {path: 'privilege-list/privilege-edit/:id',   component: PrivilegeEditComponent }
+  {path: 'privilege-list',component: PrivilegeListComponent  },
+  {path: 'privilege-list/privilege-edit/:id',   component: PrivilegeEditComponent,
+    resolve: {
+      uls: PrivilegeEditService
+    } 
+  },
+  {path: 'privilege-list/privilege-view/:id',   component: PrivilegeViewComponent,
+    resolve: {
+      uls: PrivilegeViewService
+    }
+  },
+  {path: 'privilege-list/privilege-view',  redirectTo: '/apps/privilege/privilege-list'},
+  {path: 'privilege-list/privilege-edit',    redirectTo: '/apps/privilege/privilege-list' }
 ];
 
 @NgModule({
   declarations: [
-    PrivilegeListComponent,NewPrivilegeSidebarComponent,PrivilegeEditComponent
+    PrivilegeListComponent,NewPrivilegeSidebarComponent,PrivilegeEditComponent,PrivilegeViewComponent
   ],
   imports: [
     CommonModule,
@@ -51,6 +64,6 @@ const routes: Routes = [
     CoreSidebarModule,
     TranslateModule
   ],
-  providers: [PrivilegeListService, PrivilegeEditService]
+  providers: [PrivilegeListService, PrivilegeEditService,PrivilegeViewService]
 })
 export class PrivilegeModule { }

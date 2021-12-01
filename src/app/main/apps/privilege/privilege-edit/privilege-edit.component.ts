@@ -27,10 +27,10 @@ interface BrandObject {
 export class PrivilegeEditComponent implements OnInit, OnDestroy {
   // Public
   public url = this.router.url;
-  public urlLastValue;
-  public rows;
-  public currentRow;
-  public tempRow;
+  public urlLastValue: string;
+  public rows: any[];
+  public currentRow: { id: any; };
+  public tempRow: any;
   public avatarImage: string;
   
   // Select Custom header footer template
@@ -145,10 +145,10 @@ export class PrivilegeEditComponent implements OnInit, OnDestroy {
   public selectCustomSelected = this.selectIcon[0].name;
 
   // select tag
-  public SelectTag;
+  public SelectTag: any;
 
   // Select Custom Tag
-  public customTagselected;
+  public customTagselected: any;
   public customTag: any[] = [];
   public customTagNames = ['Uber', 'Microsoft', 'Flexigen'];
 
@@ -228,7 +228,7 @@ export class PrivilegeEditComponent implements OnInit, OnDestroy {
       let reader = new FileReader();
 
       reader.onload = (event: any) => {
-        this.avatarImage = event.target.result;
+        //this.avatarImage = event.target.result;
       };
 
       reader.readAsDataURL(event.target.files[0]);
@@ -240,7 +240,7 @@ export class PrivilegeEditComponent implements OnInit, OnDestroy {
    *
    * @param form
    */
-  submit(form) {
+  submit(form: { valid: any; }) {
     if (form.valid) {
       
       this._privilegeEditService.create(this.currentRow)
@@ -260,13 +260,17 @@ export class PrivilegeEditComponent implements OnInit, OnDestroy {
    * On init
    */
   ngOnInit(): void {
-    this._privilegeEditService.onUserEditChanged.pipe(takeUntil(this._unsubscribeAll)).subscribe(response => {
-      this.rows = response;
-      this.rows.map(row => {
+    console.log("ngOnInitngOnInitngOnInitngOnInitngOnInit");
+    this._privilegeEditService.onPrivilegeEditChanged.pipe(takeUntil(this._unsubscribeAll)).subscribe(response => {
+            this.rows = response;
+            this.rows.map(row => {
         if (row.id == this.urlLastValue) {
           this.currentRow = row;
+          console.log("------------------");
+          console.log(this.currentRow);
+          console.log("------------------");
           //this.selectedRoles = row.roles;
-          this.avatarImage = this.currentRow.avatar;
+          //this.avatarImage = this.currentRow.avatar;
           this.tempRow = cloneDeep(row);
         }
       });
