@@ -10,7 +10,7 @@ import { cloneDeep } from 'lodash';
 
 import { Observable } from 'rxjs';
 
-import { PrivilegeEditService } from 'app/main/apps/privilege/privilege-edit/privilege-edit.service';
+import { RoleEditService } from 'app/main/apps/role/role-edit/role-edit.service';
 import { Person, DataService } from 'app/main/forms/form-elements/select/data.service';
 
 interface BrandObject {
@@ -19,12 +19,12 @@ interface BrandObject {
 }
 
 @Component({
-  selector: 'app-privilege-edit',
-  templateUrl: './privilege-edit.component.html',
-  styleUrls: ['./privilege-edit.component.scss'],
+  selector: 'app-role-edit',
+  templateUrl: './role-edit.component.html',
+  styleUrls: ['./role-edit.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class PrivilegeEditComponent implements OnInit, OnDestroy {
+export class RoleEditComponent implements OnInit, OnDestroy {
   // Public
   public url = this.router.url;
   public urlLastValue: string;
@@ -39,7 +39,7 @@ export class PrivilegeEditComponent implements OnInit, OnDestroy {
   				{
   					id: '5',
       				name: 'Subscriber',
-      				privileges: []
+      				roles: []
       				}
       			];
   
@@ -200,9 +200,9 @@ export class PrivilegeEditComponent implements OnInit, OnDestroy {
    * Constructor
    *
    * @param {Router} router
-   * @param {PrivilegeEditService} _privilegeEditService
+   * @param {RoleEditService} _roleEditService
    */
-  constructor(private router: Router, private _privilegeEditService: PrivilegeEditService,private dataService: DataService, private modalService: NgbModal) {
+  constructor(private router: Router, private _roleEditService: RoleEditService,private dataService: DataService, private modalService: NgbModal) {
     this._unsubscribeAll = new Subject();
     this.urlLastValue = this.url.substr(this.url.lastIndexOf('/') + 1);
     
@@ -243,10 +243,10 @@ export class PrivilegeEditComponent implements OnInit, OnDestroy {
   submit(form: { valid: any; }) {
     if (form.valid) {
       
-      this._privilegeEditService.create(this.currentRow)
+      this._roleEditService.create(this.currentRow)
       .subscribe(
         response => {
-         //this.router.navigate(['/privileges']);
+         //this.router.navigate(['/roles']);
         },
         error => {
           console.log(error);
@@ -261,7 +261,7 @@ export class PrivilegeEditComponent implements OnInit, OnDestroy {
    */
   ngOnInit(): void {
     console.log("ngOnInitngOnInitngOnInitngOnInitngOnInit");
-    this._privilegeEditService.onPrivilegeEditChanged.pipe(takeUntil(this._unsubscribeAll)).subscribe(response => {
+    this._roleEditService.onRoleEditChanged.pipe(takeUntil(this._unsubscribeAll)).subscribe(response => {
             this.rows = response;
             this.rows.map(row => {
         if (row.id == this.urlLastValue) {

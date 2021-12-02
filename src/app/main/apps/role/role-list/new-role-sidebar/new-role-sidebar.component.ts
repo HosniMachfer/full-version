@@ -1,23 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 import { CoreSidebarService } from '@core/components/core-sidebar/core-sidebar.service';
 
-import { UserEditService } from 'app/main/apps/user/user-edit/user-edit.service';
+import { RoleEditService } from 'app/main/apps/role/role-edit/role-edit.service';
+import { RoleListService } from 'app/main/apps/role/role-list/role-list.service';
+
 
 @Component({
   selector: 'app-new-role-sidebar',
   templateUrl: './new-role-sidebar.component.html'
 })
 export class NewRoleSidebarComponent implements OnInit {
-  public fullName;
-  public firstName;
-  public email;
+  public name;
+  public code;
+  public roles = [];
+  public select_roles = [];
 
   /**
    * Constructor
    *
    * @param {CoreSidebarService} _coreSidebarService
    */
-  constructor(private _roleEditService: UserEditService, private _coreSidebarService: CoreSidebarService) {}
+  constructor(private _roleEditService: RoleEditService, private _coreSidebarService: CoreSidebarService,private _roleListService: RoleListService) {}
 
   /**
    * Toggle the sidebar
@@ -47,5 +50,15 @@ export class NewRoleSidebarComponent implements OnInit {
     }
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this._roleListService.getAll()
+	      .subscribe(
+	        data => {
+	          this.roles = data;
+	        },
+	        error => {
+	        console.log(" ici de la merde");
+	          console.log(error);
+	        });
+  }
 }
