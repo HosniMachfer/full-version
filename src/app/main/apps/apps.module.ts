@@ -45,6 +45,10 @@ const routes: Routes = [
   {
     path: 'privilege',
     loadChildren: () => import('./privilege/privilege.module').then(m => m.PrivilegeModule)
+  },
+  {
+    path: 'gestion-dechets',
+    loadChildren: () => import('./gestion-dechets/gestion-dechets.module').then(m => m.GestionDechetsModule)
   }
 ];
 

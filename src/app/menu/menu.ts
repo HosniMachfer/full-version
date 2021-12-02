@@ -57,7 +57,7 @@ export const menu: CoreMenu[] = [
             title: 'User',
             translate: 'MENU.PAGES.AUTH.COLLAPSIBLE',
             type: 'collapsible',
-            icon: 'user',
+            icon: 'settings',
             children: [
               {
                 id: 'forgot-password-v2',
@@ -103,7 +103,7 @@ export const menu: CoreMenu[] = [
             title: 'Privileges',
             translate: 'MENU.APPS.RH.PRIVILEGES',
             type: 'item',
-             icon: 'user-x',
+             icon: 'circle',
             url: 'apps/privilege/privilege-list'
           }
         ]
@@ -120,7 +120,7 @@ export const menu: CoreMenu[] = [
               title: 'Usines',
               translate: 'MENU.APPS.GESTIONDECHET.USINES',
               type: 'item',
-              icon: 'users',
+              icon: 'home',
               url: 'apps/usine/usine-list'
             },
             {
@@ -138,6 +138,14 @@ export const menu: CoreMenu[] = [
               type: 'item',
               icon: 'refresh-cw',
               url: 'apps/recycleur/recycleur-list'
+            },
+            {
+              id: 'cycle-de-vie-dechet',
+              title: 'Cycle de vie dechet',
+              translate: 'MENU.APPS.GESTIONDECHET.CYCLEDEVIE',
+              type: 'item',
+              icon: 'trash-2',
+              url: 'apps/gestion-dechets/cycle-de-vie-dechet'
             }
         ]
       }
