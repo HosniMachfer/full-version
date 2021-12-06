@@ -43,6 +43,11 @@ export class RoleViewComponent implements OnInit, OnDestroy {
     this._roleViewService.onRoleViewChanged.pipe(takeUntil(this._unsubscribeAll)).subscribe(response => {
       this.data = response;
     });
+
+
+            console.log("****** View rôle ********");
+            console.log(this.data);
+            console.log("****** View rôle ********");
   }
 
   /**

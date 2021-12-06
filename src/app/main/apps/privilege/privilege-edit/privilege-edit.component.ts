@@ -12,6 +12,12 @@ import { Observable } from 'rxjs';
 
 import { PrivilegeEditService } from 'app/main/apps/privilege/privilege-edit/privilege-edit.service';
 import { Person, DataService } from 'app/main/forms/form-elements/select/data.service';
+import { RoleListService } from 'app/main/apps/role/role-list/role-list.service';
+
+import { NgbDateStruct, NgbCalendar, NgbDate, NgbDateParserFormatter, NgbTimeStruct } from '@ng-bootstrap/ng-bootstrap';
+
+import * as snippet from 'app/main/forms/form-elements/date-time-picker/date-time-picker.snippetcode';
+
 
 interface BrandObject {
   id: number;
@@ -33,15 +39,14 @@ export class PrivilegeEditComponent implements OnInit, OnDestroy {
   public tempRow: any;
   public avatarImage: string;
   
+  // Basic Date Picker
+  public basicDPdata: NgbDateStruct;
+
+
   // Select Custom header footer template
   public listetRoles =[];
-  public selectedRoles = [
-  				{
-  					id: '5',
-      				name: 'Subscriber',
-      				privileges: []
-      				}
-      			];
+  public roles = [];
+  public selectedRoles = [];
   
   @ViewChild('accountForm') accountForm: NgForm;
 
@@ -202,7 +207,8 @@ export class PrivilegeEditComponent implements OnInit, OnDestroy {
    * @param {Router} router
    * @param {PrivilegeEditService} _privilegeEditService
    */
-  constructor(private router: Router, private _privilegeEditService: PrivilegeEditService,private dataService: DataService, private modalService: NgbModal) {
+  constructor(private router: Router, private _privilegeEditService: PrivilegeEditService,private dataService: DataService, private modalService: NgbModal,
+    private _roleListService: RoleListService) {
     this._unsubscribeAll = new Subject();
     this.urlLastValue = this.url.substr(this.url.lastIndexOf('/') + 1);
     
@@ -269,8 +275,12 @@ export class PrivilegeEditComponent implements OnInit, OnDestroy {
           console.log("------------------");
           console.log(this.currentRow);
           console.log("------------------");
-          //this.selectedRoles = row.roles;
-          //this.avatarImage = this.currentRow.avatar;
+          this.selectedRoles = row.roles;
+          console.log("::::::::::::::::::");
+          console.log(row.dateCre);
+          console.log("::::::::::::::::::");
+          this.basicDPdata = {  "year": 2021,  "month": 12,  "day": 11};
+          this.currentRow.avatar;
           this.tempRow = cloneDeep(row);
         }
       });
@@ -300,6 +310,15 @@ export class PrivilegeEditComponent implements OnInit, OnDestroy {
     }
   ];
     
+      this._roleListService.getAll()
+	      .subscribe(
+	        data => {
+	          this.roles = data;
+	        },
+	        error => {
+	        console.log(" ici de la merde");
+	          console.log(error);
+	        });
     
 
   }

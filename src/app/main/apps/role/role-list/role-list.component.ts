@@ -80,7 +80,10 @@ ngOnInit(): void {
 	this.roleListService.getAll()
 	      .subscribe(
 	        data => {
-	          this.rows = data;
+            this.rows = data;
+            console.log("****** liste des rôles ********");
+            console.log(this.rows);
+            console.log("****** liste des rôles ********");
 	        },
 	        error => {
 	        console.log(" ici de la merde");

@@ -43,6 +43,8 @@ export class PrivilegeViewComponent implements OnInit, OnDestroy {
     this._privilegeViewService.onPrivilegeViewChanged.pipe(takeUntil(this._unsubscribeAll)).subscribe(response => {
       this.data = response;
     });
+
+    console.log(this.data);
   }
 
   /**
