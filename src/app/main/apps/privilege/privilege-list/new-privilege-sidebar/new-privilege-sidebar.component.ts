@@ -51,14 +51,14 @@ export class NewPrivilegeSidebarComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this._roleListService.getAll()
-	      .subscribe(
-	        data => {
-	          this.roles = data;
-	        },
-	        error => {
-	        console.log(" ici de la merde");
-	          console.log(error);
-	        });
+  //   this._roleListService.getAll()
+	//       .subscribe(
+	//         data => {
+	//           this.roles = data;
+	//         },
+	//         error => {
+	//         console.log(" ici de la merde");
+	//           console.log(error);
+	//         });
   }
 }

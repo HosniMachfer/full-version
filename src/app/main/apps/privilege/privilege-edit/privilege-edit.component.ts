@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ViewEncapsulation, ViewChild } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewEncapsulation, ViewChild,Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -10,11 +10,14 @@ import { cloneDeep } from 'lodash';
 
 import { Observable } from 'rxjs';
 
+import { PrivilegeListService } from 'app/main/apps/privilege/privilege-list/privilege-list.service';
 import { PrivilegeEditService } from 'app/main/apps/privilege/privilege-edit/privilege-edit.service';
 import { Person, DataService } from 'app/main/forms/form-elements/select/data.service';
 import { RoleListService } from 'app/main/apps/role/role-list/role-list.service';
 
-import { NgbDateStruct, NgbCalendar, NgbDate, NgbDateParserFormatter, NgbTimeStruct } from '@ng-bootstrap/ng-bootstrap';
+import {NgbDate, NgbTimeStruct } from '@ng-bootstrap/ng-bootstrap';
+
+import {NgbCalendar, NgbDateAdapter, NgbDateParserFormatter, NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
 
 import * as snippet from 'app/main/forms/form-elements/date-time-picker/date-time-picker.snippetcode';
 
@@ -24,10 +27,67 @@ interface BrandObject {
   text: string;
 }
 
+
+
+/**
+ * This Service handles how the date is represented in scripts i.e. ngModel.
+ */
+@Injectable()
+export class CustomAdapter extends NgbDateAdapter<string> {
+
+  readonly DELIMITER = '-';
+
+  fromModel(value: string | null): NgbDateStruct | null {
+    if (value) {
+      let date = value.split(this.DELIMITER);
+      return {
+        day : parseInt(date[0], 10),
+        month : parseInt(date[1], 10),
+        year : parseInt(date[2], 10)
+      };
+    }
+    return null;
+  }
+
+  toModel(date: NgbDateStruct | null): string | null {
+    return date ? date.day + this.DELIMITER + date.month + this.DELIMITER + date.year : null;
+  }
+}
+
+/**
+ * This Service handles how the date is rendered and parsed from keyboard i.e. in the bound input field.
+ */
+@Injectable()
+export class CustomDateParserFormatter extends NgbDateParserFormatter {
+
+  readonly DELIMITER = '/';
+
+  parse(value: string): NgbDateStruct | null {
+    if (value) {
+      let date = value.split(this.DELIMITER);
+      return {
+        day : parseInt(date[0], 10),
+        month : parseInt(date[1], 10),
+        year : parseInt(date[2], 10)
+      };
+    }
+    return null;
+  }
+
+  format(date: NgbDateStruct | null): string {
+    return date ? date.day + this.DELIMITER + date.month + this.DELIMITER + date.year : '';
+  }
+}
+
+
 @Component({
   selector: 'app-privilege-edit',
   templateUrl: './privilege-edit.component.html',
   styleUrls: ['./privilege-edit.component.scss'],
+  providers: [
+    {provide: NgbDateAdapter, useClass: CustomAdapter},
+    {provide: NgbDateParserFormatter, useClass: CustomDateParserFormatter}
+  ],
   encapsulation: ViewEncapsulation.None
 })
 export class PrivilegeEditComponent implements OnInit, OnDestroy {
@@ -39,9 +99,6 @@ export class PrivilegeEditComponent implements OnInit, OnDestroy {
   public tempRow: any;
   public avatarImage: string;
   
-  // Basic Date Picker
-  public basicDPdata: NgbDateStruct;
-
 
   // Select Custom header footer template
   public listetRoles =[];
@@ -208,7 +265,7 @@ export class PrivilegeEditComponent implements OnInit, OnDestroy {
    * @param {PrivilegeEditService} _privilegeEditService
    */
   constructor(private router: Router, private _privilegeEditService: PrivilegeEditService,private dataService: DataService, private modalService: NgbModal,
-    private _roleListService: RoleListService) {
+    private _roleListService: RoleListService ,private ngbCalendar: NgbCalendar, private dateAdapter: NgbDateAdapter<string>,private privilegeListService: PrivilegeListService) {
     this._unsubscribeAll = new Subject();
     this.urlLastValue = this.url.substr(this.url.lastIndexOf('/') + 1);
     
@@ -248,11 +305,19 @@ export class PrivilegeEditComponent implements OnInit, OnDestroy {
    */
   submit(form: { valid: any; }) {
     if (form.valid) {
-      
       this._privilegeEditService.create(this.currentRow)
       .subscribe(
         response => {
-         //this.router.navigate(['/privileges']);
+          this.privilegeListService.getAll()
+	      .subscribe(
+	        data => {
+            this.rows = data;
+            console.log(this.rows);
+	        },
+	        error => {
+	        console.log(" ici de la merde");
+	          console.log(error);
+          });
         },
         error => {
           console.log(error);
@@ -266,61 +331,25 @@ export class PrivilegeEditComponent implements OnInit, OnDestroy {
    * On init
    */
   ngOnInit(): void {
-    console.log("ngOnInitngOnInitngOnInitngOnInitngOnInit");
     this._privilegeEditService.onPrivilegeEditChanged.pipe(takeUntil(this._unsubscribeAll)).subscribe(response => {
             this.rows = response;
             this.rows.map(row => {
         if (row.id == this.urlLastValue) {
           this.currentRow = row;
-          console.log("------------------");
-          console.log(this.currentRow);
-          console.log("------------------");
-          this.selectedRoles = row.roles;
-          console.log("::::::::::::::::::");
-          console.log(row.dateCre);
-          console.log("::::::::::::::::::");
-          this.basicDPdata = {  "year": 2021,  "month": 12,  "day": 11};
+          //this.selectedRoles = row.roles;
           this.currentRow.avatar;
           this.tempRow = cloneDeep(row);
         }
       });
     });
-    
-    
-      this.listetRoles = [
-    {
-      id: '1',
-      name: 'Admin'
-    },
-        {
-      id: '2',
-      name: 'Editor'
-    },
-    {
-      id: '3',
-      name: 'Author'
-    },
-    {
-      id: '4',
-      name: 'Maintainer'
-    },
-    {
-      id: '5',
-      name: 'Subscriber'
-    }
-  ];
-    
-      this._roleListService.getAll()
-	      .subscribe(
-	        data => {
-	          this.roles = data;
-	        },
-	        error => {
-	        console.log(" ici de la merde");
-	          console.log(error);
-	        });
-    
+  }
 
+  doTextareaValueChange(ev) {
+    try {
+      this.currentRow.description  = ev.target.value;
+    } catch(e) {
+      console.info('could not set textarea-value');
+    }
   }
 
   /**

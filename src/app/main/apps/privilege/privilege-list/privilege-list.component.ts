@@ -19,6 +19,10 @@ import { locale as portuguese } from 'app/main/apps/privilege/i18n/pt';
   encapsulation: ViewEncapsulation.None
 })
 export class PrivilegeListComponent implements OnInit {
+  
+  private tempData = [];
+  // Decorator
+  @ViewChild(DatatableComponent) table: DatatableComponent;
   languageOptions: any;
   public selectedRole = [];
   public selectedPlan = [];
@@ -28,28 +32,7 @@ export class PrivilegeListComponent implements OnInit {
   public ColumnMode = ColumnMode;
   public searchValue = '';
   
-   public selectStatus: any = [
-    { name: 'All', value: '' },
-    { name: 'Pending', value: 'Pending' },
-    { name: 'Active', value: 'Active' },
-    { name: 'Inactive', value: 'Inactive' }
-  ];
-    public selectRole: any = [
-    { name: 'All', value: '' },
-    { name: 'Admin', value: 'Admin' },
-    { name: 'Author', value: 'Author' },
-    { name: 'Editor', value: 'Editor' },
-    { name: 'Maintainer', value: 'Maintainer' },
-    { name: 'Subscriber', value: 'Subscriber' }
-  ];
 
-  public selectPlan: any = [
-    { name: 'All', value: '' },
-    { name: 'Basic', value: 'Basic' },
-    { name: 'Company', value: 'Company' },
-    { name: 'Enterprise', value: 'Enterprise' },
-    { name: 'Team', value: 'Team' }
-  ];
  constructor(private privilegeListService: PrivilegeListService,private _coreSidebarService: CoreSidebarService,private _coreTranslationService: CoreTranslationService) { 
  
     this.languageOptions = {
@@ -78,6 +61,7 @@ export class PrivilegeListComponent implements OnInit {
 	      .subscribe(
 	        data => {
             this.rows = data;
+            this.tempData = this.rows;
             console.log(this.rows);
 	        },
 	        error => {
@@ -91,10 +75,19 @@ toggleSidebar(name): void {
     this._coreSidebarService.getSidebarRegistry(name).toggleOpen();
 }
 
- filterUpdate(event) {}
- filterByStatus(event) {}
- filterByRole(event) {}
- filterByPlan(event) {}
+ filterUpdate(event) {
+  const val = event.target.value.toLowerCase();
+  console.log(val);
 
+   // Filter Our Data
+    const temp = this.tempData.filter(function (d) {
+      return d.name.toLowerCase().indexOf(val) !== -1 || !val;
+    });
 
+    // Update The Rows
+    this.rows = temp;
+    // Whenever The Filter Changes, Always Go Back To The First Page
+    this.table.offset = 0;
+
+ }
 }

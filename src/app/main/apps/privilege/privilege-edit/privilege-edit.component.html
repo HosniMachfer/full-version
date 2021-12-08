@@ -18,24 +18,6 @@
                     <div class="row">
                       <div class="col-md-4">
                         <div class="form-group">
-                            <label>Roles</label>
-                              <!-- Basic Multi select -->
-                              <ng-select
-                                name="roles"
-                                [items]="roles"
-                                [multiple]="true"
-                                [closeOnSelect]="false"
-                                [searchable]="true"
-                                bindLabel="name"
-                                placeholder="Select people"
-                                [(ngModel)]="selectedRoles"
-                              >
-                              </ng-select>
-                              <!--/ Basic Multi select -->
-                        </div>
-                      </div>
-                      <div class="col-md-4">
-                        <div class="form-group">
                           <label for="name">Libellet :</label>
                           <input
                             type="text"
@@ -86,7 +68,13 @@
                           </select>
                         </div>
                       </div>
-                      <div class="col-md-4">
+                      <div class="col-md-12">
+                        <div class="form-group">
+                              <label class="form-label" for="basic-icon-default-uname">{{ 'fnp.champs.description' | translate }}</label>
+                              <textarea class="form-control mb-2" rows="4" placeholder="Comment" (change)="doTextareaValueChange($event)">{{currentRow.description}}</textarea>
+                        </div>
+                      </div>
+                      <!-- <div class="col-md-4">
                         <div class="form-group">
                           <label for="company">Date modification :</label>
                           <div class="input-group">
@@ -94,7 +82,7 @@
                               class="form-control"
                               placeholder="dd-mm-yyyy"
                               name="Basic Date Picker"
-                              [(ngModel)]="basicDPdata"
+                              [(ngModel)]="currentRow.dateCre"
                               ngbDatepicker
                               #basicDP="ngbDatepicker"
                             />
@@ -108,7 +96,7 @@
                             </div>
                           </div>
                         </div>
-                      </div>
+                      </div> -->
                       <div class="col-12 d-flex flex-sm-row flex-column mt-2">
                         <button
                           type="submit"
