@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { CoreSidebarService } from '@core/components/core-sidebar/core-sidebar.service';
-
+import { Router } from '@angular/router';
+import { PrivilegeListService } from 'app/main/apps/privilege/privilege-list/privilege-list.service';
 import { PrivilegeEditService } from 'app/main/apps/privilege/privilege-edit/privilege-edit.service';
 import { RoleListService } from 'app/main/apps/role/role-list/role-list.service';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -20,7 +22,9 @@ export class NewPrivilegeSidebarComponent implements OnInit {
    *
    * @param {CoreSidebarService} _coreSidebarService
    */
-  constructor(private _privilegeEditService: PrivilegeEditService, private _coreSidebarService: CoreSidebarService,private _roleListService: RoleListService) {}
+  constructor(private router: Router,private _privilegeEditService: PrivilegeEditService, private _coreSidebarService: CoreSidebarService,
+    private _roleListService: RoleListService ,private _toastrService: ToastrService,
+    private _privilegeListService: PrivilegeListService) {}
 
   /**
    * Toggle the sidebar
@@ -42,9 +46,11 @@ export class NewPrivilegeSidebarComponent implements OnInit {
        this._privilegeEditService.create(form.value)
       .subscribe(
         response => {
-         // this.router.navigate(['/roles']);
+          this._toastrService.success("L'ajout d'un nouveau privilége avec success", "");
+          this.router.navigate(['apps/privilege/privilege-list/privilege-view/'+response.id]);
         },
         error => {
+          this._toastrService.error("Impossible d'ajouter un noueau pribilége", "");
           console.log(error);
         });
     }
