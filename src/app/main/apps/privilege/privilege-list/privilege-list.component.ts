@@ -67,7 +67,8 @@ export class PrivilegeListComponent implements OnInit {
 	        error => {
 	        console.log(" ici de la merde");
 	          console.log(error);
-	        });}
+          });
+}
 	        
 	        
 toggleSidebar(name): void {

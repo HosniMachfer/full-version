@@ -180,5 +180,206 @@ export const menu: CoreMenu[] = [
         disabled: true
       }
     ]
-  }
+  },
+      {
+        id: 'components',
+        title: 'Components',
+        translate: 'MENU.UI.COMPONENTS.COLLAPSIBLE',
+        type: 'collapsible',
+        icon: 'archive',
+        children: [
+          {
+            id: 'components-alerts',
+            title: 'Alerts',
+            translate: 'MENU.UI.COMPONENTS.ALERTS',
+            type: 'item',
+            icon: 'circle',
+            url: 'components/alerts'
+          },
+          {
+            id: 'components-avatar',
+            title: 'Avatar',
+            translate: 'MENU.UI.COMPONENTS.AVATAR',
+            type: 'item',
+            icon: 'circle',
+            url: 'components/avatar'
+          },
+          {
+            id: 'components-badges',
+            title: 'Badges',
+            translate: 'MENU.UI.COMPONENTS.BADGES',
+            type: 'item',
+            icon: 'circle',
+            url: 'components/badges'
+          },
+          {
+            id: 'components-breadcrumbs',
+            title: 'Breadcrumbs',
+            translate: 'MENU.UI.COMPONENTS.BREADCRUMBS',
+            type: 'item',
+            icon: 'circle',
+            url: 'components/breadcrumbs'
+          },
+          {
+            id: 'components-buttons',
+            title: 'Buttons',
+            translate: 'MENU.UI.COMPONENTS.BUTTONS',
+            type: 'item',
+            icon: 'circle',
+            url: 'components/buttons'
+          },
+          {
+            id: 'components-carousel',
+            title: 'Carousel',
+            translate: 'MENU.UI.COMPONENTS.CAROUSEL',
+            type: 'item',
+            icon: 'circle',
+            url: 'components/carousel'
+          },
+          {
+            id: 'components-collapse',
+            title: 'Collapse',
+            translate: 'MENU.UI.COMPONENTS.COLLAPSE',
+            type: 'item',
+            icon: 'circle',
+            url: 'components/collapse'
+          },
+          {
+            id: 'components-divider',
+            title: 'Divider',
+            translate: 'MENU.UI.COMPONENTS.DIVIDER',
+            type: 'item',
+            icon: 'circle',
+            url: 'components/divider'
+          },
+          {
+            id: 'components-drop-downs',
+            title: 'Dropdowns',
+            translate: 'MENU.UI.COMPONENTS.DROPDOWNS',
+            type: 'item',
+            icon: 'circle',
+            url: 'components/dropdowns'
+          },
+          {
+            id: 'components-list-group',
+            title: 'List Group',
+            translate: 'MENU.UI.COMPONENTS.GROUP',
+            type: 'item',
+            icon: 'circle',
+            url: 'components/list-group'
+          },
+          {
+            id: 'components-media-objects',
+            title: 'Media Objects',
+            translate: 'MENU.UI.COMPONENTS.OBJECTS',
+            type: 'item',
+            icon: 'circle',
+            url: 'components/media-objects'
+          },
+          {
+            id: 'components-modals',
+            title: 'Modals',
+            translate: 'MENU.UI.COMPONENTS.MODALS',
+            type: 'item',
+            icon: 'circle',
+            url: 'components/modals'
+          },
+          {
+            id: 'components-navs',
+            title: 'Navs',
+            translate: 'MENU.UI.COMPONENTS.COMPONENT',
+            type: 'item',
+            icon: 'circle',
+            url: 'components/navs'
+          },
+          {
+            id: 'components-pagination',
+            title: 'Pagination',
+            translate: 'MENU.UI.COMPONENTS.PAGINATION',
+            type: 'item',
+            icon: 'circle',
+            url: 'components/pagination'
+          },
+          {
+            id: 'components-pill-badges',
+            title: 'Pill Badges',
+            translate: 'MENU.UI.COMPONENTS.PBADGES',
+            type: 'item',
+            icon: 'circle',
+            url: 'components/pill-badges'
+          },
+          {
+            id: 'components-pills',
+            title: 'Pills',
+            translate: 'MENU.UI.COMPONENTS.PILLS',
+            type: 'item',
+            icon: 'circle',
+            url: 'components/pills'
+          },
+          {
+            id: 'components-popovers',
+            title: 'Popovers',
+            translate: 'MENU.UI.COMPONENTS.POPOVERS',
+            type: 'item',
+            icon: 'circle',
+            url: 'components/popovers'
+          },
+          {
+            id: 'components-progress',
+            title: 'Progress',
+            translate: 'MENU.UI.COMPONENTS.PROGRESS',
+            type: 'item',
+            icon: 'circle',
+            url: 'components/progress'
+          },
+          {
+            id: 'components-ratings',
+            title: 'Ratings',
+            translate: 'MENU.UI.COMPONENTS.RATINGS',
+            type: 'item',
+            icon: 'circle',
+            url: 'components/ratings'
+          },
+          {
+            id: 'components-spinner',
+            title: 'Spinner',
+            translate: 'MENU.UI.COMPONENTS.SPINNER',
+            type: 'item',
+            icon: 'circle',
+            url: 'components/spinner'
+          },
+          {
+            id: 'components-tabs',
+            title: 'Tabs',
+            translate: 'MENU.UI.COMPONENTS.TABS',
+            type: 'item',
+            icon: 'circle',
+            url: 'components/tabs'
+          },
+          {
+            id: 'components-timeline',
+            title: 'Timeline',
+            translate: 'MENU.UI.COMPONENTS.TIMELINE',
+            type: 'item',
+            icon: 'circle',
+            url: 'components/timeline'
+          },
+          {
+            id: 'components-toasts',
+            title: 'Toasts',
+            translate: 'MENU.UI.COMPONENTS.TOASTS',
+            type: 'item',
+            icon: 'circle',
+            url: 'components/toasts'
+          },
+          {
+            id: 'components-tooltips',
+            title: 'Tooltips',
+            translate: 'MENU.UI.COMPONENTS.TOOLTIPS',
+            type: 'item',
+            icon: 'circle',
+            url: 'components/tooltips'
+          }
+        ]
+      }
 ];

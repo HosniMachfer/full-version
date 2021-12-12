@@ -19,8 +19,11 @@ import {NgbDate, NgbTimeStruct } from '@ng-bootstrap/ng-bootstrap';
 
 import {NgbCalendar, NgbDateAdapter, NgbDateParserFormatter, NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
 
-import * as snippet from 'app/main/forms/form-elements/date-time-picker/date-time-picker.snippetcode';
+// import * as snippet from 'app/main/forms/form-elements/date-time-picker/date-time-picker.snippetcode';
 
+import { ToastService } from 'app/main/components/toasts/toasts.service';
+import * as snippet from 'app/main/components/toasts/toasts.snippetcode';
+import { ToastrService } from 'ngx-toastr';
 
 interface BrandObject {
   id: number;
@@ -34,7 +37,7 @@ interface BrandObject {
  */
 @Injectable()
 export class CustomAdapter extends NgbDateAdapter<string> {
-
+  
   readonly DELIMITER = '-';
 
   fromModel(value: string | null): NgbDateStruct | null {
@@ -91,6 +94,8 @@ export class CustomDateParserFormatter extends NgbDateParserFormatter {
   encapsulation: ViewEncapsulation.None
 })
 export class PrivilegeEditComponent implements OnInit, OnDestroy {
+  
+  public _snippetCodePlacement = snippet.snippetCodePlacement;
   // Public
   public url = this.router.url;
   public urlLastValue: string;
@@ -250,6 +255,8 @@ export class PrivilegeEditComponent implements OnInit, OnDestroy {
   public MultiSmall: Observable<any[]>;
   public MultiSmallSelected = [{ name: 'Karyn Wright' }];
 
+  public toastStyle: object = {};
+
   /**
    * Constructor
    *
@@ -264,8 +271,12 @@ export class PrivilegeEditComponent implements OnInit, OnDestroy {
    * @param {Router} router
    * @param {PrivilegeEditService} _privilegeEditService
    */
-  constructor(private router: Router, private _privilegeEditService: PrivilegeEditService,private dataService: DataService, private modalService: NgbModal,
-    private _roleListService: RoleListService ,private ngbCalendar: NgbCalendar, private dateAdapter: NgbDateAdapter<string>,private privilegeListService: PrivilegeListService) {
+  constructor(private router: Router, private _privilegeEditService: PrivilegeEditService,
+    private dataService: DataService, private modalService: NgbModal,
+    private _roleListService: RoleListService ,private ngbCalendar: NgbCalendar,
+     private dateAdapter: NgbDateAdapter<string>,private privilegeListService: PrivilegeListService,
+     public toastService: ToastService, 
+     private _toastrService: ToastrService) {
     this._unsubscribeAll = new Subject();
     this.urlLastValue = this.url.substr(this.url.lastIndexOf('/') + 1);
     
@@ -308,18 +319,11 @@ export class PrivilegeEditComponent implements OnInit, OnDestroy {
       this._privilegeEditService.create(this.currentRow)
       .subscribe(
         response => {
-          this.privilegeListService.getAll()
-	      .subscribe(
-	        data => {
-            this.rows = data;
-            console.log(this.rows);
-	        },
-	        error => {
-	        console.log(" ici de la merde");
-	          console.log(error);
-          });
+          this._toastrService.success('Mise à jour privileg avec success', '');
+          this.router.navigate(['apps/privilege/privilege-list']);
         },
         error => {
+          this._toastrService.error('Impossible de mettre à jour pribilége', error);
           console.log(error);
         });
     }
@@ -359,6 +363,13 @@ export class PrivilegeEditComponent implements OnInit, OnDestroy {
     // Unsubscribe from all subscriptions
     this._unsubscribeAll.next();
     this._unsubscribeAll.complete();
+  }
+
+  toastPlacement() {
+    this.toastService.show('Heads up, toasts will stack automatically', {
+      autohide: true
+    });
+    this.toastStyle = { left: 0, right: 'unset' };
   }
 
 }
