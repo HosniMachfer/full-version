@@ -38,7 +38,8 @@ export const locale = {
           USINES: 'Gestion usines',
           COLLECTEURS:'Gestion collecteurs',
           RECYCLEURS:'Gestion recycleurs',
-          CYCLEDEVIE:'Cycle de vie'
+          CYCLEDEVIE:'Cycle de vie',
+          TIERS:'Gestion tiers'
         }
       },
       PAGES: {

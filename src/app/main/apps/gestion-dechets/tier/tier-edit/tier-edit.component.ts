@@ -7,16 +7,15 @@ import { takeUntil } from 'rxjs/operators';
 import { FlatpickrOptions } from 'ng2-flatpickr';
 import { cloneDeep } from 'lodash';
 import { Observable } from 'rxjs';
-
-import { PrivilegeListService } from 'app/main/apps/privilege/privilege-list/privilege-list.service';
-import { RoleEditService } from 'app/main/apps/role/role-edit/role-edit.service';
 import { Person, DataService } from 'app/main/forms/form-elements/select/data.service';
 import { RoleListService } from 'app/main/apps/role/role-list/role-list.service';
-import { NgbDate, NgbTimeStruct } from '@ng-bootstrap/ng-bootstrap';
-import { NgbCalendar, NgbDateAdapter, NgbDateParserFormatter, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
+import {NgbDate, NgbTimeStruct } from '@ng-bootstrap/ng-bootstrap';
+import {NgbCalendar, NgbDateAdapter, NgbDateParserFormatter, NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
 import * as snippet from 'app/main/forms/form-elements/date-time-picker/date-time-picker.snippetcode';
 import { ToastrService } from 'ngx-toastr';
 
+import { TierListService } from 'app/main/apps/gestion-dechets/tier/tier-list/tier-list.service';
+import { TierEditService } from 'app/main/apps/gestion-dechets/tier/tier-edit/tier-edit.service';
 interface BrandObject {
   id: number;
   text: string;
@@ -74,16 +73,16 @@ export class CustomDateParserFormatter extends NgbDateParserFormatter {
 
 
 @Component({
-  selector: 'app-role-edit',
-  templateUrl: './role-edit.component.html',
-  styleUrls: ['./role-edit.component.scss'],
+  selector: 'app-tier-edit',
+  templateUrl: './tier-edit.component.html',
+  styleUrls: ['./tier-edit.component.scss'],
   providers: [
     {provide: NgbDateAdapter, useClass: CustomAdapter},
     {provide: NgbDateParserFormatter, useClass: CustomDateParserFormatter}
   ],
   encapsulation: ViewEncapsulation.None
 })
-export class RoleEditComponent implements OnInit, OnDestroy {
+export class TierEditComponent implements OnInit, OnDestroy {
   
    // Public
   public url = this.router.url;
@@ -92,8 +91,6 @@ export class RoleEditComponent implements OnInit, OnDestroy {
   public currentRow: any;
   public tempRow: any;
   public avatarImage: string;
-  public privileges = [];
-  public select_privileges = [];
   
   @ViewChild('accountForm') accountForm: NgForm;
 
@@ -125,13 +122,13 @@ export class RoleEditComponent implements OnInit, OnDestroy {
    * Constructor
    *
    * @param {Router} router
-   * @param {RoleEditService} _roleEditService
+   * @param {TierEditService} _tierEditService
    */
-  constructor(private router: Router, private _roleEditService: RoleEditService,
+  constructor(private router: Router, private _tierEditService: TierEditService,
     private dataService: DataService, private modalService: NgbModal,
     private _roleListService: RoleListService ,private ngbCalendar: NgbCalendar,
-    private dateAdapter: NgbDateAdapter<string>,   private _toastrService: ToastrService, 
-    private _privilegeListService: PrivilegeListService) {
+    private dateAdapter: NgbDateAdapter<string>,private tierListService: TierListService,
+    private _toastrService: ToastrService) {
     this._unsubscribeAll = new Subject();
     this.urlLastValue = this.url.substr(this.url.lastIndexOf('/') + 1);
     
@@ -154,11 +151,11 @@ export class RoleEditComponent implements OnInit, OnDestroy {
    */
   submit(form: { valid: any; }) {
     if (form.valid) {
-      this._roleEditService.create(this.currentRow)
+      this._tierEditService.create(this.currentRow)
       .subscribe(
         response => {
           this._toastrService.success('Mise à jour privileg avec success', '');
-          this.router.navigate(['apps/role/role-list']);
+          this.router.navigate(['apps/tier/tier-list']);
         },
         error => {
           this._toastrService.error('Impossible de mettre à jour pribilége', error);
@@ -173,29 +170,16 @@ export class RoleEditComponent implements OnInit, OnDestroy {
    * On init
    */
   ngOnInit(): void {
-    this._roleEditService.onRoleEditChanged.pipe(takeUntil(this._unsubscribeAll)).subscribe(response => {
+    this._tierEditService.onTierEditChanged.pipe(takeUntil(this._unsubscribeAll)).subscribe(response => {
             this.rows = response;
             this.rows.map(row => {
         if (row.id == this.urlLastValue) {
           this.currentRow = row;
-          console.log("..............");
-           console.log(this.currentRow);
-           console.log("..............");
+          this.currentRow.avatar;
           this.tempRow = cloneDeep(row);
         }
       });
     });
-
-    this._privilegeListService.getAll()
-      .subscribe(
-        data => {
-          this.privileges = data;
-        },
-        error => {
-        console.log(" ici de la merde");
-          console.log(error);
-        });
-    
   }
 
   doTextareaValueChange(ev) {

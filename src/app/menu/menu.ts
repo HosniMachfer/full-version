@@ -103,7 +103,7 @@ export const menu: CoreMenu[] = [
             title: 'Privileges',
             translate: 'MENU.APPS.RH.PRIVILEGES',
             type: 'item',
-             icon: 'circle',
+            icon: 'circle',
             url: 'apps/privilege/privilege-list'
           }
         ]
@@ -115,38 +115,55 @@ export const menu: CoreMenu[] = [
         type: 'collapsible',
         icon: 'layers',
         children: [
-            {
-              id: 'usines',
-              title: 'Usines',
-              translate: 'MENU.APPS.GESTIONDECHET.USINES',
-              type: 'item',
-              icon: 'home',
-              url: 'apps/usine/usine-list'
-            },
-            {
-              id: 'collecteurs',
-              title: 'Collecteurs',
-              translate: 'MENU.APPS.GESTIONDECHET.COLLECTEURS',
-              type: 'item',
-              icon: 'truck',
-              url: 'apps/collecteurs/collecteurs-list'
-            },
-            {
-              id: 'recycleurs',
-              title: 'Recycleurs',
-              translate: 'MENU.APPS.GESTIONDECHET.RECYCLEURS',
-              type: 'item',
-              icon: 'refresh-cw',
-              url: 'apps/recycleur/recycleur-list'
-            },
-            {
-              id: 'cycle-de-vie-dechet',
-              title: 'Cycle de vie dechet',
-              translate: 'MENU.APPS.GESTIONDECHET.CYCLEDEVIE',
-              type: 'item',
-              icon: 'trash-2',
-              url: 'apps/gestion-dechets/cycle-de-vie-dechet'
-            }
+          {
+            id: 'cycle-de-vie-dechet',
+            title: 'Cycle de vie dechet',
+            translate: 'MENU.APPS.GESTIONDECHET.CYCLEDEVIE',
+            type: 'item',
+            icon: 'trash-2',
+            url: 'apps/gestion-dechets/cycle-de-vie-dechet'
+          },
+          {
+            id: 'gestiondechetconfiguration',
+            title: 'Configuration',
+            translate: 'MENU.UI.COMPONENTS.COLLAPSIBLE',
+            type: 'collapsible',
+            icon: 'settings',
+            children: [
+                        {
+                          id: 'usines',
+                          title: 'Usines',
+                          translate: 'MENU.APPS.GESTIONDECHET.USINES',
+                          type: 'item',
+                          icon: 'home',
+                          url: 'apps/usine/usine-list'
+                        },
+                        {
+                          id: 'collecteurs',
+                          title: 'Collecteurs',
+                          translate: 'MENU.APPS.GESTIONDECHET.COLLECTEURS',
+                          type: 'item',
+                          icon: 'truck',
+                          url: 'apps/collecteurs/collecteurs-list'
+                        },
+                        {
+                          id: 'recycleurs',
+                          title: 'Recycleurs',
+                          translate: 'MENU.APPS.GESTIONDECHET.RECYCLEURS',
+                          type: 'item',
+                          icon: 'refresh-cw',
+                          url: 'apps/recycleur/recycleur-list'
+                        },
+                        {
+                          id: 'tiers',
+                          title: 'Tiers',
+                          translate: 'MENU.APPS.GESTIONDECHET.TIERS',
+                          type: 'item',
+                          icon: 'circle',
+                          url: 'apps/gestion-dechets/tier/tier-list'
+                        }
+            ]
+          }
         ]
       }
       

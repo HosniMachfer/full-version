@@ -265,6 +265,9 @@ export class UserEditComponent implements OnInit, OnDestroy {
       this.rows.map(row => {
         if (row.id == this.urlLastValue) {
           this.currentRow = row;
+          console.log("------------------------------------");
+          console.log(this.currentRow);
+          console.log("------------------------------------");
           //this.selectedRoles = row.roles;
           this.avatarImage = this.currentRow.avatar;
           this.tempRow = cloneDeep(row);

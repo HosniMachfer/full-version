@@ -166,25 +166,14 @@
                       </div>
                       <div class="col-md-4">
                         <div class="form-group">
-                          <label for="company">Company</label>
-                          <input
-                            type="text"
-                            class="form-control"
-                            [(ngModel)]="currentRow.company"
-                            placeholder="Company name"
-                            id="company"
-                            name="company"
-                          />
+                          <label for="company">Entreprise</label>
+                          <select class="form-control" [(ngModel)]="currentRow.tiers.name" name="entreprise" id="entreprise">
+                            <option>active</option>
+                            <option>MEUBLATEX</option>
+                            <option>pending</option>
+                          </select>
                         </div>
                       </div>
-                      
-                      
-                      
-
-	                  
-
-                      
-
                       <div class="col-12 d-flex flex-sm-row flex-column mt-2">
                         <button
                           type="submit"
