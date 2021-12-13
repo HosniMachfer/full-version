@@ -126,7 +126,7 @@ export const menu: CoreMenu[] = [
           {
             id: 'gestiondechetconfiguration',
             title: 'Configuration',
-            translate: 'MENU.UI.COMPONENTS.COLLAPSIBLE',
+            translate: 'MENU.APPS.GESTIONDECHET.CONF',
             type: 'collapsible',
             icon: 'settings',
             children: [
@@ -136,7 +136,7 @@ export const menu: CoreMenu[] = [
                           translate: 'MENU.APPS.GESTIONDECHET.USINES',
                           type: 'item',
                           icon: 'home',
-                          url: 'apps/usine/usine-list'
+                          url: 'apps/gestion-dechets/usine/usine-list'
                         },
                         {
                           id: 'collecteurs',
@@ -144,7 +144,7 @@ export const menu: CoreMenu[] = [
                           translate: 'MENU.APPS.GESTIONDECHET.COLLECTEURS',
                           type: 'item',
                           icon: 'truck',
-                          url: 'apps/collecteurs/collecteurs-list'
+                          url: 'apps/gestion-dechets/collecteur/collecteur-list'
                         },
                         {
                           id: 'recycleurs',
@@ -152,7 +152,7 @@ export const menu: CoreMenu[] = [
                           translate: 'MENU.APPS.GESTIONDECHET.RECYCLEURS',
                           type: 'item',
                           icon: 'refresh-cw',
-                          url: 'apps/recycleur/recycleur-list'
+                          url: 'apps/gestion-dechets/recycleur/recycleur-list'
                         },
                         {
                           id: 'tiers',

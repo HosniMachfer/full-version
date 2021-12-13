@@ -14,8 +14,8 @@ import {NgbCalendar, NgbDateAdapter, NgbDateParserFormatter, NgbDateStruct} from
 import * as snippet from 'app/main/forms/form-elements/date-time-picker/date-time-picker.snippetcode';
 import { ToastrService } from 'ngx-toastr';
 
-import { TierListService } from 'app/main/apps/gestion-dechets/tier/tier-list/tier-list.service';
-import { TierEditService } from 'app/main/apps/gestion-dechets/tier/tier-edit/tier-edit.service';
+import { CollecteurListService } from 'app/main/apps/gestion-dechets/collecteur/collecteur-list/collecteur-list.service';
+import { CollecteurEditService } from 'app/main/apps/gestion-dechets/collecteur/collecteur-edit/collecteur-edit.service';
 interface BrandObject {
   id: number;
   text: string;
@@ -73,16 +73,16 @@ export class CustomDateParserFormatter extends NgbDateParserFormatter {
 
 
 @Component({
-  selector: 'app-tier-edit',
-  templateUrl: './tier-edit.component.html',
-  styleUrls: ['./tier-edit.component.scss'],
+  selector: 'app-collecteur-edit',
+  templateUrl: './collecteur-edit.component.html',
+  styleUrls: ['./collecteur-edit.component.scss'],
   providers: [
     {provide: NgbDateAdapter, useClass: CustomAdapter},
     {provide: NgbDateParserFormatter, useClass: CustomDateParserFormatter}
   ],
   encapsulation: ViewEncapsulation.None
 })
-export class TierEditComponent implements OnInit, OnDestroy {
+export class CollecteurEditComponent implements OnInit, OnDestroy {
   
    // Public
   public url = this.router.url;
@@ -122,12 +122,12 @@ export class TierEditComponent implements OnInit, OnDestroy {
    * Constructor
    *
    * @param {Router} router
-   * @param {TierEditService} _tierEditService
+   * @param {CollecteurEditService} _collecteurEditService
    */
-  constructor(private router: Router, private _tierEditService: TierEditService,
+  constructor(private router: Router, private _collecteurEditService: CollecteurEditService,
     private dataService: DataService, private modalService: NgbModal,
     private _roleListService: RoleListService ,private ngbCalendar: NgbCalendar,
-    private dateAdapter: NgbDateAdapter<string>,private tierListService: TierListService,
+    private dateAdapter: NgbDateAdapter<string>,private collecteurListService: CollecteurListService,
     private _toastrService: ToastrService) {
     this._unsubscribeAll = new Subject();
     this.urlLastValue = this.url.substr(this.url.lastIndexOf('/') + 1);
@@ -151,11 +151,11 @@ export class TierEditComponent implements OnInit, OnDestroy {
    */
   submit(form: { valid: any; }) {
     if (form.valid) {
-      this._tierEditService.create(this.currentRow)
+      this._collecteurEditService.create(this.currentRow)
       .subscribe(
         response => {
           this._toastrService.success('Mise à jour privileg avec success', '');
-          this.router.navigate(['apps/gestion-dechets/tier/tier-list']);
+          this.router.navigate(['apps/gestion-dechets/collecteur/collecteur-list']);
         },
         error => {
           this._toastrService.error('Impossible de mettre à jour pribilége', error);
@@ -170,7 +170,7 @@ export class TierEditComponent implements OnInit, OnDestroy {
    * On init
    */
   ngOnInit(): void {
-    this._tierEditService.onTierEditChanged.pipe(takeUntil(this._unsubscribeAll)).subscribe(response => {
+    this._collecteurEditService.onCollecteurEditChanged.pipe(takeUntil(this._unsubscribeAll)).subscribe(response => {
             this.rows = response;
             this.rows.map(row => {
         if (row.id == this.urlLastValue) {

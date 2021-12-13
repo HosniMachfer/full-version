@@ -1,17 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { CoreSidebarService } from '@core/components/core-sidebar/core-sidebar.service';
 import { Router } from '@angular/router';
-import { TierListService } from 'app/main/apps/gestion-dechets/tier/tier-list/tier-list.service';
-import { TierEditService } from 'app/main/apps/gestion-dechets/tier/tier-edit/tier-edit.service';
+import { RecycleurListService } from 'app/main/apps/gestion-dechets/recycleur/recycleur-list/recycleur-list.service';
+import { RecycleurEditService } from 'app/main/apps/gestion-dechets/recycleur/recycleur-edit/recycleur-edit.service';
 import { RoleListService } from 'app/main/apps/role/role-list/role-list.service';
 import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
-  selector: 'app-new-tier-sidebar',
-  templateUrl: './new-tier-sidebar.component.html'
+  selector: 'app-new-recycleur-sidebar',
+  templateUrl: './new-recycleur-sidebar.component.html'
 })
-export class NewTierSidebarComponent implements OnInit {
+export class NewRecycleurSidebarComponent implements OnInit {
   public name;
   public code;
   public roles = [];
@@ -22,9 +22,9 @@ export class NewTierSidebarComponent implements OnInit {
    *
    * @param {CoreSidebarService} _coreSidebarService
    */
-  constructor(private router: Router, private _tierEditService: TierEditService, private _coreSidebarService: CoreSidebarService,
+  constructor(private router: Router, private _recycleurEditService: RecycleurEditService, private _coreSidebarService: CoreSidebarService,
     private _roleListService: RoleListService ,private _toastrService: ToastrService,
-    private _tierListService: TierListService) {}
+    private _recycleurListService: RecycleurListService) {}
 
   /**
    * Toggle the sidebar
@@ -42,12 +42,12 @@ export class NewTierSidebarComponent implements OnInit {
    */
   submit(form) {
     if (form.valid) {
-      this.toggleSidebar('new-tier-sidebar');
-      this._tierEditService.create(form.value)
+      this.toggleSidebar('new-recycleur-sidebar');
+      this._recycleurEditService.create(form.value)
     .subscribe(
       response => {
         this._toastrService.success("L'ajout d'un nouveau privilége avec success", "");
-        this.router.navigate(['apps/gestion-dechets/tier/tier-list/tier-view/'+response.id]);
+        this.router.navigate(['apps/gestion-dechets/recycleur/recycleur-list/recycleur-view/'+response.id]);
       },
       error => {
         this._toastrService.error("Impossible d'ajouter un noueau pribilége", "");
