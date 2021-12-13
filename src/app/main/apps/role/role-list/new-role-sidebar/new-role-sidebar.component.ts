@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { CoreSidebarService } from '@core/components/core-sidebar/core-sidebar.service';
-
+import { Router } from '@angular/router';
 import { RoleEditService } from 'app/main/apps/role/role-edit/role-edit.service';
 import { RoleListService } from 'app/main/apps/role/role-list/role-list.service';
-
+import { PrivilegeListService } from 'app/main/apps/privilege/privilege-list/privilege-list.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-new-role-sidebar',
@@ -12,15 +13,17 @@ import { RoleListService } from 'app/main/apps/role/role-list/role-list.service'
 export class NewRoleSidebarComponent implements OnInit {
   public name;
   public code;
-  public roles = [];
-  public select_roles = [];
+  public privileges = [];
+  public select_privileges = [];
 
   /**
    * Constructor
    *
    * @param {CoreSidebarService} _coreSidebarService
    */
-  constructor(private _roleEditService: RoleEditService, private _coreSidebarService: CoreSidebarService,private _roleListService: RoleListService) {}
+  constructor(private router: Router, private _roleEditService: RoleEditService, private _coreSidebarService: CoreSidebarService,
+    private _roleListService: RoleListService, private _privilegeListService: PrivilegeListService,
+    private _toastrService: ToastrService) {}
 
   /**
    * Toggle the sidebar
@@ -38,27 +41,29 @@ export class NewRoleSidebarComponent implements OnInit {
    */
   submit(form) {
     if (form.valid) {
-    this.toggleSidebar('new-role-sidebar');
-       this._roleEditService.create(form.value)
-      .subscribe(
-        response => {
-         // this.router.navigate(['/roles']);
-        },
-        error => {
-          console.log(error);
-        });
+      this.toggleSidebar('new-role-sidebar');
+      this._roleEditService.create(form.value)
+    .subscribe(
+      response => {
+        this._toastrService.success("L'ajout d'un nouveau role avec success", "");
+        this.router.navigate(['apps/role/role-list/role-view/'+response.id]);
+      },
+      error => {
+        this._toastrService.error("Impossible d'ajouter un noueau role", "");
+        console.log(error);
+      });
     }
   }
 
   ngOnInit(): void {
-    this._roleListService.getAll()
-	      .subscribe(
-	        data => {
-	          this.roles = data;
-	        },
-	        error => {
-	        console.log(" ici de la merde");
-	          console.log(error);
-	        });
+    this._privilegeListService.getAll()
+      .subscribe(
+        data => {
+          this.privileges = data;
+        },
+        error => {
+        console.log(" ici de la merde");
+          console.log(error);
+        });
   }
 }

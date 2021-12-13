@@ -22,7 +22,7 @@ export class NewPrivilegeSidebarComponent implements OnInit {
    *
    * @param {CoreSidebarService} _coreSidebarService
    */
-  constructor(private router: Router,private _privilegeEditService: PrivilegeEditService, private _coreSidebarService: CoreSidebarService,
+  constructor(private router: Router, private _privilegeEditService: PrivilegeEditService, private _coreSidebarService: CoreSidebarService,
     private _roleListService: RoleListService ,private _toastrService: ToastrService,
     private _privilegeListService: PrivilegeListService) {}
 
@@ -42,29 +42,19 @@ export class NewPrivilegeSidebarComponent implements OnInit {
    */
   submit(form) {
     if (form.valid) {
-    this.toggleSidebar('new-privilege-sidebar');
-       this._privilegeEditService.create(form.value)
-      .subscribe(
-        response => {
-          this._toastrService.success("L'ajout d'un nouveau privilége avec success", "");
-          this.router.navigate(['apps/privilege/privilege-list/privilege-view/'+response.id]);
-        },
-        error => {
-          this._toastrService.error("Impossible d'ajouter un noueau pribilége", "");
-          console.log(error);
-        });
+      this.toggleSidebar('new-privilege-sidebar');
+      this._privilegeEditService.create(form.value)
+    .subscribe(
+      response => {
+        this._toastrService.success("L'ajout d'un nouveau privilége avec success", "");
+        this.router.navigate(['apps/privilege/privilege-list/privilege-view/'+response.id]);
+      },
+      error => {
+        this._toastrService.error("Impossible d'ajouter un noueau pribilége", "");
+        console.log(error);
+      });
     }
   }
 
-  ngOnInit(): void {
-  //   this._roleListService.getAll()
-	//       .subscribe(
-	//         data => {
-	//           this.roles = data;
-	//         },
-	//         error => {
-	//         console.log(" ici de la merde");
-	//           console.log(error);
-	//         });
-  }
+  ngOnInit(): void {}
 }
