@@ -16,6 +16,10 @@ const routes: Routes = [
     loadChildren: () => import('./tier/tier.module').then(m => m.TierModule)
   },
   {
+    path: 'type-tier',
+    loadChildren: () => import('./type-tier/type-tier.module').then(m => m.TypeTierModule)
+  },
+  {
     path: 'usine',
     loadChildren: () => import('./usine/usine.module').then(m => m.UsineModule)
   },
@@ -26,6 +30,14 @@ const routes: Routes = [
   {
     path: 'recycleur',
     loadChildren: () => import('./recycleur/recycleur.module').then(m => m.RecycleurModule)
+  },
+  {
+    path: 'type-mouvement',
+    loadChildren: () => import('./type-mouvement/type-mouvement.module').then(m => m.TypeMouvementModule)
+  },
+  {
+    path: 'unite',
+    loadChildren: () => import('./unite/unite.module').then(m => m.UniteModule)
   }
 ]
 

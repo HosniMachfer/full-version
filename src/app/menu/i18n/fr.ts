@@ -35,12 +35,14 @@ export const locale = {
           PRIVILEGES: 'Gestion privileges'
         },
         GESTIONDECHET:{
-          USINES: 'Gestion usines',
-          COLLECTEURS:'Gestion collecteurs',
-          RECYCLEURS:'Gestion recycleurs',
           CYCLEDEVIE:'Cycle de vie',
           CONF:'Configuration',
-          TIERS:'Gestion tiers'
+          USINES: 'Usines',
+          COLLECTEURS:'Collecteurs',
+          RECYCLEURS:'Recycleurs',
+          TIERS:'Tiers',
+          TYPETIERS :'Type tiers',
+          TYPEMOUVEMENTS:'Type mouvements'
         }
       },
       PAGES: {

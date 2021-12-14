@@ -16,10 +16,10 @@ export const locale = {
         filtreStatus:'Selectionnez un statut'
     },
     buttons: {
-    	addNewUser : 'Ajouter un nouveau recycleur'
+    	addNewUser : 'Ajouter un nouveau unite'
     },
     fnp : {
-        title : 'Formulaire nouveau recycleur',
+        title : 'Formulaire nouveau unite',
         champs:{
 	        libellet: 'Libellet',
 	        code : 'Code',

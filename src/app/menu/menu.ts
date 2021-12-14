@@ -161,6 +161,30 @@ export const menu: CoreMenu[] = [
                           type: 'item',
                           icon: 'circle',
                           url: 'apps/gestion-dechets/tier/tier-list'
+                        },
+                        {
+                          id: 'type-tiers',
+                          title: 'Type tiers',
+                          translate: 'MENU.APPS.GESTIONDECHET.TYPETIERS',
+                          type: 'item',
+                          icon: 'circle',
+                          url: 'apps/gestion-dechets/type-tier/type-tier-list'
+                        },
+                        {
+                          id: 'type-mouvements',
+                          title: 'Type mouvements',
+                          translate: 'MENU.APPS.GESTIONDECHET.TYPEMOUVEMENTS',
+                          type: 'item',
+                          icon: 'circle',
+                          url: 'apps/gestion-dechets/type-mouvement/type-mouvement-list'
+                        },
+                        {
+                          id: 'unites',
+                          title: 'Unites',
+                          translate: 'MENU.APPS.GESTIONDECHET.UNITES',
+                          type: 'item',
+                          icon: 'circle',
+                          url: 'apps/gestion-dechets/unite/unite-list'
                         }
             ]
           }
