@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { TierListService } from './tier-list.service';
+import { MvtstockListService } from './tier-list.service';
 
-describe('TierListService', () => {
-  let service: TierListService;
+describe('MvtstockListService', () => {
+  let service: MvtstockListService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(TierListService);
+    service = TestBed.inject(MvtstockListService);
   });
 
   it('should be created', () => {

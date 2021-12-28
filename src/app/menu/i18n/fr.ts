@@ -40,9 +40,21 @@ export const locale = {
           USINES: 'Usines',
           COLLECTEURS:'Collecteurs',
           RECYCLEURS:'Recycleurs',
-          TIERS:'Tiers',
+          TIERS:'Mvtstocks',
           TYPETIERS :'Type tiers',
-          TYPEMOUVEMENTS:'Type mouvements'
+          TYPEMOUVEMENTS:'Type mouvements',
+          UNITES:'Unites',
+          DECHETS:'Dechets',
+          ETATFAMILLE:'Etat familles',
+          ETATCONTENEUR:'Etat Conteneurs',
+          ETATMAGASIN:'Etat magasins',
+          ETATMOUVEMENT:'Etat mouvement',
+          FAMILLE:'Familles',
+          MAGASIN:'Magasins',
+          MATIERE:'Matiere',
+          MOUVEMENT:'Mouvement',
+          MVTSTOCK:'MvtStock',
+          FOURNISSEUR:'Fournisseurs'
         }
       },
       PAGES: {

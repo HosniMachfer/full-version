@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TypeTierListComponent } from './type-tier-list.component';
+import { TypeMvtstockListComponent } from './type-tier-list.component';
 
-describe('TypeTierListComponent', () => {
-  let component: TypeTierListComponent;
-  let fixture: ComponentFixture<TypeTierListComponent>;
+describe('TypeMvtstockListComponent', () => {
+  let component: TypeMvtstockListComponent;
+  let fixture: ComponentFixture<TypeMvtstockListComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TypeTierListComponent ]
+      declarations: [ TypeMvtstockListComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TypeTierListComponent);
+    fixture = TestBed.createComponent(TypeMvtstockListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -5,7 +5,7 @@ import { CoreSidebarService } from '@core/components/core-sidebar/core-sidebar.s
 
 import { CoreTranslationService } from '@core/services/translation.service';
 
-import { TierListService } from 'app/main/apps/gestion-dechets/tier/tier-list/tier-list.service';
+import { MvtstockListService } from 'app/main/apps/gestion-dechets/tier/tier-list/tier-list.service';
 import { locale as english } from 'app/main/apps/gestion-dechets/tier/i18n/en';
 import { locale as french } from 'app/main/apps/gestion-dechets/tier/i18n/fr';
 import { locale as german } from 'app/main/apps/gestion-dechets/tier/i18n/de';
@@ -18,7 +18,7 @@ import { locale as portuguese } from 'app/main/apps/gestion-dechets/tier/i18n/pt
   styleUrls: ['./tier-list.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class TierListComponent implements OnInit {
+export class MvtstockListComponent implements OnInit {
   
   private tempData = [];
   // Decorator
@@ -33,7 +33,7 @@ export class TierListComponent implements OnInit {
   public searchValue = '';
   
 
- constructor(private tierListService: TierListService,private _coreSidebarService: CoreSidebarService,private _coreTranslationService: CoreTranslationService) { 
+ constructor(private tierListService: MvtstockListService,private _coreSidebarService: CoreSidebarService,private _coreTranslationService: CoreTranslationService) { 
  
     this.languageOptions = {
       en: {

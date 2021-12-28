@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
-import { TierViewService } from 'app/main/apps/gestion-dechets/tier/tier-view/tier-view.service';
+import { MvtstockViewService } from 'app/main/apps/gestion-dechets/tier/tier-view/tier-view.service';
 
 @Component({
   selector: 'app-tier-view',
@@ -12,7 +12,7 @@ import { TierViewService } from 'app/main/apps/gestion-dechets/tier/tier-view/ti
   styleUrls: ['./tier-view.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class TierViewComponent implements OnInit, OnDestroy {
+export class MvtstockViewComponent implements OnInit, OnDestroy {
   // public
   public url = this.router.url;
   public lastValue;
@@ -25,9 +25,9 @@ export class TierViewComponent implements OnInit, OnDestroy {
    * Constructor
    *
    * @param {Router} router
-   * @param {TierViewService} _tierViewService
+   * @param {MvtstockViewService} _tierViewService
    */
-  constructor(private router: Router, private _tierViewService: TierViewService) {
+  constructor(private router: Router, private _tierViewService: MvtstockViewService) {
     this._unsubscribeAll = new Subject();
     this.lastValue = this.url.substr(this.url.lastIndexOf('/') + 1);
   }
@@ -39,7 +39,7 @@ export class TierViewComponent implements OnInit, OnDestroy {
    */
   ngOnInit(): void {
 
-    this._tierViewService.onTierViewChanged.pipe(takeUntil(this._unsubscribeAll)).subscribe(response => {
+    this._tierViewService.onMvtstockViewChanged.pipe(takeUntil(this._unsubscribeAll)).subscribe(response => {
       this.data = response;
     });
 

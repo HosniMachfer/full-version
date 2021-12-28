@@ -14,8 +14,8 @@ import {NgbCalendar, NgbDateAdapter, NgbDateParserFormatter, NgbDateStruct} from
 import * as snippet from 'app/main/forms/form-elements/date-time-picker/date-time-picker.snippetcode';
 import { ToastrService } from 'ngx-toastr';
 
-import { TierListService } from 'app/main/apps/gestion-dechets/tier/tier-list/tier-list.service';
-import { TierEditService } from 'app/main/apps/gestion-dechets/tier/tier-edit/tier-edit.service';
+import { MvtstockListService } from 'app/main/apps/gestion-dechets/tier/tier-list/tier-list.service';
+import { MvtstockEditService } from 'app/main/apps/gestion-dechets/tier/tier-edit/tier-edit.service';
 interface BrandObject {
   id: number;
   text: string;
@@ -82,7 +82,7 @@ export class CustomDateParserFormatter extends NgbDateParserFormatter {
   ],
   encapsulation: ViewEncapsulation.None
 })
-export class TierEditComponent implements OnInit, OnDestroy {
+export class MvtstockEditComponent implements OnInit, OnDestroy {
   
    // Public
   public url = this.router.url;
@@ -122,12 +122,12 @@ export class TierEditComponent implements OnInit, OnDestroy {
    * Constructor
    *
    * @param {Router} router
-   * @param {TierEditService} _tierEditService
+   * @param {MvtstockEditService} _tierEditService
    */
-  constructor(private router: Router, private _tierEditService: TierEditService,
+  constructor(private router: Router, private _tierEditService: MvtstockEditService,
     private dataService: DataService, private modalService: NgbModal,
     private _roleListService: RoleListService ,private ngbCalendar: NgbCalendar,
-    private dateAdapter: NgbDateAdapter<string>,private tierListService: TierListService,
+    private dateAdapter: NgbDateAdapter<string>,private tierListService: MvtstockListService,
     private _toastrService: ToastrService) {
     this._unsubscribeAll = new Subject();
     this.urlLastValue = this.url.substr(this.url.lastIndexOf('/') + 1);
@@ -170,7 +170,7 @@ export class TierEditComponent implements OnInit, OnDestroy {
    * On init
    */
   ngOnInit(): void {
-    this._tierEditService.onTierEditChanged.pipe(takeUntil(this._unsubscribeAll)).subscribe(response => {
+    this._tierEditService.onMvtstockEditChanged.pipe(takeUntil(this._unsubscribeAll)).subscribe(response => {
             this.rows = response;
             this.rows.map(row => {
         if (row.id == this.urlLastValue) {

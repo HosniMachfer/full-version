@@ -17,28 +17,28 @@ import { InvoiceModule } from 'app/main/apps/invoice/invoice.module';
 
 import { CommonModule } from '@angular/common';
 
-import { TierListComponent } from './tier-list/tier-list.component';
-import { TierEditComponent } from './tier-edit/tier-edit.component';
-import { TierViewComponent } from './tier-view/tier-view.component';
-import { TierListService } from 'app/main/apps/gestion-dechets/tier/tier-list/tier-list.service';
+import { MvtstockListComponent } from './tier-list/tier-list.component';
+import { MvtstockEditComponent } from './tier-edit/tier-edit.component';
+import { MvtstockViewComponent } from './tier-view/tier-view.component';
+import { MvtstockListService } from 'app/main/apps/gestion-dechets/tier/tier-list/tier-list.service';
 
-import { NewTierSidebarComponent } from 'app/main/apps/gestion-dechets/tier/tier-list/new-tier-sidebar/new-tier-sidebar.component';
-import { TierEditService } from 'app/main/apps/gestion-dechets/tier/tier-edit/tier-edit.service';
-import{ TierViewService } from 'app/main/apps/gestion-dechets/tier/tier-view/tier-view.service';
+import { NewMvtstockSidebarComponent } from 'app/main/apps/gestion-dechets/tier/tier-list/new-tier-sidebar/new-tier-sidebar.component';
+import { MvtstockEditService } from 'app/main/apps/gestion-dechets/tier/tier-edit/tier-edit.service';
+import{ MvtstockViewService } from 'app/main/apps/gestion-dechets/tier/tier-view/tier-view.service';
 
 import { TranslateModule } from '@ngx-translate/core';
 
 // routing
 const routes: Routes = [
-  {path: 'tier-list',component: TierListComponent  },
-  {path: 'tier-list/tier-edit/:id',   component: TierEditComponent,
+  {path: 'tier-list',component: MvtstockListComponent  },
+  {path: 'tier-list/tier-edit/:id',   component: MvtstockEditComponent,
     resolve: {
-      uls: TierEditService
+      uls: MvtstockEditService
     } 
   },
-  {path: 'tier-list/tier-view/:id',   component: TierViewComponent,
+  {path: 'tier-list/tier-view/:id',   component: MvtstockViewComponent,
     resolve: {
-      uls: TierViewService
+      uls: MvtstockViewService
     }
   },
   {path: 'tier-list/tier-view',  redirectTo: '/apps/tier/tier-list'},
@@ -47,7 +47,7 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-    TierListComponent,NewTierSidebarComponent,TierEditComponent,TierViewComponent
+    MvtstockListComponent,NewMvtstockSidebarComponent,MvtstockEditComponent,MvtstockViewComponent
   ],
   imports: [
     CommonModule,
@@ -64,6 +64,6 @@ const routes: Routes = [
     CoreSidebarModule,
     TranslateModule
   ],
-  providers: [TierListService, TierEditService,TierViewService]
+  providers: [MvtstockListService, MvtstockEditService,MvtstockViewService]
 })
 export class TierModule { }

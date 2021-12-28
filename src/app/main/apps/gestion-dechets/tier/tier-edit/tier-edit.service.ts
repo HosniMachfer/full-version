@@ -13,9 +13,9 @@ const httpOptions = {
 };
 
 @Injectable()
-export class TierEditService implements Resolve<any> {
+export class MvtstockEditService implements Resolve<any> {
   public apiData: any;
-  public onTierEditChanged: BehaviorSubject<any>;
+  public onMvtstockEditChanged: BehaviorSubject<any>;
 
   /**
    * Constructor
@@ -24,7 +24,7 @@ export class TierEditService implements Resolve<any> {
    */
   constructor(private _httpClient: HttpClient) {
     // Set the defaults
-    this.onTierEditChanged = new BehaviorSubject({});
+    this.onMvtstockEditChanged = new BehaviorSubject({});
   }
 
   /**
@@ -49,7 +49,7 @@ export class TierEditService implements Resolve<any> {
     return new Promise((resolve, reject) => {
       this._httpClient.get(`${environment.apiUrl}`+'/diva-erp-rest-api-gestion-dechets/tiers').subscribe((response: any) => {
         this.apiData = response;
-        this.onTierEditChanged.next(this.apiData);
+        this.onMvtstockEditChanged.next(this.apiData);
         resolve(this.apiData);
       }, reject);
     });

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CoreSidebarService } from '@core/components/core-sidebar/core-sidebar.service';
 import { Router } from '@angular/router';
-import { TierListService } from 'app/main/apps/gestion-dechets/tier/tier-list/tier-list.service';
-import { TierEditService } from 'app/main/apps/gestion-dechets/tier/tier-edit/tier-edit.service';
+import { MvtstockListService } from 'app/main/apps/gestion-dechets/tier/tier-list/tier-list.service';
+import { MvtstockEditService } from 'app/main/apps/gestion-dechets/tier/tier-edit/tier-edit.service';
 import { RoleListService } from 'app/main/apps/role/role-list/role-list.service';
 import { ToastrService } from 'ngx-toastr';
 
@@ -11,7 +11,7 @@ import { ToastrService } from 'ngx-toastr';
   selector: 'app-new-tier-sidebar',
   templateUrl: './new-tier-sidebar.component.html'
 })
-export class NewTierSidebarComponent implements OnInit {
+export class NewMvtstockSidebarComponent implements OnInit {
   public name;
   public code;
   public roles = [];
@@ -22,9 +22,9 @@ export class NewTierSidebarComponent implements OnInit {
    *
    * @param {CoreSidebarService} _coreSidebarService
    */
-  constructor(private router: Router, private _tierEditService: TierEditService, private _coreSidebarService: CoreSidebarService,
+  constructor(private router: Router, private _tierEditService: MvtstockEditService, private _coreSidebarService: CoreSidebarService,
     private _roleListService: RoleListService ,private _toastrService: ToastrService,
-    private _tierListService: TierListService) {}
+    private _tierListService: MvtstockListService) {}
 
   /**
    * Toggle the sidebar

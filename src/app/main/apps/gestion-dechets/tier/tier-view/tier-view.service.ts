@@ -11,9 +11,9 @@ const httpOptions = {
 };
 
 @Injectable()
-export class TierViewService implements Resolve<any> {
+export class MvtstockViewService implements Resolve<any> {
   public rows: any;
-  public onTierViewChanged: BehaviorSubject<any>;
+  public onMvtstockViewChanged: BehaviorSubject<any>;
   public id;
 
   /**
@@ -23,7 +23,7 @@ export class TierViewService implements Resolve<any> {
    */
   constructor(private _httpClient: HttpClient) {
     // Set the defaults
-    this.onTierViewChanged = new BehaviorSubject({});
+    this.onMvtstockViewChanged = new BehaviorSubject({});
   }
 
   /**
@@ -49,13 +49,13 @@ export class TierViewService implements Resolve<any> {
     return new Promise((resolve, reject) => {
       this._httpClient.get(`${environment.apiUrl}`+'/diva-erp-rest-api-gestion-dechets/tier/'+`${id}`).subscribe((response: any) => {
         this.rows = response;
-        this.onTierViewChanged.next(this.rows);
+        this.onMvtstockViewChanged.next(this.rows);
         resolve(this.rows);
       }, reject);
     });
   }
 
-getTier(route: ActivatedRouteSnapshot): Observable<any[]> {
+getMvtstock(route: ActivatedRouteSnapshot): Observable<any[]> {
     let currentId = Number(route.paramMap.get('id'));
     return this._httpClient.get<any>(`${environment.apiUrl}`+'/diva-erp-rest-api-gestion-dechets/tier'+`${currentId}`,  httpOptions);
 }

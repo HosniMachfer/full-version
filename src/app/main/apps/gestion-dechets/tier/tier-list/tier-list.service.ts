@@ -11,7 +11,7 @@ const httpOptions = {
 @Injectable({
   providedIn: 'root'
 })
-export class TierListService {
+export class MvtstockListService {
 
   constructor(private http: HttpClient) { }
   
