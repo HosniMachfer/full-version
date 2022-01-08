@@ -124,6 +124,14 @@ export const menu: CoreMenu[] = [
             url: 'apps/gestion-dechets/cycle-de-vie-dechet'
           },
           {
+	        id: 'conteneur',
+	        title: 'Conteneur',
+	        translate: 'MENU.APPS.GESTIONDECHET.CONTENEUR',
+	        type: 'item',
+	        icon: 'circle',
+	        url: 'apps/gestion-dechets/conteneur/conteneur-list'
+	        },
+          {
             id: 'gestiondechetconfiguration',
             title: 'Configuration',
             translate: 'MENU.APPS.GESTIONDECHET.CONF',

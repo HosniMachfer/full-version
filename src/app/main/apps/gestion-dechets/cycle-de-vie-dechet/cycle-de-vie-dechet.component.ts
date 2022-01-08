@@ -36,9 +36,6 @@ export class CycleDeVieDechetComponent implements OnInit {
 
   // private
   private horizontalWizardStepper: Stepper;
-  private verticalWizardStepper: Stepper;
-  private modernWizardStepper: Stepper;
-  private modernVerticalWizardStepper: Stepper;
   private bsStepper;
 
   /**
@@ -59,43 +56,6 @@ export class CycleDeVieDechetComponent implements OnInit {
   }
 
   /**
-   * Vertical Wizard Stepper Next
-   */
-  verticalWizardNext() {
-    this.verticalWizardStepper.next();
-  }
-  /**
-   * Vertical Wizard Stepper Previous
-   */
-  verticalWizardPrevious() {
-    this.verticalWizardStepper.previous();
-  }
-  /**
-   * Modern Horizontal Wizard Stepper Next
-   */
-  modernHorizontalNext() {
-    this.modernWizardStepper.next();
-  }
-  /**
-   * Modern Horizontal Wizard Stepper Previous
-   */
-  modernHorizontalPrevious() {
-    this.modernWizardStepper.previous();
-  }
-  /**
-   * Modern Vertical Wizard Stepper Next
-   */
-  modernVerticalNext() {
-    this.modernVerticalWizardStepper.next();
-  }
-  /**
-   * Modern Vertical Wizard Stepper Previous
-   */
-  modernVerticalPrevious() {
-    this.modernVerticalWizardStepper.previous();
-  }
-
-  /**
    * On Submit
    */
   onSubmit() {
@@ -113,21 +73,6 @@ export class CycleDeVieDechetComponent implements OnInit {
    */
   ngOnInit() {
     this.horizontalWizardStepper = new Stepper(document.querySelector('#stepper1'), {});
-
-    this.verticalWizardStepper = new Stepper(document.querySelector('#stepper2'), {
-      linear: false,
-      animation: true
-    });
-
-    this.modernWizardStepper = new Stepper(document.querySelector('#stepper3'), {
-      linear: false,
-      animation: true
-    });
-
-    this.modernVerticalWizardStepper = new Stepper(document.querySelector('#stepper4'), {
-      linear: false,
-      animation: true
-    });
 
     this.bsStepper = document.querySelectorAll('.bs-stepper');
 

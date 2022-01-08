@@ -36,6 +36,7 @@ export const locale = {
         },
         GESTIONDECHET:{
           CYCLEDEVIE:'Cycle de vie',
+          CONTENEUR:'Gestion conteneurs',
           CONF:'Configuration',
           USINES: 'Usines',
           COLLECTEURS:'Collecteurs',

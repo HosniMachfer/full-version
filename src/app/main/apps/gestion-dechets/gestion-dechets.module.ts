@@ -8,7 +8,7 @@ import { FormLayoutModule } from 'app/main/forms/form-layout/form-layout.module'
 import { FormValidationModule } from 'app/main/forms/form-validation/form-validation.module';
 import { FormWizardModule } from 'app/main/forms/form-wizard/form-wizard.module';
 import { CycleDeVieDechetModule } from 'app/main/apps/gestion-dechets/cycle-de-vie-dechet/cycle-de-vie-dechet.module';
-
+import { ConteneurModule } from 'app/main/apps/gestion-dechets/conteneur/conteneur.module';
 
 const routes: Routes = [
   {
@@ -82,11 +82,19 @@ const routes: Routes = [
   {
     path: 'fournisseur',
     loadChildren: () => import('./fournisseur/fournisseur.module').then(m => m.FournisseurModule)
+  },
+  {
+    path: 'conteneur',
+    loadChildren: () => import('./conteneur/conteneur.module').then(m => m.ConteneurModule)
+  },
+  {
+    path: 'cycle-de-vie-dechet',
+    loadChildren: () => import('./cycle-de-vie-dechet/cycle-de-vie-dechet.module').then(m => m.CycleDeVieDechetModule)
   }
 ]
 
 @NgModule({
   declarations: [],
-  imports: [CommonModule, RouterModule.forChild(routes),FormElementsModule, FormLayoutModule, FormWizardModule, FormValidationModule, FormRepeaterModule,CycleDeVieDechetModule]
+  imports: [CommonModule, RouterModule.forChild(routes),FormElementsModule, FormLayoutModule, FormWizardModule, FormValidationModule, FormRepeaterModule,CycleDeVieDechetModule,ConteneurModule]
 })
 export class GestionDechetsModule {}
