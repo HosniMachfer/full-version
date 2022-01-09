@@ -59,17 +59,19 @@ export class ConteneurListComponent implements OnInit {
     this._coreTranslationService.translate(english, french, german, portuguese);
  }
  ngOnInit(): void {
- this.conteneurListService.getAll()
-	      .subscribe(
-	        data => {
-            this.rows = data;
-            this.tempData = this.rows;
-            console.log(this.rows);
-	        },
-	        error => {
-	        console.log(" ici de la merde");
-	          console.log(error);
-          });
+ 	this.conteneurListService.getAll()
+      .subscribe(
+        data => {
+        this.rows = data;
+        this.tempData = this.rows;
+        console.log(".........................");
+        console.log(this.rows);
+        console.log(".........................");
+        },
+        error => {
+        console.log(" ici de la merde");
+          console.log(error);
+    });
 }
 	        
 	        

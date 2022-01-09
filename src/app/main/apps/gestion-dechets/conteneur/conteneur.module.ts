@@ -30,6 +30,8 @@ import { TranslateModule } from '@ngx-translate/core';
 
 import { ContentHeaderModule } from 'app/layout/components/content-header/content-header.module';
 
+import { MvtstockModule } from 'app/main/apps/gestion-dechets/mvtstock/mvtstock.module';
+
 // routing
 const routes: Routes = [
   {path: 'conteneur-list',component: ConteneurListComponent  },
@@ -65,7 +67,8 @@ const routes: Routes = [
     InvoiceModule,
     CoreSidebarModule,
     TranslateModule,
-    ContentHeaderModule
+    ContentHeaderModule,
+    MvtstockModule
   ],
   providers: [ConteneurListService, ConteneurEditService,ConteneurViewService]
 })

@@ -16,10 +16,10 @@ export const locale = {
         filtreStatus:'Selectionnez un statut'
     },
     buttons: {
-    	addNewUser : 'Ajouter un nouveau tier'
+    	addNewUser : 'Ajouter un nouveau mvt stock'
     },
     fnp : {
-        title : 'Formulaire nouveau tier',
+        title : 'Formulaire nouveau mvt stock',
         champs:{
 	        libellet: 'Libellet',
 	        code : 'Code',

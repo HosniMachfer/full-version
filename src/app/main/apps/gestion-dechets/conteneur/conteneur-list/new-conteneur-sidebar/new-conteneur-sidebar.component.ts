@@ -6,6 +6,8 @@ import { ConteneurEditService } from 'app/main/apps/gestion-dechets/conteneur/co
 import { RoleListService } from 'app/main/apps/role/role-list/role-list.service';
 import { ToastrService } from 'ngx-toastr';
 
+import { EtatConteneurListService } from 'app/main/apps/gestion-dechets/etat-conteneur/etat-conteneur-list/etat-conteneur-list.service';
+import { DechetListService } from 'app/main/apps/gestion-dechets/dechet/dechet-list/dechet-list.service';
 
 @Component({
   selector: 'app-new-conteneur-sidebar',
@@ -14,17 +16,21 @@ import { ToastrService } from 'ngx-toastr';
 export class NewConteneurSidebarComponent implements OnInit {
   public name;
   public code;
-  public roles = [];
-  public select_roles = [];
+  public etatConteneurs;
+  private tempEtatConteneurs = [];
+  public dechets = [];
+  public select_dechets = [];
+  public select_etats = [];
 
   /**
    * Constructor
    *
    * @param {CoreSidebarService} _coreSidebarService
    */
-  constructor(private router: Router, private _conteneurEditService: ConteneurEditService, private _coreSidebarService: CoreSidebarService,
-    private _roleListService: RoleListService ,private _toastrService: ToastrService,
-    private _conteneurListService: ConteneurListService) {}
+  constructor(private router: Router, private _conteneurEditService: ConteneurEditService, 
+  	private _coreSidebarService: CoreSidebarService,private _roleListService: RoleListService,
+  	private _toastrService: ToastrService,private _conteneurListService: ConteneurListService,
+  	private etatConteneurListService: EtatConteneurListService,private dechetListService: DechetListService) {}
 
   /**
    * Toggle the sidebar
@@ -41,6 +47,9 @@ export class NewConteneurSidebarComponent implements OnInit {
    * @param form
    */
   submit(form) {
+  console.log("*******************************");
+  console.log(form.value);
+  console.log("*******************************");
     if (form.valid) {
       this.toggleSidebar('new-conteneur-sidebar');
       this._conteneurEditService.create(form.value)
@@ -55,6 +64,26 @@ export class NewConteneurSidebarComponent implements OnInit {
       });
     }
   }
-
-  ngOnInit(): void {}
+ ngOnInit(): void {
+ // récuperer liste des états conteneur 
+   this.etatConteneurListService.getAll()
+      .subscribe(
+        data => {
+        this.etatConteneurs = data;
+        this.tempEtatConteneurs = this.etatConteneurs;
+        console.log(this.etatConteneurs);
+        },
+        error => {
+          console.log(error);
+     });
+// récuperer liste des déchets 
+  	this.dechetListService.getAll()
+      .subscribe(
+        data => {
+        this.dechets = data;
+        },
+        error => {
+          console.log(error);
+      });
+ }
 }

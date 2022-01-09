@@ -64,6 +64,7 @@ const routes: Routes = [
     CoreSidebarModule,
     TranslateModule
   ],
+   exports: [MvtstockListComponent],
   providers: [MvtstockListService, MvtstockEditService,MvtstockViewService]
 })
 export class MvtstockModule { }
