@@ -8,6 +8,8 @@ import { ToastrService } from 'ngx-toastr';
 
 import { EtatConteneurListService } from 'app/main/apps/gestion-dechets/etat-conteneur/etat-conteneur-list/etat-conteneur-list.service';
 import { DechetListService } from 'app/main/apps/gestion-dechets/dechet/dechet-list/dechet-list.service';
+import { MagasinListService } from 'app/main/apps/gestion-dechets/magasin/magasin-list/magasin-list.service';
+import { UniteListService } from 'app/main/apps/gestion-dechets/unite/unite-list/unite-list.service';
 
 @Component({
   selector: 'app-new-conteneur-sidebar',
@@ -16,11 +18,17 @@ import { DechetListService } from 'app/main/apps/gestion-dechets/dechet/dechet-l
 export class NewConteneurSidebarComponent implements OnInit {
   public name;
   public code;
+  public quantiteMax;
+  public unite;
   public etatConteneurs;
   private tempEtatConteneurs = [];
   public dechets = [];
+  public magasins = [];
+  public unites = [];
   public select_dechets = [];
   public select_etats = [];
+  public select_magasins = [];
+  public select_unite = [];
 
   /**
    * Constructor
@@ -30,7 +38,8 @@ export class NewConteneurSidebarComponent implements OnInit {
   constructor(private router: Router, private _conteneurEditService: ConteneurEditService, 
   	private _coreSidebarService: CoreSidebarService,private _roleListService: RoleListService,
   	private _toastrService: ToastrService,private _conteneurListService: ConteneurListService,
-  	private etatConteneurListService: EtatConteneurListService,private dechetListService: DechetListService) {}
+  	private etatConteneurListService: EtatConteneurListService,private dechetListService: DechetListService,
+  	private magasinListService: MagasinListService,private uniteListService: UniteListService) {}
 
   /**
    * Toggle the sidebar
@@ -84,6 +93,24 @@ export class NewConteneurSidebarComponent implements OnInit {
         },
         error => {
           console.log(error);
+      });
+// récuperer liste des magasins
+    this.magasinListService.getAll()
+      .subscribe(
+        data => {
+        this.magasins = data;
+        },
+        error => {
+          console.log(error);
+      });
+// récuperer liste des unités
+    this.uniteListService.getAll()
+	    .subscribe(
+	      data => {
+          this.unites = data;
+	      },
+	      error => {
+	        console.log(error);
       });
  }
 }

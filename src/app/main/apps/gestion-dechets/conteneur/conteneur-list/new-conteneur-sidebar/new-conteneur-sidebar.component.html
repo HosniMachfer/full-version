@@ -52,7 +52,39 @@
               <small class="form-text text-danger" *ngIf="FUserNameRef.errors.required">This field is required!</small>
             </span>
           </div>
-          
+          <div class="form-group">
+            <label class="form-label" for="basic-icon-default-uname">Quantite (max)</label>
+            <input
+              type="text"
+              id="basic-icon-default-uname"
+              class="form-control dt-uname"
+              aria-label="jdoe1"
+              aria-describedby="basic-icon-default-uname2"
+              name="quantiteMax"
+              [(ngModel)]="quantiteMax"
+              [class.error]="newUserForm.submitted && FUserNameRef.invalid"
+              #FUserNameRef="ngModel"
+              required
+            />
+            <span *ngIf="newUserForm.submitted && FUserNameRef.invalid" class="invalid-form">
+              <small class="form-text text-danger" *ngIf="FUserNameRef.errors.required">This field is required!</small>
+            </span>
+          </div>
+          <div class="form-group">
+            <label for="status">Unite :</label>
+              <!-- Basic Multi select -->
+              <ng-select
+                name="unite"
+                [items]="unites"
+                [multiple]="false"
+                [closeOnSelect]="false"
+                [searchable]="true"
+                bindLabel="name"
+                placeholder="Select people"
+                [(ngModel)]="select_unite">
+              </ng-select>
+              <!--/ Basic Multi select -->
+          </div>
           <div class="form-group">
             <label for="status">Status :</label>
               <!-- Basic Multi select -->
@@ -65,6 +97,22 @@
                 bindLabel="name"
                 placeholder="Select people"
                 [(ngModel)]="select_etats">
+              </ng-select>
+              <!--/ Basic Multi select -->
+          </div>
+          
+           <div class="form-group">
+            <label for="status">Magasin :</label>
+              <!-- Basic Multi select -->
+              <ng-select
+                name="magasin"
+                [items]="magasins"
+                [multiple]="false"
+                [closeOnSelect]="false"
+                [searchable]="true"
+                bindLabel="name"
+                placeholder="Select people"
+                [(ngModel)]="select_magasins">
               </ng-select>
               <!--/ Basic Multi select -->
           </div>
