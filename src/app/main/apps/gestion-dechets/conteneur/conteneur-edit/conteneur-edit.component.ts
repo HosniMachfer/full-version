@@ -13,9 +13,12 @@ import {NgbDate, NgbTimeStruct } from '@ng-bootstrap/ng-bootstrap';
 import {NgbCalendar, NgbDateAdapter, NgbDateParserFormatter, NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
 import * as snippet from 'app/main/forms/form-elements/date-time-picker/date-time-picker.snippetcode';
 import { ToastrService } from 'ngx-toastr';
-
+import { DechetListService } from 'app/main/apps/gestion-dechets/dechet/dechet-list/dechet-list.service';
+import { EtatConteneurListService } from 'app/main/apps/gestion-dechets/etat-conteneur/etat-conteneur-list/etat-conteneur-list.service';
 import { ConteneurListService } from 'app/main/apps/gestion-dechets/conteneur/conteneur-list/conteneur-list.service';
 import { ConteneurEditService } from 'app/main/apps/gestion-dechets/conteneur/conteneur-edit/conteneur-edit.service';
+import { MagasinListService } from 'app/main/apps/gestion-dechets/magasin/magasin-list/magasin-list.service';
+import { UniteListService } from 'app/main/apps/gestion-dechets/unite/unite-list/unite-list.service';
 interface BrandObject {
   id: number;
   text: string;
@@ -104,7 +107,10 @@ export class ConteneurEditComponent implements OnInit, OnDestroy {
   public currentRow: any;
   public tempRow: any;
   public avatarImage: string;
-  
+  public dechets = [];
+  public etatConteneurs;
+  public unites = [];
+  public magasins = [];
   @ViewChild('accountForm') accountForm: NgForm;
 
   public birthDateOptions: FlatpickrOptions = {
@@ -141,7 +147,9 @@ export class ConteneurEditComponent implements OnInit, OnDestroy {
     private dataService: DataService, private modalService: NgbModal,
     private _roleListService: RoleListService ,private ngbCalendar: NgbCalendar,
     private dateAdapter: NgbDateAdapter<string>,private conteneurListService: ConteneurListService,
-    private _toastrService: ToastrService) {
+    private _toastrService: ToastrService,private dechetListService: DechetListService,
+    private etatConteneurListService: EtatConteneurListService,private magasinListService: MagasinListService,
+    private uniteListService: UniteListService) {
     this._unsubscribeAll = new Subject();
     this.urlLastValue = this.url.substr(this.url.lastIndexOf('/') + 1);
     
@@ -195,6 +203,43 @@ export class ConteneurEditComponent implements OnInit, OnDestroy {
         }
       });
     });
+    
+    // récuperer liste des déchets 
+  	this.dechetListService.getAll()
+      .subscribe(
+        data => {
+        this.dechets = data;
+        },
+        error => {
+          console.log(error);
+      });
+     // récuperer liste des états conteneur 
+     this.etatConteneurListService.getAll()
+      .subscribe(
+        data => {
+        this.etatConteneurs = data;
+        },
+        error => {
+          console.log(error);
+     });
+     // récuperer liste des unités
+    this.uniteListService.getAll()
+	    .subscribe(
+	      data => {
+          this.unites = data;
+	      },
+	      error => {
+	        console.log(error);
+      });
+      // récuperer liste des magasins
+    this.magasinListService.getAll()
+      .subscribe(
+        data => {
+        this.magasins = data;
+        },
+        error => {
+          console.log(error);
+      });
   }
 
   doTextareaValueChange(ev) {

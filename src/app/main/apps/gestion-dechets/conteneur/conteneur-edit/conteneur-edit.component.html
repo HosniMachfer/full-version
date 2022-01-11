@@ -57,12 +57,102 @@
                 </div>
                 <div class="col-md-4">
                   <div class="form-group">
+                    <label for="email">Quantite Maximum :</label>
+                    <input
+                      type="text"
+                      id="quantiteMax"
+                      class="form-control"
+                      placeholder="Quantite Max"
+                      name="quantiteMax"
+                      [(ngModel)]="currentRow.quantiteMax"
+                      [class.error]="accountForm.submitted && EmailRef.invalid"
+                      #EmailRef="ngModel"
+                      required
+                    />
+                    <ng-select
+	                name="unite"
+	                [items]="unites"
+	                [multiple]="false"
+	                [closeOnSelect]="false"
+	                [searchable]="true"
+	                bindLabel="name"
+	                placeholder="Select people"
+	                [(ngModel)]="currentRow.unite">
+	              </ng-select>
+                    <span *ngIf="accountForm.submitted && EmailRef.invalid" class="invalid-form">
+                      <small class="form-text text-danger" *ngIf="EmailRef.errors.required"
+                        >This field is required!</small>
+                    </span>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
                     <label for="status">Status :</label>
-                    <select class="form-control" [(ngModel)]="currentRow.status" name="status" id="status">
-                      <option>active</option>
-                      <option>inactive</option>
-                      <option>pending</option>
-                    </select>
+                    <!-- Basic Multi select -->
+              		<ng-select
+	                name="etatConteneurs"
+	                [items]="etatConteneurs"
+	                [multiple]="false"
+	                [closeOnSelect]="false"
+	                [searchable]="true"
+	                bindLabel="name"
+	                placeholder="Select people"
+	                [(ngModel)]="currentRow.etat">
+	              	</ng-select>
+	              <!--/ Basic Multi select -->
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label>Dechet(s)</label>
+	              	<!-- Basic Multi select -->
+              		<ng-select
+	                name="dechets"
+	                [items]="dechets"
+	                [multiple]="true"
+	                [closeOnSelect]="false"
+	                [searchable]="true"
+	                bindLabel="name"
+	                placeholder="Select people"
+	                [(ngModel)]="currentRow.dechets">
+	              	</ng-select>
+	              <!--/ Basic Multi select -->
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label>Magasin</label>
+	              	<!-- Basic Multi select -->
+              		<ng-select
+	                name="magasins"
+	                [items]="magasins"
+	                [multiple]="false"
+	                [closeOnSelect]="false"
+	                [searchable]="true"
+	                bindLabel="name"
+	                placeholder="Select people"
+	                [(ngModel)]="currentRow.magasin">
+	              	</ng-select>
+	              <!--/ Basic Multi select -->
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="email">Saisie par :</label>
+                    <input
+                      type="text"
+                      id="saisiePar"
+                      class="form-control"
+                      placeholder="Saisie par"
+                      name="saisiePar"
+                      [(ngModel)]="currentRow.saisiePar"
+                      [class.error]="accountForm.submitted && EmailRef.invalid"
+                      #EmailRef="ngModel"
+                      required
+                    />
+                    <span *ngIf="accountForm.submitted && EmailRef.invalid" class="invalid-form">
+                      <small class="form-text text-danger" *ngIf="EmailRef.errors.required">This field is required!</small>
+                    </span>
                   </div>
                 </div>
                 <div class="col-md-12">
