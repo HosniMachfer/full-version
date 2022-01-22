@@ -30,6 +30,10 @@ const routes: Routes = [
     component: AuthLoginV2Component
   },
   {
+    path: 'authentication/login-v2/:token',
+    component: AuthLoginV2Component
+  },
+  {
     path: 'authentication/register-v1',
     component: AuthRegisterV1Component
   },

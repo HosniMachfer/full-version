@@ -75,14 +75,36 @@
             <small class="form-text text-muted"> You can use letters, numbers & periods </small>
           </div>
           <div class="form-group">
-            <label class="form-label" for="roles">User Role</label>
-            <select id="role" class="form-control">
-              <option value="subscriber">Subscriber</option>
-              <option value="editor">Editor</option>
-              <option value="maintainer">Maintainer</option>
-              <option value="author">Author</option>
-              <option value="admin">Admin</option>
-            </select>
+            <label>Role(s)</label>
+              <!-- Basic Multi select -->
+              <ng-select
+                name="roles"
+                [items]="roles"
+                [multiple]="true"
+                [closeOnSelect]="false"
+                [searchable]="true"
+                bindLabel="name"
+                placeholder="Select role"
+                [(ngModel)]="select_roles"
+              >
+              </ng-select>
+              <!--/ Basic Multi select -->
+          </div>
+          <div class="form-group">
+            <label>Usine(s)</label>
+              <!-- Basic Multi select -->
+              <ng-select
+                name="tiers"
+                [items]="tiers"
+                [multiple]="false"
+                [closeOnSelect]="false"
+                [searchable]="true"
+                bindLabel="name"
+                placeholder="Select role"
+                [(ngModel)]="select_tiers"
+              >
+              </ng-select>
+              <!--/ Basic Multi select -->
           </div>
           <div class="form-group mb-2">
             <label class="form-label" for="plan">Select Plan</label>

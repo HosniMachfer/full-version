@@ -78,7 +78,48 @@ export class AuthenticationService {
           }
           console.log("#############################");
 		  console.log(user);
-		            console.log("#############################");
+		  console.log("#############################");
+          return user;
+        })
+      );
+  }
+
+
+  /**
+   * User activate
+   *
+   * @param email
+   * @param password
+   * @returns user
+   */
+  activateUser(password: string) {
+  console.log(`${environment.apiUrl}`);
+    return this._http
+      .post<any>(`${environment.apiUrl}`+'/api/auth/activate', password)
+      .pipe(
+        map(user => {
+          // login successful if there's a jwt token in the response
+          if (user && user.token) {
+            // store user details and jwt token in local storage to keep user logged in between page refreshes
+            localStorage.setItem('currentUser', JSON.stringify(user));
+
+            // Display welcome toast!
+            setTimeout(() => {
+              this._toastrService.success(
+                'You have successfully logged in as an ' +
+                  user.roles +
+                  ' user to Vuexy. Now you can start to explore. Enjoy! 🎉',
+                '👋 Welcome, ' + user.firstName + '!',
+                { toastClass: 'toast ngx-toastr', closeButton: true }
+              );
+            }, 2500);
+
+            // notify
+            this.currentUserSubject.next(user);
+          }
+          console.log("#############################");
+		  console.log(user);
+		  console.log("#############################");
           return user;
         })
       );

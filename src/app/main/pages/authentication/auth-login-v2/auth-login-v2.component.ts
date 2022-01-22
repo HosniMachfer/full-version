@@ -106,6 +106,28 @@ export class AuthLoginV2Component implements OnInit {
    * On init
    */
   ngOnInit(): void {
+  console.log("---------------- AUTHENTIFICATION -----------------");
+	this._route.params.subscribe(params => {
+       if (params['token'] != null){
+       	   console.log(params['token']); 
+          // Login
+		  //this.loading = true;
+    	  this._authenticationService
+      	  .activateUser(params['token'])
+          .pipe(first())
+          .subscribe(
+          data => {
+           this._router.navigate([this.returnUrl]);
+          },
+	      error => {
+	         this.error = error;
+	         this.loading = false;
+	       }
+      	);
+      }
+       
+    });
+    
     this.loginForm = this._formBuilder.group({
       email: ['admin@demo.com', [Validators.required, Validators.email]],
       password: ['admin', Validators.required]
