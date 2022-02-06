@@ -34,6 +34,9 @@ export const locale = {
           ROLES: 'Gestion roles',
           PRIVILEGES: 'Gestion privileges'
         },
+        MODULEAPPLICATIF: {
+          TITLE:'Module applicatif'
+        },
         GESTIONDECHET:{
           CYCLEDEVIE:'Cycle de vie',
           CONTENEUR:'Gestion conteneurs',
@@ -41,7 +44,7 @@ export const locale = {
           USINES: 'Usines',
           COLLECTEURS:'Collecteurs',
           RECYCLEURS:'Recycleurs',
-          TIERS:'Mvtstocks',
+          TIERS:'Tiers',
           TYPETIERS :'Type tiers',
           TYPEMOUVEMENTS:'Type mouvements',
           UNITES:'Unites',

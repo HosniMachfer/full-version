@@ -26,6 +26,7 @@ interface BrandObject {
 })
 export class UserEditComponent implements OnInit, OnDestroy {
   // Public
+  public contentHeader: object;
   public url = this.router.url;
   public urlLastValue;
   public rows;
@@ -58,10 +59,6 @@ export class UserEditComponent implements OnInit, OnDestroy {
    title = 'angular-ngselect-demo';
   laptopBrands: BrandObject[];
   selectedBrand: {};
-  
-  
-    // public
-  public contentHeader: object;
 
   // select basic
   public selectBasic: Person[] = [];
@@ -276,29 +273,30 @@ export class UserEditComponent implements OnInit, OnDestroy {
     });
     
     
-      this.listetRoles = [
-    {
-      id: '1',
-      name: 'Admin'
-    },
-        {
-      id: '2',
-      name: 'Editor'
-    },
-    {
-      id: '3',
-      name: 'Author'
-    },
-    {
-      id: '4',
-      name: 'Maintainer'
-    },
-    {
-      id: '5',
-      name: 'Subscriber'
-    }
-  ];
-    
+    // content header
+    this.contentHeader = {
+      headerTitle: 'Account Settings',
+      actionButton: true,
+      breadcrumb: {
+        type: '',
+        links: [
+          {
+            name: 'Home',
+            isLink: true,
+            link: '/'
+          },
+          {
+            name: 'Pages',
+            isLink: true,
+            link: '/'
+          },
+          {
+            name: 'Account Settings',
+            isLink: false
+          }
+        ]
+      }
+    };
     
 
   }

@@ -44,7 +44,15 @@ export const menu: CoreMenu[] = [
     title: 'Apps & Pages',
     translate: 'MENU.APPS.SECTION',
     icon: 'package',
-    children: [      
+    children: [
+    	{
+	        id: 'users',
+	        title: 'Module applicatif',
+	        translate: 'MENU.APPS.MODULEAPPLICATIF.TITLE',
+	        type: 'item',
+	        icon: 'users',
+	        url: 'apps/module-applicatif/module-applicatif-list'
+          },      
       {
         id: 'pages',
         title: 'Pages',
@@ -131,14 +139,21 @@ export const menu: CoreMenu[] = [
 	        icon: 'circle',
 	        url: 'apps/gestion-dechets/conteneur/conteneur-list'
 	        },
-          {
+            {
             id: 'gestiondechetconfiguration',
             title: 'Configuration',
             translate: 'MENU.APPS.GESTIONDECHET.CONF',
             type: 'collapsible',
             icon: 'settings',
             children: [
-                        {
+            	{
+	            id: 'gestiontiersconfiguration',
+	            title: 'Tiers',
+	            translate: 'Tiers',
+	            type: 'collapsible',
+	            icon: 'settings',
+	            children: [
+            		  {
                           id: 'usines',
                           title: 'Usines',
                           translate: 'MENU.APPS.GESTIONDECHET.USINES',
@@ -164,7 +179,7 @@ export const menu: CoreMenu[] = [
                         },
                         {
                           id: 'tiers',
-                          title: 'Mvtstocks',
+                          title: 'tiers',
                           translate: 'MENU.APPS.GESTIONDECHET.TIERS',
                           type: 'item',
                           icon: 'circle',
@@ -177,147 +192,147 @@ export const menu: CoreMenu[] = [
                           type: 'item',
                           icon: 'circle',
                           url: 'apps/gestion-dechets/type-tier/type-tier-list'
-                        },
-                        {
-                          id: 'type-mouvements',
-                          title: 'Type mouvements',
-                          translate: 'MENU.APPS.GESTIONDECHET.TYPEMOUVEMENTS',
-                          type: 'item',
-                          icon: 'circle',
-                          url: 'apps/gestion-dechets/type-mouvement/type-mouvement-list'
-                        },
-                        {
-                          id: 'unites',
-                          title: 'Unites',
-                          translate: 'MENU.APPS.GESTIONDECHET.UNITES',
-                          type: 'item',
-                          icon: 'circle',
-                          url: 'apps/gestion-dechets/unite/unite-list'
-                        },
-                        {
-                          id: 'dechet',
-                          title: 'Dechets',
-                          translate: 'MENU.APPS.GESTIONDECHET.DECHETS',
-                          type: 'item',
-                          icon: 'circle',
-                          url: 'apps/gestion-dechets/dechet/dechet-list'
-                        },
-                        {
-                          id: 'etat-famille',
-                          title: 'Etat famille',
-                          translate: 'MENU.APPS.GESTIONDECHET.ETATFAMILLE',
-                          type: 'item',
-                          icon: 'circle',
-                          url: 'apps/gestion-dechets/etat-famille/etat-famille-list'
-                        },
-                        {
-                          id: 'etat-conteneur',
-                          title: 'Etat conteneur',
-                          translate: 'MENU.APPS.GESTIONDECHET.ETATCONTENEUR',
-                          type: 'item',
-                          icon: 'circle',
-                          url: 'apps/gestion-dechets/etat-conteneur/etat-conteneur-list'
-                        },
-                        {
-                          id: 'etat-magasin',
-                          title: 'Etat magasin',
-                          translate: 'MENU.APPS.GESTIONDECHET.ETATMAGASIN',
-                          type: 'item',
-                          icon: 'circle',
-                          url: 'apps/gestion-dechets/etat-magasin/etat-magasin-list'
-                        },
-                        {
-                          id: 'etat-mouvement',
-                          title: 'Etat mouvement',
-                          translate: 'MENU.APPS.GESTIONDECHET.ETATMOUVEMENT',
-                          type: 'item',
-                          icon: 'circle',
-                          url: 'apps/gestion-dechets/etat-mouvement/etat-mouvement-list'
-                        },
-                        {
-                          id: 'famille',
-                          title: 'Familles',
-                          translate: 'MENU.APPS.GESTIONDECHET.FAMILLE',
-                          type: 'item',
-                          icon: 'circle',
-                          url: 'apps/gestion-dechets/famille/famille-list'
-                        },
-                        {
-                          id: 'magasin',
-                          title: 'Magasins',
-                          translate: 'MENU.APPS.GESTIONDECHET.MAGASIN',
-                          type: 'item',
-                          icon: 'circle',
-                          url: 'apps/gestion-dechets/magasin/magasin-list'
-                        },
-                        {
-                          id: 'matiere',
-                          title: 'Matieres',
-                          translate: 'MENU.APPS.GESTIONDECHET.MATIERE',
-                          type: 'item',
-                          icon: 'circle',
-                          url: 'apps/gestion-dechets/matiere/matiere-list'
-                        },
-                        {
-                          id: 'mouvement',
-                          title: 'Mouvement',
-                          translate: 'MENU.APPS.GESTIONDECHET.MOUVEMENT',
-                          type: 'item',
-                          icon: 'circle',
-                          url: 'apps/gestion-dechets/mouvement/mouvement-list'
-                        },
-                        {
-                          id: 'mvtstock',
-                          title: 'MvtStock',
-                          translate: 'MENU.APPS.GESTIONDECHET.MVTSTOCK',
-                          type: 'item',
-                          icon: 'circle',
-                          url: 'apps/gestion-dechets/mvtstock/mvtstock-list'
-                        },
-                        {
-                          id: 'fournisseur',
-                          title: 'Fournisseur',
-                          translate: 'MENU.APPS.GESTIONDECHET.FOURNISSEUR',
-                          type: 'item',
-                          icon: 'circle',
-                          url: 'apps/gestion-dechets/fournisseur/fournisseur-list'
                         }
+            		  ]
+           			},
+                    {
+                      id: 'type-mouvements',
+                      title: 'Type mouvements',
+                      translate: 'MENU.APPS.GESTIONDECHET.TYPEMOUVEMENTS',
+                      type: 'item',
+                      icon: 'circle',
+                      url: 'apps/gestion-dechets/type-mouvement/type-mouvement-list'
+                    },
+                    {
+                      id: 'unites',
+                      title: 'Unites',
+                      translate: 'MENU.APPS.GESTIONDECHET.UNITES',
+                      type: 'item',
+                      icon: 'circle',
+                      url: 'apps/gestion-dechets/unite/unite-list'
+                    },
+                    {
+                      id: 'dechet',
+                      title: 'Dechets',
+                      translate: 'MENU.APPS.GESTIONDECHET.DECHETS',
+                      type: 'item',
+                      icon: 'circle',
+                      url: 'apps/gestion-dechets/dechet/dechet-list'
+                    },
+                    {
+                      id: 'etat-famille',
+                      title: 'Etat famille',
+                      translate: 'MENU.APPS.GESTIONDECHET.ETATFAMILLE',
+                      type: 'item',
+                      icon: 'circle',
+                      url: 'apps/gestion-dechets/etat-famille/etat-famille-list'
+                    },
+                    {
+                      id: 'etat-conteneur',
+                      title: 'Etat conteneur',
+                      translate: 'MENU.APPS.GESTIONDECHET.ETATCONTENEUR',
+                      type: 'item',
+                      icon: 'circle',
+                      url: 'apps/gestion-dechets/etat-conteneur/etat-conteneur-list'
+                    },
+                    {
+                      id: 'etat-magasin',
+                      title: 'Etat magasin',
+                      translate: 'MENU.APPS.GESTIONDECHET.ETATMAGASIN',
+                      type: 'item',
+                      icon: 'circle',
+                      url: 'apps/gestion-dechets/etat-magasin/etat-magasin-list'
+                    },
+                    {
+                      id: 'etat-mouvement',
+                      title: 'Etat mouvement',
+                      translate: 'MENU.APPS.GESTIONDECHET.ETATMOUVEMENT',
+                      type: 'item',
+                      icon: 'circle',
+                      url: 'apps/gestion-dechets/etat-mouvement/etat-mouvement-list'
+                    },
+                    {
+                      id: 'famille',
+                      title: 'Familles',
+                      translate: 'MENU.APPS.GESTIONDECHET.FAMILLE',
+                      type: 'item',
+                      icon: 'circle',
+                      url: 'apps/gestion-dechets/famille/famille-list'
+                    },
+                    {
+                      id: 'magasin',
+                      title: 'Magasins',
+                      translate: 'MENU.APPS.GESTIONDECHET.MAGASIN',
+                      type: 'item',
+                      icon: 'circle',
+                      url: 'apps/gestion-dechets/magasin/magasin-list'
+                    },
+                    {
+                      id: 'matiere',
+                      title: 'Matieres',
+                      translate: 'MENU.APPS.GESTIONDECHET.MATIERE',
+                      type: 'item',
+                      icon: 'circle',
+                      url: 'apps/gestion-dechets/matiere/matiere-list'
+                    },
+                    {
+                      id: 'mouvement',
+                      title: 'Mouvement',
+                      translate: 'MENU.APPS.GESTIONDECHET.MOUVEMENT',
+                      type: 'item',
+                      icon: 'circle',
+                      url: 'apps/gestion-dechets/mouvement/mouvement-list'
+                    },
+                    {
+                      id: 'mvtstock',
+                      title: 'MvtStock',
+                      translate: 'MENU.APPS.GESTIONDECHET.MVTSTOCK',
+                      type: 'item',
+                      icon: 'circle',
+                      url: 'apps/gestion-dechets/mvtstock/mvtstock-list'
+                    },
+                    {
+                      id: 'fournisseur',
+                      title: 'Fournisseur',
+                      translate: 'MENU.APPS.GESTIONDECHET.FOURNISSEUR',
+                      type: 'item',
+                      icon: 'circle',
+                      url: 'apps/gestion-dechets/fournisseur/fournisseur-list'
+                    }
             ]
           }
         ]
       }
-      
-
     ]
   },
   
   // Others
   {
-    id: 'others',
-    type: 'section',
-    title: 'Others',
-    translate: 'MENU.OTHERS.SECTION',
-    icon: 'box',
-    children: [
-      {
-        id: 'knowledgeBase',
-        title: 'Knowledge Base',
-        translate: 'MENU.PAGES.KB',
-        type: 'item',
-        icon: 'circle',
-        url: 'pages/knowledge-base'
-      },
-      {
-        id: 'disabled-menu',
-        title: 'Disabled Menu',
-        translate: 'MENU.OTHERS.DISABLED',
-        icon: 'eye-off',
-        type: 'item',
-        url: '#',
-        disabled: true
-      }
-    ]
-  },
+	    id: 'others',
+	    type: 'section',
+	    title: 'Others',
+	    translate: 'MENU.OTHERS.SECTION',
+	    icon: 'box',
+	    children: [
+	      {
+	        id: 'knowledgeBase',
+	        title: 'Knowledge Base',
+	        translate: 'MENU.PAGES.KB',
+	        type: 'item',
+	        icon: 'circle',
+	        url: 'pages/knowledge-base'
+	      },
+	      {
+	        id: 'disabled-menu',
+	        title: 'Disabled Menu',
+	        translate: 'MENU.OTHERS.DISABLED',
+	        icon: 'eye-off',
+	        type: 'item',
+	        url: '#',
+	        disabled: true
+	      }
+	    ]
+  	 },
       {
         id: 'components',
         title: 'Components',

@@ -13,9 +13,9 @@ const httpOptions = {
 };
 
 @Injectable()
-export class PrivilegeEditService implements Resolve<any> {
+export class ModuleApplicatifEditService implements Resolve<any> {
   public apiData: any;
-  public onPrivilegeEditChanged: BehaviorSubject<any>;
+  public onModuleApplicatifEditChanged: BehaviorSubject<any>;
 
   /**
    * Constructor
@@ -24,7 +24,7 @@ export class PrivilegeEditService implements Resolve<any> {
    */
   constructor(private _httpClient: HttpClient) {
     // Set the defaults
-    this.onPrivilegeEditChanged = new BehaviorSubject({});
+    this.onModuleApplicatifEditChanged = new BehaviorSubject({});
   }
 
   /**
@@ -47,23 +47,23 @@ export class PrivilegeEditService implements Resolve<any> {
    */
   getApiData(): Promise<any[]> {
     return new Promise((resolve, reject) => {
-      this._httpClient.get(`${environment.apiUrl}`+'/privileges').subscribe((response: any) => {
+      this._httpClient.get(`${environment.apiUrl}`+'/module-applicatifs').subscribe((response: any) => {
         this.apiData = response;
-        this.onPrivilegeEditChanged.next(this.apiData);
+        this.onModuleApplicatifEditChanged.next(this.apiData);
         resolve(this.apiData);
       }, reject);
     });
   }
  
 getAll(): Observable<any[]> {
-    return this._httpClient.get<any[]>(`${environment.apiUrl}`+'/privileges',  httpOptions);
+    return this._httpClient.get<any[]>(`${environment.apiUrl}`+'/module-applicatifs',  httpOptions);
 }
 
 create(data: any): Observable<any> {
   console.log("------------------------------------");
   console.log(data);
   console.log("------------------------------------");
-    return this._httpClient.post(`${environment.apiUrl}`+'/add-privilege', data);
+    return this._httpClient.post(`${environment.apiUrl}`+'/add-module-applicatif', data);
 }
 
 

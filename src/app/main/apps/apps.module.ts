@@ -49,6 +49,10 @@ const routes: Routes = [
   {
     path: 'gestion-dechets',
     loadChildren: () => import('./gestion-dechets/gestion-dechets.module').then(m => m.GestionDechetsModule)
+  },
+  {
+    path: 'module-applicatif',
+    loadChildren: () => import('./module-applicatif/module-applicatif.module').then(m => m.ModuleApplicatifModule)
   }
 ];
 
