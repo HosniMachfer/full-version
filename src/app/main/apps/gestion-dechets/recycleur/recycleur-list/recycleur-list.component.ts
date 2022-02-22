@@ -65,7 +65,6 @@ export class RecycleurListComponent implements OnInit {
             console.log(this.rows);
 	        },
 	        error => {
-	        console.log(" ici de la merde");
 	          console.log(error);
           });
 }

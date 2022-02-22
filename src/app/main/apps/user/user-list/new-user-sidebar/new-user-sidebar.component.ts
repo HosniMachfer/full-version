@@ -40,9 +40,6 @@ export class NewUserSidebarComponent implements OnInit {
    */
   submit(form) {
     if (form.valid) {
-    console.log("------------------------");
-    console.log(form.value);
-    console.log("------------------------");
     this.toggleSidebar('new-user-sidebar');
        this._userEditService.create(form.value)
       .subscribe(

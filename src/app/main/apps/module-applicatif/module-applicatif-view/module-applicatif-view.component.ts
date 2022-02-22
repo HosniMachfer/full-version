@@ -38,7 +38,6 @@ export class ModuleApplicatifViewComponent implements OnInit, OnDestroy {
    * On init
    */
   ngOnInit(): void {
-console.log("99999999999999999999999999999999999");
     this._moduleApplicatifViewService.onModuleApplicatifViewChanged.pipe(takeUntil(this._unsubscribeAll)).subscribe(response => {
       this.data = response;
     });

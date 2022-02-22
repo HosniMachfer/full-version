@@ -8,5 +8,6 @@ export class User {
   lastName: string;
   avatar: string;
   roles?: Role[];
+ // role: string;
   token?: string;
 }

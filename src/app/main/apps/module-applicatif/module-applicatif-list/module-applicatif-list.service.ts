@@ -13,12 +13,24 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class ModuleApplicatifListService {
-
   constructor(private http: HttpClient) { }
-  
-  
   getAll(): Observable<any[]> {
-  console.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
     return this.http.get<any[]>(`${environment.apiUrl}`+'/module-applicatifs',  httpOptions);
-}
+  }
+  getModuleApplicatifByCode(code: string): Observable<any[]> {
+    return this.http.get<any>(`${environment.apiUrl}`+'/module-applicatif-by-code/'+code,  httpOptions);
+  }
+  menuWithHasRoles(data: any): Observable<any> {
+    console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+    console.log(data);
+    console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+      return this.http.post(`${environment.apiUrl}`+'/menu-has-role', {
+        "id": "dashboard",
+        "title": "Dashboard",
+        "translate": "MENU.DASHBOARD.COLLAPSIBLE",
+        "type": "item",
+        "icon": "home",
+        "url": "dashboard/ecommerce"
+    });
+  }
 }

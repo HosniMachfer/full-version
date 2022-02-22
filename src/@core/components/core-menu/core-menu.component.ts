@@ -4,6 +4,10 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 import { CoreMenuService } from '@core/components/core-menu/core-menu.service';
+import { ModuleApplicatifListService } from 'app/main/apps/module-applicatif/module-applicatif-list/module-applicatif-list.service';
+
+import { AuthenticationService } from 'app/auth/service';
+
 
 @Component({
   selector: '[core-menu]',
@@ -14,22 +18,27 @@ import { CoreMenuService } from '@core/components/core-menu/core-menu.service';
 })
 export class CoreMenuComponent implements OnInit {
   currentUser: any;
+  data;
+  rowsRolesItem;
+ 
 
   @Input()
   layout = 'vertical';
 
   @Input()
   menu: any;
-
+  
   // Private
   private _unsubscribeAll: Subject<any>;
+
 
   /**
    *
    * @param {ChangeDetectorRef} _changeDetectorRef
    * @param {CoreMenuService} _coreMenuService
    */
-  constructor(private _changeDetectorRef: ChangeDetectorRef, private _coreMenuService: CoreMenuService) {
+  constructor(private _changeDetectorRef: ChangeDetectorRef, private _coreMenuService: CoreMenuService,
+              private _moduleApplicatifListService: ModuleApplicatifListService, private _authenticationService: AuthenticationService) {
     // Set the private defaults
     this._unsubscribeAll = new Subject();
   }
@@ -43,15 +52,24 @@ export class CoreMenuComponent implements OnInit {
   ngOnInit(): void {
     // Set the menu either from the input or from the service
     this.menu = this.menu || this._coreMenuService.getCurrentMenu();
-
     // Subscribe to the current menu changes
     this._coreMenuService.onMenuChanged.pipe(takeUntil(this._unsubscribeAll)).subscribe(() => {
       this.currentUser = this._coreMenuService.currentUser;
-
       // Load menu
       this.menu = this._coreMenuService.getCurrentMenu();
-
-      this._changeDetectorRef.markForCheck();
+      console.log(this.menu);
+      this.hasRole(this.menu);
+	    console.log(this.menu);
+	      this._changeDetectorRef.markForCheck();
     });
+
   }
+
+
+  hasRole(menu){
+    this._moduleApplicatifListService.menuWithHasRoles(menu[0]);
+  }
+  
+ 
+   
 }

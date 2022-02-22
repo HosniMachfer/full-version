@@ -64,12 +64,8 @@ export class ConteneurListComponent implements OnInit {
         data => {
         this.rows = data;
         this.tempData = this.rows;
-        console.log(".........................");
-        console.log(this.rows);
-        console.log(".........................");
         },
         error => {
-        console.log(" ici de la merde");
           console.log(error);
     });
 }

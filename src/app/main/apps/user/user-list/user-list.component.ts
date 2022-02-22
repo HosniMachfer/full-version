@@ -221,10 +221,6 @@ export class UserListComponent implements OnInit {
   
   
      this.selectedLanguage = this._translateService.currentLang;
-      console.log("i18ni18ni18ni18ni18ni18ni18ni18ni18ni18ni18n");
-   // console.log(_translateService.currentLang);
-     console.log(this.selectedLanguage);
-    console.log("i18ni18ni18ni18ni18ni18ni18ni18ni18ni18ni18n");
     
     this._translateService.use(this.selectedLanguage);
 

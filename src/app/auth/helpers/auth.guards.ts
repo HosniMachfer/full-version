@@ -23,7 +23,6 @@ export class AuthGuard implements CanActivate {
         this._router.navigate(['/pages/miscellaneous/not-authorized']);
         return false;
       }
-
       // authorised so return true
       return true;
     }

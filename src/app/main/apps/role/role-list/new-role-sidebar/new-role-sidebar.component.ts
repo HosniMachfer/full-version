@@ -62,7 +62,6 @@ export class NewRoleSidebarComponent implements OnInit {
           this.privileges = data;
         },
         error => {
-        console.log(" ici de la merde");
           console.log(error);
         });
   }

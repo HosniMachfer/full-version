@@ -65,6 +65,6 @@ const routes: Routes = [
     CoreSidebarModule,
     TranslateModule
   ],
-  providers: [ModuleApplicatifListService, UserEditService,ModuleApplicatifEditService,ModuleApplicatifViewService]
+  providers: [ModuleApplicatifListService, UserEditService, ModuleApplicatifEditService, ModuleApplicatifViewService]
 })
 export class ModuleApplicatifModule { }

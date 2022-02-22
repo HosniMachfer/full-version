@@ -5,6 +5,7 @@ export interface CoreMenuItem {
     url?         : string;
     type         : 'section' | 'collapsible' | 'item';
     role?        : Array<string>;
+    accessModuleApp?  : boolean;
     translate?   : string;
     icon?        : string;
     disabled?    : boolean;

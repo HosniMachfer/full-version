@@ -4,9 +4,7 @@
     <!-- section -->
     <li
       core-menu-vertical-section
-      *ngIf="
-        item.type == 'section' && (item.role ? item.role.includes(currentUser.role) : false || item.role == undefined)
-      "
+      *ngIf="item.type == 'section' && !item.hidden"
       [item]="item"
       class="navigation-header"
     ></li>
@@ -17,9 +15,7 @@
         <!-- item | if openInNewTab set routerLink & routerLinkActive blank -->
         <li
           core-menu-vertical-item
-          *ngIf="
-            item.type == 'item' && (item.role ? item.role.includes(currentUser.role) : false || item.role == undefined)
-          "
+          *ngIf="item.type == 'item'  && !item.hidden"
           [item]="item"
           [ngClass]="{ disabled: item.disabled === true }"
           [routerLinkActive]="!item.openInNewTab ? 'active' : ''"
@@ -31,10 +27,7 @@
         <!-- collapsible -->
         <li
           core-menu-vertical-collapsible
-          *ngIf="
-            item.type == 'collapsible' &&
-            (item.role ? item.role.includes(currentUser.role) : false || item.role == undefined)
-          "
+          *ngIf="item.type == 'collapsible' && !item.hidden"
           [item]="item"
           class="nav-item has-sub"
         ></li>
@@ -44,9 +37,7 @@
     <!-- item -->
     <li
       core-menu-vertical-item
-      *ngIf="
-        item.type == 'item' && (item.role ? item.role.includes(currentUser.role) : false || item.role == undefined)
-      "
+      *ngIf="item.type == 'item' && !item.hidden"
       [item]="item"
       [ngClass]="{ disabled: item.disabled === true }"
       [routerLinkActive]="!item.openInNewTab ? 'active' : ''"
@@ -57,10 +48,7 @@
     <!-- collapsible -->
     <li
       core-menu-vertical-collapsible
-      *ngIf="
-        item.type == 'collapsible' &&
-        (item.role ? item.role.includes(currentUser.role) : false || item.role == undefined)
-      "
+      *ngIf="item.type == 'collapsible' && !item.hidden"
       [item]="item"
       class="nav-item has-sub"
     ></li>
@@ -74,9 +62,7 @@
     <!-- section -->
     <li
       core-menu-horizontal-collapsible
-      *ngIf="
-        item.type == 'section' && (item.role ? item.role.includes(currentUser.role) : false || item.role == undefined)
-      "
+      *ngIf="item.type == 'section' && !item.hidden"
       [item]="item"
       class="dropdown nav-item"
     ></li>
@@ -84,9 +70,7 @@
     <!-- item | if openInNewTab set routerLink & routerLinkActive blank -->
     <li
       core-menu-horizontal-item
-      *ngIf="
-        item.type == 'item' && (item.role ? item.role.includes(currentUser.role) : false || item.role == undefined)
-      "
+      *ngIf="item.type == 'item' && !item.hidden"
       [item]="item"
       [ngClass]="{ disabled: item.disabled === true }"
       [routerLinkActive]="!item.openInNewTab ? 'active' : ''"
@@ -98,10 +82,7 @@
     <!-- collapsible -->
     <li
       core-menu-horizontal-collapsible
-      *ngIf="
-        item.type == 'collapsible' &&
-        (item.role ? item.role.includes(currentUser.role) : false || item.role == undefined)
-      "
+      *ngIf="item.type == 'collapsible' && !item.hidden"
       [item]="item"
       class="dropdown dropdown-submenu"
     ></li>

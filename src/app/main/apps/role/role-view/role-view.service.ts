@@ -34,7 +34,6 @@ export class RoleViewService implements Resolve<any> {
    * @returns {Observable<any> | Promise<any> | any}
    */
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any {
-    console.log("TA MERE ...........");
     let currentId = Number(route.paramMap.get('id'));
     return new Promise<void>((resolve, reject) => {
       Promise.all([this.getApiData(currentId)]).then(() => {
@@ -47,9 +46,6 @@ export class RoleViewService implements Resolve<any> {
    * Get rows
    */
   getApiData(id: number): Promise<any[]> {
-    console.log("detail privilége --------------------------");
-    console.log(id);
-    console.log("detail privilége --------------------------");
     return new Promise((resolve, reject) => {
       this._httpClient.get(`${environment.apiUrl}`+'/role/'+`${id}`).subscribe((response: any) => {
         this.rows = response;

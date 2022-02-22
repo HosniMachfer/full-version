@@ -46,17 +46,17 @@ export class ModuleApplicatifViewService implements Resolve<any> {
   /**
    * Get rows
    */
-  getApiData(id: number): Promise<any[]> {
+   getApiData(id: number): Promise<any[]> {
     console.log("detail module-applicatif --------------------------");
     console.log(id);
     console.log("detail module-applicatif --------------------------");
-    return new Promise((resolve, reject) => {
-      this._httpClient.get(`${environment.apiUrl}`+'/module-applicatif/'+`${id}`).subscribe((response: any) => {
-        this.rows = response;
-        this.onModuleApplicatifViewChanged.next(this.rows);
-        resolve(this.rows);
-      }, reject);
-    });
+      return new Promise((resolve, reject) => {
+        this._httpClient.get(`${environment.apiUrl}`+'/module-applicatif/'+`${id}`).subscribe((response: any) => {
+          this.rows = response;
+          this.onModuleApplicatifViewChanged.next(this.rows);
+          resolve(this.rows);
+        }, reject);
+      });
   }
 
 getModuleApplicatif(route: ActivatedRouteSnapshot): Observable<any[]> {

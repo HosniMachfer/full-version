@@ -699,7 +699,7 @@ export class EcommerceComponent implements OnInit {
         localStorage.getItem('currentUser')
       ) {
         setTimeout(() => {
-          if (this.currentUser.roles[0] == 'Admin') {
+          if (this.currentUser.roles[0].name == 'ADMIN') {
             // Get Dynamic Width for Charts
             this.isMenuToggled = true;
             this.statisticsBar.chart.width = this.statisticsBarChartRef?.nativeElement.offsetWidth;

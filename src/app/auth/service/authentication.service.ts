@@ -34,14 +34,15 @@ export class AuthenticationService {
    *  Confirms if user is admin
    */
   get isAdmin() {
-    return false;
+    //return this.currentUser && this.currentUserSubject.value.role === Role.Admin;
+    return  true;
   }
 
   /**
    *  Confirms if user is client
    */
   get isClient() {
-    return true;
+    return false;
   }
 
   /**
@@ -59,6 +60,7 @@ export class AuthenticationService {
         map(user => {
           // login successful if there's a jwt token in the response
           if (user && user.token) {
+          //user.role = 'Admin';
             // store user details and jwt token in local storage to keep user logged in between page refreshes
             localStorage.setItem('currentUser', JSON.stringify(user));
 
@@ -66,7 +68,7 @@ export class AuthenticationService {
             setTimeout(() => {
               this._toastrService.success(
                 'You have successfully logged in as an ' +
-                  user.roles +
+                  user.roles[0].name +
                   ' user to Vuexy. Now you can start to explore. Enjoy! 🎉',
                 '👋 Welcome, ' + user.firstName + '!',
                 { toastClass: 'toast ngx-toastr', closeButton: true }
@@ -76,9 +78,6 @@ export class AuthenticationService {
             // notify
             this.currentUserSubject.next(user);
           }
-          console.log("#############################");
-		  console.log(user);
-		  console.log("#############################");
           return user;
         })
       );
@@ -117,9 +116,6 @@ export class AuthenticationService {
             // notify
             this.currentUserSubject.next(user);
           }
-          console.log("#############################");
-		  console.log(user);
-		  console.log("#############################");
           return user;
         })
       );
