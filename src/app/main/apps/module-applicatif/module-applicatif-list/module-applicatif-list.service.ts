@@ -20,17 +20,20 @@ export class ModuleApplicatifListService {
   getModuleApplicatifByCode(code: string): Observable<any[]> {
     return this.http.get<any>(`${environment.apiUrl}`+'/module-applicatif-by-code/'+code,  httpOptions);
   }
-  menuWithHasRoles(data: any): Observable<any> {
-    console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-    console.log(data);
-    console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-      return this.http.post(`${environment.apiUrl}`+'/menu-has-role', {
-        "id": "dashboard",
-        "title": "Dashboard",
-        "translate": "MENU.DASHBOARD.COLLAPSIBLE",
-        "type": "item",
-        "icon": "home",
-        "url": "dashboard/ecommerce"
+  hasRole(data: any): Observable<any[]> {
+    console.log("je suis dans le service ----------------------");
+    return this.http.post<any[]>(`${environment.apiUrl}`+'/menu-has-role', data);
+    /*return new Promise((resolve, reject) => {
+      this.http.post(`${environment.apiUrl}`+'/menu-has-role', data).subscribe((response: any) => {}, reject);
+    });*/
+    /*
+       return new Promise((resolve, reject) => {
+      this._httpClient.post(`${environment.apiUrl}`+'/menu-has-role', data).subscribe(response => {
+        resolve(response);
+      }, reject);
     });
-  }
+    */
+
+    
+}
 }

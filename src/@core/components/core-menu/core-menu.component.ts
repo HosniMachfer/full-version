@@ -7,6 +7,7 @@ import { CoreMenuService } from '@core/components/core-menu/core-menu.service';
 import { ModuleApplicatifListService } from 'app/main/apps/module-applicatif/module-applicatif-list/module-applicatif-list.service';
 
 import { AuthenticationService } from 'app/auth/service';
+import { timeStamp } from 'console';
 
 
 @Component({
@@ -57,19 +58,33 @@ export class CoreMenuComponent implements OnInit {
       this.currentUser = this._coreMenuService.currentUser;
       // Load menu
       this.menu = this._coreMenuService.getCurrentMenu();
-      console.log(this.menu);
+      
+      console.log("......................................");
+      console.log(this.currentUser.roles);
+	    console.log("......................................");
+	    this.menu.rolesUser = this.currentUser.roles;
       this.hasRole(this.menu);
-	    console.log(this.menu);
-	      this._changeDetectorRef.markForCheck();
+	    this._changeDetectorRef.markForCheck();
     });
 
   }
 
 
   hasRole(menu){
-    this._moduleApplicatifListService.menuWithHasRoles(menu[0]);
+
+    this._moduleApplicatifListService.hasRole(menu)
+	      .subscribe(
+	        data => {
+            console.log("/////////////////////////////////////////////");
+            console.log(data);
+            console.log("/////////////////////////////////////////////");
+            this.menu = data;
+	        },
+	        error => {
+	        console.log(" ici de la merde");
+	          console.log(error);
+	        });
+
   }
   
- 
-   
 }
