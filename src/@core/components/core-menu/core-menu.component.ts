@@ -59,10 +59,11 @@ export class CoreMenuComponent implements OnInit {
       // Load menu
       this.menu = this._coreMenuService.getCurrentMenu();
       
-      console.log("......................................");
-      console.log(this.currentUser.roles);
-	    console.log("......................................");
+      
+	    console.log("......................................||||||||||||||||||||||||||||||");
 	    this.menu.rolesUser = this.currentUser.roles;
+      console.log(this.menu.rolesUser );
+      console.log("......................................||||||||||||||||||||||||||||||");
       this.hasRole(this.menu);
 	    this._changeDetectorRef.markForCheck();
     });

@@ -59,6 +59,11 @@ export const locale = {
           MOUVEMENT:'Mouvement',
           MVTSTOCK:'MvtStock',
           FOURNISSEUR:'Fournisseurs'
+        },
+        GMAO: {
+          TITLE:'Module applicatif',
+          PARCMACHINE:'Parc machine',
+          INTERVENTION:'Intérvention'
         }
       },
       PAGES: {
@@ -216,6 +221,9 @@ export const locale = {
         DISABLED: 'Menu désactivé',
         DOCUMENTATION: 'Documentation',
         SUPPORT: 'Augmenter le soutien'
+      },
+      GMAO: {
+        SECTION: 'GMAO'
       },
       OTHERS: {
         SECTION: 'Other',

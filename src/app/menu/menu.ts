@@ -278,6 +278,96 @@ export const menu: CoreMenu[] = [
             ]
           }
         ]
+      },
+      {
+        id: 'gmao',
+        title: 'Pages',
+        translate: 'MENU.GMAO.SECTION',
+        type: 'collapsible',
+        icon: 'tool',
+        children: [
+          {
+            id: 'parc-machine',
+            title: 'Parc machine',
+            translate: 'MENU.APPS.GMAO.PARCMACHINE',
+            type: 'item',
+            icon: 'columns',
+            url: 'apps/gmao/machine/machine-list'
+          },
+          {
+	        id: 'intervention',
+	        title: 'Intervention',
+	        translate: 'MENU.APPS.GMAO.INTERVENTION',
+	        type: 'item',
+	        icon: 'activity',
+	        url: 'apps/gestion-dechets/conteneur/conteneur-list'
+	        },
+            {
+            id: 'gestiondechetconfiguration',
+            title: 'Configuration',
+            translate: 'MENU.APPS.GESTIONDECHET.CONF',
+            type: 'collapsible',
+            icon: 'settings',
+            children: [
+              {
+              id: 'unites',
+              title: 'Unites',
+              translate: 'MENU.APPS.GESTIONDECHET.UNITES',
+              type: 'item',
+              icon: 'circle',
+              url: 'apps/gestion-dechets/unite/unite-list'
+             },
+              {
+              id: 'etat-famille',
+              title: 'Etat famille',
+              translate: 'MENU.APPS.GESTIONDECHET.ETATFAMILLE',
+              type: 'item',
+              icon: 'circle',
+              url: 'apps/gestion-dechets/etat-famille/etat-famille-list'
+             },
+            {
+              id: 'etat-magasin',
+              title: 'Etat magasin',
+              translate: 'MENU.APPS.GESTIONDECHET.ETATMAGASIN',
+              type: 'item',
+              icon: 'circle',
+              url: 'apps/gestion-dechets/etat-magasin/etat-magasin-list'
+            },
+            {
+              id: 'famille',
+              title: 'Familles',
+              translate: 'MENU.APPS.GESTIONDECHET.FAMILLE',
+              type: 'item',
+              icon: 'circle',
+              url: 'apps/gestion-dechets/famille/famille-list'
+            },
+            {
+              id: 'magasin',
+              title: 'Magasins',
+              translate: 'MENU.APPS.GESTIONDECHET.MAGASIN',
+              type: 'item',
+              icon: 'circle',
+              url: 'apps/gestion-dechets/magasin/magasin-list'
+            },
+            {
+              id: 'matiere',
+              title: 'Matieres',
+              translate: 'MENU.APPS.GESTIONDECHET.MATIERE',
+              type: 'item',
+              icon: 'circle',
+              url: 'apps/gestion-dechets/matiere/matiere-list'
+            },
+            {
+              id: 'fournisseur',
+              title: 'Fournisseur',
+              translate: 'MENU.APPS.GESTIONDECHET.FOURNISSEUR',
+              type: 'item',
+              icon: 'circle',
+              url: 'apps/gestion-dechets/fournisseur/fournisseur-list'
+            }
+            ]
+          }
+        ]
       }
     ]
   },

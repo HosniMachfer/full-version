@@ -53,6 +53,10 @@ const routes: Routes = [
   {
     path: 'module-applicatif',
     loadChildren: () => import('./module-applicatif/module-applicatif.module').then(m => m.ModuleApplicatifModule)
+  },
+  {
+    path: 'gmao',
+    loadChildren: () => import('./gmao/gmao.module').then(m => m.GmaoModule)
   }
 ];
 
