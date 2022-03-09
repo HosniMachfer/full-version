@@ -30,6 +30,7 @@
                 <i data-feather="plus" class="d-sm-none d-inline-block mr-0 mr-sm-1"></i
                 ><span class="d-none d-sm-inline-block">{{'buttons.addNewUser' | translate}}</span>
               </button>
+              <a routerLink="/apps/gmao/machine/machine-list/machine-new" ngbDropdownItem><span [data-feather]="'file-text'" [size]="16" [class]="'mr-50'"></span> Details</a>
             </div>
           </div>
         </div>
@@ -67,13 +68,9 @@
                   <span [data-feather]="'more-vertical'" [class]="'cursor-pointer'"></span>
                 </button>
                 <div ngbDropdownMenu>
-                  <a routerLink="/apps/gmao/machine/machine-list/machine-view/{{ row.id }}" ngbDropdownItem
-                    ><span [data-feather]="'file-text'" [size]="16" [class]="'mr-50'"></span> Details</a
-                  ><a routerLink="/apps/gmao/machine/machine-list/machine-edit/{{ row.id }}" ngbDropdownItem
-                    ><span [data-feather]="'edit'" [size]="16" [class]="'mr-50'"></span> Edit</a
-                  ><a href="javascript:;" ngbDropdownItem
-                    ><span [data-feather]="'trash'" [size]="16" [class]="'mr-50'"></span> Delete</a
-                  >
+                  <a routerLink="/apps/gmao/machine/machine-list/machine-view/{{ row.id }}" ngbDropdownItem><span [data-feather]="'file-text'" [size]="16" [class]="'mr-50'"></span> Details</a>
+                  <a routerLink="/apps/gmao/machine/machine-list/machine-edit/{{ row.id }}" ngbDropdownItem><span [data-feather]="'edit'" [size]="16" [class]="'mr-50'"></span> Edit</a>
+                  <a href="javascript:;" ngbDropdownItem><span [data-feather]="'trash'" [size]="16" [class]="'mr-50'"></span> Delete</a>
                 </div>
               </div>
             </ng-template>

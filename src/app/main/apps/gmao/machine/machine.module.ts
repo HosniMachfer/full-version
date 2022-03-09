@@ -20,11 +20,16 @@ import { CommonModule } from '@angular/common';
 import { MachineListComponent } from './machine-list/machine-list.component';
 import { MachineEditComponent } from './machine-edit/machine-edit.component';
 import { MachineViewComponent } from './machine-view/machine-view.component';
+import { MachineNewComponent } from './machine-new/machine-new.component';
 import { MachineListService } from 'app/main/apps/gmao/machine/machine-list/machine-list.service';
 
 import { NewMachineSidebarComponent } from 'app/main/apps/gmao/machine/machine-list/new-machine-sidebar/new-machine-sidebar.component';
 import { MachineEditService } from 'app/main/apps/gmao/machine/machine-edit/machine-edit.service';
+import { MachineNewService } from 'app/main/apps/gmao/machine/machine-new/machine-new.service';
 import{ MachineViewService } from 'app/main/apps/gmao/machine/machine-view/machine-view.service';
+
+import { CardSnippetModule } from '@core/components/card-snippet/card-snippet.module';
+import { ContentHeaderModule } from 'app/layout/components/content-header/content-header.module';
 
 import { TranslateModule } from '@ngx-translate/core';
 
@@ -41,13 +46,18 @@ const routes: Routes = [
       uls: MachineViewService
     }
   },
+  {path: 'machine-list/machine-new',   component: MachineNewComponent,
+  resolve: {
+    uls: MachineNewService
+  } 
+},
   {path: 'machine-list/machine-view',  redirectTo: '/apps/machine/machine-list'},
   {path: 'machine-list/machine-edit',    redirectTo: '/apps/machine/machine-list' }
 ];
 
 @NgModule({
   declarations: [
-    MachineListComponent,NewMachineSidebarComponent,MachineEditComponent,MachineViewComponent
+    MachineListComponent,NewMachineSidebarComponent,MachineEditComponent,MachineViewComponent,MachineNewComponent
   ],
   imports: [
     CommonModule,
@@ -62,8 +72,9 @@ const routes: Routes = [
     CoreDirectivesModule,
     InvoiceModule,
     CoreSidebarModule,
-    TranslateModule
+    TranslateModule,
+    ContentHeaderModule, CardSnippetModule
   ],
-  providers: [MachineListService, MachineEditService,MachineViewService]
+  providers: [MachineListService, MachineEditService,MachineViewService,MachineNewService]
 })
 export class MachineModule { }
