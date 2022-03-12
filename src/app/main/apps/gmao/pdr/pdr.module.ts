@@ -17,16 +17,16 @@ import { InvoiceModule } from 'app/main/apps/invoice/invoice.module';
 
 import { CommonModule } from '@angular/common';
 
-import { MachineListComponent } from './machine-list/machine-list.component';
-import { MachineEditComponent } from './machine-edit/machine-edit.component';
-import { MachineViewComponent } from './machine-view/machine-view.component';
-import { MachineNewComponent } from './machine-new/machine-new.component';
-import { MachineListService } from 'app/main/apps/gmao/machine/machine-list/machine-list.service';
+import { PDRListComponent } from './pdr-list/pdr-list.component';
+import { PDREditComponent } from './pdr-edit/pdr-edit.component';
+import { PDRViewComponent } from './pdr-view/pdr-view.component';
+import { PDRNewComponent } from './pdr-new/pdr-new.component';
+import { PDRListService } from 'app/main/apps/gmao/pdr/pdr-list/pdr-list.service';
 
 
-import { MachineEditService } from 'app/main/apps/gmao/machine/machine-edit/machine-edit.service';
-import { MachineNewService } from 'app/main/apps/gmao/machine/machine-new/machine-new.service';
-import{ MachineViewService } from 'app/main/apps/gmao/machine/machine-view/machine-view.service';
+import { PDREditService } from 'app/main/apps/gmao/pdr/pdr-edit/pdr-edit.service';
+import { PDRNewService } from 'app/main/apps/gmao/pdr/pdr-new/pdr-new.service';
+import{ PDRViewService } from 'app/main/apps/gmao/pdr/pdr-view/pdr-view.service';
 
 import { CardSnippetModule } from '@core/components/card-snippet/card-snippet.module';
 import { ContentHeaderModule } from 'app/layout/components/content-header/content-header.module';
@@ -35,29 +35,29 @@ import { TranslateModule } from '@ngx-translate/core';
 
 // routing
 const routes: Routes = [
-  {path: 'machine-list',component: MachineListComponent  },
-  {path: 'machine-list/machine-edit/:id',   component: MachineEditComponent,
+  {path: 'pdr-list',component: PDRListComponent  },
+  {path: 'pdr-list/pdr-edit/:id',   component: PDREditComponent,
     resolve: {
-      uls: MachineEditService
+      uls: PDREditService
     } 
   },
-  {path: 'machine-list/machine-view/:id',   component: MachineViewComponent,
+  {path: 'pdr-list/pdr-view/:id',   component: PDRViewComponent,
     resolve: {
-      uls: MachineViewService
+      uls: PDRViewService
     }
   },
-  {path: 'machine-list/machine-new',   component: MachineNewComponent,
+  {path: 'pdr-list/pdr-new',   component: PDRNewComponent,
   resolve: {
-    uls: MachineNewService
+    uls: PDRNewService
   } 
 },
-  {path: 'machine-list/machine-view',  redirectTo: '/apps/machine/machine-list'},
-  {path: 'machine-list/machine-edit',    redirectTo: '/apps/machine/machine-list' }
+  {path: 'pdr-list/pdr-view',  redirectTo: '/apps/pdr/pdr-list'},
+  {path: 'pdr-list/pdr-edit',    redirectTo: '/apps/pdr/pdr-list' }
 ];
 
 @NgModule({
   declarations: [
-    MachineListComponent,MachineEditComponent,MachineViewComponent,MachineNewComponent
+    PDRListComponent,PDREditComponent,PDRViewComponent,PDRNewComponent
   ],
   imports: [
     CommonModule,
@@ -75,6 +75,6 @@ const routes: Routes = [
     TranslateModule,
     ContentHeaderModule, CardSnippetModule
   ],
-  providers: [MachineListService, MachineEditService,MachineViewService,MachineNewService]
+  providers: [PDRListService, PDREditService,PDRViewService,PDRNewService]
 })
-export class MachineModule { }
+export class PDRModule { }

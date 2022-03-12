@@ -63,7 +63,12 @@ export const locale = {
         GMAO: {
           TITLE:'Module applicatif',
           PARCMACHINE:'Parc machine',
-          INTERVENTION:'Intérvention'
+          PDR:'Pieces de rechange',
+          INTERVENTION:'Intérvention',
+          MARQUE:'Marque',
+          LOCALITE:'Localite',
+          EMPLACEMENT :'Emplacement',
+          CATEGORIEEQUIPEMENT :'Categorie équi'
         }
       },
       PAGES: {

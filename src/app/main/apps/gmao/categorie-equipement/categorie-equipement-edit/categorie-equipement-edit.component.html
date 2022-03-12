@@ -1,0 +1,112 @@
+<div class="content-wrapper container-xxl p-0">
+  <div class="content-body">
+    <!-- users edit start -->
+    <section class="app-categorie-equipement-edit">
+      <div class="card">
+        <div class="card-body">
+          <div class="user-info mb-1">
+            <h4 class="mb-0">Edit categorie-equipement</h4>
+          </div>
+          <!-- divider -->
+          <div class="col-12">
+            <hr class="my-1" />
+          </div>
+            <form class="form-validate" (ngSubmit)="(accountForm.form.valid)" #accountForm="ngForm">
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="name">Libellet :</label>
+                    <input
+                      type="text"
+                      id="name"
+                      class="form-control"
+                      placeholder="Name"
+                      name="fullName"
+                      [(ngModel)]="currentRow.name"
+                      [class.error]="accountForm.submitted && FullNameRef.invalid"
+                      #FullNameRef="ngModel"
+                      required
+                    />
+                    <span *ngIf="accountForm.submitted && FullNameRef.invalid" class="invalid-form">
+                      <small class="form-text text-danger" *ngIf="FullNameRef.errors.required"
+                        >This field is required!</small
+                      >
+                    </span>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="email">Code :</label>
+                    <input
+                      type="email"
+                      id="email"
+                      class="form-control"
+                      placeholder="Email"
+                      name="email"
+                      [(ngModel)]="currentRow.code"
+                      [class.error]="accountForm.submitted && EmailRef.invalid"
+                      #EmailRef="ngModel"
+                      required
+                    />
+                    <span *ngIf="accountForm.submitted && EmailRef.invalid" class="invalid-form">
+                      <small class="form-text text-danger" *ngIf="EmailRef.errors.required"
+                        >This field is required!</small
+                      >
+                    </span>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="status">Status :</label>
+                    <select class="form-control" [(ngModel)]="currentRow.status" name="status" id="status">
+                      <option>active</option>
+                      <option>inactive</option>
+                      <option>pending</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group">
+                        <label class="form-label" for="basic-icon-default-uname">{{ 'fnp.champs.description' | translate }}</label>
+                        <textarea class="form-control mb-2" rows="4" placeholder="Comment" (change)="doTextareaValueChange($event)">{{currentRow.description}}</textarea>
+                  </div>
+                </div>
+                <!-- <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="company">Date modification :</label>
+                    <div class="input-group">
+                      <input
+                        class="form-control"
+                        placeholder="dd-mm-yyyy"
+                        name="Basic Date Picker"
+                        [(ngModel)]="currentRow.dateCre"
+                        ngbDatepicker
+                        #basicDP="ngbDatepicker"
+                      />
+                      <div class="input-group-append">
+                        <button
+                          class="btn btn-outline-secondary feather icon-calendar"
+                          (click)="basicDP.toggle()"
+                          type="button"
+                          rippleEffect
+                        ></button>
+                      </div>
+                    </div>
+                  </div>
+                </div> -->
+                <div class="col-12 d-flex flex-sm-row flex-column mt-3">
+                  <button type="submit" (click)="submit(accountForm)" class="btn btn-primary mb-1 mb-sm-0 mr-0 mr-sm-1" rippleEffect>Save Changes</button>
+                  <button (click)="resetFormWithDefaultValues()" class="btn btn-outline-secondary mb-1 mb-sm-0 mr-0 mr-sm-1" rippleEffect>Reset</button>
+                  <a routerLink="/apps/gmao/categorie-equipement/categorie-equipement-list" class="btn btn-primary mb-1 mb-sm-0 mr-0 mr-sm-1" rippleEffect>Liste des categorie-equipements</a>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+    </section>
+    <!-- users edit ends -->
+
+        
+
+  </div>
+</div>

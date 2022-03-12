@@ -1,11 +1,11 @@
 <div class="content-wrapper container-xxl p-0">
   <div class="content-body">
-    <!-- machines new start -->
-    <section class="app-machine-new">
+    <!-- pdrs new start -->
+    <section class="app-pdr-new">
       <div class="card">
         <div class="card-body">
           <div class="user-info mb-1">
-            <h4 class="mb-0">Nouvelle machine</h4>
+            <h4 class="mb-0">Nouvelle pdr</h4>
           </div>
           <!-- divider -->
           <div class="col-12">
@@ -92,14 +92,14 @@
                 <div class="col-12 d-flex flex-sm-row flex-column mt-3">
                   <button type="submit" (click)="submit(accountForm)" class="btn btn-primary mb-1 mb-sm-0 mr-0 mr-sm-1" rippleEffect>Save Changes</button>
                   <button (click)="resetFormWithDefaultValues()" class="btn btn-outline-secondary mb-1 mb-sm-0 mr-0 mr-sm-1" rippleEffect>Reset</button>
-                  <a routerLink="/apps/gmao/machine/machine-list" class="btn btn-primary mb-1 mb-sm-0 mr-0 mr-sm-1" rippleEffect>Liste des machines</a>
+                  <a routerLink="/apps/gmao/pdr/pdr-list" class="btn btn-primary mb-1 mb-sm-0 mr-0 mr-sm-1" rippleEffect>Liste des pdrs</a>
                 </div>
               </div>
             </form>
           </div>
         </div>
     </section>
-    <!-- machines new ends -->
+    <!-- pdrs new ends -->
 
         <!-- Basic tabs start -->
         <section id="basic-tabs-components">
@@ -113,119 +113,14 @@
                     <li ngbNavItem>
                       <a ngbNavLink><span [data-feather]="'cast'"></span> Général</a>
                       <ng-template ngbNavContent>
-                        <div class="col-12">
-                          <hr class="my-1" />
-                        </div>
-                          <form class="form-validate" (ngSubmit)="(generalForm.form.valid)" #generalForm="ngForm">
-                            <div class="row">
-                              <div class="col-md-4">
-                                <div class="form-group">
-                                  <label for="name">Réference :</label>
-                                  <input
-                                    type="text"
-                                    id="name"
-                                    class="form-control"
-                                    placeholder="Name"
-                                    name="reference"
-                                    [(ngModel)]="reference"
-                                    [class.error]="generalForm.submitted && FullNameRef.invalid"
-                                    #FullNameRef="ngModel"
-                                    required
-                                  />
-                                  <span *ngIf="generalForm.submitted && FullNameRef.invalid" class="invalid-form">
-                                    <small class="form-text text-danger" *ngIf="FullNameRef.errors.required"
-                                      >This field is required!</small
-                                    >
-                                  </span>
-                                </div>
-                              </div>
-                              <div class="col-md-4">
-                                <div class="form-group">
-                                  <label for="name">Réference :</label>
-                                  <input
-                                    type="text"
-                                    id="name"
-                                    class="form-control"
-                                    placeholder="Name"
-                                    name="reference"
-                                    [(ngModel)]="reference"
-                                    [class.error]="generalForm.submitted && FullNameRef.invalid"
-                                    #FullNameRef="ngModel"
-                                    required
-                                  />
-                                  <span *ngIf="generalForm.submitted && FullNameRef.invalid" class="invalid-form">
-                                    <small class="form-text text-danger" *ngIf="FullNameRef.errors.required"
-                                      >This field is required!</small
-                                    >
-                                  </span>
-                                </div>
-                              </div>
-                              <div class="col-md-4">
-                                <div class="form-group">
-                                  <label for="name">Réference :</label>
-                                  <input
-                                    type="text"
-                                    id="name"
-                                    class="form-control"
-                                    placeholder="Name"
-                                    name="reference"
-                                    [(ngModel)]="reference"
-                                    [class.error]="generalForm.submitted && FullNameRef.invalid"
-                                    #FullNameRef="ngModel"
-                                    required
-                                  />
-                                  <span *ngIf="generalForm.submitted && FullNameRef.invalid" class="invalid-form">
-                                    <small class="form-text text-danger" *ngIf="FullNameRef.errors.required"
-                                      >This field is required!</small
-                                    >
-                                  </span>
-                                </div>
-                              </div>
-                              <div class="col-md-4">
-                                <div class="form-group">
-                                  <label for="name">Réference :</label>
-                                  <input
-                                    type="text"
-                                    id="name"
-                                    class="form-control"
-                                    placeholder="Name"
-                                    name="reference"
-                                    [(ngModel)]="reference"
-                                    [class.error]="generalForm.submitted && FullNameRef.invalid"
-                                    #FullNameRef="ngModel"
-                                    required
-                                  />
-                                  <span *ngIf="generalForm.submitted && FullNameRef.invalid" class="invalid-form">
-                                    <small class="form-text text-danger" *ngIf="FullNameRef.errors.required"
-                                      >This field is required!</small
-                                    >
-                                  </span>
-                                </div>
-                              </div>
-                              <div class="col-md-4">
-                                <div class="form-group">
-                                  <label for="email">Désignation :</label>
-                                  <input
-                                    type="email"
-                                    id="email"
-                                    class="form-control"
-                                    placeholder="designation"
-                                    name="designation"
-                                    [(ngModel)]="designation"
-                                    [class.error]="generalForm.submitted && EmailRef.invalid"
-                                    #EmailRef="ngModel"
-                                    required
-                                  />
-                                  <span *ngIf="generalForm.submitted && EmailRef.invalid" class="invalid-form">
-                                    <small class="form-text text-danger" *ngIf="EmailRef.errors.required"
-                                      >This field is required!</small
-                                    >
-                                  </span>
-                                </div>
-                              </div>
-                              </div>
-                              </form>
-                              
+                        <p>
+                          Candy canes donut chupa chups candy canes lemon drops oat cake wafer. Cotton candy candy canes
+                          marzipan carrot cake. Sesame snaps lemon drops candy marzipan donut brownie tootsie roll. Icing
+                          croissant bonbon biscuit gummi bears. Pudding candy canes sugar plum cookie chocolate cake powder
+                          croissant. Carrot cake tiramisu danish candy cake muffin croissant tart dessert. Tiramisu caramels
+                          candy canes chocolate cake sweet roll liquorice icing cupcake. Candy cookie sweet roll bear claw
+                          sweet roll.
+                        </p>
                       </ng-template>
                     </li>
                     <li ngbNavItem>

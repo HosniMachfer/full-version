@@ -295,6 +295,14 @@ export const menu: CoreMenu[] = [
             url: 'apps/gmao/machine/machine-list'
           },
           {
+            id: 'pdr',
+            title: 'Pieces de rechange',
+            translate: 'MENU.APPS.GMAO.PDR',
+            type: 'item',
+            icon: 'columns',
+            url: 'apps/gmao/pdr/pdr-list'
+          },
+          {
 	        id: 'intervention',
 	        title: 'Intervention',
 	        translate: 'MENU.APPS.GMAO.INTERVENTION',
@@ -340,6 +348,38 @@ export const menu: CoreMenu[] = [
               type: 'item',
               icon: 'circle',
               url: 'apps/gestion-dechets/famille/famille-list'
+            },
+            {
+              id: 'marque',
+              title: 'Marques',
+              translate: 'MENU.APPS.GMAO.MARQUE',
+              type: 'item',
+              icon: 'circle',
+              url: 'apps/gmao/marque/marque-list'
+            },
+            {
+              id: 'localite',
+              title: 'Localites',
+              translate: 'MENU.APPS.GMAO.LOCALITE',
+              type: 'item',
+              icon: 'circle',
+              url: 'apps/gmao/localite/localite-list'
+            },
+            {
+              id: 'categorie-equipement',
+              title: 'Categorie equipements',
+              translate: 'MENU.APPS.GMAO.CATEGORIEEQUIPEMENT',
+              type: 'item',
+              icon: 'circle',
+              url: 'apps/gmao/categorie-equipement/categorie-equipement-list'
+            },
+            {
+              id: 'emplacement',
+              title: 'Emplacements',
+              translate: 'MENU.APPS.GMAO.EMPLACEMENT',
+              type: 'item',
+              icon: 'circle',
+              url: 'apps/gmao/emplacement/emplacement-list'
             },
             {
               id: 'magasin',

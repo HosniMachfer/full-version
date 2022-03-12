@@ -26,8 +26,10 @@
                   class="form-control ml-25"
                   (keyup)="filterUpdate($event)"
               /></label>
-              <a routerLink="/apps/gmao/machine/machine-list/machine-new"><button class="btn btn-primary ml-1" > <i data-feather="plus" class="d-sm-none d-inline-block mr-0 mr-sm-1"></i
-                ><span class="d-none d-sm-inline-block">{{'buttons.addNewUser' | translate}}</span></button></a>
+              <button class="btn btn-primary ml-1" rippleEffect (click)="toggleSidebar('new-emplacement-sidebar')">
+                <i data-feather="plus" class="d-sm-none d-inline-block mr-0 mr-sm-1"></i
+                ><span class="d-none d-sm-inline-block">{{'buttons.addNewUser' | translate}}</span>
+              </button>
             </div>
           </div>
         </div>
@@ -41,9 +43,15 @@
           [footerHeight]="50"
           [scrollbarH]="true"
         >
-          <ngx-datatable-column name="Reférence machine" prop="reference" [width]="50"></ngx-datatable-column>
-          <ngx-datatable-column name="Designiation machine" prop="designation" [width]="50"></ngx-datatable-column>
-          <ngx-datatable-column name="Description machine" prop="description"></ngx-datatable-column>
+          
+          <ngx-datatable-column name="Libellet emplacement" prop="name" [width]="100">
+            <ng-template let-row="row" let-name="value" ngx-datatable-cell-template>
+                {{name}}
+            </ng-template>
+          </ngx-datatable-column>
+          
+          <ngx-datatable-column name="Code emplacement" prop="code" [width]="50"></ngx-datatable-column>
+          <ngx-datatable-column name="Description emplacement" prop="description"></ngx-datatable-column>
           <ngx-datatable-column name="Status" prop="status" [width]="50">
             <ng-template let-status="value" ngx-datatable-cell-template>
               <div
@@ -65,9 +73,13 @@
                   <span [data-feather]="'more-vertical'" [class]="'cursor-pointer'"></span>
                 </button>
                 <div ngbDropdownMenu>
-                  <a routerLink="/apps/gmao/machine/machine-list/machine-view/{{ row.id }}" ngbDropdownItem><span [data-feather]="'file-text'" [size]="16" [class]="'mr-50'"></span> Details</a>
-                  <a routerLink="/apps/gmao/machine/machine-list/machine-edit/{{ row.id }}" ngbDropdownItem><span [data-feather]="'edit'" [size]="16" [class]="'mr-50'"></span> Edit</a>
-                  <a href="javascript:;" ngbDropdownItem><span [data-feather]="'trash'" [size]="16" [class]="'mr-50'"></span> Delete</a>
+                  <a routerLink="/apps/gmao/emplacement/emplacement-list/emplacement-view/{{ row.id }}" ngbDropdownItem
+                    ><span [data-feather]="'file-text'" [size]="16" [class]="'mr-50'"></span> Details</a
+                  ><a routerLink="/apps/gmao/emplacement/emplacement-list/emplacement-edit/{{ row.id }}" ngbDropdownItem
+                    ><span [data-feather]="'edit'" [size]="16" [class]="'mr-50'"></span> Edit</a
+                  ><a href="javascript:;" ngbDropdownItem
+                    ><span [data-feather]="'trash'" [size]="16" [class]="'mr-50'"></span> Delete</a
+                  >
                 </div>
               </div>
             </ng-template>
@@ -77,6 +89,12 @@
     </section>
     <!--/ User List -->
   </div>
+
+  <!-- New User Sidebar -->
+  <core-sidebar class="modal modal-slide-in sidebar-todo-modal fade" name="new-emplacement-sidebar" overlayClass="modal-backdrop">
+    <app-new-emplacement-sidebar></app-new-emplacement-sidebar>
+  </core-sidebar>
+  <!--/ New User Sidebar -->
 </div>
 
 

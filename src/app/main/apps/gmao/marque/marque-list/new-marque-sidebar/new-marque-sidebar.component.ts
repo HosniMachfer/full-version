@@ -1,19 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { CoreSidebarService } from '@core/components/core-sidebar/core-sidebar.service';
 import { Router } from '@angular/router';
-import { MachineListService } from 'app/main/apps/gmao/machine/machine-list/machine-list.service';
-import { MachineEditService } from 'app/main/apps/gmao/machine/machine-edit/machine-edit.service';
+import { MarqueListService } from 'app/main/apps/gmao/marque/marque-list/marque-list.service';
+import { MarqueEditService } from 'app/main/apps/gmao/marque/marque-edit/marque-edit.service';
 import { RoleListService } from 'app/main/apps/role/role-list/role-list.service';
 import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
-  selector: 'app-new-machine-sidebar',
-  templateUrl: './new-machine-sidebar.component.html'
+  selector: 'app-new-marque-sidebar',
+  templateUrl: './new-marque-sidebar.component.html'
 })
-export class NewMachineSidebarComponent implements OnInit {
-  public reference  ;
-  public designation;
+export class NewMarqueSidebarComponent implements OnInit {
+  public name;
+  public code;
   public roles = [];
   public select_roles = [];
 
@@ -22,8 +22,9 @@ export class NewMachineSidebarComponent implements OnInit {
    *
    * @param {CoreSidebarService} _coreSidebarService
    */
-  constructor(private router: Router, private _machineEditService: MachineEditService, private _coreSidebarService: CoreSidebarService,
-    private _roleListService: RoleListService ,private _toastrService: ToastrService, private _machineListService: MachineListService) {}
+  constructor(private router: Router, private _marqueEditService: MarqueEditService, private _coreSidebarService: CoreSidebarService,
+    private _roleListService: RoleListService ,private _toastrService: ToastrService,
+    private _marqueListService: MarqueListService) {}
 
   /**
    * Toggle the sidebar
@@ -41,12 +42,12 @@ export class NewMachineSidebarComponent implements OnInit {
    */
   submit(form) {
     if (form.valid) {
-      this.toggleSidebar('new-machine-sidebar');
-      this._machineEditService.create(form.value)
+      this.toggleSidebar('new-marque-sidebar');
+      this._marqueEditService.create(form.value)
     .subscribe(
       response => {
         this._toastrService.success("L'ajout d'un nouveau privil�ge avec success", "");
-        this.router.navigate(['apps/gmao/machine/machine-list/machine-view/'+response.id]);
+        this.router.navigate(['apps/gmao/marque/marque-list/marque-view/'+response.id]);
       },
       error => {
         this._toastrService.error("Impossible d'ajouter un noueau pribil�ge", "");

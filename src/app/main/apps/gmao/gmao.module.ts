@@ -12,6 +12,26 @@ const routes: Routes = [
   {
     path: 'machine',
     loadChildren: () => import('./machine/machine.module').then(m => m.MachineModule)
+  },
+  {
+    path: 'pdr',
+    loadChildren: () => import('./pdr/pdr.module').then(m => m.PDRModule)
+  },
+  {
+    path: 'marque',
+    loadChildren: () => import('./marque/marque.module').then(m => m.MarqueModule)
+  },
+  {
+    path: 'localite',
+    loadChildren: () => import('./localite/localite.module').then(m => m.LocaliteModule)
+  },
+  {
+    path: 'emplacement',
+    loadChildren: () => import('./emplacement/emplacement.module').then(m => m.EmplacementModule)
+  },
+  {
+    path: 'categorie-equipement',
+    loadChildren: () => import('./categorie-equipement/categorie-equipement.module').then(m => m.CategorieEquipementModule)
   }
 ]
 
