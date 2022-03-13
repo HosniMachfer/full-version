@@ -13,7 +13,7 @@ const httpOptions = {
 };
 
 @Injectable()
-export class FamilleEditService implements Resolve<any> {
+export class FamilleGmaoEditService implements Resolve<any> {
   public apiData: any;
   public onFamilleEditChanged: BehaviorSubject<any>;
 

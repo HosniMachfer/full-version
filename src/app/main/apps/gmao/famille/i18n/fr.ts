@@ -12,19 +12,17 @@ export const locale = {
     },
     filtres: {
     	title : 'Filtre de recherche',
-        filtreLocalite: 'Selectionnez une localité',
-        filtreMarque:'Selectionnez une marque',
-        filtreEtatActuel:'Etat actuel',
-        filtreEtat:'Actif?'
+        filtreRole: 'Selectionnez un Role',
+        filtreStatus:'Selectionnez un statut'
     },
     buttons: {
-    	addNewUser : 'Ajouter un nouveau machine'
+    	addNewUser : 'Ajouter un nouveau Famille'
     },
     fnp : {
-        title : 'Formulaire nouveau machine',
+        title : 'Formulaire nouveau Famille',
         champs:{
-	        libellet: 'Reférence',
-	        code : 'Designiation',
+	        libellet: 'Libellet',
+	        code : 'Code',
 	        description: 'Description',
 	        statut : 'Statut'
         },    

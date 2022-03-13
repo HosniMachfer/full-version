@@ -11,7 +11,7 @@ const httpOptions = {
 @Injectable({
   providedIn: 'root'
 })
-export class FamilleListService {
+export class FamilleGmaoListService {
 
   constructor(private http: HttpClient) { }
   

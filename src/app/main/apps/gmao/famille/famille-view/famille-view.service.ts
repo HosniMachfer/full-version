@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
 
@@ -6,16 +6,15 @@ import { environment } from 'environments/environment';
 
 import { BehaviorSubject, Observable } from 'rxjs';
 
-import { Person, DataService } from 'app/main/forms/form-elements/select/data.service';
-
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json'})
 };
 
 @Injectable()
-export class FamilleEditService implements Resolve<any> {
-  public apiData: any;
-  public onFamilleEditChanged: BehaviorSubject<any>;
+export class FamilleGmaoViewService implements Resolve<any> {
+  public rows: any;
+  public onFamilleViewChanged: BehaviorSubject<any>;
+  public id;
 
   /**
    * Constructor
@@ -24,7 +23,7 @@ export class FamilleEditService implements Resolve<any> {
    */
   constructor(private _httpClient: HttpClient) {
     // Set the defaults
-    this.onFamilleEditChanged = new BehaviorSubject({});
+    this.onFamilleViewChanged = new BehaviorSubject({});
   }
 
   /**
@@ -35,33 +34,29 @@ export class FamilleEditService implements Resolve<any> {
    * @returns {Observable<any> | Promise<any> | any}
    */
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any {
+    let currentId = Number(route.paramMap.get('id'));
     return new Promise<void>((resolve, reject) => {
-      Promise.all([this.getApiData()]).then(() => {
+      Promise.all([this.getApiData(currentId)]).then(() => {
         resolve();
       }, reject);
     });
   }
 
   /**
-   * Get API Data
+   * Get rows
    */
-  getApiData(): Promise<any[]> {
+  getApiData(id: number): Promise<any[]> {
     return new Promise((resolve, reject) => {
-      this._httpClient.get(`${environment.apiUrl}`+'/diva-erp-rest-api-cfg/familles').subscribe((response: any) => {
-        this.apiData = response;
-        this.onFamilleEditChanged.next(this.apiData);
-        resolve(this.apiData);
+      this._httpClient.get(`${environment.apiUrl}`+'/diva-erp-rest-api-cfg/famille/'+`${id}`).subscribe((response: any) => {
+        this.rows = response;
+        this.onFamilleViewChanged.next(this.rows);
+        resolve(this.rows);
       }, reject);
     });
   }
- 
-getAll(): Observable<any[]> {
-    return this._httpClient.get<any[]>(`${environment.apiUrl}`+'/diva-erp-rest-api-cfg/familles',  httpOptions);
+
+getFamille(route: ActivatedRouteSnapshot): Observable<any[]> {
+    let currentId = Number(route.paramMap.get('id'));
+    return this._httpClient.get<any>(`${environment.apiUrl}`+'/diva-erp-rest-api-cfg/famille'+`${currentId}`,  httpOptions);
 }
-
-create(data: any): Observable<any> {
-    return this._httpClient.post(`${environment.apiUrl}`+'/diva-erp-rest-api-cfg/add-famille', data);
-}
-
-
 }

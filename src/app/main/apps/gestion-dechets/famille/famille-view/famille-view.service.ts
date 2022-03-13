@@ -47,7 +47,7 @@ export class FamilleViewService implements Resolve<any> {
    */
   getApiData(id: number): Promise<any[]> {
     return new Promise((resolve, reject) => {
-      this._httpClient.get(`${environment.apiUrl}`+'/diva-erp-rest-api-gestion-dechets/famille/'+`${id}`).subscribe((response: any) => {
+      this._httpClient.get(`${environment.apiUrl}`+'/diva-erp-rest-api-cfg/famille/'+`${id}`).subscribe((response: any) => {
         this.rows = response;
         this.onFamilleViewChanged.next(this.rows);
         resolve(this.rows);
@@ -57,6 +57,6 @@ export class FamilleViewService implements Resolve<any> {
 
 getFamille(route: ActivatedRouteSnapshot): Observable<any[]> {
     let currentId = Number(route.paramMap.get('id'));
-    return this._httpClient.get<any>(`${environment.apiUrl}`+'/diva-erp-rest-api-gestion-dechets/famille'+`${currentId}`,  httpOptions);
+    return this._httpClient.get<any>(`${environment.apiUrl}`+'/diva-erp-rest-api-cfg/famille'+`${currentId}`,  httpOptions);
 }
 }

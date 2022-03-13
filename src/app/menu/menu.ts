@@ -347,7 +347,7 @@ export const menu: CoreMenu[] = [
               translate: 'MENU.APPS.GESTIONDECHET.FAMILLE',
               type: 'item',
               icon: 'circle',
-              url: 'apps/gestion-dechets/famille/famille-list'
+              url: 'apps/gmao/famille/famille-list'
             },
             {
               id: 'marque',

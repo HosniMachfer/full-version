@@ -152,29 +152,29 @@ export class UserListComponent implements OnInit {
     this._coreSidebarService.getSidebarRegistry(name).toggleOpen();
   }
 
-  /**
-   * Filter By Roles
-   *
-   * @param event
-   */
-  filterByRole(event) {
-    const filter = event ? event.value : '';
-    this.previousRoleFilter = filter;
-    this.temp = this.filterRows(filter, this.previousPlanFilter, this.previousStatusFilter);
-    this.rows = this.temp;
-  }
+      /**
+       * Filter By Roles
+       *
+       * @param event
+       */
+      filterByRole(event) {
+        const filter = event ? event.value : '';
+        this.previousRoleFilter = filter;
+        this.temp = this.filterRows(filter, this.previousPlanFilter, this.previousStatusFilter);
+        this.rows = this.temp;
+      }
 
-  /**
-   * Filter By Plan
-   *
-   * @param event
-   */
-  filterByPlan(event) {
-    const filter = event ? event.value : '';
-    this.previousPlanFilter = filter;
-    this.temp = this.filterRows(this.previousRoleFilter, filter, this.previousStatusFilter);
-    this.rows = this.temp;
-  }
+      /**
+       * Filter By Plan
+       *
+       * @param event
+       */
+      filterByPlan(event) {
+        const filter = event ? event.value : '';
+        this.previousPlanFilter = filter;
+        this.temp = this.filterRows(this.previousRoleFilter, filter, this.previousStatusFilter);
+        this.rows = this.temp;
+      }
 
   /**
    * Filter By Status
@@ -216,16 +216,10 @@ export class UserListComponent implements OnInit {
   /**
    * On init
    */
-  ngOnInit(): void {
-  
-  
-  
-     this.selectedLanguage = this._translateService.currentLang;
-    
+  ngOnInit(): void { 
+    this.selectedLanguage = this._translateService.currentLang;
     this._translateService.use(this.selectedLanguage);
-
     this._coreConfigService.setConfig({ app: { appLanguage: this.selectedLanguage } }, { emitEvent: true });
-    
     
     // Subscribe config change
     this._coreConfigService.config.pipe(takeUntil(this._unsubscribeAll)).subscribe(config => {

@@ -2,6 +2,99 @@
   <div class="content-body">
     <!-- User List -->
     <section class="users-list-wrapper">
+
+      <!-- users filter start -->
+      <div class="card">
+        <h5 class="card-header">{{ 'filtres.title' | translate }}</h5>
+        <div class="card-body">
+          <div class="users-list-filter">
+            <form>
+              <div class="row">
+                <div class="col-12 col-md-4">
+                  <label class="d-flex align-items-center ml-1 ml-md-0"
+                  >Réfèrence:<input
+                    [(ngModel)]="searchReference"
+                    name="searchReference"
+                    type="search"
+                    class="form-control ml-25"
+                    (keyup)="filterByReference($event)"
+                /></label>
+                </div>
+                <div class="col-12 col-md-4">
+                  <label class="d-flex align-items-center ml-1 ml-md-0"
+                  >Designation:<input
+                    [(ngModel)]="searchDesigniation"
+                    name="searchDesigniation"
+                    type="search"
+                    class="form-control ml-25"
+                    (keyup)="filterByDesignation($event)"
+                /></label>
+                </div>
+                <div class="col-12 col-md-4">
+                  <label class="d-flex align-items-center ml-1 ml-md-0"
+                  >Modèle:<input
+                    [(ngModel)]="searchModele"
+                    name="searchModele"
+                    type="search"
+                    class="form-control ml-25"
+                    (keyup)="filterByModele($event)"
+                /></label>
+                </div>
+                <div class="col-12 col-md-3">
+                  <fieldset class="form-group">
+                    <ng-select
+                      [items]="selectLocalite"
+                      [(ngModel)]="selectedLocalite"
+                      name="selectedLocalite"
+                      bindLabel="code"
+                      placeholder="{{ 'filtres.filtreLocalite' | translate }}"
+                      (change)="filterByLocalite($event)"
+                    ></ng-select>
+                  </fieldset>
+                </div>
+                <div class="col-12 col-md-3">
+                  <fieldset class="form-group">
+                    <ng-select
+                      [items]="selectMarque"
+                      [(ngModel)]="selectedMarque"
+                      name="selectedMarque"
+                      bindLabel="name"
+                      placeholder="{{ 'filtres.filtreMarque' | translate }}"
+                      (change)="filterByMarque($event)"
+                    ></ng-select>
+                  </fieldset>
+                </div>
+                <div class="col-12 col-md-3">
+                  <fieldset class="form-group">
+                    <ng-select
+                      [items]="selectEtatActuel"
+                      [(ngModel)]="selectedEtatActuel"
+                      name="selectedEtatActuel"
+                      bindLabel="code"
+                      placeholder="{{ 'filtres.filtreEtatActuel' | translate }}"
+                      (change)="filterByMarque($event)"
+                    ></ng-select>
+                  </fieldset>
+                </div>
+                <div class="col-12 col-md-3">
+                  <fieldset class="form-group">
+                    <ng-select
+                      [items]="selectEtat"
+                      [(ngModel)]="selectedEtat"
+                      name="selectedEtat"
+                      bindLabel="code"
+                      placeholder="{{ 'filtres.filtreEtat' | translate }}"
+                      (change)="filterByMarque($event)"
+                    ></ng-select>
+                  </fieldset>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <!-- users filter end -->
+
       <div class="card">
         <div class="row">
           <div class="col-md-6 col-12">
@@ -18,16 +111,10 @@
           </div>
           <div class="col-md-6 col-12 d-flex justify-content-start justify-content-md-end">
             <div class="d-flex align-items-center justify-content-end pr-1 pb-1 pb-md-0">
-              <label class="d-flex align-items-center ml-1 ml-md-0"
-                >Search:<input
-                  [(ngModel)]="searchValue"
-                  name="searchValue"
-                  type="search"
-                  class="form-control ml-25"
-                  (keyup)="filterUpdate($event)"
-              /></label>
-              <a routerLink="/apps/gmao/machine/machine-list/machine-new"><button class="btn btn-primary ml-1" > <i data-feather="plus" class="d-sm-none d-inline-block mr-0 mr-sm-1"></i
-                ><span class="d-none d-sm-inline-block">{{'buttons.addNewUser' | translate}}</span></button></a>
+              <a routerLink="/apps/gmao/machine/machine-list/machine-new"><button class="btn btn-primary ml-1" > 
+                <i data-feather="plus" class="d-sm-none d-inline-block mr-0 mr-sm-1"></i>
+                <span class="d-none d-sm-inline-block">{{'buttons.addNewUser' | translate}}</span></button>
+              </a>
             </div>
           </div>
         </div>
@@ -41,24 +128,19 @@
           [footerHeight]="50"
           [scrollbarH]="true"
         >
-          <ngx-datatable-column name="Reférence machine" prop="reference" [width]="50"></ngx-datatable-column>
-          <ngx-datatable-column name="Designiation machine" prop="designation" [width]="50"></ngx-datatable-column>
-          <ngx-datatable-column name="Description machine" prop="description"></ngx-datatable-column>
-          <ngx-datatable-column name="Status" prop="status" [width]="50">
-            <ng-template let-status="value" ngx-datatable-cell-template>
-              <div
-                class="badge badge-pill"
-                [ngClass]="{
-                  'badge-light-success': status == 'active',
-                  'badge-light-secondary': status == 'inactive',
-                  'badge-light-warning': status == 'pending'
-                }"
-              >
-                {{ status }}
-              </div>
-            </ng-template>
-          </ngx-datatable-column>
-          <ngx-datatable-column name="Action" [width]="40" [sortable]="false">
+          <ngx-datatable-column name="Réfèrence" prop="reference" ></ngx-datatable-column>
+          <ngx-datatable-column name="Designiation" prop="designation" ></ngx-datatable-column>
+          <ngx-datatable-column name="Marque" prop="marque.code" ></ngx-datatable-column>
+          <ngx-datatable-column name="Numéro de série" prop="numeroDeSerie" ></ngx-datatable-column>
+          <ngx-datatable-column name="Modèle" prop="modele" > </ngx-datatable-column>
+          <ngx-datatable-column name="Famille" prop="famille.code" > </ngx-datatable-column>
+          <ngx-datatable-column name="Localite" prop="localite.code" > </ngx-datatable-column>
+          <ngx-datatable-column name="Date d'achat" prop="dateAchat" > </ngx-datatable-column>
+          <ngx-datatable-column name="Catégori équipement" prop="categorieEquipement.code" > </ngx-datatable-column>
+          <ngx-datatable-column name="Carateristique technique" prop="carateristiqueTechnique" > </ngx-datatable-column>
+          <ngx-datatable-column name="Num déclaration" prop="numDeclaration" > </ngx-datatable-column>
+          <ngx-datatable-column name="Emplacement" prop="emplacement.code" > </ngx-datatable-column>
+          <ngx-datatable-column name="Action"  [sortable]="false">
             <ng-template ngx-datatable-cell-template let-row="row">
               <div ngbDropdown container="body">
                 <button ngbDropdownToggle type="button" class="btn icon-btn btn-sm hide-arrow" rippleEffect>
