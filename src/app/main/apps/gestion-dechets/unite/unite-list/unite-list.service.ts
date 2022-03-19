@@ -16,6 +16,6 @@ export class UniteListService {
   constructor(private http: HttpClient) { }
   
 getAll(): Observable<any[]> {
-    return this.http.get<any[]>(`${environment.apiUrl}`+'/diva-erp-rest-api-gestion-dechets/unites',  httpOptions);
+    return this.http.get<any[]>(`${environment.apiUrl}`+'/diva-erp-rest-api-cfg/unites',  httpOptions);
 }
 }

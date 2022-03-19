@@ -318,14 +318,6 @@ export const menu: CoreMenu[] = [
             icon: 'settings',
             children: [
               {
-              id: 'unites',
-              title: 'Unites',
-              translate: 'MENU.APPS.GESTIONDECHET.UNITES',
-              type: 'item',
-              icon: 'circle',
-              url: 'apps/gestion-dechets/unite/unite-list'
-             },
-              {
               id: 'etat-famille',
               title: 'Etat famille',
               translate: 'MENU.APPS.GESTIONDECHET.ETATFAMILLE',
@@ -404,6 +396,30 @@ export const menu: CoreMenu[] = [
               type: 'item',
               icon: 'circle',
               url: 'apps/gestion-dechets/fournisseur/fournisseur-list'
+            },
+            {
+              id: 'unites',
+              title: 'Unites',
+              translate: 'MENU.APPS.GMAO.UNITES',
+              type: 'item',
+              icon: 'circle',
+              url: 'apps/gmao/unite/unite-list'
+            },
+            {
+              id: 'etat-actuel',
+              title: 'Etat actuel',
+              translate: 'MENU.APPS.GMAO.ETATACTUEL',
+              type: 'item',
+              icon: 'circle',
+              url: 'apps/gmao/etat-actuel/etat-actuel-list'
+            },
+            {
+              id: 'etat-machine',
+              title: 'Etat machine',
+              translate: 'MENU.APPS.GMAO.ETATMACHINE',
+              type: 'item',
+              icon: 'circle',
+              url: 'apps/gmao/etat-machine/etat-machine-list'
             }
             ]
           }

@@ -15,7 +15,9 @@ export const locale = {
         filtreLocalite: 'Selectionnez une localité',
         filtreMarque:'Selectionnez une marque',
         filtreEtatActuel:'Etat actuel',
-        filtreEtat:'Actif?'
+        filtreEtat:'Actif?',
+        filtreFamille:'Famille',
+        filtreCategorie:'Catégorie'
     },
     buttons: {
     	addNewUser : 'Ajouter un nouveau machine'

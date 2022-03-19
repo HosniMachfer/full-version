@@ -155,7 +155,7 @@ export class CategorieEquipementEditComponent implements OnInit, OnDestroy {
       .subscribe(
         response => {
           this._toastrService.success('Mise � jour privileg avec success', '');
-          this.router.navigate(['apps/gestion-dechets/categorie-equipement/categorie-equipement-list']);
+          this.router.navigate(['apps/gmao/categorie-equipement/categorie-equipement-list']);
         },
         error => {
           this._toastrService.error('Impossible de mettre � jour pribil�ge', error);

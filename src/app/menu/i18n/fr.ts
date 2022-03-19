@@ -68,7 +68,10 @@ export const locale = {
           MARQUE:'Marque',
           LOCALITE:'Localite',
           EMPLACEMENT :'Emplacement',
-          CATEGORIEEQUIPEMENT :'Categorie équi'
+          CATEGORIEEQUIPEMENT :'Categorie équi',
+          UNITES:'Unites',
+          ETATACTUEL:'Etat actuel',
+          ETATMACHINE:'Etat machine'
         }
       },
       PAGES: {

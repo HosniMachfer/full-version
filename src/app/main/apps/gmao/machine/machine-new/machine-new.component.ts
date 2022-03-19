@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ViewEncapsulation, ViewChild,Injectable } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewEncapsulation, ViewChild,Injectable,ChangeDetectionStrategy } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -17,6 +17,16 @@ import {NgbCalendar, NgbDateAdapter, NgbDateParserFormatter, NgbDateStruct} from
 import * as snippet from 'app/main/components/tabs/tabs.snippetcode';
 import { ToastrService } from 'ngx-toastr';
 import { MachineEditService } from 'app/main/apps/gmao/machine/machine-edit/machine-edit.service';
+import { MarqueListService } from '../../marque/marque-list/marque-list.service';
+import { FamilleGmaoListService } from '../../famille/famille-list/famille-list.service';
+import { LocaliteListService } from '../../localite/localite-list/localite-list.service';
+import { CategorieEquipementListService } from '../../categorie-equipement/categorie-equipement-list/categorie-equipement-list.service';
+import { UniteGmaoListService } from '../../unite/unite-list/unite-list.service';
+import { EmplacementListService } from '../../emplacement/emplacement-list/emplacement-list.service';
+import { EtatMachineListService } from '../../etat-machine/etat-machine-list/etat-machine-list.service';
+import { EtatActuelListService } from '../../etat-actuel/etat-actuel-list/etat-actuel-list.service';
+import { environment } from 'environments/environment';
+
 interface BrandObject {
   id: number;
   text: string;
@@ -77,6 +87,7 @@ export class CustomDateParserFormatter extends NgbDateParserFormatter {
   selector: 'app-machine-new',
   templateUrl: './machine-new.component.html',
   styleUrls: ['./machine-new.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {provide: NgbDateAdapter, useClass: CustomAdapter},
     {provide: NgbDateParserFormatter, useClass: CustomDateParserFormatter}
@@ -96,16 +107,43 @@ export class MachineNewComponent implements OnInit, OnDestroy {
   public designation;
   public status;
 
-    // snippet code variables
-    public _snippetCodeBasicTab = snippet.snippetCodeBasicTab;
-    public _snippetCodeIconTab = snippet.snippetCodeIconTab;
-    public _snippetCodeVerticalLeftTabs = snippet.snippetCodeVerticalLeftTabs;
-    public _snippetCodeVerticalRightTabs = snippet.snippetCodeVerticalRightTabs;
-    public _snippetCodeFilled = snippet.snippetCodeFilled;
-    public _snippetCodeJustified = snippet.snippetCodeJustified;
-    public _snippetCodeCenter = snippet.snippetCodeCenter;
-    public _snippetCodeEnd = snippet.snippetCodeEnd;
-  
+  // snippet code variables
+  public _snippetCodeBasicTab = snippet.snippetCodeBasicTab;
+  public _snippetCodeIconTab = snippet.snippetCodeIconTab;
+  public _snippetCodeVerticalLeftTabs = snippet.snippetCodeVerticalLeftTabs;
+  public _snippetCodeVerticalRightTabs = snippet.snippetCodeVerticalRightTabs;
+  public _snippetCodeFilled = snippet.snippetCodeFilled;
+  public _snippetCodeJustified = snippet.snippetCodeJustified;
+  public _snippetCodeCenter = snippet.snippetCodeCenter;
+  public _snippetCodeEnd = snippet.snippetCodeEnd;
+
+  public selectLocalite: any = [];
+  public selectMarque: any = [];
+  public selectFamille: any = [];
+  public selectUnite: any = [];
+  public selectEmplacement: any = [];
+  public selectCategorie: any = [];
+  public selectEtatActuel: any = [];
+  public selectEtatMachine: any = [];
+  public numeroDeSerie : Number;
+  public modele;
+  public miseEnservice;
+  public numDeclaration: Number;
+  public prixAchat: Number;
+  public carateristiqueTechnique;
+  public localite = [];
+  public marque = [];
+  public famille = [];
+  public emplacement = [];
+  public unite = [];
+  public categorieEquipement = [];
+  public etatActuel = [];
+  public etatMachine = [];
+
+
+
+
+
   @ViewChild('accountForm') accountForm: NgForm;
 
   public birthDateOptions: FlatpickrOptions = {
@@ -123,6 +161,9 @@ export class MachineNewComponent implements OnInit, OnDestroy {
   // select basic
   public selectBasic: Person[] = [];
   public selectBasicLoading = false;
+
+  // Basic Date Picker
+  public basicDPdata: NgbDateStruct;
 
   /**
    * Constructor
@@ -142,10 +183,13 @@ export class MachineNewComponent implements OnInit, OnDestroy {
     private dataService: DataService, private modalService: NgbModal,
     private _roleListService: RoleListService ,private ngbCalendar: NgbCalendar,
     private dateAdapter: NgbDateAdapter<string>,private machineListService: MachineListService,
-    private _toastrService: ToastrService,private _machineEditService: MachineEditService,) {
+    private _toastrService: ToastrService,private _machineEditService: MachineEditService,private localiteListService: LocaliteListService,
+    private marqueListService: MarqueListService,private familleGmaoListService: FamilleGmaoListService,
+    private uniteGmaoListService: UniteGmaoListService,private categorieListService: CategorieEquipementListService,
+    private emplacmentListService: EmplacementListService,private etatMachineListService: EtatMachineListService,
+    private etatActuelListService: EtatActuelListService) {
     this._unsubscribeAll = new Subject();
-    this.urlLastValue = this.url.substr(this.url.lastIndexOf('/') + 1);
-    
+    this.urlLastValue = this.url.substr(this.url.lastIndexOf('/') + 1);    
   }
 
   // Public Methods
@@ -164,6 +208,10 @@ export class MachineNewComponent implements OnInit, OnDestroy {
    * @param form
    */
    submit(form) {
+    
+    console.log("------------------------------------------");
+    console.log(form.value);
+    console.log("------------------------------------------");
     if (form.valid) {
       this._machineEditService.create(form.value)
     .subscribe(
@@ -193,6 +241,70 @@ export class MachineNewComponent implements OnInit, OnDestroy {
           this.tempRow = cloneDeep(row);
         }
       });
+    });
+    this.localiteListService.getAll()
+    .subscribe(
+      data => {
+        this.selectLocalite = data;
+      },
+      error => {
+        console.log(error);
+    });
+    this.marqueListService.getAll()
+      .subscribe(
+        data => {
+          this.selectMarque = data;
+        },
+        error => {
+          console.log(error);
+    });
+    this.familleGmaoListService.getAll()
+      .subscribe(
+        data => {
+          this.selectFamille = data;
+        },
+        error => {
+          console.log(error);
+    });
+    this.categorieListService.getAll()
+      .subscribe(
+        data => {
+          this.selectCategorie = data;
+        },
+        error => {
+          console.log(error);
+    });
+    this.uniteGmaoListService.getAll()
+    .subscribe(
+      data => {
+        this.selectUnite = data;
+      },
+      error => {
+        console.log(error);
+    });
+    this.emplacmentListService.getAll()
+    .subscribe(
+      data => {
+        this.selectEmplacement = data;
+      },
+      error => {
+        console.log(error);
+    });
+    this.etatActuelListService.getAll()
+    .subscribe(
+      data => {
+        this.selectEtatActuel = data;
+      },
+      error => {
+        console.log(error);
+    });
+    this.etatMachineListService.getAll()
+    .subscribe(
+      data => {
+        this.selectEtatMachine = data;
+      },
+      error => {
+        console.log(error);
     });
   }
 

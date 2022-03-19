@@ -47,7 +47,7 @@ export class UniteViewService implements Resolve<any> {
    */
   getApiData(id: number): Promise<any[]> {
     return new Promise((resolve, reject) => {
-      this._httpClient.get(`${environment.apiUrl}`+'/diva-erp-rest-api-gestion-dechets/unite/'+`${id}`).subscribe((response: any) => {
+      this._httpClient.get(`${environment.apiUrl}`+'/diva-erp-rest-api-cfg/unite/'+`${id}`).subscribe((response: any) => {
         this.rows = response;
         this.onUniteViewChanged.next(this.rows);
         resolve(this.rows);
@@ -57,6 +57,6 @@ export class UniteViewService implements Resolve<any> {
 
 getUnite(route: ActivatedRouteSnapshot): Observable<any[]> {
     let currentId = Number(route.paramMap.get('id'));
-    return this._httpClient.get<any>(`${environment.apiUrl}`+'/diva-erp-rest-api-gestion-dechets/unite'+`${currentId}`,  httpOptions);
+    return this._httpClient.get<any>(`${environment.apiUrl}`+'/diva-erp-rest-api-cfg/unite'+`${currentId}`,  httpOptions);
 }
 }

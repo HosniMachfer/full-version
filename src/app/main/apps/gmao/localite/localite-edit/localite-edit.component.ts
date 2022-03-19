@@ -155,7 +155,7 @@ export class LocaliteEditComponent implements OnInit, OnDestroy {
       .subscribe(
         response => {
           this._toastrService.success('Mise � jour privileg avec success', '');
-          this.router.navigate(['apps/gestion-dechets/localite/localite-list']);
+          this.router.navigate(['apps/gmao/localite/localite-list']);
         },
         error => {
           this._toastrService.error('Impossible de mettre � jour pribil�ge', error);

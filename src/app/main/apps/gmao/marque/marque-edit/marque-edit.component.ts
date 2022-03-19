@@ -155,7 +155,7 @@ export class MarqueEditComponent implements OnInit, OnDestroy {
       .subscribe(
         response => {
           this._toastrService.success('Mise � jour privileg avec success', '');
-          this.router.navigate(['apps/gestion-dechets/marque/marque-list']);
+          this.router.navigate(['apps/gmao/marque/marque-list']);
         },
         error => {
           this._toastrService.error('Impossible de mettre � jour pribil�ge', error);

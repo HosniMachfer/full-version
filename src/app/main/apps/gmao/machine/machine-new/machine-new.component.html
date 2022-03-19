@@ -1,6 +1,7 @@
 <div class="content-wrapper container-xxl p-0">
   <div class="content-body">
     <!-- machines new start -->
+    <form class="form-validate" (ngSubmit)="(accountForm.form.valid)" #accountForm="ngForm">
     <section class="app-machine-new">
       <div class="card">
         <div class="card-body">
@@ -10,104 +11,90 @@
           <!-- divider -->
           <div class="col-12">
             <hr class="my-1" />
-          </div>
-            <form class="form-validate" (ngSubmit)="(accountForm.form.valid)" #accountForm="ngForm">
-              <div class="row">
-                <div class="col-md-4">
-                  <div class="form-group">
-                    <label for="name">Réference :</label>
-                    <input
-                      type="text"
-                      id="name"
-                      class="form-control"
-                      placeholder="Name"
-                      name="reference"
-                      [(ngModel)]="reference"
-                      [class.error]="accountForm.submitted && FullNameRef.invalid"
-                      #FullNameRef="ngModel"
-                      required
-                    />
-                    <span *ngIf="accountForm.submitted && FullNameRef.invalid" class="invalid-form">
-                      <small class="form-text text-danger" *ngIf="FullNameRef.errors.required"
-                        >This field is required!</small
-                      >
-                    </span>
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <div class="form-group">
-                    <label for="email">Désignation :</label>
-                    <input
-                      type="email"
-                      id="email"
-                      class="form-control"
-                      placeholder="designation"
-                      name="designation"
-                      [(ngModel)]="designation"
-                      [class.error]="accountForm.submitted && EmailRef.invalid"
-                      #EmailRef="ngModel"
-                      required
-                    />
-                    <span *ngIf="accountForm.submitted && EmailRef.invalid" class="invalid-form">
-                      <small class="form-text text-danger" *ngIf="EmailRef.errors.required"
-                        >This field is required!</small
-                      >
-                    </span>
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <div class="form-group">
-                    <label for="status">Status :</label>
-                    <select class="form-control" [(ngModel)]="status" name="status" id="status">
-                      <option>active</option>
-                      <option>inactive</option>
-                      <option>pending</option>
-                    </select>
-                  </div>
-                </div>
-
-                <!-- <div class="col-md-4">
-                  <div class="form-group">
-                    <label for="company">Date modification :</label>
-                    <div class="input-group">
+            </div>
+                <div class="row">
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label for="name">Réference :</label>
                       <input
+                        type="text"
+                        id="name"
                         class="form-control"
-                        placeholder="dd-mm-yyyy"
-                        name="Basic Date Picker"
-                        [(ngModel)]="currentRow.dateCre"
-                        ngbDatepicker
-                        #basicDP="ngbDatepicker"
+                        placeholder="Name"
+                        name="reference"
+                        [(ngModel)]="reference"
+                        [class.error]="accountForm.submitted && FullNameRef.invalid"
+                        #FullNameRef="ngModel"
+                        required
                       />
-                      <div class="input-group-append">
-                        <button
-                          class="btn btn-outline-secondary feather icon-calendar"
-                          (click)="basicDP.toggle()"
-                          type="button"
-                          rippleEffect
-                        ></button>
-                      </div>
+                      <span *ngIf="accountForm.submitted && FullNameRef.invalid" class="invalid-form">
+                        <small class="form-text text-danger" *ngIf="FullNameRef.errors.required"
+                          >This field is required!</small
+                        >
+                      </span>
                     </div>
                   </div>
-                </div> -->
-                <div class="col-12 d-flex flex-sm-row flex-column mt-3">
-                  <button type="submit" (click)="submit(accountForm)" class="btn btn-primary mb-1 mb-sm-0 mr-0 mr-sm-1" rippleEffect>Save Changes</button>
-                  <button (click)="resetFormWithDefaultValues()" class="btn btn-outline-secondary mb-1 mb-sm-0 mr-0 mr-sm-1" rippleEffect>Reset</button>
-                  <a routerLink="/apps/gmao/machine/machine-list" class="btn btn-primary mb-1 mb-sm-0 mr-0 mr-sm-1" rippleEffect>Liste des machines</a>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label for="email">Désignation :</label>
+                      <input
+                        type="email"
+                        id="email"
+                        class="form-control"
+                        placeholder="designation"
+                        name="designation"
+                        [(ngModel)]="designation"
+                        [class.error]="accountForm.submitted && EmailRef.invalid"
+                        #EmailRef="ngModel"
+                        required
+                      />
+                      <span *ngIf="accountForm.submitted && EmailRef.invalid" class="invalid-form">
+                        <small class="form-text text-danger" *ngIf="EmailRef.errors.required"
+                          >This field is required!</small
+                        >
+                      </span>
+                    </div>
+                  </div>
+                  <!-- <div class="col-md-4">
+                    <div class="form-group">
+                      <label for="company">Date modification :</label>
+                      <div class="input-group">
+                        <input
+                          class="form-control"
+                          placeholder="dd-mm-yyyy"
+                          name="Basic Date Picker"
+                          [(ngModel)]="currentRow.dateCre"
+                          ngbDatepicker
+                          #basicDP="ngbDatepicker"
+                        />
+                        <div class="input-group-append">
+                          <button
+                            class="btn btn-outline-secondary feather icon-calendar"
+                            (click)="basicDP.toggle()"
+                            type="button"
+                            rippleEffect
+                          ></button>
+                        </div>
+                      </div>
+                    </div>
+                  </div> -->
+                  <div class="col-12 d-flex flex-sm-row flex-column mt-3">
+                    <button type="submit" (click)="submit(accountForm)" class="btn btn-primary mb-1 mb-sm-0 mr-0 mr-sm-1" rippleEffect>Save Changes</button>
+                    <button (click)="resetFormWithDefaultValues()" class="btn btn-outline-secondary mb-1 mb-sm-0 mr-0 mr-sm-1" rippleEffect>Reset</button>
+                    <a routerLink="/apps/gmao/machine/machine-list" class="btn btn-primary mb-1 mb-sm-0 mr-0 mr-sm-1" rippleEffect>Liste des machines</a>
+                  </div>
                 </div>
               </div>
-            </form>
-          </div>
-        </div>
-    </section>
-    <!-- machines new ends -->
-
+            </div>
+          </section>
+        
+      <!-- machines new ends -->
         <!-- Basic tabs start -->
         <section id="basic-tabs-components">
           <div class="row match-height">
             <div class="col-xl-12 col-lg-12">
               <core-card-snippet>
                 <h4 class="card-title">Tab with icon</h4>
-    
                 <div class="card-body">
                   <ul ngbNav #navWithIcons="ngbNav" class="nav-tabs">
                     <li ngbNavItem>
@@ -116,116 +103,230 @@
                         <div class="col-12">
                           <hr class="my-1" />
                         </div>
-                          <form class="form-validate" (ngSubmit)="(generalForm.form.valid)" #generalForm="ngForm">
                             <div class="row">
-                              <div class="col-md-4">
-                                <div class="form-group">
-                                  <label for="name">Réference :</label>
+                              <div class="col-12 col-md-3">
+                                <label class="d-flex align-items-center ml-1 ml-md-0" >Numéro de série:</label>
                                   <input
-                                    type="text"
-                                    id="name"
-                                    class="form-control"
-                                    placeholder="Name"
-                                    name="reference"
-                                    [(ngModel)]="reference"
-                                    [class.error]="generalForm.submitted && FullNameRef.invalid"
-                                    #FullNameRef="ngModel"
-                                    required
+                                  [(ngModel)]="numeroDeSerie"
+                                  name="numeroDeSerie"
+                                  type="search"
+                                  class="form-control ml-25"
+                                  [class.error]="accountForm.submitted && EmailRef.invalid"
+                                  #EmailRef="ngModel"
+                                  required
                                   />
-                                  <span *ngIf="generalForm.submitted && FullNameRef.invalid" class="invalid-form">
-                                    <small class="form-text text-danger" *ngIf="FullNameRef.errors.required"
-                                      >This field is required!</small
-                                    >
-                                  </span>
+                                <span *ngIf="accountForm.submitted && EmailRef.invalid" class="invalid-form">
+                                  <small class="form-text text-danger" *ngIf="EmailRef.errors.required"
+                                    >This field is required!</small
+                                  >
+                                </span>
+                              </div>
+                              <div class="col-12 col-md-3">
+                                <label class="d-flex align-items-center ml-1 ml-md-0" >Modèle:</label>
+                                  <input
+                                  [(ngModel)]="modele"
+                                  name="modele"
+                                  type="search"
+                                  class="form-control ml-25"
+                                  [class.error]="accountForm.submitted && EmailRef.invalid"
+                                  #EmailRef="ngModel"
+                                  required
+                                  />
+                                <span *ngIf="accountForm.submitted && EmailRef.invalid" class="invalid-form">
+                                  <small class="form-text text-danger" *ngIf="EmailRef.errors.required"
+                                    >This field is required!</small
+                                  >
+                                </span>
+                              </div>
+                              <div class="col-12 col-md-3">
+                                <label class="d-flex align-items-center ml-1 ml-md-0" >Numéro déclaration:</label>
+                                  <input
+                                  [(ngModel)]="numDeclaration"
+                                  name="numDeclaration"
+                                  type="search"
+                                  class="form-control ml-25"
+                                  [class.error]="accountForm.submitted && EmailRef.invalid"
+                                  #EmailRef="ngModel"
+                                  required
+                                  />
+                                <span *ngIf="accountForm.submitted && EmailRef.invalid" class="invalid-form">
+                                  <small class="form-text text-danger" *ngIf="EmailRef.errors.required"
+                                    >This field is required!</small
+                                  >
+                                </span>
+                              </div>
+                              <div class="col-12 col-md-3">
+                                <label class="d-flex align-items-center ml-1 ml-md-0" >Carateristique technique:</label>
+                                  <input
+                                  [(ngModel)]="carateristiqueTechnique"
+                                  name="carateristiqueTechnique"
+                                  type="search"
+                                  class="form-control ml-25"
+                                  [class.error]="accountForm.submitted && EmailRef.invalid"
+                                  #EmailRef="ngModel"
+                                  required
+                                  />
+                                <span *ngIf="accountForm.submitted && EmailRef.invalid" class="invalid-form">
+                                  <small class="form-text text-danger" *ngIf="EmailRef.errors.required"
+                                    >This field is required!</small
+                                  >
+                                </span>
+                              </div>
+                              <div class="col-12 col-md-3">
+                                <label class="d-flex align-items-center ml-1 ml-md-0" >Mise en service:</label>
+                                  <input
+                                  [(ngModel)]="miseEnservice"
+                                  name="miseEnservice"
+                                  type="search"
+                                  class="form-control ml-25"
+                                  [class.error]="accountForm.submitted && EmailRef.invalid"
+                                  #EmailRef="ngModel"
+                                  required
+                                  />
+                                <span *ngIf="accountForm.submitted && EmailRef.invalid" class="invalid-form">
+                                  <small class="form-text text-danger" *ngIf="EmailRef.errors.required"
+                                    >This field is required!</small
+                                  >
+                                </span>
+                              </div>
+                              <div class="col-12 col-md-3">
+                                <label class="d-flex align-items-center ml-1 ml-md-0" >Localite:</label>
+                                <fieldset class="form-group">
+                                  <ng-select
+                                    [items]="selectLocalite"
+                                    [(ngModel)]="localite"
+                                    name="localite"
+                                    bindLabel="code"
+                                    placeholder="{{ 'filtres.filtreLocalite' | translate }}"
+                                  ></ng-select>
+                                </fieldset>
+                              </div>
+                              <div class="col-12 col-md-3">
+                                <label class="d-flex align-items-center ml-1 ml-md-0" >Marque:</label>
+                                <fieldset class="form-group">
+                                  <ng-select
+                                    [items]="selectMarque"
+                                    [(ngModel)]="marque"
+                                    name="marque"
+                                    bindLabel="name"
+                                    placeholder="{{ 'filtres.filtreMarque' | translate }}"
+                                  ></ng-select>
+                                </fieldset>
+                              </div>
+                              <div class="col-12 col-md-3">
+                                <label class="d-flex align-items-center ml-1 ml-md-0" >Etat actule:</label>
+                                <fieldset class="form-group">
+                                  <ng-select
+                                    [items]="selectEtatActuel"
+                                    [(ngModel)]="etatActuel"
+                                    name="etatActuel"
+                                    bindLabel="code"
+                                    placeholder="{{ 'filtres.filtreEtatActuel' | translate }}"
+                                  ></ng-select>
+                                </fieldset>
+                              </div>
+                              <div class="col-12 col-md-3">
+                                <label class="d-flex align-items-center ml-1 ml-md-0" >Actif?:</label>
+                                <fieldset class="form-group">
+                                  <ng-select
+                                    [items]="selectEtatMachine"
+                                    [(ngModel)]="etatMachine"
+                                    name="etatMachine"
+                                    bindLabel="code"
+                                    placeholder="{{ 'filtres.filtreEtat' | translate }}"
+                                  ></ng-select>
+                                </fieldset>
+                              </div>
+                              <div class="col-12 col-md-3">
+                                <label class="d-flex align-items-center ml-1 ml-md-0" >Famille:</label>
+                                <fieldset class="form-group">
+                                  <ng-select
+                                    [items]="selectFamille"
+                                    [(ngModel)]="famille"
+                                    name="famille"
+                                    bindLabel="code"
+                                    placeholder="{{ 'filtres.filtreFamille' | translate }}"
+                                  ></ng-select>
+                                </fieldset>
+                              </div>
+                              <div class="col-12 col-md-3">
+                                <label for="company">Catégorie :</label>
+                                <fieldset class="form-group">
+                                  <ng-select
+                                    [items]="selectCategorie"
+                                    [(ngModel)]="categorieEquipement"
+                                    name="categorieEquipement"
+                                    bindLabel="code"
+                                    placeholder="{{ 'filtres.filtreCategorie' | translate }}"
+                                  ></ng-select>
+                                </fieldset>
+                              </div>
+                              <div class="col-12 col-md-3">
+                                <label for="company">Emplacement :</label>
+                                <fieldset class="form-group">
+                                  <ng-select
+                                    [items]="selectEmplacement"
+                                    [(ngModel)]="emplacement"
+                                    name="emplacement"
+                                    bindLabel="code"
+                                    placeholder="{{ 'filtres.filtreCategorie' | translate }}"
+                                  ></ng-select>
+                                </fieldset>
+                              </div>
+                              <div class="col-md-3">
+                                <div class="form-group">
+                                  <label for="company">Date d'achat :</label>
+                                  <div class="input-group">
+                                    <input
+                                      class="form-control"
+                                      placeholder="dd-mm-yyyy"
+                                      name="dateAchat"
+                                      [(ngModel)]="basicDPdata"
+                                      ngbDatepicker
+                                      #basicDP="ngbDatepicker"
+                                    />
+                                    <div class="input-group-append">
+                                      <button
+                                        class="btn btn-outline-secondary feather icon-calendar"
+                                        (click)="basicDP.toggle()"
+                                        type="button"
+                                        rippleEffect
+                                      ></button>
+                                    </div>
+                                  </div>
                                 </div>
                               </div>
-                              <div class="col-md-4">
-                                <div class="form-group">
-                                  <label for="name">Réference :</label>
+                              <div class="col-12 col-md-3">
+                                <label class="d-flex align-items-center ml-1 ml-md-0" >Prix d'achat:</label>
                                   <input
-                                    type="text"
-                                    id="name"
-                                    class="form-control"
-                                    placeholder="Name"
-                                    name="reference"
-                                    [(ngModel)]="reference"
-                                    [class.error]="generalForm.submitted && FullNameRef.invalid"
-                                    #FullNameRef="ngModel"
-                                    required
+                                  [(ngModel)]="prixAchat"
+                                  name="prixAchat"
+                                  type="search"
+                                  class="form-control ml-25"
+                                  [class.error]="accountForm.submitted && EmailRef.invalid"
+                                  #EmailRef="ngModel"
+                                  required
                                   />
-                                  <span *ngIf="generalForm.submitted && FullNameRef.invalid" class="invalid-form">
-                                    <small class="form-text text-danger" *ngIf="FullNameRef.errors.required"
-                                      >This field is required!</small
-                                    >
-                                  </span>
-                                </div>
+                                <span *ngIf="accountForm.submitted && EmailRef.invalid" class="invalid-form">
+                                  <small class="form-text text-danger" *ngIf="EmailRef.errors.required"
+                                    >This field is required!</small
+                                  >
+                                </span>
                               </div>
-                              <div class="col-md-4">
-                                <div class="form-group">
-                                  <label for="name">Réference :</label>
-                                  <input
-                                    type="text"
-                                    id="name"
-                                    class="form-control"
-                                    placeholder="Name"
-                                    name="reference"
-                                    [(ngModel)]="reference"
-                                    [class.error]="generalForm.submitted && FullNameRef.invalid"
-                                    #FullNameRef="ngModel"
-                                    required
-                                  />
-                                  <span *ngIf="generalForm.submitted && FullNameRef.invalid" class="invalid-form">
-                                    <small class="form-text text-danger" *ngIf="FullNameRef.errors.required"
-                                      >This field is required!</small
-                                    >
-                                  </span>
-                                </div>
+                              <div class="col-12 col-md-3">
+                                <label class="d-flex align-items-center ml-1 ml-md-0" >Unite:</label>
+                                <fieldset class="form-group">
+                                  <ng-select
+                                    [items]="selectUnite"
+                                    [(ngModel)]="unite"
+                                    name="unite"
+                                    bindLabel="code"
+                                    placeholder="{{ 'filtres.filtreUnite' | translate }}"
+                                  ></ng-select>
+                                </fieldset>
                               </div>
-                              <div class="col-md-4">
-                                <div class="form-group">
-                                  <label for="name">Réference :</label>
-                                  <input
-                                    type="text"
-                                    id="name"
-                                    class="form-control"
-                                    placeholder="Name"
-                                    name="reference"
-                                    [(ngModel)]="reference"
-                                    [class.error]="generalForm.submitted && FullNameRef.invalid"
-                                    #FullNameRef="ngModel"
-                                    required
-                                  />
-                                  <span *ngIf="generalForm.submitted && FullNameRef.invalid" class="invalid-form">
-                                    <small class="form-text text-danger" *ngIf="FullNameRef.errors.required"
-                                      >This field is required!</small
-                                    >
-                                  </span>
-                                </div>
-                              </div>
-                              <div class="col-md-4">
-                                <div class="form-group">
-                                  <label for="email">Désignation :</label>
-                                  <input
-                                    type="email"
-                                    id="email"
-                                    class="form-control"
-                                    placeholder="designation"
-                                    name="designation"
-                                    [(ngModel)]="designation"
-                                    [class.error]="generalForm.submitted && EmailRef.invalid"
-                                    #EmailRef="ngModel"
-                                    required
-                                  />
-                                  <span *ngIf="generalForm.submitted && EmailRef.invalid" class="invalid-form">
-                                    <small class="form-text text-danger" *ngIf="EmailRef.errors.required"
-                                      >This field is required!</small
-                                    >
-                                  </span>
-                                </div>
-                              </div>
-                              </div>
-                              </form>
                               
+                            </div>
                       </ng-template>
                     </li>
                     <li ngbNavItem>
@@ -296,7 +397,7 @@
           </div>
         </section>
         <!-- Basic Tag Input end -->
-        
+       </form> 
 
   </div>
 </div>

@@ -10,37 +10,38 @@
           <div class="users-list-filter">
             <form>
               <div class="row">
-                <div class="col-12 col-md-4">
-                  <label class="d-flex align-items-center ml-1 ml-md-0"
-                  >Réfèrence:<input
+                <div class="col-12 col-md-2">
+                  <label class="d-flex align-items-center ml-1 ml-md-0">Réfèrence:</label>
+                    <input
                     [(ngModel)]="searchReference"
                     name="searchReference"
                     type="search"
                     class="form-control ml-25"
                     (keyup)="filterByReference($event)"
-                /></label>
+                    />
                 </div>
-                <div class="col-12 col-md-4">
-                  <label class="d-flex align-items-center ml-1 ml-md-0"
-                  >Designation:<input
+                <div class="col-12 col-md-2">
+                  <label class="d-flex align-items-center ml-1 ml-md-0">Designation:</label>
+                    <input
                     [(ngModel)]="searchDesigniation"
                     name="searchDesigniation"
                     type="search"
                     class="form-control ml-25"
                     (keyup)="filterByDesignation($event)"
-                /></label>
+                    />
                 </div>
-                <div class="col-12 col-md-4">
-                  <label class="d-flex align-items-center ml-1 ml-md-0"
-                  >Modèle:<input
+                <div class="col-12 col-md-2">
+                  <label class="d-flex align-items-center ml-1 ml-md-0">Modèle:</label>
+                    <input
                     [(ngModel)]="searchModele"
                     name="searchModele"
                     type="search"
                     class="form-control ml-25"
                     (keyup)="filterByModele($event)"
-                /></label>
+                    />
                 </div>
                 <div class="col-12 col-md-3">
+                  <label class="d-flex align-items-center ml-1 ml-md-0">Loalite :</label>
                   <fieldset class="form-group">
                     <ng-select
                       [items]="selectLocalite"
@@ -53,6 +54,7 @@
                   </fieldset>
                 </div>
                 <div class="col-12 col-md-3">
+                  <label class="d-flex align-items-center ml-1 ml-md-0">Marque:</label>
                   <fieldset class="form-group">
                     <ng-select
                       [items]="selectMarque"
@@ -65,6 +67,7 @@
                   </fieldset>
                 </div>
                 <div class="col-12 col-md-3">
+                  <label class="d-flex align-items-center ml-1 ml-md-0">Etat actuel:</label>
                   <fieldset class="form-group">
                     <ng-select
                       [items]="selectEtatActuel"
@@ -77,14 +80,41 @@
                   </fieldset>
                 </div>
                 <div class="col-12 col-md-3">
+                  <label class="d-flex align-items-center ml-1 ml-md-0">Actif?:</label>
                   <fieldset class="form-group">
                     <ng-select
-                      [items]="selectEtat"
-                      [(ngModel)]="selectedEtat"
-                      name="selectedEtat"
+                      [items]="selectEtatMachine"
+                      [(ngModel)]="selectedEtatMachine"
+                      name="selectedEtatMachine"
                       bindLabel="code"
                       placeholder="{{ 'filtres.filtreEtat' | translate }}"
                       (change)="filterByMarque($event)"
+                    ></ng-select>
+                  </fieldset>
+                </div>
+                <div class="col-12 col-md-3">
+                  <label class="d-flex align-items-center ml-1 ml-md-0">Famille:</label>
+                  <fieldset class="form-group">
+                    <ng-select
+                      [items]="selectFamille"
+                      [(ngModel)]="selectedFamille"
+                      name="selectedFamille"
+                      bindLabel="code"
+                      placeholder="{{ 'filtres.filtreFamille' | translate }}"
+                      (change)="filterByFamille($event)"
+                    ></ng-select>
+                  </fieldset>
+                </div>
+                <div class="col-12 col-md-3">
+                  <label class="d-flex align-items-center ml-1 ml-md-0">Catégorie:</label>
+                  <fieldset class="form-group">
+                    <ng-select
+                      [items]="selectCategorie"
+                      [(ngModel)]="selectedCategorie"
+                      name="selectedCategorie"
+                      bindLabel="code"
+                      placeholder="{{ 'filtres.filtreCategorie' | translate }}"
+                      (change)="filterByCategorie($event)"
                     ></ng-select>
                   </fieldset>
                 </div>

@@ -155,7 +155,7 @@ export class EmplacementEditComponent implements OnInit, OnDestroy {
       .subscribe(
         response => {
           this._toastrService.success('Mise � jour privileg avec success', '');
-          this.router.navigate(['apps/gestion-dechets/emplacement/emplacement-list']);
+          this.router.navigate(['apps/gmao/emplacement/emplacement-list']);
         },
         error => {
           this._toastrService.error('Impossible de mettre � jour pribil�ge', error);

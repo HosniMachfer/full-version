@@ -36,6 +36,19 @@ const routes: Routes = [
   {
     path: 'famille',
     loadChildren: () => import('./famille/famille.module').then(m => m.FamilleModule)
+  },
+  {
+    path: 'unite',
+    loadChildren: () => import('./unite/unite.module').then(m => m.UniteModule)
+  },
+  {
+    path: 'etat-actuel',
+    loadChildren: () => import('./etat-actuel/etat-actuel.module').then(m => m.EtatActuelModule)
+  }
+  ,
+  {
+    path: 'etat-machine',
+    loadChildren: () => import('./etat-machine/etat-machine.module').then(m => m.EtatMachineModule)
   }
 ]
 

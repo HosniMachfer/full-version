@@ -47,7 +47,7 @@ export class UniteEditService implements Resolve<any> {
    */
   getApiData(): Promise<any[]> {
     return new Promise((resolve, reject) => {
-      this._httpClient.get(`${environment.apiUrl}`+'/diva-erp-rest-api-gestion-dechets/unites').subscribe((response: any) => {
+      this._httpClient.get(`${environment.apiUrl}`+'/diva-erp-rest-api-cfg/unites').subscribe((response: any) => {
         this.apiData = response;
         this.onUniteEditChanged.next(this.apiData);
         resolve(this.apiData);
@@ -56,11 +56,11 @@ export class UniteEditService implements Resolve<any> {
   }
  
 getAll(): Observable<any[]> {
-    return this._httpClient.get<any[]>(`${environment.apiUrl}`+'/diva-erp-rest-api-gestion-dechets/unites',  httpOptions);
+    return this._httpClient.get<any[]>(`${environment.apiUrl}`+'/diva-erp-rest-api-cfg/unites',  httpOptions);
 }
 
 create(data: any): Observable<any> {
-    return this._httpClient.post(`${environment.apiUrl}`+'/diva-erp-rest-api-gestion-dechets/add-unite', data);
+    return this._httpClient.post(`${environment.apiUrl}`+'/diva-erp-rest-api-cfg/add-unite', data);
 }
 
 
