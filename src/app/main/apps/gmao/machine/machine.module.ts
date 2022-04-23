@@ -32,7 +32,14 @@ import { CardSnippetModule } from '@core/components/card-snippet/card-snippet.mo
 import { ContentHeaderModule } from 'app/layout/components/content-header/content-header.module';
 
 import { TranslateModule } from '@ngx-translate/core';
+import { FileUploadModule } from 'ng2-file-upload';
+import { SwiperConfigInterface, SwiperModule, SWIPER_CONFIG } from 'ngx-swiper-wrapper';
 
+// swiper configuration
+const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
+  direction: 'horizontal',
+  slidesPerView: 'auto'
+};
 // routing
 const routes: Routes = [
   {path: 'machine-list',component: MachineListComponent  },
@@ -73,7 +80,9 @@ const routes: Routes = [
     InvoiceModule,
     CoreSidebarModule,
     TranslateModule,
-    ContentHeaderModule, CardSnippetModule
+    ContentHeaderModule, 
+    CardSnippetModule,
+    FileUploadModule
   ],
   providers: [MachineListService, MachineEditService,MachineViewService,MachineNewService]
 })

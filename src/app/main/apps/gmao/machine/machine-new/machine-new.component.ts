@@ -7,6 +7,7 @@ import { takeUntil } from 'rxjs/operators';
 import { FlatpickrOptions } from 'ng2-flatpickr';
 import { cloneDeep } from 'lodash';
 import { Observable } from 'rxjs';
+import { FileUploader } from 'ng2-file-upload';
 import { MachineListService } from 'app/main/apps/gmao/machine/machine-list/machine-list.service';
 import { MachineNewService } from 'app/main/apps/gmao/machine/machine-new/machine-new.service';
 import { Person, DataService } from 'app/main/forms/form-elements/select/data.service';
@@ -26,6 +27,7 @@ import { EmplacementListService } from '../../emplacement/emplacement-list/empla
 import { EtatMachineListService } from '../../etat-machine/etat-machine-list/etat-machine-list.service';
 import { EtatActuelListService } from '../../etat-actuel/etat-actuel-list/etat-actuel-list.service';
 import { environment } from 'environments/environment';
+import { HttpEventType, HttpResponse } from '@angular/common/http';
 
 interface BrandObject {
   id: number;
@@ -82,7 +84,9 @@ export class CustomDateParserFormatter extends NgbDateParserFormatter {
   }
 }
 
-
+//file upload
+//const URL = `${environment.apiUrl}`+'/diva-erp-rest-api-gmao/api/files';
+const URL = 'http://localhost:8080/diva-erp-rest-api-gmao/api/files';
 @Component({
   selector: 'app-machine-new',
   templateUrl: './machine-new.component.html',
@@ -142,6 +146,18 @@ export class MachineNewComponent implements OnInit, OnDestroy {
 
 
 
+// public
+uploader:FileUploader;
+hasBaseDropZoneOver:boolean;
+hasAnotherDropZoneOver:boolean;
+response:string;
+
+selectedFiles?: FileList;
+  currentFile?: File;
+  progress = 0;
+  message = '';
+  fileInfos?: Observable<any>;
+
 
 
   @ViewChild('accountForm') accountForm: NgForm;
@@ -189,9 +205,114 @@ export class MachineNewComponent implements OnInit, OnDestroy {
     private emplacmentListService: EmplacementListService,private etatMachineListService: EtatMachineListService,
     private etatActuelListService: EtatActuelListService) {
     this._unsubscribeAll = new Subject();
-    this.urlLastValue = this.url.substr(this.url.lastIndexOf('/') + 1);    
+    this.urlLastValue = this.url.substr(this.url.lastIndexOf('/') + 1); 
+
+
+
+
+    this.uploader = new FileUploader({
+      url: URL,
+      itemAlias: 'image',
+      authToken: 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbkBkZW1vLmNvbSIsImlhdCI6MTY0ODU4NDgzMiwiZXhwIjoxNjQ4NjcxMjMyfQ.NsyirUo_sn_VqykJNtQKZmLqYaq1-Xj5Qg-WaLofpsw9LlXjzb7lgA2zYAsai1sdtfoeeIWDapv1eIRa03GofQ', 
+      //authToken: "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbkBkZW1vLmNvbSIsImlhdCI6MTY0NzkzNjY5NCwiZXhwIjoxNjQ4MDIzMDk0fQ.V3h4ptq_4rUlWGEwH5mJhnoE4jjfNEqjIiiJC_OdS4eb6fh-jE1L-H1DsyoPU0vK6p1UHVfeFNM8-DFOTBdK4w",
+      headers: [{ name: 'Content-Type', value: 'multipart/form-data' }],
+      disableMultipart: true, // 'DisableMultipart' must be 'true' for formatDataFunction to be called.
+      formatDataFunctionIsAsync: true,
+      formatDataFunction: async (item) => {
+        return new Promise( (resolve, reject) => {
+          resolve({
+            name: item._file.name,
+            length: item._file.size,
+            contentType: item._file.type,
+            date: new Date()
+          });
+        });
+      }
+    });
+
+
+    /*this.uploader = new FileUploader({
+      url: URL,
+      headers: [{ name: 'Autenfication', value: 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1YTIzNDBkOWE0MDM5YTI2MGM1OWYzNTMiLCJleHAiOjE1MTUyMjc5NDcyMzV9.uVpwN9vrjpoKOzNN_DYOgonB1N46Pl' }]
+    });*/
+    
+
+    /*this.uploader = new FileUploader({ url: URL , 
+      headers: [{ name: 'Authorization', value: 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1YTIzNDBkOWE0MDM5YTI2MGM1OWYzNTMiLCJleHAiOjE1MTUyMjc5NDcyMzV9.uVpwN9vrjpoKOzNN_DYOgonB1N46Pl' }],
+      authToken: "Bearer " + "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1YTIzNDBkOWE0MDM5YTI2MGM1OWYzNTMiLCJleHAiOjE1MTUyMjc5NDcyMzV9.uVpwN9vrjpoKOzNN_DYOgonB1N46Pl"
+    });*/
+    /*
+    this.uploader = new FileUploader({
+      url: URL, 
+      disableMultipart: true,
+      autoUpload: true,
+      isHTML5: true,
+      authToken: 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbkBkZW1vLmNvbSIsImlhdCI6MTY0ODMzMDIzMCwiZXhwIjoxNjQ4NDE2NjMwfQ.mu91Gsi3JYHcDDA5-h8sxNrO9-cHqtPYkdACiUU4udb_1rbn-P6dyJrFYzfOZIZlWABYcjXD8CZwk342e4PZPw', 
+
+      // add custom header
+      headers: [{ name: 'loooooooooooooool', value : 'liiiiiiiiiiiiiiiiil'},
+      {name:'Access-Control-Request-Headers', value : ' authorization,content-type,loooooooooooooool'}
+    ]
+    });
+    */
+
+
+    
+ 
+    this.hasBaseDropZoneOver = false;
+    this.hasAnotherDropZoneOver = false;
+ 
+    this.response = '';
+    console.log("**********************************");
+    this.uploader.response.subscribe( res => this.response = res );
+
   }
 
+
+  selectFile(event: any): void {
+    this.selectedFiles = event.target.files;
+  }
+  upload(): void {
+    this.progress = 0;
+    if (this.selectedFiles) {
+      const file: File | null = this.selectedFiles.item(0);
+      if (file) {
+        this.currentFile = file;
+        this._machineNewService.upload(this.currentFile).subscribe(
+          (event: any) => {
+            if (event.type === HttpEventType.UploadProgress) {
+              this.progress = Math.round(100 * event.loaded / event.total);
+            } else if (event instanceof HttpResponse) {
+             
+              console.log(event.body);
+             
+              //this.message = event.body.message;
+              //this.fileInfos = this._machineNewService.getFiles();
+            }
+          },
+          (err: any) => {
+            console.log(err);
+            this.progress = 0;
+            if (err.error && err.error.message) {
+              this.message = err.error.message;
+            } else {
+              this.message = 'Could not upload the file!';
+            }
+            this.currentFile = undefined;
+          });
+      }
+      this.selectedFiles = undefined;
+    }
+  }
+
+
+  public fileOverBase(e:any):void {
+    this.hasBaseDropZoneOver = e;
+  }
+ 
+  public fileOverAnother(e:any):void {
+    this.hasAnotherDropZoneOver = e;
+  }
   // Public Methods
   // -----------------------------------------------------------------------------------------------------
 
@@ -306,6 +427,17 @@ export class MachineNewComponent implements OnInit, OnDestroy {
       error => {
         console.log(error);
     });
+
+
+    //Upload file 
+    this.uploader.onCompleteItem = (item: any, status: any) => {
+      console.log('Uploaded File Details:', item);
+      this._toastrService.success('File successfully uploaded!');
+    };
+    this.uploader.onAfterAddingFile = (file) => {
+      console.log("TAAAAAAAAAAAAAAAAAAAAAAA MER !!!!! ",);
+      file.withCredentials = false;
+    };
   }
 
   doTextareaValueChange(ev) {

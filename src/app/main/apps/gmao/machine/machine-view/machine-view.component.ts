@@ -5,7 +5,9 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 import { MachineViewService } from 'app/main/apps/gmao/machine/machine-view/machine-view.service';
+import * as snippet from 'app/main/extensions/swiper/swiper.snippetcode';
 
+import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
 @Component({
   selector: 'app-machine-view',
   templateUrl: './machine-view.component.html',
@@ -21,6 +23,20 @@ export class MachineViewComponent implements OnInit, OnDestroy {
   // private
   private _unsubscribeAll: Subject<any>;
 
+    // snippet code variables
+    public _snippetCodeSwiperDefault = snippet.snippetCodeSwiperDefault;
+    public _snippetCodeSwiperNavigations = snippet.snippetCodeSwiperNavigations;
+    public _snippetCodeSwiperPaginations = snippet.snippetCodeSwiperPaginations;
+    public _snippetCodeSwiperProgress = snippet.snippetCodeSwiperProgress;
+    public _snippetCodeSwiperMultiple = snippet.snippetCodeSwiperMultiple;
+    public _snippetCodeSwiperCenteredSlides1 = snippet.snippetCodeSwiperCenteredSlides1;
+    public _snippetCodeSwiperCenteredSlides2 = snippet.snippetCodeSwiperCenteredSlides2;
+    public _snippetCodeSwiperFadeEffect = snippet.snippetCodeSwiperFadeEffect;
+    public _snippetCodeSwiperCubeEffect = snippet.snippetCodeSwiperCubeEffect;
+    public _snippetCodeSwiperCoverflow = snippet.snippetCodeSwiperCoverflow;
+    public _snippetCodeSwiperAutoplay = snippet.snippetCodeSwiperAutoplay;
+    public _snippetCodeSwiperLazy = snippet.snippetCodeSwiperLazy;
+    public _snippetCodeSwiperResponsive = snippet.snippetCodeSwiperResponsive;
   /**
    * Constructor
    *
@@ -32,6 +48,15 @@ export class MachineViewComponent implements OnInit, OnDestroy {
     this.lastValue = this.url.substr(this.url.lastIndexOf('/') + 1);
   }
 
+
+  public swiperMultiple: SwiperConfigInterface = {
+    slidesPerView: 3,
+    spaceBetween: 30,
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true
+    }
+  };
   // Lifecycle Hooks
   // -----------------------------------------------------------------------------------------------------
   /**

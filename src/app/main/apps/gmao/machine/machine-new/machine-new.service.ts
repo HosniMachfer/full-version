@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpEvent,HttpRequest,HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
 
@@ -65,6 +65,17 @@ create(data: any): Observable<any> {
   console.log("------------------------------------");
     return this._httpClient.post(`${environment.apiUrl}`+'/diva-erp-rest-api-gmao/add-machine', data);
 }
-
+upload(file: File): Observable<HttpEvent<any>> {
+  const formData: FormData = new FormData();
+  formData.append('file', file);
+  const req = new HttpRequest('POST', 'http://localhost:8080/diva-erp-rest-api-gmao/api/files', formData, {
+    reportProgress: true,
+    responseType: 'json'
+  });
+  return this._httpClient.request(req);
+}
+getFiles(): Observable<any> {
+  return this._httpClient.get(`${environment.apiUrl}`+'/files');
+}
 
 }
