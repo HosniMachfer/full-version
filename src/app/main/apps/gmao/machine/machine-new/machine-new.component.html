@@ -6,7 +6,7 @@
       <div class="card">
         <div class="card-body">
           <div class="user-info mb-1">
-            <h4 class="mb-0">Nouvelle machine</h4>
+            <h4 class="mb-0">Nouvelle équipement</h4>
           </div>
           <!-- divider -->
           <div class="col-12">
@@ -20,7 +20,7 @@
                         type="text"
                         id="name"
                         class="form-control"
-                        placeholder="Name"
+                        placeholder="Réference"
                         name="reference"
                         [(ngModel)]="reference"
                         [class.error]="accountForm.submitted && FullNameRef.invalid"
@@ -41,7 +41,7 @@
                         type="email"
                         id="email"
                         class="form-control"
-                        placeholder="designation"
+                        placeholder="Désignation"
                         name="designation"
                         [(ngModel)]="designation"
                         [class.error]="accountForm.submitted && EmailRef.invalid"
@@ -55,6 +55,13 @@
                       </span>
                     </div>
                   </div>
+
+
+              
+
+             
+
+
                   <!-- <div class="col-md-4">
                     <div class="form-group">
                       <label for="company">Date modification :</label>
@@ -79,9 +86,9 @@
                     </div>
                   </div> -->
                   <div class="col-12 d-flex flex-sm-row flex-column mt-3">
-                    <button type="submit" (click)="submit(accountForm)" class="btn btn-primary mb-1 mb-sm-0 mr-0 mr-sm-1" rippleEffect>Save Changes</button>
-                    <button (click)="resetFormWithDefaultValues()" class="btn btn-outline-secondary mb-1 mb-sm-0 mr-0 mr-sm-1" rippleEffect>Reset</button>
-                    <a routerLink="/apps/gmao/machine/machine-list" class="btn btn-primary mb-1 mb-sm-0 mr-0 mr-sm-1" rippleEffect>Liste des machines</a>
+                    <button type="submit" (click)="submit(accountForm)" class="btn btn-primary mb-1 mb-sm-0 mr-0 mr-sm-1" rippleEffect>Valider</button>
+                    <!-- <button (click)="resetFormWithDefaultValues()" class="btn btn-outline-secondary mb-1 mb-sm-0 mr-0 mr-sm-1" rippleEffect></button> -->
+                    <a routerLink="/apps/gmao/machine/machine-list" class="btn btn-outline-secondary mb-1 mb-sm-0 mr-0 mr-sm-1" rippleEffect>Annuler</a>
                   </div>
                 </div>
               </div>
@@ -94,7 +101,7 @@
           <div class="row match-height">
             <div class="col-xl-12 col-lg-12">
               <core-card-snippet>
-                <h4 class="card-title">Tab with icon</h4>
+                <h4 class="card-title">Info équipement</h4>
                 <div class="card-body">
                   <ul ngbNav #navWithIcons="ngbNav" class="nav-tabs">
                     <li ngbNavItem>
@@ -104,103 +111,33 @@
                           <hr class="my-1" />
                         </div>
                             <div class="row">
+
                               <div class="col-12 col-md-3">
-                                <label class="d-flex align-items-center ml-1 ml-md-0" >Numéro de série:</label>
-                                  <input
-                                  [(ngModel)]="numeroDeSerie"
-                                  name="numeroDeSerie"
-                                  type="search"
-                                  class="form-control ml-25"
-                                  [class.error]="accountForm.submitted && EmailRef.invalid"
-                                  #EmailRef="ngModel"
-                                  required
-                                  />
-                                <span *ngIf="accountForm.submitted && EmailRef.invalid" class="invalid-form">
-                                  <small class="form-text text-danger" *ngIf="EmailRef.errors.required"
-                                    >This field is required!</small
-                                  >
-                                </span>
-                              </div>
-                              <div class="col-12 col-md-3">
-                                <label class="d-flex align-items-center ml-1 ml-md-0" >Modèle:</label>
-                                  <input
-                                  [(ngModel)]="modele"
-                                  name="modele"
-                                  type="search"
-                                  class="form-control ml-25"
-                                  [class.error]="accountForm.submitted && EmailRef.invalid"
-                                  #EmailRef="ngModel"
-                                  required
-                                  />
-                                <span *ngIf="accountForm.submitted && EmailRef.invalid" class="invalid-form">
-                                  <small class="form-text text-danger" *ngIf="EmailRef.errors.required"
-                                    >This field is required!</small
-                                  >
-                                </span>
-                              </div>
-                              <div class="col-12 col-md-3">
-                                <label class="d-flex align-items-center ml-1 ml-md-0" >Numéro déclaration:</label>
-                                  <input
-                                  [(ngModel)]="numDeclaration"
-                                  name="numDeclaration"
-                                  type="search"
-                                  class="form-control ml-25"
-                                  [class.error]="accountForm.submitted && EmailRef.invalid"
-                                  #EmailRef="ngModel"
-                                  required
-                                  />
-                                <span *ngIf="accountForm.submitted && EmailRef.invalid" class="invalid-form">
-                                  <small class="form-text text-danger" *ngIf="EmailRef.errors.required"
-                                    >This field is required!</small
-                                  >
-                                </span>
-                              </div>
-                              <div class="col-12 col-md-3">
-                                <label class="d-flex align-items-center ml-1 ml-md-0" >Carateristique technique:</label>
-                                  <input
-                                  [(ngModel)]="carateristiqueTechnique"
-                                  name="carateristiqueTechnique"
-                                  type="search"
-                                  class="form-control ml-25"
-                                  [class.error]="accountForm.submitted && EmailRef.invalid"
-                                  #EmailRef="ngModel"
-                                  required
-                                  />
-                                <span *ngIf="accountForm.submitted && EmailRef.invalid" class="invalid-form">
-                                  <small class="form-text text-danger" *ngIf="EmailRef.errors.required"
-                                    >This field is required!</small
-                                  >
-                                </span>
-                              </div>
-                              <div class="col-12 col-md-3">
-                                <label class="d-flex align-items-center ml-1 ml-md-0" >Mise en service:</label>
-                                  <input
-                                  [(ngModel)]="miseEnservice"
-                                  name="miseEnservice"
-                                  type="search"
-                                  class="form-control ml-25"
-                                  [class.error]="accountForm.submitted && EmailRef.invalid"
-                                  #EmailRef="ngModel"
-                                  required
-                                  />
-                                <span *ngIf="accountForm.submitted && EmailRef.invalid" class="invalid-form">
-                                  <small class="form-text text-danger" *ngIf="EmailRef.errors.required"
-                                    >This field is required!</small
-                                  >
-                                </span>
-                              </div>
-                              <div class="col-12 col-md-3">
-                                <label class="d-flex align-items-center ml-1 ml-md-0" >Localite:</label>
+                                <label for="company">Famille :</label>
                                 <fieldset class="form-group">
                                   <ng-select
-                                    [items]="selectLocalite"
-                                    [(ngModel)]="localite"
-                                    name="localite"
-                                    bindLabel="code"
-                                    placeholder="{{ 'filtres.filtreLocalite' | translate }}"
+                                    [items]="selectCategorie"
+                                    [(ngModel)]="categorieEquipement"
+                                    name="categorieEquipement"
+                                    bindLabel="name"
+                                    placeholder="Famille équipement"
                                   ></ng-select>
                                 </fieldset>
                               </div>
+
+                              <div class="col-12 col-md-3">
+                                <label class="d-flex align-items-center ml-1 ml-md-0" >Sous-Famille:</label>
+                                <fieldset class="form-group">
+                                  <ng-select
+                                    [items]="selectFamille"
+                                    [(ngModel)]="famille"
+                                    name="famille"
+                                    bindLabel="name"
+                                    placeholder="Sous-Famille équipement"
+                                  ></ng-select>
+                                </fieldset>
+                              </div>
+
                               <div class="col-12 col-md-3">
                                 <label class="d-flex align-items-center ml-1 ml-md-0" >Marque:</label>
                                 <fieldset class="form-group">
@@ -209,58 +146,105 @@
                                     [(ngModel)]="marque"
                                     name="marque"
                                     bindLabel="name"
-                                    placeholder="{{ 'filtres.filtreMarque' | translate }}"
+                                    placeholder="Marque équipement"
                                   ></ng-select>
                                 </fieldset>
                               </div>
+
                               <div class="col-12 col-md-3">
-                                <label class="d-flex align-items-center ml-1 ml-md-0" >Etat actule:</label>
+                                <label class="d-flex align-items-center ml-1 ml-md-0" >Modèle:</label>
+                                  <input
+                                  [(ngModel)]="modele"
+                                  name="modele"
+                                  placeholder="Modèle équipement"
+                                  type="search"
+                                  class="form-control ml-25"
+                                  [class.error]="accountForm.submitted && EmailRef.invalid"
+                                  #EmailRef="ngModel"
+                                  required
+                                  />
+                                <span *ngIf="accountForm.submitted && EmailRef.invalid" class="invalid-form">
+                                  <small class="form-text text-danger" *ngIf="EmailRef.errors.required"
+                                    >This field is required!</small
+                                  >
+                                </span>
+                              </div>
+
+                              <div class="col-12 col-md-3">
+                                <label class="d-flex align-items-center ml-1 ml-md-0" >Numéro de série:</label>
+                                  <input
+                                  [(ngModel)]="numeroDeSerie"
+                                  name="numeroDeSerie"
+                                  placeholder="Numéro de série"
+                                  type="search"
+                                  class="form-control ml-25"
+                                  [class.error]="accountForm.submitted && EmailRef.invalid"
+                                  #EmailRef="ngModel"
+                                  required
+                                  />
+                                <span *ngIf="accountForm.submitted && EmailRef.invalid" class="invalid-form">
+                                  <small class="form-text text-danger" *ngIf="EmailRef.errors.required"
+                                    >This field is required!</small
+                                  >
+                                </span>
+                              </div>
+
+                              <div class="col-12 col-md-3">
+                                <label class="d-flex align-items-center ml-1 ml-md-0" >Numéro déclaration:</label>
+                                  <input
+                                  [(ngModel)]="numDeclaration"
+                                  name="numDeclaration"
+                                  placeholder="Numéro déclaration"
+                                  type="search"
+                                  class="form-control ml-25"
+                                  [class.error]="accountForm.submitted && EmailRef.invalid"
+                                  #EmailRef="ngModel"
+                                  required
+                                  />
+                                <span *ngIf="accountForm.submitted && EmailRef.invalid" class="invalid-form">
+                                  <small class="form-text text-danger" *ngIf="EmailRef.errors.required"
+                                    >This field is required!</small
+                                  >
+                                </span>
+                              </div>
+
+                              <div class="col-md-3">
+                                <div class="form-group">
+                                  <label for="company">Mise en service:</label>
+                                  <div class="input-group">
+                                    <input
+                                      class="form-control"
+                                      placeholder="dd-mm-yyyy"
+                                      name="miseEnservice"
+                                      [(ngModel)]="basicDPdata"
+                                      ngbDatepicker
+                                      #basicDP="ngbDatepicker"
+                                    />
+                                    <div class="input-group-append">
+                                      <button
+                                        class="btn btn-outline-secondary feather icon-calendar"
+                                        (click)="basicDP.toggle()"
+                                        type="button"
+                                        rippleEffect
+                                      ></button>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div class="col-12 col-md-3">
+                                <label class="d-flex align-items-center ml-1 ml-md-0" >Département :</label>
                                 <fieldset class="form-group">
                                   <ng-select
-                                    [items]="selectEtatActuel"
-                                    [(ngModel)]="etatActuel"
-                                    name="etatActuel"
-                                    bindLabel="code"
-                                    placeholder="{{ 'filtres.filtreEtatActuel' | translate }}"
+                                    [items]="selectLocalite"
+                                    [(ngModel)]="localite"
+                                    name="localite"
+                                    bindLabel="name"
+                                    placeholder="Département équipement"
                                   ></ng-select>
                                 </fieldset>
                               </div>
-                              <div class="col-12 col-md-3">
-                                <label class="d-flex align-items-center ml-1 ml-md-0" >Actif?:</label>
-                                <fieldset class="form-group">
-                                  <ng-select
-                                    [items]="selectEtatMachine"
-                                    [(ngModel)]="etatMachine"
-                                    name="etatMachine"
-                                    bindLabel="code"
-                                    placeholder="{{ 'filtres.filtreEtat' | translate }}"
-                                  ></ng-select>
-                                </fieldset>
-                              </div>
-                              <div class="col-12 col-md-3">
-                                <label class="d-flex align-items-center ml-1 ml-md-0" >Famille:</label>
-                                <fieldset class="form-group">
-                                  <ng-select
-                                    [items]="selectFamille"
-                                    [(ngModel)]="famille"
-                                    name="famille"
-                                    bindLabel="code"
-                                    placeholder="{{ 'filtres.filtreFamille' | translate }}"
-                                  ></ng-select>
-                                </fieldset>
-                              </div>
-                              <div class="col-12 col-md-3">
-                                <label for="company">Catégorie :</label>
-                                <fieldset class="form-group">
-                                  <ng-select
-                                    [items]="selectCategorie"
-                                    [(ngModel)]="categorieEquipement"
-                                    name="categorieEquipement"
-                                    bindLabel="code"
-                                    placeholder="{{ 'filtres.filtreCategorie' | translate }}"
-                                  ></ng-select>
-                                </fieldset>
-                              </div>
+
                               <div class="col-12 col-md-3">
                                 <label for="company">Emplacement :</label>
                                 <fieldset class="form-group">
@@ -268,11 +252,26 @@
                                     [items]="selectEmplacement"
                                     [(ngModel)]="emplacement"
                                     name="emplacement"
-                                    bindLabel="code"
-                                    placeholder="{{ 'filtres.filtreCategorie' | translate }}"
+                                    bindLabel="name"
+                                    placeholder="Emplacement équipement"
                                   ></ng-select>
                                 </fieldset>
                               </div>
+
+                              <div class="col-12 col-md-3">
+                                <label class="d-flex align-items-center ml-1 ml-md-0" >Etat Actule:</label>
+                                <fieldset class="form-group">
+                                  <ng-select
+                                    [items]="selectEtatMachine"
+                                    [(ngModel)]="etatMachine"
+                                    name="etatMachine"
+                                    bindLabel="name"
+                                    placeholder="Etat Actule"
+                                  ></ng-select>
+                                </fieldset>
+                              </div>
+
+                              
                               <div class="col-md-3">
                                 <div class="form-group">
                                   <label for="company">Date d'achat :</label>
@@ -296,16 +295,18 @@
                                   </div>
                                 </div>
                               </div>
+
                               <div class="col-12 col-md-3">
                                 <label class="d-flex align-items-center ml-1 ml-md-0" >Prix d'achat:</label>
                                   <input
                                   [(ngModel)]="prixAchat"
                                   name="prixAchat"
                                   type="search"
+                                  placeholder="Prix d'achat"
                                   class="form-control ml-25"
                                   [class.error]="accountForm.submitted && EmailRef.invalid"
                                   #EmailRef="ngModel"
-                                  required
+                                  required="false"
                                   />
                                 <span *ngIf="accountForm.submitted && EmailRef.invalid" class="invalid-form">
                                   <small class="form-text text-danger" *ngIf="EmailRef.errors.required"
@@ -313,7 +314,37 @@
                                   >
                                 </span>
                               </div>
+
                               <div class="col-12 col-md-3">
+                                <label class="d-flex align-items-center ml-1 ml-md-0" >Devise:</label>
+                                <fieldset class="form-group">
+                                  <ng-select
+                                    [items]="selectEtatMachine"
+                                    [(ngModel)]="etatMachine"
+                                    name="etatMachine"
+                                    bindLabel="code"
+                                    placeholder="Devise"
+                                  ></ng-select>
+                                </fieldset>
+                              </div>
+
+                              <div class="col-12 col-md-3">
+                                <label class="d-flex align-items-center ml-1 ml-md-0" >Observation:</label>
+                                  <textarea class="form-control mb-2" name="Observation"  placeholder="Observations" (change)="doTextareaValueChange($event)">
+                                  </textarea>
+                              </div>
+
+
+
+                              <!-- <div class="col-12 col-md-3">
+                                
+                                      <label class="form-label" for="basic-icon-default-uname">Observation</label>
+                                      <textarea class="form-control mb-2" rows="4" placeholder="Observations" (change)="doTextareaValueChange($event)"> {{currentRow.Observation}} </textarea>
+                                
+                              </div> -->
+
+
+                              <!-- <div class="col-12 col-md-3">
                                 <label class="d-flex align-items-center ml-1 ml-md-0" >Unite:</label>
                                 <fieldset class="form-group">
                                   <ng-select
@@ -324,18 +355,16 @@
                                     placeholder="{{ 'filtres.filtreUnite' | translate }}"
                                   ></ng-select>
                                 </fieldset>
-                              </div>
+                              </div> -->
                               
                             </div>
                       </ng-template>
                     </li>
+                    
                     <li ngbNavItem>
                       <a ngbNavLink><span [data-feather]="'settings'"></span> Attachements</a>
                       <ng-template ngbNavContent>
                         
-
-
-
                         <div class="row">
  
                           <div class="col-md-3">
@@ -415,7 +444,7 @@
                               <div>
                                   <div>
                                       Queue progress:
-                                      <div class="progress" style="">
+                                      <div class="progress" >
                                           <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': uploader.progress + '%' }"></div>
                                       </div>
                                   </div>
@@ -480,6 +509,9 @@
 
                       </ng-template>
                     </li>
+
+
+
                     <li ngbNavItem>
                       <a href="javascript:void(0)" ngbNavLink><span [data-feather]="'lock'"></span> Historique localité</a>
                       <ng-template ngbNavContent>

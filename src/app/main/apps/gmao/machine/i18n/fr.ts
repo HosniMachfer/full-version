@@ -14,16 +14,16 @@ export const locale = {
     	title : 'Filtre de recherche',
         filtreLocalite: 'Selectionnez une localité',
         filtreMarque:'Selectionnez une marque',
-        filtreEtatActuel:'Etat actuel',
+        filtreEtatActuel:'Etat machine',
         filtreEtat:'Actif?',
-        filtreFamille:'Famille',
-        filtreCategorie:'Catégorie'
+        filtreFamille:'Selectionnez une famille',
+        filtreCategorie:'Selectionnez un catégorie'
     },
     buttons: {
-    	addNewUser : 'Ajouter un nouveau machine'
+    	addNewUser : 'Ajouter un nouveau équipement'
     },
     fnp : {
-        title : 'Formulaire nouveau machine',
+        title : 'Formulaire nouveau équipement',
         champs:{
 	        libellet: 'Reférence',
 	        code : 'Designiation',
@@ -32,7 +32,7 @@ export const locale = {
         },    
 	    buttons: {
 	    	validation : 'Valider',
-			cancel : 'Continuer'	    	
+			cancel : 'Annuler'	    	
 	    }
   }
 }  

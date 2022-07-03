@@ -16,24 +16,7 @@
           <h5 class="modal-title" id="exampleModalLabel">{{ 'fnp.title' | translate }}</h5>
         </div>
         <div class="modal-body flex-grow-1">
-          <div class="form-group">
-            <label class="form-label" for="basic-icon-default-fullname">{{ 'fnp.champs.libellet' | translate }}</label>
-            <input
-              type="text"
-              class="form-control dt-full-name"
-              id="basic-icon-default-fullname"
-              name="name"
-              [(ngModel)]="name"
-              [class.error]="newUserForm.submitted && FNameRef.invalid"
-              #FNameRef="ngModel"
-              required
-              aria-label="John Doe"
-              aria-describedby="basic-icon-default-fullname2"
-            />
-            <span *ngIf="newUserForm.submitted && FNameRef.invalid" class="invalid-form">
-              <small class="form-text text-danger" *ngIf="FNameRef.errors.required">This field is required!</small>
-            </span>
-          </div>
+
           <div class="form-group">
             <label class="form-label" for="basic-icon-default-uname">{{ 'fnp.champs.code' | translate }}</label>
             <input
@@ -52,9 +35,29 @@
               <small class="form-text text-danger" *ngIf="FUserNameRef.errors.required">This field is required!</small>
             </span>
           </div>
+
+          <div class="form-group">
+            <label class="form-label" for="basic-icon-default-fullname">{{ 'fnp.champs.libellet' | translate }}</label>
+            <input
+              type="text"
+              class="form-control dt-full-name"
+              id="basic-icon-default-fullname"
+              name="name"
+              [(ngModel)]="name"
+              [class.error]="newUserForm.submitted && FNameRef.invalid"
+              #FNameRef="ngModel"
+              required
+              aria-label="John Doe"
+              aria-describedby="basic-icon-default-fullname2"
+            />
+            <span *ngIf="newUserForm.submitted && FNameRef.invalid" class="invalid-form">
+              <small class="form-text text-danger" *ngIf="FNameRef.errors.required">This field is required!</small>
+            </span>
+          </div>
+
           <div class="form-group">
                 <label class="form-label" for="basic-icon-default-uname">{{ 'fnp.champs.description' | translate }}</label>
-                <textarea class="form-control mb-2" rows="4" placeholder="Comment"></textarea>
+                <textarea class="form-control mb-2" rows="4" placeholder="Commentaire"></textarea>
           </div>
           <button type="submit" class="btn btn-primary mr-1" (click)="submit(newUserForm)" rippleEffect>{{ 'fnp.buttons.validation' | translate }}</button>
           <button

@@ -10,7 +10,7 @@
             <div class="card-body">
               <div class="row">
                 <div class="user-info mb-1">
-                  <h4 class="mb-0">Detail unite</h4>
+                  <h4 class="mb-0">Detail Unité</h4>
                 </div>
                 <!-- divider -->
                 <div class="col-12">
@@ -20,16 +20,18 @@
                 <div class="col-xl-6 col-lg-12 mt-2 mt-xl-0">
                   <div class="user-info-wrapper">
 
+
                     <div class="d-flex flex-wrap">
                       <div class="user-info-title">
-                        <span class="card-text user-info-title font-weight-bold mb-0">Libellet: </span>
+                        <span class="card-text user-info-title font-weight-bold mb-0">Code:</span>
                       </div>
-                      <p class="card-text mb-0">{{ data.name }}</p>
+                      <p class="card-text mb-0">{{ data.code }}</p>
                     </div>
+
                     <div class="d-flex flex-wrap my-50">
-                      <div class="user-info-title">
+                      <!-- <div class="user-info-title">
                         <span class="card-text user-info-title font-weight-bold mb-0">Role(s): </span>
-                      </div>
+                      </div> -->
                       <div  *ngFor="let userroles of data.roles; let i = index">
                         <i
                           class="feather font-medium-3"
@@ -56,10 +58,11 @@
                   <div class="user-info-wrapper">
                     <div class="d-flex flex-wrap">
                       <div class="user-info-title">
-                        <span class="card-text user-info-title font-weight-bold mb-0">Code:</span>
+                        <span class="card-text user-info-title font-weight-bold mb-0">Libellé: </span>
                       </div>
-                      <p class="card-text mb-0">{{ data.code }}</p>
+                      <p class="card-text mb-0">{{ data.name }}</p>
                     </div>
+
                     <div class="d-flex flex-wrap my-50">
                       <div class="user-info-title">
                         <span class="card-text user-info-title font-weight-bold mb-0">Statut: </span>
@@ -93,9 +96,9 @@
 
                 
                 <div class="col-12 d-flex flex-sm-row flex-column mt-3">
-                  <a routerLink="/apps/gmao/unite/unite-list/unite-edit/{{ data.id }}" class="btn btn-primary mb-1 mb-sm-0 mr-0 mr-sm-1" rippleEffect>Edit</a>
-                  <button class="btn btn-outline-secondary mb-1 mb-sm-0 mr-0 mr-sm-1" rippleEffect>Delete</button>
-                  <a routerLink="/apps/gmao/unite/unite-list" class="btn btn-primary mb-1 mb-sm-0 mr-0 mr-sm-1" rippleEffect>Liste des unites</a>
+                  <a routerLink="/apps/gmao/unite/unite-list/unite-edit/{{ data.id }}" class="btn btn-primary mb-1 mb-sm-0 mr-0 mr-sm-1" rippleEffect>Modifier</a>
+                  <button class="btn btn-outline-secondary mb-1 mb-sm-0 mr-0 mr-sm-1" rippleEffect>Supprimer</button>
+                  <a routerLink="/apps/gmao/unite/unite-list" class="btn btn-primary mb-1 mb-sm-0 mr-0 mr-sm-1" rippleEffect>Liste des unités</a>
                 </div>
               </div>
             </div>

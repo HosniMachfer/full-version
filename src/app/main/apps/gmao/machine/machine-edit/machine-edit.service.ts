@@ -49,6 +49,9 @@ export class MachineEditService implements Resolve<any> {
     return new Promise((resolve, reject) => {
       this._httpClient.get(`${environment.apiUrl}`+'/diva-erp-rest-api-gmao/machines').subscribe((response: any) => {
         this.apiData = response;
+        console.log("--------getApiData----------------------------");
+        console.log(response);
+
         this.onMachineEditChanged.next(this.apiData);
         resolve(this.apiData);
       }, reject);
@@ -56,11 +59,13 @@ export class MachineEditService implements Resolve<any> {
   }
  
 getAll(): Observable<any[]> {
+  console.log("--------GETALL----------------------------");
+
     return this._httpClient.get<any[]>(`${environment.apiUrl}`+'/diva-erp-rest-api-gmao/machines',  httpOptions);
 }
 
 create(data: any): Observable<any> {
-  console.log("------------------------------------");
+  console.log("--------CREATE----------------------------");
   console.log(data);
   console.log("------------------------------------");
     return this._httpClient.post(`${environment.apiUrl}`+'/diva-erp-rest-api-gmao/add-machine', data);

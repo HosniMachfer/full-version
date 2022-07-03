@@ -16,19 +16,19 @@ export const locale = {
         filtreStatus:'Selectionnez un statut'
     },
     buttons: {
-    	addNewUser : 'Ajouter un nouveau Famille'
+    	addNewUser : 'Ajouter Sous-Famille Machine'
     },
     fnp : {
-        title : 'Formulaire nouveau Famille',
+        title : 'Formulaire nouveau Sous-Famille',
         champs:{
-	        libellet: 'Libellet',
+	        libellet: 'Libellé',
 	        code : 'Code',
 	        description: 'Description',
 	        statut : 'Statut'
         },    
 	    buttons: {
 	    	validation : 'Valider',
-			cancel : 'Continuer'	    	
+			cancel : 'Annuler'	    	
 	    }
   }
 }  

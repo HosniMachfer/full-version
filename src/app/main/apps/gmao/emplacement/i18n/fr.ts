@@ -16,19 +16,19 @@ export const locale = {
         filtreStatus:'Selectionnez un statut'
     },
     buttons: {
-    	addNewUser : 'Ajouter un nouveau emplacement'
+    	addNewUser : 'Ajouter un nouveau Emplacement'
     },
     fnp : {
-        title : 'Formulaire nouveau emplacement',
+        title : 'Formulaire nouveau Emplacement',
         champs:{
-	        libellet: 'Libellet',
+	        libellet: 'Libellé',
 	        code : 'Code',
 	        description: 'Description',
 	        statut : 'Statut'
         },    
 	    buttons: {
 	    	validation : 'Valider',
-			cancel : 'Continuer'	    	
+			cancel : 'Annuler'	    	
 	    }
   }
 }  

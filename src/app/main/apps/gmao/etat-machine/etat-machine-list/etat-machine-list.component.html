@@ -19,7 +19,7 @@
           <div class="col-md-6 col-12 d-flex justify-content-start justify-content-md-end">
             <div class="d-flex align-items-center justify-content-end pr-1 pb-1 pb-md-0">
               <label class="d-flex align-items-center ml-1 ml-md-0"
-                >Search:<input
+                >Recherche:<input
                   [(ngModel)]="searchValue"
                   name="searchValue"
                   type="search"
@@ -44,14 +44,15 @@
           [scrollbarH]="true"
         >
           
-          <ngx-datatable-column name="Libellet etat-machine" prop="name" [width]="100">
+        <ngx-datatable-column name="Code" prop="code" [width]="50"></ngx-datatable-column>
+          <ngx-datatable-column name="Libellé" prop="name" [width]="100">
             <ng-template let-row="row" let-name="value" ngx-datatable-cell-template>
                 {{name}}
             </ng-template>
           </ngx-datatable-column>
           
-          <ngx-datatable-column name="Code etat-machine" prop="code" [width]="50"></ngx-datatable-column>
-          <ngx-datatable-column name="Description etat-machine" prop="description"></ngx-datatable-column>
+    
+          <ngx-datatable-column name="Description " prop="description"></ngx-datatable-column>
           <ngx-datatable-column name="Status" prop="status" [width]="50">
             <ng-template let-status="value" ngx-datatable-cell-template>
               <div
@@ -76,9 +77,9 @@
                   <a routerLink="/apps/gmao/etat-machine/etat-machine-list/etat-machine-view/{{ row.id }}" ngbDropdownItem
                     ><span [data-feather]="'file-text'" [size]="16" [class]="'mr-50'"></span> Details</a
                   ><a routerLink="/apps/gmao/etat-machine/etat-machine-list/etat-machine-edit/{{ row.id }}" ngbDropdownItem
-                    ><span [data-feather]="'edit'" [size]="16" [class]="'mr-50'"></span> Edit</a
+                    ><span [data-feather]="'edit'" [size]="16" [class]="'mr-50'"></span> Modifier</a
                   ><a href="javascript:;" ngbDropdownItem
-                    ><span [data-feather]="'trash'" [size]="16" [class]="'mr-50'"></span> Delete</a
+                    ><span [data-feather]="'trash'" [size]="16" [class]="'mr-50'"></span> Supprimer</a
                   >
                 </div>
               </div>

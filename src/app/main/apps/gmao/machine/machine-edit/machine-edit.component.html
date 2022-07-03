@@ -5,7 +5,7 @@
       <div class="card">
         <div class="card-body">
           <div class="user-info mb-1">
-            <h4 class="mb-0">Edit machine</h4>
+            <h4 class="mb-0">Modifier équipement </h4>
           </div>
           <!-- divider -->
           <div class="col-12">
@@ -20,7 +20,7 @@
                       type="text"
                       id="name"
                       class="form-control"
-                      placeholder="Name"
+                      placeholder="Réference"
                       name="fullName"
                       [(ngModel)]="currentRow.reference"
                       [class.error]="accountForm.submitted && FullNameRef.invalid"
@@ -34,6 +34,7 @@
                     </span>
                   </div>
                 </div>
+
                 <div class="col-md-4">
                   <div class="form-group">
                     <label for="email">Désignation :</label>
@@ -41,7 +42,7 @@
                       type="email"
                       id="email"
                       class="form-control"
-                      placeholder="Email"
+                      placeholder="Désignation"
                       name="email"
                       [(ngModel)]="currentRow.designation"
                       [class.error]="accountForm.submitted && EmailRef.invalid"
@@ -55,7 +56,8 @@
                     </span>
                   </div>
                 </div>
-                <div class="col-md-4">
+
+                <!-- <div class="col-md-4">
                   <div class="form-group">
                     <label for="status">Status :</label>
                     <select class="form-control" [(ngModel)]="currentRow.status" name="status" id="status">
@@ -64,13 +66,23 @@
                       <option>pending</option>
                     </select>
                   </div>
-                </div>
+                </div> -->
+
+              
+
+             
+              
+
+
+
+<!-- 
                 <div class="col-md-12">
                   <div class="form-group">
                         <label class="form-label" for="basic-icon-default-uname">{{ 'fnp.champs.description' | translate }}</label>
                         <textarea class="form-control mb-2" rows="4" placeholder="Comment" (change)="doTextareaValueChange($event)">{{currentRow.description}}</textarea>
                   </div>
-                </div>
+                </div> -->
+
                 <!-- <div class="col-md-4">
                   <div class="form-group">
                     <label for="company">Date modification :</label>
@@ -94,10 +106,507 @@
                     </div>
                   </div>
                 </div> -->
+
+
+                      <!-- machines new ends -->
+        <!-- Basic tabs start -->
+        <section id="basic-tabs-components">
+          <div class="row match-height">
+            <div class="col-xl-12 col-lg-12">
+              <core-card-snippet>
+                <h4 class="card-title">Info équipement</h4>
+                <div class="card-body">
+                  <ul ngbNav #navWithIcons="ngbNav" class="nav-tabs">
+                    <li ngbNavItem>
+                      <a ngbNavLink><span [data-feather]="'cast'"></span> Général</a>
+                      <ng-template ngbNavContent>
+                        <div class="col-12">
+                          <hr class="my-1" />
+                        </div>
+                            <div class="row">
+
+                              <div class="col-12 col-md-3">
+                                <label for="company">Famille équipement :</label>
+                                <fieldset class="form-group">
+                                  <ng-select
+                                    [items]="selectCategorie"
+                                    [(ngModel)]="currentRow.categorieEquipement"
+                                    name="categorieEquipement"
+                                    bindLabel="name"
+                                    placeholder="Catégorie Machine"
+
+                                  ></ng-select>
+                                </fieldset>
+                              </div>
+
+                              <div class="col-12 col-md-3">
+                                <label class="d-flex align-items-center ml-1 ml-md-0" >Sous-Famille:</label>
+                                <fieldset class="form-group">
+                                  <ng-select
+                                    [items]="selectFamille"
+                                    [(ngModel)]="currentRow.famille"
+                                    name="famille"
+                                    bindLabel="name"
+                                    placeholder="Famille Machine"
+                                  ></ng-select>
+                                </fieldset>
+                              </div>
+
+                              <div class="col-12 col-md-3">
+                                <label class="d-flex align-items-center ml-1 ml-md-0" >Marque:</label>
+                                <fieldset class="form-group">
+                                  <ng-select
+                                    [items]="selectMarque"
+                                    [(ngModel)]="currentRow.marque"
+                                    name="marque"
+                                    bindLabel="name"
+                                    placeholder="Marque Machine"
+                                  ></ng-select>
+                                </fieldset>
+                              </div>
+
+                              <div class="col-12 col-md-3">
+                                <label class="d-flex align-items-center ml-1 ml-md-0" >Modèle:</label>
+                                  <input
+                                  [(ngModel)]="currentRow.modele"
+                                  name="modele"
+                                  placeholder="Modèle Machine"
+                                  type="search"
+                                  class="form-control ml-25"
+                                  [class.error]="accountForm.submitted && EmailRef.invalid"
+                                  #EmailRef="ngModel"
+                                  required
+                                  />
+                                <span *ngIf="accountForm.submitted && EmailRef.invalid" class="invalid-form">
+                                  <small class="form-text text-danger" *ngIf="EmailRef.errors.required"
+                                    >This field is required!</small
+                                  >
+                                </span>
+                              </div>
+
+                              <div class="col-12 col-md-3">
+                                <label class="d-flex align-items-center ml-1 ml-md-0" >Numéro de série:</label>
+                                  <input
+                                  [(ngModel)]="currentRow.numeroDeSerie"
+                                  name="numeroDeSerie"
+                                  placeholder="Numéro de série"
+                                  type="search"
+                                  class="form-control ml-25"
+                                  [class.error]="accountForm.submitted && EmailRef.invalid"
+                                  #EmailRef="ngModel"
+                                  required
+                                  />
+                                <span *ngIf="accountForm.submitted && EmailRef.invalid" class="invalid-form">
+                                  <small class="form-text text-danger" *ngIf="EmailRef.errors.required"
+                                    >This field is required!</small
+                                  >
+                                </span>
+                              </div>
+
+                              <div class="col-12 col-md-3">
+                                <label class="d-flex align-items-center ml-1 ml-md-0" >Numéro déclaration:</label>
+                                  <input
+                                  [(ngModel)]="currentRow.numDeclaration"
+                                  name="numDeclaration"
+                                  placeholder="Numéro déclaration"
+                                  type="search"
+                                  class="form-control ml-25"
+                                  [class.error]="accountForm.submitted && EmailRef.invalid"
+                                  #EmailRef="ngModel"
+                                  required
+                                  />
+                                <span *ngIf="accountForm.submitted && EmailRef.invalid" class="invalid-form">
+                                  <small class="form-text text-danger" *ngIf="EmailRef.errors.required"
+                                    >This field is required!</small
+                                  >
+                                </span>
+                              </div>
+                              <!-- <div class="col-12 col-md-3">
+                                <label class="d-flex align-items-center ml-1 ml-md-0" >Carateristique technique:</label>
+                                  <input
+                                  [(ngModel)]="currentRow.carateristiqueTechnique"
+                                  name="carateristiqueTechnique"
+                                  placeholder="Carateristique technique"
+                                  type="search"
+                                  class="form-control ml-25"
+                                  [class.error]="accountForm.submitted && EmailRef.invalid"
+                                  #EmailRef="ngModel"
+                                  required
+                                  />
+                                <span *ngIf="accountForm.submitted && EmailRef.invalid" class="invalid-form">
+                                  <small class="form-text text-danger" *ngIf="EmailRef.errors.required"
+                                    >This field is required!</small
+                                  >
+                                </span>
+                              </div> -->
+                              <div class="col-md-3">
+                                <div class="form-group">
+                                  <label for="company">Mise en service:</label>
+                                  <div class="input-group">
+                                    <input
+                                      class="form-control"
+                                      placeholder="dd-mm-yyyy"
+                                      name="miseEnservice"
+                                      [(ngModel)]="currentRow.basicDPdata"
+                                      ngbDatepicker
+                                      #basicDP="ngbDatepicker"
+                                    />
+                                    <div class="input-group-append">
+                                      <button
+                                        class="btn btn-outline-secondary feather icon-calendar"
+                                        (click)="basicDP.toggle()"
+                                        type="button"
+                                        rippleEffect
+                                      ></button>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div class="col-12 col-md-3">
+                                <label class="d-flex align-items-center ml-1 ml-md-0" >Département:</label>
+                                <fieldset class="form-group">
+                                  <ng-select
+                                    [items]="selectLocalite"
+                                    [(ngModel)]="currentRow.localite"
+                                    name="localite"
+                                    bindLabel="name"
+                                    placeholder="Localité Machine"
+                                    ng-options="localite.name for item in itemObjectArray"
+                                  ></ng-select>
+                                  <!-- <option [value]="name" *ngFor="let name of selectLocalite">{{name}}</option> -->
+                                  <option *ngFor="let i of items" [ngValue]="name">{{i.name}}</option>
+                                  <!-- <select class="form-control" [(ngModel)]="currentRow.localite" name="localite">
+                                    <option>active</option>
+                                    <option>inactive</option>
+                                    <option>pending</option>
+                                  </select> -->
+
+
+                                </fieldset>
+                              </div>
+
+                              <div class="col-12 col-md-3">
+                                <label for="company">Emplacement :</label>
+                                <fieldset class="form-group">
+                                  <ng-select
+                                    [items]="selectEmplacement"
+                                    [(ngModel)]="currentRow.emplacement"
+                                    name="emplacement"
+                                    bindLabel="name"
+                                    placeholder="Emplacement Machine"
+                                  ></ng-select>
+                                </fieldset>
+                              </div>
+
+                              <div class="col-12 col-md-3">
+                                <label class="d-flex align-items-center ml-1 ml-md-0" >Etat Actule:</label>
+                                <fieldset class="form-group">
+                                  <ng-select
+                                    [items]="selectEtatMachine"
+                                    [(ngModel)]="currentRow.etatMachine"
+                                    name="etatMachine"
+                                    bindLabel="name"
+                                    placeholder="Etat Actule"
+                                  ></ng-select>
+                                </fieldset>
+                              </div>
+
+                              
+                              <div class="col-md-3">
+                                <div class="form-group">
+                                  <label for="company">Date d'achat :</label>
+                                  <div class="input-group">
+                                    <input
+                                      class="form-control"
+                                      placeholder="dd-mm-yyyy"
+                                      name="dateAchat"
+                                      [(ngModel)]="currentRow.basicDPdata"
+                                      ngbDatepicker
+                                      #basicDP="ngbDatepicker"
+                                    />
+                                    <div class="input-group-append">
+                                      <button
+                                        class="btn btn-outline-secondary feather icon-calendar"
+                                        (click)="basicDP.toggle()"
+                                        type="button"
+                                        rippleEffect
+                                      ></button>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div class="col-12 col-md-3">
+                                <label class="d-flex align-items-center ml-1 ml-md-0" >Prix d'achat:</label>
+                                  <input
+                                  [(ngModel)]="currentRow.prixAchat"
+                                  name="prixAchat"
+                                  type="search"
+                                  placeholder="Prix d'achat"
+                                  class="form-control ml-25"
+                                  [class.error]="accountForm.submitted && EmailRef.invalid"
+                                  #EmailRef="ngModel"
+                                  required="false"
+                                  />
+                                <span *ngIf="accountForm.submitted && EmailRef.invalid" class="invalid-form">
+                                  <small class="form-text text-danger" *ngIf="EmailRef.errors.required"
+                                    >This field is required!</small
+                                  >
+                                </span>
+                              </div>
+
+                              <div class="col-12 col-md-3">
+                                <label class="d-flex align-items-center ml-1 ml-md-0" >Devise:</label>
+                                <fieldset class="form-group">
+                                  <ng-select
+                                    [items]="selectEtatMachine"
+                                    [(ngModel)]="currentRow.etatMachine"
+                                    name="etatMachine"
+                                    bindLabel="code"
+                                    placeholder="Devise"
+                                  ></ng-select>
+                                </fieldset>
+                              </div>
+
+
+                              
+                              <div class="col-12 col-md-3">
+                                <label class="d-flex align-items-center ml-1 ml-md-0" >Observation:</label>
+                                  <textarea class="form-control mb-2" name="Observation"  placeholder="Observations" (change)="doTextareaValueChange($event)">
+                                  </textarea>
+                              </div>
+
+
+                              <!-- <div class="col-12 col-md-3">
+                                <label class="d-flex align-items-center ml-1 ml-md-0" >Unite:</label>
+                                <fieldset class="form-group">
+                                  <ng-select
+                                    [items]="selectUnite"
+                                    [(ngModel)]="unite"
+                                    name="unite"
+                                    bindLabel="code"
+                                    placeholder="{{ 'filtres.filtreUnite' | translate }}"
+                                  ></ng-select>
+                                </fieldset>
+                              </div> -->
+                              
+                            </div>
+                      </ng-template>
+                    </li>
+                    
+                    <li ngbNavItem>
+                      <a ngbNavLink><span [data-feather]="'settings'"></span> Attachements</a>
+                      <ng-template ngbNavContent>
+                        
+                        <div class="row">
+ 
+                          <div class="col-md-3">
+                   
+                              <h3>Select files</h3>
+                   
+                              <div ng2FileDrop
+                                   [ngClass]="{'nv-file-over': hasBaseDropZoneOver}"
+                                   (fileOver)="fileOverBase($event)"
+                                   [uploader]="uploader"
+                                   class="well my-drop-zone">
+                                  Base drop zone
+                              </div>
+                   
+                              <div ng2FileDrop
+                                   [ngClass]="{'another-file-over-class': hasAnotherDropZoneOver}"
+                                   (fileOver)="fileOverAnother($event)"
+                                   [uploader]="uploader"
+                                   class="well my-drop-zone">
+                                  Another drop zone
+                              </div>
+                   
+                              Multiple
+                              <input type="file" ng2FileSelect [uploader]="uploader" multiple  /><br/>
+                   
+                              Single
+                              <input type="file" ng2FileSelect [uploader]="uploader" />
+                          </div>
+                   
+                          <div class="col-md-9" style="margin-bottom: 40px">
+                   
+                              <h3>Upload queue</h3>
+                              <p>Queue length: {{ uploader?.queue?.length }}</p>
+                   
+                              <table class="table">
+                                  <thead>
+                                  <tr>
+                                      <th width="50%">Name</th>
+                                      <th>Size</th>
+                                      <th>Progress</th>
+                                      <th>Status</th>
+                                      <th>Actions</th>
+                                  </tr>
+                                  </thead>
+                                  <tbody>
+                                  <tr *ngFor="let item of uploader.queue">
+                                      <td><strong>{{ item?.file?.name }}</strong></td>
+                                      <td *ngIf="uploader.options.isHTML5" nowrap>{{ item?.file?.size/1024/1024 | number:'.2' }} MB</td>
+                                      <td *ngIf="uploader.options.isHTML5">
+                                          <div class="progress" style="margin-bottom: 0;">
+                                              <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': item.progress + '%' }"></div>
+                                          </div>
+                                      </td>
+                                      <td class="text-center">
+                                          <span *ngIf="item.isSuccess"><i class="glyphicon glyphicon-ok"></i></span>
+                                          <span *ngIf="item.isCancel"><i class="glyphicon glyphicon-ban-circle"></i></span>
+                                          <span *ngIf="item.isError"><i class="glyphicon glyphicon-remove"></i></span>
+                                      </td>
+                                      <td nowrap>
+                                          <button type="button" class="btn btn-success btn-xs"
+                                                  (click)="item.upload()" [disabled]="item.isReady || item.isUploading || item.isSuccess">
+                                              <span class="glyphicon glyphicon-upload"></span> Upload
+                                          </button>
+                                          <button type="button" class="btn btn-warning btn-xs"
+                                                  (click)="item.cancel()" [disabled]="!item.isUploading">
+                                              <span class="glyphicon glyphicon-ban-circle"></span> Cancel
+                                          </button>
+                                          <button type="button" class="btn btn-danger btn-xs"
+                                                  (click)="item.remove()">
+                                              <span class="glyphicon glyphicon-trash"></span> Remove
+                                          </button>
+                                      </td>
+                                  </tr>
+                                  </tbody>
+                              </table>
+                   
+                              <div>
+                                  <div>
+                                      Queue progress:
+                                      <div class="progress" >
+                                          <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': uploader.progress + '%' }"></div>
+                                      </div>
+                                  </div>
+                                  <button type="button" class="btn btn-success btn-s"
+                                          (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">
+                                      <span class="glyphicon glyphicon-upload"></span> Upload all
+                                  </button>
+                                  <button type="button" class="btn btn-warning btn-s"
+                                          (click)="uploader.cancelAll()" [disabled]="!uploader.isUploading">
+                                      <span class="glyphicon glyphicon-ban-circle"></span> Cancel all
+                                  </button>
+                                  <button type="button" class="btn btn-danger btn-s"
+                                          (click)="uploader.clearQueue()" [disabled]="!uploader.queue.length">
+                                      <span class="glyphicon glyphicon-trash"></span> Remove all
+                                  </button>
+                              </div>
+                   
+                          </div>
+                   
+                      </div>
+                   
+                      <br><br>
+                   
+                      <div class="row">
+                        <div class="col-8">
+                          <label class="btn btn-default p-0">
+                            <input type="file" (change)="selectFile($event)" />
+                          </label>
+                        </div>
+                        <div class="col-4">
+                          <button class="btn btn-success btn-sm" [disabled]="!selectedFiles" (click)="upload()">
+                            Upload
+                          </button>
+                        </div>
+                      </div>
+                      <div *ngIf="currentFile" class="progress my-3">
+                        <div
+                          class="progress-bar progress-bar-info progress-bar-striped"
+                          role="progressbar"
+                          attr.aria-valuenow="{{ progress }}"
+                          aria-valuemin="0"
+                          aria-valuemax="100"
+                          [ngStyle]="{ width: progress + '%' }"
+                        >
+                          {{ progress }}%
+                        </div>
+                      </div>
+                      <div *ngIf="message" class="alert alert-secondary" role="alert">{{ message }}</div>
+                      <div class="card mt-3">
+                        <div class="card-header">List of Files</div>
+                        <ul
+                          class="list-group list-group-flush"
+                          *ngFor="let file of fileInfos | async"
+                        >
+                          <li class="list-group-item">
+                            <a href="{{ file.url }}">{{ file.name }}</a>
+                          </li>
+                        </ul>
+                      </div>
+                  
+
+
+                      </ng-template>
+                    </li>
+
+
+
+                    <li ngbNavItem>
+                      <a href="javascript:void(0)" ngbNavLink><span [data-feather]="'lock'"></span> Historique localité</a>
+                      <ng-template ngbNavContent>
+                        <p>
+                          Cake croissant lemon drops gummi bears carrot cake biscuit cupcake croissant. Macaroon lemon drops
+                          muffin jelly sugar plum chocolate cupcake danish icing. Soufflé tootsie roll lemon drops sweet
+                          roll cake icing cookie halvah cupcake.
+                        </p>
+                      </ng-template>
+                    </li>
+                    <li ngbNavItem>
+                      <a ngbNavLink><span [data-feather]="'award'"></span> Attributs</a>
+                      <ng-template ngbNavContent>
+                        <p>
+                          Chocolate croissant cupcake croissant jelly donut. Cheesecake toffee apple pie chocolate bar
+                          biscuit tart croissant. Lemon drops danish cookie. Oat cake macaroon icing tart lollipop cookie
+                          sweet bear claw. Carrot cake dragée chocolate. Lemon drops ice cream wafer gummies dragée.
+                          Chocolate bar liquorice cheesecake cookie chupa chups marshmallow oat cake biscuit. Dessert toffee
+                          fruitcake ice cream powder tootsie roll cake.
+                        </p>
+                      </ng-template>
+                    </li>
+                    <li ngbNavItem>
+                      <a ngbNavLink><span [data-feather]="'award'"></span> Nomenclature</a>
+                      <ng-template ngbNavContent>
+                        <p>
+                          Chocolate croissant cupcake croissant jelly donut. Cheesecake toffee apple pie chocolate bar
+                          biscuit tart croissant. Lemon drops danish cookie. Oat cake macaroon icing tart lollipop cookie
+                          sweet bear claw. Carrot cake dragée chocolate. Lemon drops ice cream wafer gummies dragée.
+                          Chocolate bar liquorice cheesecake cookie chupa chups marshmallow oat cake biscuit. Dessert toffee
+                          fruitcake ice cream powder tootsie roll cake.
+                        </p>
+                      </ng-template>
+                    </li>
+                    <li ngbNavItem>
+                      <a ngbNavLink><span [data-feather]="'award'"></span> P.jointes</a>
+                      <ng-template ngbNavContent>
+                        <p>
+                          Chocolate croissant cupcake croissant jelly donut. Cheesecake toffee apple pie chocolate bar
+                          biscuit tart croissant. Lemon drops danish cookie. Oat cake macaroon icing tart lollipop cookie
+                          sweet bear claw. Carrot cake dragée chocolate. Lemon drops ice cream wafer gummies dragée.
+                          Chocolate bar liquorice cheesecake cookie chupa chups marshmallow oat cake biscuit. Dessert toffee
+                          fruitcake ice cream powder tootsie roll cake.
+                        </p>
+                      </ng-template>
+                    </li>
+                  </ul>
+                  <div [ngbNavOutlet]="navWithIcons" class="mt-2"></div>
+                </div>
+              </core-card-snippet>
+            </div>
+          </div>
+        </section>
+
+
+
+
+
                 <div class="col-12 d-flex flex-sm-row flex-column mt-3">
-                  <button type="submit" (click)="submit(accountForm)" class="btn btn-primary mb-1 mb-sm-0 mr-0 mr-sm-1" rippleEffect>Save Changes</button>
-                  <button (click)="resetFormWithDefaultValues()" class="btn btn-outline-secondary mb-1 mb-sm-0 mr-0 mr-sm-1" rippleEffect>Reset</button>
-                  <a routerLink="/apps/gmao/machine/machine-list" class="btn btn-primary mb-1 mb-sm-0 mr-0 mr-sm-1" rippleEffect>Liste des machines</a>
+                  <button type="submit" (click)="submit(accountForm)" class="btn btn-primary mb-1 mb-sm-0 mr-0 mr-sm-1" rippleEffect>Modifier</button>
+                  <a routerLink="/apps/gmao/machine/machine-list" class="btn btn-outline-secondary mb-1 mb-sm-0 mr-0 mr-sm-1" rippleEffect>Annuler</a>
                 </div>
               </div>
             </form>

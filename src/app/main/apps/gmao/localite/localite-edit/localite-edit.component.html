@@ -5,7 +5,7 @@
       <div class="card">
         <div class="card-body">
           <div class="user-info mb-1">
-            <h4 class="mb-0">Edit localite</h4>
+            <h4 class="mb-0">Modifier département</h4>
           </div>
           <!-- divider -->
           <div class="col-12">
@@ -13,27 +13,7 @@
           </div>
             <form class="form-validate" (ngSubmit)="(accountForm.form.valid)" #accountForm="ngForm">
               <div class="row">
-                <div class="col-md-4">
-                  <div class="form-group">
-                    <label for="name">Libellet :</label>
-                    <input
-                      type="text"
-                      id="name"
-                      class="form-control"
-                      placeholder="Name"
-                      name="fullName"
-                      [(ngModel)]="currentRow.name"
-                      [class.error]="accountForm.submitted && FullNameRef.invalid"
-                      #FullNameRef="ngModel"
-                      required
-                    />
-                    <span *ngIf="accountForm.submitted && FullNameRef.invalid" class="invalid-form">
-                      <small class="form-text text-danger" *ngIf="FullNameRef.errors.required"
-                        >This field is required!</small
-                      >
-                    </span>
-                  </div>
-                </div>
+
                 <div class="col-md-4">
                   <div class="form-group">
                     <label for="email">Code :</label>
@@ -57,18 +37,38 @@
                 </div>
                 <div class="col-md-4">
                   <div class="form-group">
+                    <label for="name">Libellé :</label>
+                    <input
+                      type="text"
+                      id="name"
+                      class="form-control"
+                      placeholder="Name"
+                      name="fullName"
+                      [(ngModel)]="currentRow.name"
+                      [class.error]="accountForm.submitted && FullNameRef.invalid"
+                      #FullNameRef="ngModel"
+                      required
+                    />
+                    <span *ngIf="accountForm.submitted && FullNameRef.invalid" class="invalid-form">
+                      <small class="form-text text-danger" *ngIf="FullNameRef.errors.required"
+                        >This field is required!</small
+                      >
+                    </span>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
                     <label for="status">Status :</label>
                     <select class="form-control" [(ngModel)]="currentRow.status" name="status" id="status">
-                      <option>active</option>
-                      <option>inactive</option>
-                      <option>pending</option>
+                      <option>Actif</option>
+                      <option>Inactif</option>
                     </select>
                   </div>
                 </div>
                 <div class="col-md-12">
                   <div class="form-group">
                         <label class="form-label" for="basic-icon-default-uname">{{ 'fnp.champs.description' | translate }}</label>
-                        <textarea class="form-control mb-2" rows="4" placeholder="Comment" (change)="doTextareaValueChange($event)">{{currentRow.description}}</textarea>
+                        <textarea class="form-control mb-2" rows="4" placeholder="Commentaire" (change)="doTextareaValueChange($event)">{{currentRow.description}}</textarea>
                   </div>
                 </div>
                 <!-- <div class="col-md-4">
@@ -95,9 +95,8 @@
                   </div>
                 </div> -->
                 <div class="col-12 d-flex flex-sm-row flex-column mt-3">
-                  <button type="submit" (click)="submit(accountForm)" class="btn btn-primary mb-1 mb-sm-0 mr-0 mr-sm-1" rippleEffect>Save Changes</button>
-                  <button (click)="resetFormWithDefaultValues()" class="btn btn-outline-secondary mb-1 mb-sm-0 mr-0 mr-sm-1" rippleEffect>Reset</button>
-                  <a routerLink="/apps/gmao/localite/localite-list" class="btn btn-primary mb-1 mb-sm-0 mr-0 mr-sm-1" rippleEffect>Liste des localites</a>
+                  <button type="submit" (click)="submit(accountForm)" class="btn btn-primary mb-1 mb-sm-0 mr-0 mr-sm-1" rippleEffect>Modifier</button>
+                  <a routerLink="/apps/gmao/localite/localite-list" class="btn btn-outline-secondary mb-1 mb-sm-0 mr-0 mr-sm-1" rippleEffect>Annuler</a>
                 </div>
               </div>
             </form>

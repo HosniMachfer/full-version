@@ -334,6 +334,8 @@ selectedFiles?: FileList;
     console.log(form.value);
     console.log("------------------------------------------");
     if (form.valid) {
+      console.log("--------------------v  a-----------------");
+
       this._machineEditService.create(form.value)
     .subscribe(
       response => {

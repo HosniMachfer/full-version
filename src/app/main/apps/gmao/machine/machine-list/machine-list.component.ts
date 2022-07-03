@@ -91,9 +91,13 @@ public searchModele = '';
           this.rows = data;
           this.tempData = this.rows;
           console.log(this.rows);
+          console.log(" list service");
+
         },
         error => {
           console.log(error);
+          console.log("error list service");
+
     });
     this.localiteListService.getAll()
       .subscribe(
@@ -169,11 +173,12 @@ toggleSidebar(name): void {
     familleFilter = familleFilter.toLowerCase();
     categorieFilter = categorieFilter.toLowerCase();
 
-    return this.tempData.filter(row => {      
-      const isPartialLocaliteMatch = row.localite.code.toLowerCase().indexOf(localiteFilter) !== -1 || !localiteFilter;
-      const isPartialMarqueMatch = row.marque.code.toLowerCase().indexOf(marqueFilter) !== -1 || !marqueFilter;
-      const isPartialFamilleMatch = row.famille.code.toLowerCase().indexOf(familleFilter) !== -1 || !familleFilter;
-      const isPartialCategorieMatch = row.categorieEquipement.code.toLowerCase().indexOf(categorieFilter) !== -1 || !categorieFilter;
+    return this.tempData.filter(row => {     
+    
+      const isPartialLocaliteMatch = row.localite?.code.toLowerCase().indexOf(localiteFilter) !== -1 || !localiteFilter;
+      const isPartialMarqueMatch = row.marque?.code.toLowerCase().indexOf(marqueFilter) !== -1 || !marqueFilter;
+      const isPartialFamilleMatch = row.famille?.code.toLowerCase().indexOf(familleFilter) !== -1 || !familleFilter;
+      const isPartialCategorieMatch = row.categorieEquipement?.code.toLowerCase().indexOf(categorieFilter) !== -1 || !categorieFilter;
       return isPartialLocaliteMatch && isPartialMarqueMatch && isPartialFamilleMatch && isPartialCategorieMatch;
     });
   }

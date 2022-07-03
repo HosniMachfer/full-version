@@ -279,13 +279,13 @@ export const menu: CoreMenu[] = [
           }
         ]
       },
-      {
+      {// GMAO
         id: 'gmao',
         title: 'Pages',
         translate: 'MENU.GMAO.SECTION',
         type: 'collapsible',
         icon: 'tool',
-        children: [
+        children: [ // Fils GMAO
           {
             id: 'parc-machine',
             title: 'Parc machine',
@@ -303,100 +303,173 @@ export const menu: CoreMenu[] = [
             url: 'apps/gmao/pdr/pdr-list'
           },
           {
-	        id: 'intervention',
-	        title: 'Intervention',
-	        translate: 'MENU.APPS.GMAO.INTERVENTION',
-	        type: 'item',
-	        icon: 'activity',
-	        url: 'apps/gestion-dechets/conteneur/conteneur-list'
-	        },
-            {
-            id: 'gestiondechetconfiguration',
-            title: 'Configuration',
-            translate: 'MENU.APPS.GESTIONDECHET.CONF',
+            id: 'intervention',
+            title: 'Intervention',
+            translate: 'MENU.APPS.GMAO.INTERVENTION',
             type: 'collapsible',
-            icon: 'settings',
+            icon: 'activity',
+            // changer le lien
+            //url: 'apps/gmao/pdr/pdr-list',
+
+              children:[
+              {
+                id: 'demandeInter',
+                title: 'Demande Intervention',
+                translate: 'MENU.APPS.GMAO.DEMANDEINTERVENTION',
+                type: 'item',
+                icon: 'circle',
+                // lien
+                url: 'apps/gmao/intervention-curative/intervention-curative-list'
+              },
+              // {
+              //   id: 'interventionCurative',
+              //   title: 'intervention curative',
+              //   translate: 'MENU.APPS.GMAO.INTERVENTIONCURATIVE',
+              //   type: 'item',
+              //   icon: 'circle',
+              //   // lien
+              //   url: 'apps/gmao/categorie-equipement/categorie-equipement-list'
+              // },
+              // {
+              //   id: 'interventionPréventive',
+              //   title: 'intervention prévnetive',
+              //   translate: 'MENU.APPS.GMAO.INTERVENTIONPREVENTIVE',
+              //   type: 'item',
+              //   icon: 'circle',
+              //   // lien
+              //   url: 'apps/gmao/categorie-equipement/categorie-equipement-list'
+              // }
+
+            ]
+          },
+
+          {
+            id: 'tdb',
+            title: 'Tableau de bord',
+            translate: 'MENU.APPS.GMAO.TDB',
+            type: 'item',
+            icon: 'home',
+            url: 'apps/gmao/categorie-equipement/categorie-equipement-list'
+          },
+         
+
+          { //configuration
+          id: 'gestiongmaoconfiguration',
+          title: 'Configuration',
+          // translate: 'MENU.APPS.GESTIONGMAO.CONF',
+          type: 'collapsible',
+          icon: 'settings',
             children: [
               {
-              id: 'etat-famille',
-              title: 'Etat famille',
-              translate: 'MENU.APPS.GESTIONDECHET.ETATFAMILLE',
-              type: 'item',
-              icon: 'circle',
-              url: 'apps/gestion-dechets/etat-famille/etat-famille-list'
-             },
-            {
-              id: 'etat-magasin',
-              title: 'Etat magasin',
-              translate: 'MENU.APPS.GESTIONDECHET.ETATMAGASIN',
-              type: 'item',
-              icon: 'circle',
-              url: 'apps/gestion-dechets/etat-magasin/etat-magasin-list'
-            },
-            {
-              id: 'famille',
-              title: 'Familles',
-              translate: 'MENU.APPS.GESTIONDECHET.FAMILLE',
-              type: 'item',
-              icon: 'circle',
-              url: 'apps/gmao/famille/famille-list'
-            },
-            {
-              id: 'marque',
-              title: 'Marques',
-              translate: 'MENU.APPS.GMAO.MARQUE',
-              type: 'item',
-              icon: 'circle',
-              url: 'apps/gmao/marque/marque-list'
-            },
-            {
-              id: 'localite',
-              title: 'Localites',
-              translate: 'MENU.APPS.GMAO.LOCALITE',
-              type: 'item',
-              icon: 'circle',
-              url: 'apps/gmao/localite/localite-list'
-            },
-            {
-              id: 'categorie-equipement',
-              title: 'Categorie equipements',
-              translate: 'MENU.APPS.GMAO.CATEGORIEEQUIPEMENT',
-              type: 'item',
-              icon: 'circle',
-              url: 'apps/gmao/categorie-equipement/categorie-equipement-list'
-            },
-            {
-              id: 'emplacement',
-              title: 'Emplacements',
-              translate: 'MENU.APPS.GMAO.EMPLACEMENT',
-              type: 'item',
-              icon: 'circle',
-              url: 'apps/gmao/emplacement/emplacement-list'
-            },
-            {
-              id: 'magasin',
-              title: 'Magasins',
-              translate: 'MENU.APPS.GESTIONDECHET.MAGASIN',
-              type: 'item',
-              icon: 'circle',
-              url: 'apps/gestion-dechets/magasin/magasin-list'
-            },
-            {
-              id: 'matiere',
-              title: 'Matieres',
-              translate: 'MENU.APPS.GESTIONDECHET.MATIERE',
-              type: 'item',
-              icon: 'circle',
-              url: 'apps/gestion-dechets/matiere/matiere-list'
-            },
-            {
-              id: 'fournisseur',
-              title: 'Fournisseur',
-              translate: 'MENU.APPS.GESTIONDECHET.FOURNISSEUR',
-              type: 'item',
-              icon: 'circle',
-              url: 'apps/gestion-dechets/fournisseur/fournisseur-list'
-            },
+                id: 'categorie-equipement',
+                title: 'Categorie equipements',
+                translate: 'MENU.APPS.GMAO.CATEGORIEEQUIPEMENT',
+                type: 'item',
+                icon: 'circle',
+                url: 'apps/gmao/categorie-equipement/categorie-equipement-list'
+              },
+              {
+                id: 'famillemachine',
+                title: 'Familles',
+                translate: 'MENU.APPS.GMAO.FAMILLEMACHINE',
+                type: 'item',
+                icon: 'circle',
+                url: 'apps/gmao/famille/famille-list'
+              },
+              {
+                id: 'marque',
+                title: 'Marques',
+                translate: 'MENU.APPS.GMAO.MARQUE',
+                type: 'item',
+                icon: 'circle',
+                url: 'apps/gmao/marque/marque-list'
+              },
+              // {//A Vérifier l'affichage
+              //   id: 'Departement',
+              //   title: 'Departement',
+              //   translate: 'MENU.APPS.GMAO.DEPARTEMENT',
+              //   type: 'item',
+              //   icon: 'circle',
+              //   //Lien
+              //   url: 'apps/gmao/marque/marque-list'
+              //  },
+               {
+                id: 'localite',
+                title: 'Localites',
+                translate: 'MENU.APPS.GMAO.LOCALITE',
+                type: 'item',
+                icon: 'circle',
+                url: 'apps/gmao/localite/localite-list'
+              },
+              {
+                id: 'emplacement',
+                title: 'Emplacements',
+                translate: 'MENU.APPS.GMAO.EMPLACEMENT',
+                type: 'item',
+                icon: 'circle',
+                url: 'apps/gmao/emplacement/emplacement-list'
+              },
+              // {
+              //   id: 'etat-actuel',
+              //   title: 'Etat actuel',
+              //   translate: 'MENU.APPS.GMAO.ETATACTUEL',
+              //   type: 'item',
+              //   icon: 'circle',
+              //   url: 'apps/gmao/etat-actuel/etat-actuel-list'
+              // },
+              {
+                id: 'etat-machine',
+                title: 'Etat machine',
+                translate: 'MENU.APPS.GMAO.ETATMACHINE',
+                type: 'item',
+                icon: 'circle',
+                url: 'apps/gmao/etat-machine/etat-machine-list'
+              },
+            //   {
+            //   id: 'etat-famille',
+            //   title: 'Etat famille',
+            //   translate: 'MENU.APPS.GMAO.ETATFAMILLE',
+            //   type: 'item',
+            //   icon: 'circle',
+            //   // url: 'apps/gestion-dechets/etat-famille/etat-famille-list'
+            //  },
+
+            // {
+            //   id: 'etat-magasin',
+            //   title: 'Etat magasin',
+            //   translate: 'MENU.APPS.GMAO.ETATMAGASIN',
+            //   type: 'item',
+            //   icon: 'circle',
+            //   url: 'apps/gestion-dechets/etat-magasin/etat-magasin-list'
+            // },
+
+            // {
+            //   id: 'magasin',
+            //   title: 'Magasins',
+            //   translate: 'MENU.APPS.GMAO.MAGASIN',
+            //   type: 'item',
+            //   icon: 'circle',
+            //   // url: 'apps/gestion-dechets/magasin/magasin-list'
+            // },
+
+            // {
+            //   id: 'matiere',
+            //   hidden:false,
+            //   title: 'Matieres',
+            //   translate: 'MENU.APPS.GESTIONDECHET.MATIERE',
+            //   type: 'item',
+            //   icon: 'circle',
+            //   url: 'apps/gestion-dechets/matiere/matiere-list'
+            // },
+            // {
+            //   id: 'fournisseur',
+            //   title: 'Fournisseur',
+            //   translate: 'MENU.APPS.GMAO.FOURNISSEUR',
+            //   type: 'item',
+            //   icon: 'circle',
+            //   // url: 'apps/gestion-dechets/fournisseur/fournisseur-list'
+            // },
+
             {
               id: 'unites',
               title: 'Unites',
@@ -404,27 +477,16 @@ export const menu: CoreMenu[] = [
               type: 'item',
               icon: 'circle',
               url: 'apps/gmao/unite/unite-list'
-            },
-            {
-              id: 'etat-actuel',
-              title: 'Etat actuel',
-              translate: 'MENU.APPS.GMAO.ETATACTUEL',
-              type: 'item',
-              icon: 'circle',
-              url: 'apps/gmao/etat-actuel/etat-actuel-list'
-            },
-            {
-              id: 'etat-machine',
-              title: 'Etat machine',
-              translate: 'MENU.APPS.GMAO.ETATMACHINE',
-              type: 'item',
-              icon: 'circle',
-              url: 'apps/gmao/etat-machine/etat-machine-list'
             }
-            ]
-          }
-        ]
-      }
+
+            ]//Configuration
+          }//Configuration
+
+          
+
+        ]//Fils GMAO 
+      }//Section GMAO
+
     ]
   },
   

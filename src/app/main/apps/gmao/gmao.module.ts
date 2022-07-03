@@ -34,6 +34,10 @@ const routes: Routes = [
     loadChildren: () => import('./categorie-equipement/categorie-equipement.module').then(m => m.CategorieEquipementModule)
   },
   {
+    path: 'intervention-curative',
+    loadChildren: () => import('./Intervention/intervention.module').then(m => m.InterventionModule)
+  },
+  {
     path: 'famille',
     loadChildren: () => import('./famille/famille.module').then(m => m.FamilleModule)
   },

@@ -40,6 +40,37 @@
                     (keyup)="filterByModele($event)"
                     />
                 </div>
+
+
+                <div class="col-12 col-md-3">
+                  <label class="d-flex align-items-center ml-1 ml-md-0">Catégorie:</label>
+                  <fieldset class="form-group">
+                    <ng-select
+                      [items]="selectCategorie"
+                      [(ngModel)]="selectedCategorie"
+                      name="selectedCategorie"
+                      bindLabel="name"
+                      placeholder="{{ 'filtres.filtreCategorie' | translate }}"
+                      (change)="filterByCategorie($event)"
+                    ></ng-select>
+                  </fieldset>
+                </div>
+
+                <div class="col-12 col-md-3">
+                  <label class="d-flex align-items-center ml-1 ml-md-0">Famille:</label>
+                  <fieldset class="form-group">
+                    <ng-select
+                      [items]="selectFamille"
+                      [(ngModel)]="selectedFamille"
+                      name="selectedFamille"
+                      bindLabel="name"
+                      placeholder="{{ 'filtres.filtreFamille' | translate }}"
+                      (change)="filterByFamille($event)"
+                    ></ng-select>
+                  </fieldset>
+                </div>
+
+
                 <div class="col-12 col-md-3">
                   <label class="d-flex align-items-center ml-1 ml-md-0">Loalite :</label>
                   <fieldset class="form-group">
@@ -47,7 +78,7 @@
                       [items]="selectLocalite"
                       [(ngModel)]="selectedLocalite"
                       name="selectedLocalite"
-                      bindLabel="code"
+                      bindLabel="name"
                       placeholder="{{ 'filtres.filtreLocalite' | translate }}"
                       (change)="filterByLocalite($event)"
                     ></ng-select>
@@ -67,19 +98,19 @@
                   </fieldset>
                 </div>
                 <div class="col-12 col-md-3">
-                  <label class="d-flex align-items-center ml-1 ml-md-0">Etat actuel:</label>
+                  <label class="d-flex align-items-center ml-1 ml-md-0">Etat Machine:</label>
                   <fieldset class="form-group">
                     <ng-select
-                      [items]="selectEtatActuel"
-                      [(ngModel)]="selectedEtatActuel"
-                      name="selectedEtatActuel"
-                      bindLabel="code"
+                      [items]="selectEtatMachine"
+                      [(ngModel)]="selectEtatMachine"
+                      name="selectEtatMachine"
+                      bindLabel="name"
                       placeholder="{{ 'filtres.filtreEtatActuel' | translate }}"
                       (change)="filterByMarque($event)"
                     ></ng-select>
                   </fieldset>
                 </div>
-                <div class="col-12 col-md-3">
+                <!-- <div class="col-12 col-md-3">
                   <label class="d-flex align-items-center ml-1 ml-md-0">Actif?:</label>
                   <fieldset class="form-group">
                     <ng-select
@@ -91,33 +122,10 @@
                       (change)="filterByMarque($event)"
                     ></ng-select>
                   </fieldset>
-                </div>
-                <div class="col-12 col-md-3">
-                  <label class="d-flex align-items-center ml-1 ml-md-0">Famille:</label>
-                  <fieldset class="form-group">
-                    <ng-select
-                      [items]="selectFamille"
-                      [(ngModel)]="selectedFamille"
-                      name="selectedFamille"
-                      bindLabel="code"
-                      placeholder="{{ 'filtres.filtreFamille' | translate }}"
-                      (change)="filterByFamille($event)"
-                    ></ng-select>
-                  </fieldset>
-                </div>
-                <div class="col-12 col-md-3">
-                  <label class="d-flex align-items-center ml-1 ml-md-0">Catégorie:</label>
-                  <fieldset class="form-group">
-                    <ng-select
-                      [items]="selectCategorie"
-                      [(ngModel)]="selectedCategorie"
-                      name="selectedCategorie"
-                      bindLabel="code"
-                      placeholder="{{ 'filtres.filtreCategorie' | translate }}"
-                      (change)="filterByCategorie($event)"
-                    ></ng-select>
-                  </fieldset>
-                </div>
+                </div> -->
+
+                
+
               </div>
             </form>
           </div>
@@ -160,16 +168,16 @@
         >
           <ngx-datatable-column name="Réfèrence" prop="reference" ></ngx-datatable-column>
           <ngx-datatable-column name="Designiation" prop="designation" ></ngx-datatable-column>
-          <ngx-datatable-column name="Marque" prop="marque.code" ></ngx-datatable-column>
+          <ngx-datatable-column name="Marque" prop="marque.name" ></ngx-datatable-column>
           <ngx-datatable-column name="Numéro de série" prop="numeroDeSerie" ></ngx-datatable-column>
           <ngx-datatable-column name="Modèle" prop="modele" > </ngx-datatable-column>
-          <ngx-datatable-column name="Famille" prop="famille.code" > </ngx-datatable-column>
-          <ngx-datatable-column name="Localite" prop="localite.code" > </ngx-datatable-column>
+          <ngx-datatable-column name="Famille" prop="famille.name" > </ngx-datatable-column>
+          <ngx-datatable-column name="Localite" prop="localite.name" > </ngx-datatable-column>
           <ngx-datatable-column name="Date d'achat" prop="dateAchat" > </ngx-datatable-column>
-          <ngx-datatable-column name="Catégori équipement" prop="categorieEquipement.code" > </ngx-datatable-column>
+          <ngx-datatable-column name="Catégori équipement" prop="categorieEquipement.name" > </ngx-datatable-column>
           <ngx-datatable-column name="Carateristique technique" prop="carateristiqueTechnique" > </ngx-datatable-column>
           <ngx-datatable-column name="Num déclaration" prop="numDeclaration" > </ngx-datatable-column>
-          <ngx-datatable-column name="Emplacement" prop="emplacement.code" > </ngx-datatable-column>
+          <ngx-datatable-column name="Emplacement" prop="emplacement.name" > </ngx-datatable-column>
           <ngx-datatable-column name="Action"  [sortable]="false">
             <ng-template ngx-datatable-cell-template let-row="row">
               <div ngbDropdown container="body">
@@ -177,9 +185,9 @@
                   <span [data-feather]="'more-vertical'" [class]="'cursor-pointer'"></span>
                 </button>
                 <div ngbDropdownMenu>
-                  <a routerLink="/apps/gmao/machine/machine-list/machine-view/{{ row.id }}" ngbDropdownItem><span [data-feather]="'file-text'" [size]="16" [class]="'mr-50'"></span> Details</a>
-                  <a routerLink="/apps/gmao/machine/machine-list/machine-edit/{{ row.id }}" ngbDropdownItem><span [data-feather]="'edit'" [size]="16" [class]="'mr-50'"></span> Edit</a>
-                  <a href="javascript:;" ngbDropdownItem><span [data-feather]="'trash'" [size]="16" [class]="'mr-50'"></span> Delete</a>
+                  <!-- <a routerLink="/apps/gmao/machine/machine-list/machine-view/{{ row.id }}" ngbDropdownItem><span [data-feather]="'file-text'" [size]="16" [class]="'mr-50'"></span> Details</a> -->
+                  <a routerLink="/apps/gmao/machine/machine-list/machine-edit/{{ row.id }}" ngbDropdownItem><span [data-feather]="'edit'" [size]="16" [class]="'mr-50'"></span> Modifier</a>
+                  <a href="javascript:;" ngbDropdownItem><span [data-feather]="'trash'" [size]="16" [class]="'mr-50'"></span> Supprimer</a>
                 </div>
               </div>
             </ng-template>

@@ -55,7 +55,7 @@ export const locale = {
           ETATMOUVEMENT:'Etat mouvement',
           FAMILLE:'Familles',
           MAGASIN:'Magasins',
-          MATIERE:'Matiere',
+          MATIERE:'Matiere test',
           MOUVEMENT:'Mouvement',
           MVTSTOCK:'MvtStock',
           FOURNISSEUR:'Fournisseurs'
@@ -66,12 +66,19 @@ export const locale = {
           PDR:'Pieces de rechange',
           INTERVENTION:'Intérvention',
           MARQUE:'Marque',
-          LOCALITE:'Localite',
+          LOCALITE:'Département',
           EMPLACEMENT :'Emplacement',
-          CATEGORIEEQUIPEMENT :'Categorie équi',
+          CATEGORIEEQUIPEMENT :'Famille Machine',
+          DEMANDEINTERVENTION : 'Demande Intervention',
+          INTERVENTIONCURATIVE : 'Intervention Curative',
+          INTERVENTIONPREVENTIVE : 'Intervention Préventive',
+          FAMILLEMACHINE :'Sous Famille Machine',
           UNITES:'Unites',
           ETATACTUEL:'Etat actuel',
-          ETATMACHINE:'Etat machine'
+          ETATMACHINE:'Etat machine',
+          //DEPARTEMENT:'Département',
+          CONF: 'Configuration',
+          TDB:'Tableau de bord'
         }
       },
       PAGES: {
@@ -216,7 +223,7 @@ export const locale = {
         MAPS: 'Google Maps'
       },
       GESTIONDECHETS: {
-        SECTION: 'Gestion dechets',
+        SECTION: 'Gestion dechets test',
         LEVELS: {
           COLLAPSIBLE: 'Niveaux de menu',
           SECOND: 'Deuxième niveau',
