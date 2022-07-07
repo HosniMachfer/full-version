@@ -13,11 +13,84 @@
             
           </button>
           <div class="modal-header mb-1">
-            <h5 class="modal-title" id="exampleModalLabel">{{ 'fnp.title' | translate }}</h5>
+            <h5 class="modal-title" id="exampleModalLabel">Ajouter Demande d'intervention</h5>
           </div>
           <div class="modal-body flex-grow-1">
+
+            <div class="col-12 col-md-3">
+              <label for="company">Equipement:</label>
+              <select class="form-control"  name="equipement" id="equipement">
+                <option>A</option>
+                <option>I</option>
+               <!-- / <option>pending</option> -->
+              </select>
+              <!-- <fieldset class="form-group">
+                <ng-select
+                  name="Equipement"
+                  bindLabel="name"
+                ></ng-select>
+              </fieldset> -->
+            </div>
+
+            <div class="col-12 col-md-3">
+              <label for="company">Demandeur :</label>
+              <select class="form-control"  name="equipement" id="equipement">
+                <option>A</option>
+                <option>I</option>
+               <!-- / <option>pending</option> -->
+              </select>
+              <!-- <fieldset class="form-group">
+                <ng-select
+                  name="Equipement"
+                  bindLabel="name"
+                ></ng-select>
+              </fieldset> -->
+            </div>
+
+            <div class="col-12 col-md-3">
+              <label for="company">Type de panne :</label>
+              <select class="form-control"  name="equipement" id="equipement">
+                <option>A</option>
+                <option>I</option>
+               <!-- / <option>pending</option> -->
+              </select>
+              <!-- <fieldset class="form-group">
+                <ng-select
+                  name="Equipement"
+                  bindLabel="name"
+                ></ng-select>
+              </fieldset> -->
+            </div>
+
+
+            <div class="col-md-3">
+              <div class="form-group">
+                <label for="company">Date demande :</label>
+                <div class="input-group">
+                  <input
+                    class="form-control"
+                    placeholder="dd-mm-yyyy"
+                    name="miseEnservice"
+                    
+                    ngbDatepicker
+                    #basicDP="ngbDatepicker"
+                  />
+                  <div class="input-group-append">
+                    <button
+                      class="btn btn-outline-secondary feather icon-calendar"
+                      (click)="basicDP.toggle()"
+                      type="button"
+                      rippleEffect
+                    ></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            
+
   
-            <div class="form-group">
+            <!-- <div class="form-group">
               <label class="form-label" for="basic-icon-default-uname">{{ 'fnp.champs.code' | translate }}</label>
               <input
                 type="text"
@@ -34,7 +107,7 @@
               <span *ngIf="newUserForm.submitted && FUserNameRef.invalid" class="invalid-form">
                 <small class="form-text text-danger" *ngIf="FUserNameRef.errors.required">This field is required!</small>
               </span>
-            </div>
+            </div> -->
             <div class="form-group">
               <label class="form-label" for="basic-icon-default-fullname">{{ 'fnp.champs.libellet' | translate }}</label>
               <input

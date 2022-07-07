@@ -312,33 +312,33 @@ export const menu: CoreMenu[] = [
             //url: 'apps/gmao/pdr/pdr-list',
 
               children:[
+              // {
+              //   id: 'demandeInter',
+              //   title: 'Demande Intervention',
+              //   translate: 'MENU.APPS.GMAO.DEMANDEINTERVENTION',
+              //   type: 'item',
+              //   icon: 'circle',
+              //   // lien
+              //   url: 'apps/gmao/intervention-curative/intervention-curative-list'
+              // },
               {
-                id: 'demandeInter',
-                title: 'Demande Intervention',
-                translate: 'MENU.APPS.GMAO.DEMANDEINTERVENTION',
+                id: 'interventionCurative',
+                title: 'intervention curative',
+                translate: 'MENU.APPS.GMAO.INTERVENTIONCURATIVE',
                 type: 'item',
                 icon: 'circle',
                 // lien
                 url: 'apps/gmao/intervention-curative/intervention-curative-list'
               },
-              // {
-              //   id: 'interventionCurative',
-              //   title: 'intervention curative',
-              //   translate: 'MENU.APPS.GMAO.INTERVENTIONCURATIVE',
-              //   type: 'item',
-              //   icon: 'circle',
-              //   // lien
-              //   url: 'apps/gmao/categorie-equipement/categorie-equipement-list'
-              // },
-              // {
-              //   id: 'interventionPréventive',
-              //   title: 'intervention prévnetive',
-              //   translate: 'MENU.APPS.GMAO.INTERVENTIONPREVENTIVE',
-              //   type: 'item',
-              //   icon: 'circle',
-              //   // lien
-              //   url: 'apps/gmao/categorie-equipement/categorie-equipement-list'
-              // }
+              {
+                id: 'interventionPréventive',
+                title: 'intervention prévnetive',
+                translate: 'MENU.APPS.GMAO.INTERVENTIONPREVENTIVE',
+                type: 'item',
+                icon: 'circle',
+                // lien
+                url: 'apps/gmao/categorie-equipement/categorie-equipement-list'
+              }
 
             ]
           },

@@ -8,6 +8,9 @@ import { FormLayoutModule } from 'app/main/forms/form-layout/form-layout.module'
 import { FormValidationModule } from 'app/main/forms/form-validation/form-validation.module';
 import { FormWizardModule } from 'app/main/forms/form-wizard/form-wizard.module';
 
+import { TypePanneListComponent } from './type-panne/type-panne-list/type-panne-list.component';
+import { TypePanneEditComponent } from './type-panne/type-panne-edit/type-panne-edit.component';
+
 const routes: Routes = [
   {
     path: 'machine',
@@ -57,7 +60,11 @@ const routes: Routes = [
 ]
 
 @NgModule({
-  declarations: [],
+  declarations: [
+   
+    TypePanneListComponent,
+    TypePanneEditComponent
+  ],
   imports: [CommonModule, RouterModule.forChild(routes),FormElementsModule, FormLayoutModule, FormWizardModule, FormValidationModule, FormRepeaterModule]
 })
 export class GmaoModule {}
