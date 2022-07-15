@@ -1,0 +1,22 @@
+.ajout-type {
+    text-align: right;
+    font-size: 13px;
+    color: #4839eb;
+    cursor: pointer;
+    font-weight: 500
+}
+
+.ajout-type:hover {
+    text-decoration: underline;
+}
+
+::ng-deep 
+{
+    .customBtn .btn {
+    padding: 0.25rem 1.5rem !important;
+    }
+
+    .col-md-4 {
+        padding-left: 0 !important;
+    }
+}

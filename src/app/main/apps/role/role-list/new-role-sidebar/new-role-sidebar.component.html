@@ -13,29 +13,12 @@
           ×
         </button>
         <div class="modal-header mb-1">
-          <h5 class="modal-title" id="exampleModalLabel">{{ 'fnp.title' | translate }}</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Formulaire un Nouveau Rôle</h5>
         </div>
         <div class="modal-body flex-grow-1">
+
           <div class="form-group">
-            <label class="form-label" for="basic-icon-default-fullname">{{ 'fnp.champs.libellet' | translate }}</label>
-            <input
-              type="text"
-              class="form-control dt-full-name"
-              id="basic-icon-default-fullname"
-              name="name"
-              [(ngModel)]="name"
-              [class.error]="newUserForm.submitted && FNameRef.invalid"
-              #FNameRef="ngModel"
-              required
-              aria-label="John Doe"
-              aria-describedby="basic-icon-default-fullname2"
-            />
-            <span *ngIf="newUserForm.submitted && FNameRef.invalid" class="invalid-form">
-              <small class="form-text text-danger" *ngIf="FNameRef.errors.required">This field is required!</small>
-            </span>
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="basic-icon-default-uname">{{ 'fnp.champs.code' | translate }}</label>
+            <label class="form-label" for="basic-icon-default-uname">Code</label>
             <input
               type="text"
               id="basic-icon-default-uname"
@@ -54,8 +37,27 @@
           </div>
 
           <div class="form-group">
+            <label class="form-label" for="basic-icon-default-fullname">Libellé</label>
+            <input
+              type="text"
+              class="form-control dt-full-name"
+              id="basic-icon-default-fullname"
+              name="name"
+              [(ngModel)]="name"
+              [class.error]="newUserForm.submitted && FNameRef.invalid"
+              #FNameRef="ngModel"
+              required
+              aria-label="John Doe"
+              aria-describedby="basic-icon-default-fullname2"
+            />
+            <span *ngIf="newUserForm.submitted && FNameRef.invalid" class="invalid-form">
+              <small class="form-text text-danger" *ngIf="FNameRef.errors.required">This field is required!</small>
+            </span>
+          </div>
+
+           <!-- <div class="form-group">
             <label>Privilege(s)</label>
-              <!-- Basic Multi select -->
+           
               <ng-select
                 name="privileges"
                 [items]="privileges"
@@ -66,20 +68,20 @@
                 placeholder="Select people"
                 [(ngModel)]="select_privileges"
               >
-              </ng-select>
-              <!--/ Basic Multi select -->
-          </div>
+              </ng-select> 
+              
+          </div>  -->
           <div class="form-group">
-                <label class="form-label" for="basic-icon-default-uname">{{ 'fnp.champs.description' | translate }}</label>
-                <textarea class="form-control mb-2" rows="4" placeholder="Comment"></textarea>
+                <label class="form-label" for="basic-icon-default-uname">Commentaire</label>
+                <textarea class="form-control mb-2" rows="4" placeholder="Commentaire"></textarea>
           </div>
-          <button type="submit" class="btn btn-primary mr-1" (click)="submit(newUserForm)" rippleEffect>{{ 'fnp.buttons.validation' | translate }}</button>
+          <button type="submit" class="btn btn-primary mr-1" (click)="submit(newUserForm)" rippleEffect>Valider</button>
           <button
             type="reset"
             class="btn btn-outline-secondary"
             (click)="toggleSidebar('new-role-sidebar')"
             rippleEffect>
-            {{ 'fnp.buttons.cancel' | translate }}
+            Annuler
           </button>
         </div>
       </form>

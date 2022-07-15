@@ -10,6 +10,21 @@ import { FormWizardModule } from 'app/main/forms/form-wizard/form-wizard.module'
 
 import { TypePanneListComponent } from './type-panne/type-panne-list/type-panne-list.component';
 import { TypePanneEditComponent } from './type-panne/type-panne-edit/type-panne-edit.component';
+import { PlanningComponent } from './planning/planning.component';
+import { CalendarModule } from '../calendar/calendar.module';
+import { TypePanneViewComponent } from './type-panne/type-panne-view/type-panne-view.component';
+
+import { ActionEditComponent } from './action/action-edit/action-edit.component';
+import { ActionListComponent } from './action/action-list/action-list.component';
+import { ActionViewComponent } from './action/action-view/action-view.component';
+import { NewActionSidebarComponent } from './action/action-list/new-action-sidebar/new-action-sidebar.component';
+import { NbrPannesComponent } from './nbr-pannes/nbr-pannes.component';
+import { NgApexchartsModule } from 'ng-apexcharts';
+import { DateComponent } from './date/date.component';
+import { Ng2FlatpickrModule } from 'ng2-flatpickr';
+import { DelaiEntreLesPannesComponent } from './delai-entre-les-pannes/delai-entre-les-pannes.component';
+import { DelaiDeReparationComponent } from './delai-de-reparation/delai-de-reparation.component';
+import { TempsFctComponent } from './temps-fct/temps-fct.component';
 
 const routes: Routes = [
   {
@@ -23,6 +38,11 @@ const routes: Routes = [
   {
     path: 'marque',
     loadChildren: () => import('./marque/marque.module').then(m => m.MarqueModule)
+  },
+
+  {
+    path: 'action',
+    loadChildren: () => import('./action/action.module').then(m => m.ActionModule)
   },
   {
     path: 'localite',
@@ -57,14 +77,53 @@ const routes: Routes = [
     path: 'etat-machine',
     loadChildren: () => import('./etat-machine/etat-machine.module').then(m => m.EtatMachineModule)
   }
+  ,
+    {
+    path: 'planning',
+    loadChildren: () => import('./planning/planning.module').then(m => m.PlanningModule)
+  },
+  {
+    path:'nbr-pannes',
+    component:NbrPannesComponent ,
+    data: { animation: 'home' }
+  },
+  {
+    path:'delai-pannes',
+    component:DelaiEntreLesPannesComponent ,
+    data: { animation: 'home' }
+  },
+  {
+    path:'delai-reparation',
+    component:DelaiDeReparationComponent ,
+    data: { animation: 'home' }
+  },
+  {
+    path:'temps-fct',
+    component:TempsFctComponent,
+    data: { animation: 'home' }
+  },
+
 ]
 
 @NgModule({
   declarations: [
-   
-    TypePanneListComponent,
-    TypePanneEditComponent
+    DateComponent,
+    DelaiEntreLesPannesComponent,
+    DelaiDeReparationComponent,
+    TempsFctComponent,
+
+    NbrPannesComponent
   ],
-  imports: [CommonModule, RouterModule.forChild(routes),FormElementsModule, FormLayoutModule, FormWizardModule, FormValidationModule, FormRepeaterModule]
+  imports: [CommonModule,
+     RouterModule.forChild(routes),
+     FormElementsModule, 
+     FormLayoutModule,
+      FormWizardModule, 
+      FormValidationModule,
+       FormRepeaterModule,
+       NgApexchartsModule,
+       Ng2FlatpickrModule
+      //CalendarModule
+      ]
 })
 export class GmaoModule {}

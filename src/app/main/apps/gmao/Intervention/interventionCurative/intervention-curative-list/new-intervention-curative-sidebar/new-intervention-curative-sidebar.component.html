@@ -17,11 +17,19 @@
           </div>
           <div class="modal-body flex-grow-1">
 
-            <div class="col-12 col-md-3">
+            <div class="col-12 col-md-12">
               <label for="company">Equipement:</label>
-              <select class="form-control"  name="equipement" id="equipement">
-                <option>A</option>
-                <option>I</option>
+              <select class="form-control"  name="equipement" id="equipement" ngModel>
+                <option>Aucune</option>
+                <option>PIQUEUSE TRIPLET ENTRAINEMENT</option>
+                <option>PIQUEUSE POSE TRESSE</option>
+                <option>PIQUEUSE NEXIO</option>
+                <option>POSE BOUTON</option>
+                <option>BOUTONIERE</option>
+                <option>CHARIOT MATELASSAGE GERBER</option>
+                <option>RECOUVREUSE WT 600</option>
+                
+
                <!-- / <option>pending</option> -->
               </select>
               <!-- <fieldset class="form-group">
@@ -32,11 +40,13 @@
               </fieldset> -->
             </div>
 
-            <div class="col-12 col-md-3">
+
+            <div class="col-12 col-md-12">
               <label for="company">Demandeur :</label>
-              <select class="form-control"  name="equipement" id="equipement">
-                <option>A</option>
-                <option>I</option>
+              <select class="form-control"  name="demandeur" id="equipement" ngModel>
+                <option>ALi</option>
+                <option>Mohamed</option>
+                <option>Jamel</option>
                <!-- / <option>pending</option> -->
               </select>
               <!-- <fieldset class="form-group">
@@ -47,13 +57,24 @@
               </fieldset> -->
             </div>
 
-            <div class="col-12 col-md-3">
+            <div class="col-12 col-md-12">
               <label for="company">Type de panne :</label>
-              <select class="form-control"  name="equipement" id="equipement">
-                <option>A</option>
-                <option>I</option>
+              <select class="form-control"  name="typePanne" id="equipement" ngModel>
+                <option>Changement d'aiguille</option>
+                <option>Probléme Pneumatique</option>
+                <option>Probléme ELECTRIQUE</option>
+                <option>Casse aîguille</option>
+                <div class="input-group-append">
+                  <button
+                    class="btn btn-outline-secondary feather icon-calendar"
+                    (click)="basicDP.toggle()"
+                    type="button"
+                    rippleEffect
+                  ></button>
+                </div>
                <!-- / <option>pending</option> -->
               </select>
+              <p class="ajout-type" (click)="open()">Ajouter type de panne</p>
               <!-- <fieldset class="form-group">
                 <ng-select
                   name="Equipement"
@@ -62,17 +83,18 @@
               </fieldset> -->
             </div>
 
-
-            <div class="col-md-3">
+<div class="row">
+            <div class="col-md-8  ">
               <div class="form-group">
+
                 <label for="company">Date demande :</label>
                 <div class="input-group">
                   <input
                     class="form-control"
                     placeholder="dd-mm-yyyy"
                     name="miseEnservice"
-                    
                     ngbDatepicker
+                    ngModel
                     #basicDP="ngbDatepicker"
                   />
                   <div class="input-group-append">
@@ -83,9 +105,21 @@
                       rippleEffect
                     ></button>
                   </div>
+                  
                 </div>
+
+                
+
+                
               </div>
             </div>
+            <div class="form-group col-md-4 customBtn">
+              <ngb-timepicker [(ngModel)]="time" [spinners]="spinners" ngModel></ngb-timepicker>
+              
+            </div>
+          </div>
+
+           
 
             
 
@@ -108,8 +142,8 @@
                 <small class="form-text text-danger" *ngIf="FUserNameRef.errors.required">This field is required!</small>
               </span>
             </div> -->
-            <div class="form-group">
-              <label class="form-label" for="basic-icon-default-fullname">{{ 'fnp.champs.libellet' | translate }}</label>
+            <!-- <div class="form-group">
+              <label class="form-label" for="basic-icon-default-fullname">Libellé</label>
               <input
                 type="text"
                 class="form-control dt-full-name"
@@ -125,18 +159,18 @@
               <span *ngIf="newUserForm.submitted && FNameRef.invalid" class="invalid-form">
                 <small class="form-text text-danger" *ngIf="FNameRef.errors.required">This field is required!</small>
               </span>
-            </div>
+            </div> -->
             <div class="form-group">
-                  <label class="form-label" for="basic-icon-default-uname">{{ 'fnp.champs.description' | translate }}</label>
-                  <textarea class="form-control mb-2" rows="4" placeholder="Comment"></textarea>
+                  <label class="form-label" for="basic-icon-default-uname">Observation</label>
+                  <textarea class="form-control mb-2" rows="4" placeholder="Observation"></textarea>
             </div>
-            <button type="submit" class="btn btn-primary mr-1" (click)="submit(newUserForm)" rippleEffect>{{ 'fnp.buttons.validation' | translate }}</button>
+            <button type="submit" class="btn btn-primary mr-1" (click)="submit(newUserForm)" rippleEffect>Valider</button>
             <button
               type="reset"
               class="btn btn-outline-secondary"
               (click)="toggleSidebar('new-intervention-curative-sidebar')"
               rippleEffect>
-              {{ 'fnp.buttons.cancel' | translate }}
+              Annuler
             </button>
           </div>
         </form>
@@ -144,4 +178,5 @@
     </div>
     <!-- Modal to add new user Ends-->
   </div>
+  
   

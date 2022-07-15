@@ -1,0 +1,32 @@
+<h1 class="titre">Nombre de pannes</h1>
+<!-- <div class="header-right d-flex align-items-center mt-sm-0 mt-1">
+    <i class="font-medium-2" data-feather="calendar"></i>
+    <ng2-flatpickr [config]="DateRangeOptions" name="DateRange"></ng2-flatpickr>
+  -->
+  <app-date (DateE)="GetDateE($event)" ></app-date>
+  <div class="card-body">
+    <div id="column-chart" >
+      <apx-chart
+      [series]="chartOptions.series"
+        [chart]="{
+          type: 'bar',
+          height: 400,
+
+          stacked: true,
+          toolbar: {
+            show: false
+          }
+        }"
+        [xaxis]="chartOptions.xaxis"
+        [stroke]="chartOptions.stroke"
+      [yaxis]="chartOptions.yaxis"
+        [colors]="chartOptions.colors"
+        [legend]="chartOptions.legend"
+        [dataLabels]="chartOptions.dataLabels"
+        [plotOptions]="chartOptions.plotOptions"
+        [grid]="chartOptions.grid"
+      ></apx-chart>
+    </div>
+</div>
+  
+ 

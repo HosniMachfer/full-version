@@ -14,6 +14,8 @@ import { CoreDirectivesModule } from '@core/directives/directives';
 import { InvoiceModule } from '../../invoice/invoice.module';
 import { CoreSidebarModule } from '@core/components';
 import { TranslateModule } from '@ngx-translate/core';
+import { InterventionCurativeEditComponent } from './interventionCurative/intervention-curative-edit/intervention-curative-edit.component';
+
 
 
 const routes: Routes = [
@@ -35,7 +37,8 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     InterventionCurativeListComponent,
-    NewInterventionCurativeSidebarComponent
+    NewInterventionCurativeSidebarComponent,
+    InterventionCurativeEditComponent
   ],
   imports: [ 
     CommonModule, 
@@ -50,7 +53,8 @@ const routes: Routes = [
     CoreDirectivesModule,
     InvoiceModule,
     CoreSidebarModule,
-    TranslateModule
+    TranslateModule,
+    
   ],
 })
 export class InterventionModule { }

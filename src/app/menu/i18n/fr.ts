@@ -70,15 +70,17 @@ export const locale = {
           EMPLACEMENT :'Emplacement',
           CATEGORIEEQUIPEMENT :'Famille Machine',
           DEMANDEINTERVENTION : 'Demande Intervention',
-          INTERVENTIONCURATIVE : 'Intervention Curative',
-          INTERVENTIONPREVENTIVE : 'Intervention Préventive',
+          INTERVENTIONCURATIVE : 'Interv-Curative',
+          INTERVENTIONPREVENTIVE : 'Interv-Préventive',
           FAMILLEMACHINE :'Sous Famille Machine',
           UNITES:'Unites',
           ETATACTUEL:'Etat actuel',
           ETATMACHINE:'Etat machine',
           //DEPARTEMENT:'Département',
           CONF: 'Configuration',
-          TDB:'Tableau de bord'
+          TDB:'Tableau de bord',
+          PLANNIG :'Planning',
+          ACTION :'Action'
         }
       },
       PAGES: {
@@ -223,7 +225,7 @@ export const locale = {
         MAPS: 'Google Maps'
       },
       GESTIONDECHETS: {
-        SECTION: 'Gestion dechets test',
+        SECTION: 'Gestion dechets',
         LEVELS: {
           COLLAPSIBLE: 'Niveaux de menu',
           SECOND: 'Deuxième niveau',

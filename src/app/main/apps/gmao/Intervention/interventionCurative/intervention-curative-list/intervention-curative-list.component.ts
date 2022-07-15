@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { CoreSidebarService } from '@core/components/core-sidebar/core-sidebar.service';
 import { ColumnMode, DatatableComponent } from '@swimlane/ngx-datatable';
 import { CategorieEquipementListService } from '../../../categorie-equipement/categorie-equipement-list/categorie-equipement-list.service';
+import { InterventionCurativeService } from '../intervention-curative.service';
 
 @Component({
   selector: 'app-intervention-curative-list',
@@ -23,23 +24,30 @@ export class InterventionCurativeListComponent implements OnInit {
   public searchValue = '';
   
 
- constructor(private categorieEquipementListService: CategorieEquipementListService,private _coreSidebarService: CoreSidebarService) { 
+ constructor(private interventionCurative: InterventionCurativeService,
+  private _coreSidebarService: CoreSidebarService) { 
  
 
  }
  ngOnInit(): void {
- this.categorieEquipementListService.getAll()
+ this.interventionCurative.getAll()
 	      .subscribe(
 	        data => {
             this.rows = data;
             this.tempData = this.rows;
-            console.log(this.rows);
+            console.log('tttt',this.rows);
 	        },
 	        error => {
 	          console.log(error);
           });
 }
-	        
+
+delete(idInterventionC: number) : void{
+  debugger
+  this.interventionCurative.delete(idInterventionC)
+  .subscribe()
+
+}
 	        
 toggleSidebar(name): void {
   console.log(name);

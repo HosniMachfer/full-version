@@ -48,6 +48,7 @@ const routes: Routes = [
     NgSelectModule,
     NgbModule
   ],
+  exports: [CalendarComponent],
   providers: [CalendarService]
 })
 export class CalendarModule {}

@@ -1,0 +1,27 @@
+
+<h1 class="titre">Temps de fonctionnement Total </h1>
+<app-date (DateE)="GetDateE($event)" ></app-date>
+
+<div class="card-body">
+    <div id="column-chart" #apexColumnChartRef>
+      <apx-chart
+        [series]="apexColumnChart.series"
+        [chart]="{
+          type: 'bar',
+          height: 400,
+          stacked: true,
+          toolbar: {
+            show: false
+          }
+        }"
+        [xaxis]="apexColumnChart.xaxis"
+        [yaxis]="apexColumnChart.yaxis"
+        [stroke]="apexColumnChart.stroke"
+        [tooltip]="apexColumnChart.tooltip"
+        [colors]="apexColumnChart.colors"
+        [legend]="apexColumnChart.legend"
+        [dataLabels]="apexColumnChart.dataLabels"
+        [plotOptions]="apexColumnChart.plotOptions"
+        [grid]="apexColumnChart.grid"
+      ></apx-chart>
+    </div>
