@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { CoreSidebarService } from '@core/components/core-sidebar/core-sidebar.service';
 import { ColumnMode, DatatableComponent } from '@swimlane/ngx-datatable';
 import { CategorieEquipementListService } from '../../../categorie-equipement/categorie-equipement-list/categorie-equipement-list.service';
+import { MachineListService } from '../../../machine/machine-list/machine-list.service';
 import { InterventionCurativeService } from '../intervention-curative.service';
 
 @Component({
@@ -23,10 +24,13 @@ export class InterventionCurativeListComponent implements OnInit {
   public ColumnMode = ColumnMode;
   public searchValue = '';
   
+  public selectEquipement: any = [];
+  // public selectedEquipement = [];
 
  constructor(private interventionCurative: InterventionCurativeService,
-  private _coreSidebarService: CoreSidebarService) { 
+  private _coreSidebarService: CoreSidebarService ,private equipementListService : MachineListService) { 
  
+    
 
  }
  ngOnInit(): void {
@@ -40,6 +44,15 @@ export class InterventionCurativeListComponent implements OnInit {
 	        error => {
 	          console.log(error);
           });
+
+this.equipementListService.getAll()
+      .subscribe(
+        data => {
+          this.selectEquipement = data;
+        },
+        error => {
+          console.log(error);
+    });
 }
 
 delete(idInterventionC: number) : void{
