@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CoreSidebarService } from '@core/components/core-sidebar/core-sidebar.service';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { MachineListService } from 'app/main/apps/gmao/machine/machine-list/machine-list.service';
 import { RoleListService } from 'app/main/apps/role/role-list/role-list.service';
 import { ToastrService } from 'ngx-toastr';
 import { InterventionCurativeService } from '../../intervention-curative.service';
@@ -52,6 +53,10 @@ export class NewInterventionCurativeSidebarComponent implements OnInit {
   public code;
   public roles = [];
   public select_roles = [];
+  public selectEquipement: any = [];
+
+  public selectedEquipement = [];
+
 
   /**
    * Constructor
@@ -60,7 +65,7 @@ export class NewInterventionCurativeSidebarComponent implements OnInit {
    */
   constructor(private router: Router,  private _coreSidebarService: CoreSidebarService,
     private _roleListService: RoleListService ,private _toastrService: ToastrService, 
-    private modalService: NgbModal,private _interventionService : InterventionCurativeService) {}
+    private modalService: NgbModal,private _interventionService : InterventionCurativeService, private equipementListService :MachineListService) {}
 
   /**
    * Toggle the sidebar
@@ -94,7 +99,21 @@ export class NewInterventionCurativeSidebarComponent implements OnInit {
     }
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+
+    this.equipementListService.getAll()
+      .subscribe(
+        data => {
+          this.selectEquipement = data;
+
+        },
+        error => {
+          console.log(error);
+    });
+
+
+
+  }
 
   open() {
     const modalRef = this.modalService.open(NgbdModalContent);

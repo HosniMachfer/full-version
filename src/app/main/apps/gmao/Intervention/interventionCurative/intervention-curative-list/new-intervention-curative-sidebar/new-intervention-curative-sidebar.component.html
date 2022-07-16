@@ -19,7 +19,17 @@
 
             <div class="col-12 col-md-12">
               <label for="company">Equipement:</label>
-              <select class="form-control"  name="equipement" id="equipement" ngModel>
+              <fieldset class="form-group">
+                <ng-select
+                  [items]="selectEquipement"
+                  [(ngModel)] ="selectedEquipement"
+                  name="selectedEquipement"
+                  bindLabel="designation"
+                  placeholder="selectionez un équipement"
+                 
+                ></ng-select>
+              </fieldset>
+              <!-- <select class="form-control"  name="equipement" id="idEquipment" ngModel>
                 <option>Aucune</option>
                 <option>PIQUEUSE TRIPLET ENTRAINEMENT</option>
                 <option>PIQUEUSE POSE TRESSE</option>
@@ -27,11 +37,11 @@
                 <option>POSE BOUTON</option>
                 <option>BOUTONIERE</option>
                 <option>CHARIOT MATELASSAGE GERBER</option>
-                <option>RECOUVREUSE WT 600</option>
+                <option>RECOUVREUSE WT 600</option> -->
                 
 
                <!-- / <option>pending</option> -->
-              </select>
+              <!-- </select> -->
               <!-- <fieldset class="form-group">
                 <ng-select
                   name="Equipement"
@@ -43,7 +53,7 @@
 
             <div class="col-12 col-md-12">
               <label for="company">Demandeur :</label>
-              <select class="form-control"  name="demandeur" id="equipement" ngModel>
+              <select class="form-control"  name="demandeur" id="IdUtilisateur" ngModel>
                 <option>ALi</option>
                 <option>Mohamed</option>
                 <option>Jamel</option>
@@ -59,7 +69,7 @@
 
             <div class="col-12 col-md-12">
               <label for="company">Type de panne :</label>
-              <select class="form-control"  name="typePanne" id="equipement" ngModel>
+              <select class="form-control"  name="typePanne" id="IdPanne" ngModel>
                 <option>Changement d'aiguille</option>
                 <option>Probléme Pneumatique</option>
                 <option>Probléme ELECTRIQUE</option>
