@@ -47,7 +47,7 @@ export class CategorieEquipementViewService implements Resolve<any> {
    */
   getApiData(id: number): Promise<any[]> {
     return new Promise((resolve, reject) => {
-      this._httpClient.get(`${environment.apiUrl}`+'/diva-erp-rest-api-gmao/categorie-equipement/'+`${id}`).subscribe((response: any) => {
+      this._httpClient.get(`${environment.apiUrl}`+'/familleEquipement/'+`${id}`).subscribe((response: any) => {
         this.rows = response;
         this.onCategorieEquipementViewChanged.next(this.rows);
         resolve(this.rows);
@@ -57,6 +57,6 @@ export class CategorieEquipementViewService implements Resolve<any> {
 
 getCategorieEquipement(route: ActivatedRouteSnapshot): Observable<any[]> {
     let currentId = Number(route.paramMap.get('id'));
-    return this._httpClient.get<any>(`${environment.apiUrl}`+'/diva-erp-rest-api-gmao/categorie-equipement'+`${currentId}`,  httpOptions);
+    return this._httpClient.get<any>(`${environment.apiUrl}`+'/familleEquipement'+`${currentId}`,  httpOptions);
 }
 }

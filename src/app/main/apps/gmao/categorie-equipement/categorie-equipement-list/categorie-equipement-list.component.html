@@ -44,16 +44,16 @@
           [scrollbarH]="true"
         >
           
-          <ngx-datatable-column name="Code" prop="code" [width]="50"></ngx-datatable-column>
+          <ngx-datatable-column name="ID" prop="IdFamille_equip " [width]="50"></ngx-datatable-column>
 
-          <ngx-datatable-column name="Libellé" prop="name" [width]="100">
-            <ng-template let-row="row" let-name="value" ngx-datatable-cell-template>
+          <ngx-datatable-column name="code" prop="code" [width]="100">
+            <!-- <ng-template let-row="row" let-name="value" ngx-datatable-cell-template>
                 {{name}}
-            </ng-template>
+            </ng-template> -->
           </ngx-datatable-column>
 
-          <ngx-datatable-column name="Description" prop="description"></ngx-datatable-column>
-          <ngx-datatable-column name="Status" prop="status" [width]="50">
+          <ngx-datatable-column name="Description" prop="Designation"></ngx-datatable-column>
+          <!-- <ngx-datatable-column name="Status" prop="status" [width]="50">
             <ng-template let-status="value" ngx-datatable-cell-template>
               <div
                 class="badge badge-pill"
@@ -66,7 +66,7 @@
                 {{ status }}
               </div>
             </ng-template>
-          </ngx-datatable-column>
+          </ngx-datatable-column> -->
           <ngx-datatable-column name="Action" [width]="40" [sortable]="false">
             <ng-template ngx-datatable-cell-template let-row="row">
               <div ngbDropdown container="body">

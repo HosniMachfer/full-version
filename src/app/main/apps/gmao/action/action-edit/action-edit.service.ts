@@ -45,7 +45,7 @@ export class ActionEditService {
    */
   getApiData(): Promise<any[]> {
     return new Promise((resolve, reject) => {
-      this._httpClient.get(`${environment.apiUrl}`+'/diva-erp-rest-api-gmao/marques').subscribe((response: any) => {
+      this._httpClient.get(`${environment.apiUrl}`+'/action').subscribe((response: any) => {
         this.apiData = response;
         this.onActionEditChanged.next(this.apiData);
         resolve(this.apiData);
@@ -54,11 +54,11 @@ export class ActionEditService {
   }
  
 getAll(): Observable<any[]> {
-    return this._httpClient.get<any[]>(`${environment.apiUrl}`+'/diva-erp-rest-api-gmao/marques',  httpOptions);
+    return this._httpClient.get<any[]>(`${environment.apiUrl}`+'/action',  httpOptions);
 }
 
 create(data: any): Observable<any> {
-    return this._httpClient.post(`${environment.apiUrl}`+'/diva-erp-rest-api-gmao/add-marque', data);
+    return this._httpClient.post(`${environment.apiUrl}`+'/action', data);
 }
 
 

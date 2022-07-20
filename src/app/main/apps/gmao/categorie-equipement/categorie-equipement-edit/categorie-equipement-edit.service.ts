@@ -47,7 +47,7 @@ export class CategorieEquipementEditService implements Resolve<any> {
    */
   getApiData(): Promise<any[]> {
     return new Promise((resolve, reject) => {
-      this._httpClient.get(`${environment.apiUrl}`+'/diva-erp-rest-api-gmao/categorie-equipements').subscribe((response: any) => {
+      this._httpClient.get(`${environment.apiUrl}`+'/familleEquipement').subscribe((response: any) => {
         this.apiData = response;
         this.onCategorieEquipementEditChanged.next(this.apiData);
         resolve(this.apiData);
@@ -56,11 +56,11 @@ export class CategorieEquipementEditService implements Resolve<any> {
   }
  
 getAll(): Observable<any[]> {
-    return this._httpClient.get<any[]>(`${environment.apiUrl}`+'/diva-erp-rest-api-gmao/categorie-equipements',  httpOptions);
+    return this._httpClient.get<any[]>(`${environment.apiUrl}`+'/familleEquipement',  httpOptions);
 }
 
 create(data: any): Observable<any> {
-    return this._httpClient.post(`${environment.apiUrl}`+'/diva-erp-rest-api-gmao/add-categorie-equipement', data);
+    return this._httpClient.post(`${environment.apiUrl}`+'/familleEquipement', data);
 }
 
 

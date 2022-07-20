@@ -16,6 +16,6 @@ export class CategorieEquipementListService {
   constructor(private http: HttpClient) { }
   
 getAll(): Observable<any[]> {
-    return this.http.get<any[]>(`${environment.apiUrl}`+'/diva-erp-rest-api-gmao/categorie-equipements',  httpOptions);
+    return this.http.get<any[]>(`${environment.apiUrl}`+'/familleEquipement',  httpOptions);
 }
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { CoreSidebarService } from '@core/components/core-sidebar/core-sidebar.service';
 import { ColumnMode, DatatableComponent } from '@swimlane/ngx-datatable';
+import { ActionListService } from './action-list.service';
 
 @Component({
   selector: 'app-action-list',
@@ -21,20 +22,20 @@ export class ActionListComponent implements OnInit {  private tempData = [];
   public searchValue = '';
   
 
- constructor(private _coreSidebarService: CoreSidebarService) { 
+ constructor(private _coreSidebarService: CoreSidebarService ,private _service :ActionListService) { 
 
  }
  ngOnInit(): void {
-//  this.marqueListService.getAll()
-// 	      .subscribe(
-// 	        data => {
-//             this.rows = data;
-//             this.tempData = this.rows;
-//             console.log(this.rows);
-// 	        },
-// 	        error => {
-// 	          console.log(error);
-//           });
+ this._service.getAll()
+	      .subscribe(
+	        data => {
+            this.rows = data;
+            this.tempData = this.rows;
+            console.log(this.rows);
+	        },
+	        error => {
+	          console.log(error);
+          });
 }
 	        
 	        

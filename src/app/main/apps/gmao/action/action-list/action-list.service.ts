@@ -16,6 +16,6 @@ export class ActionListService {
   constructor(private http: HttpClient) { }
   
 getAll(): Observable<any[]> {
-    return this.http.get<any[]>(`${environment.apiUrl}`+'/diva-erp-rest-api-gmao/marques',  httpOptions);
+    return this.http.get<any[]>(`${environment.apiUrl}`+'/action',  httpOptions);
 }
 }

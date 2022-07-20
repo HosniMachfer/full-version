@@ -44,7 +44,7 @@ export class ActionViewService {public rows: any;
    */
   getApiData(id: number): Promise<any[]> {
     return new Promise((resolve, reject) => {
-      this._httpClient.get(`${environment.apiUrl}`+'/diva-erp-rest-api-gmao/marque/'+`${id}`).subscribe((response: any) => {
+      this._httpClient.get(`${environment.apiUrl}`+'/action'+`${id}`).subscribe((response: any) => {
         this.rows = response;
         this.onActionViewChanged.next(this.rows);
         resolve(this.rows);
@@ -54,6 +54,6 @@ export class ActionViewService {public rows: any;
 
 getMarque(route: ActivatedRouteSnapshot): Observable<any[]> {
     let currentId = Number(route.paramMap.get('id'));
-    return this._httpClient.get<any>(`${environment.apiUrl}`+'/diva-erp-rest-api-gmao/marque'+`${currentId}`,  httpOptions);
+    return this._httpClient.get<any>(`${environment.apiUrl}`+'/action'+`${currentId}`,  httpOptions);
 }
 }
