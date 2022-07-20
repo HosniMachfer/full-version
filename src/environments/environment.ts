@@ -5,7 +5,9 @@
 export const environment = {
   production: false,
   hmr: false,
-  apiUrl: 'http://localhost:8080'
+  // apiUrl: 'http://localhost:8080'
+  apiUrl: 'http://localhost:3000'
+
 };
 
 export const environmentNode = {

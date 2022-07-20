@@ -53,14 +53,15 @@ export class AuthenticationService {
    * @returns user
    */
   login(email: string, password: string) {
-  console.log(`${environment.apiUrl}`);
+ // console.log(`${environment.apiUrl}`);
+ 
     return this._http
-      .post<any>(`${environment.apiUrl}`+'/api/auth/signin', { email, password })
+      .post<any>(`${environment.apiUrl}`+'/user/login', { email, password })
       .pipe(
         map(user => {
           // login successful if there's a jwt token in the response
-          if (user && user.token) {
-          //user.role = 'Admin';
+          if (user && user["user"].nom) {
+           //user.role = 'Admin';
             // store user details and jwt token in local storage to keep user logged in between page refreshes
             localStorage.setItem('currentUser', JSON.stringify(user));
 
@@ -94,7 +95,7 @@ export class AuthenticationService {
   activateUser(password: string) {
   console.log(`${environment.apiUrl}`);
     return this._http
-      .post<any>(`${environment.apiUrl}`+'/api/auth/activate', password)
+      .post<any>(`${environment.apiUrl}`+'/user/login', password)
       .pipe(
         map(user => {
           // login successful if there's a jwt token in the response
