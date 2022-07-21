@@ -11,8 +11,9 @@ import { ToastrService } from 'ngx-toastr';
   templateUrl: './new-role-sidebar.component.html'
 })
 export class NewRoleSidebarComponent implements OnInit {
-  public name;
+  public Role;
   public code;
+  public commentaire;
   public privileges = [];
   public select_privileges = [];
 
@@ -60,6 +61,8 @@ export class NewRoleSidebarComponent implements OnInit {
       .subscribe(
         data => {
           this.privileges = data;
+        
+          
         },
         error => {
           console.log(error);

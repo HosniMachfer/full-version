@@ -44,7 +44,7 @@ export class UserViewService implements Resolve<any> {
   getApiData(id: number): Promise<any[]> {
     const url = `api/users-data/${id}`;
     return new Promise((resolve, reject) => {
-      this._httpClient.get(`${environment.apiUrl}`+'/user/'+`${id}`).subscribe((response: any) => {
+      this._httpClient.get(`${environment.apiUrl}`+'/user'+`${id}`).subscribe((response: any) => {
         this.rows = response;
         this.onUserViewChanged.next(this.rows);
         resolve(this.rows);

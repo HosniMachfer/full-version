@@ -20,4 +20,7 @@ export class RoleListService {
   getAll(): Observable<any[]> {
     return this.http.get<any[]>(`${environment.apiUrl}`+'/roles',  httpOptions);
 }
+delete(id:number):Observable<any[]>{
+  return this.http.delete<any[]>(`${environment.apiUrl}/roles/'${id}'`);
+}
 }

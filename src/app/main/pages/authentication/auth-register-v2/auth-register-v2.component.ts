@@ -5,6 +5,9 @@ import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 
 import { CoreConfigService } from '@core/services/config.service';
+import { AuthenticationService } from 'app/auth/service/authentication.service';
+import { AuthLoginV2Component } from '../auth-login-v2/auth-login-v2.component';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-auth-register-v2',
@@ -18,9 +21,14 @@ export class AuthRegisterV2Component implements OnInit {
   public passwordTextType: boolean;
   public registerForm: FormGroup;
   public submitted = false;
+  public returnUrl: string;
+  public loading = false;
+  public error = '';
+
 
   // Private
   private _unsubscribeAll: Subject<any>;
+  AuthLoginV2Component: any;
 
   /**
    * Constructor
@@ -28,8 +36,13 @@ export class AuthRegisterV2Component implements OnInit {
    * @param {CoreConfigService} _coreConfigService
    * @param {FormBuilder} _formBuilder
    */
-  constructor(private _coreConfigService: CoreConfigService, private _formBuilder: FormBuilder) {
+  constructor(private _coreConfigService: CoreConfigService, private _formBuilder: FormBuilder,
+    private _authenticationService: AuthenticationService,
+    private _route: ActivatedRoute,
+    private _router: Router,) {
     this._unsubscribeAll = new Subject();
+
+    
 
     // Configure the layout
     this._coreConfigService.config = {
@@ -67,6 +80,16 @@ export class AuthRegisterV2Component implements OnInit {
   onSubmit() {
     this.submitted = true;
 
+    if(this.registerForm){
+      this._authenticationService.register(this.registerForm.value).subscribe((res)=>{})
+   {          this._router.navigate(['/pages/authentication/login-v2']);
+  }
+        
+      
+    }
+        
+ 
+
     // stop here if form is invalid
     if (this.registerForm.invalid) {
       return;
@@ -81,7 +104,8 @@ export class AuthRegisterV2Component implements OnInit {
    */
   ngOnInit(): void {
     this.registerForm = this._formBuilder.group({
-      username: ['', [Validators.required]],
+      nom: ['', [Validators.required]],
+      prenom:['',[Validators.required]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required]
     });

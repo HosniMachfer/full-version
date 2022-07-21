@@ -22,7 +22,7 @@ export class AccountSettingsComponent implements OnInit, OnDestroy {
   public passwordTextTypeNew = false;
   public passwordTextTypeRetype = false;
   public avatarImage: string;
-
+ 
   // private
   private _unsubscribeAll: Subject<any>;
 

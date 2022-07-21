@@ -85,7 +85,8 @@ export class UserListComponent implements OnInit {
     private _userListService: UserListService,
     private _coreSidebarService: CoreSidebarService,
     private _coreConfigService: CoreConfigService,
-    private _coreTranslationService: CoreTranslationService, public _translateService: TranslateService
+    private _coreTranslationService: CoreTranslationService,
+    public _translateService: TranslateService
   ) {
   
     this._unsubscribeAll = new Subject();
@@ -217,6 +218,7 @@ export class UserListComponent implements OnInit {
    * On init
    */
   ngOnInit(): void { 
+    this.getAll();
     this.selectedLanguage = this._translateService.currentLang;
     this._translateService.use(this.selectedLanguage);
     this._coreConfigService.setConfig({ app: { appLanguage: this.selectedLanguage } }, { emitEvent: true });
@@ -240,6 +242,18 @@ export class UserListComponent implements OnInit {
     });
   }
 
+  getAll(){
+   
+    this._userListService.getAll()
+.subscribe(
+      data => {
+        this.rows = data;
+        console.log('eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee',this.rows);
+      },
+      error => {
+        console.log(error);
+      });
+   }
   /**
    * On destroy
    */

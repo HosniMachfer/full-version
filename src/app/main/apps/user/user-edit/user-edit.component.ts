@@ -240,7 +240,7 @@ export class UserEditComponent implements OnInit, OnDestroy {
   submit(form) {
     if (form.valid) {
       
-      this._userEditService.create(this.currentRow)
+      this._userEditService.update(this.currentRow)
       .subscribe(
         response => {
          // this.router.navigate(['/users']);
@@ -306,5 +306,10 @@ export class UserEditComponent implements OnInit, OnDestroy {
     this._unsubscribeAll.next();
     this._unsubscribeAll.complete();
   }
-
+  // getbyid(){
+  //   return this._userEditService.getUserbyid(this.id).subscribe((res)=>{
+  //     this.user= res["user"][0];
+      
+  //   })
+  // }
 }

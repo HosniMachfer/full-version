@@ -59,12 +59,20 @@ getAll(): Observable<any[]> {
     return this._httpClient.get<any[]>(`${environment.apiUrl}`+'/roles',  httpOptions);
 }
 
-create(data: any): Observable<any> {
-  console.log("------------------------------------");
-  console.log(data);
-  console.log("------------------------------------");
-    return this._httpClient.post(`${environment.apiUrl}`+'/add-role', data);
+// create(data: any): Observable<any> {
+//   console.log("------------------------------------");
+//   console.log(data);
+//   console.log("------------------------------------");
+//     return this._httpClient.post(`${environment.apiUrl}`+'/roles', data);
+// }
+update(data: any): Observable<any> {
+  return this._httpClient.put(`${environment.apiUrl}`+'/roles', data);
 }
-
+getByid(id:number):Observable<any>{
+return this._httpClient.get(`${environment.apiUrl}/roles/${id}`)
+}
+create(data: any): Observable<any> {
+return this._httpClient.post(`${environment.apiUrl}`+'/roles', data);
+}
 
 }

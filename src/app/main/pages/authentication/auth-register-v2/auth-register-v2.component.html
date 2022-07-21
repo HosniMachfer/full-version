@@ -17,6 +17,7 @@
           "
           alt="Register V2"
         />
+        
       </div>
     </div>
     <!-- /Left Text-->
@@ -27,21 +28,39 @@
         <p class="card-text mb-2"> </p>
         <form class="auth-register-form mt-2" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
           <div class="form-group">
-            <label for="register-username" class="form-label">Username</label>
+            <label for="register-nom" class="form-label">First name</label>
             <input
               type="text"
-              formControlName="username"
+              formControlName="nom"
               class="form-control"
               placeholder="johndoe"
-              aria-describedby="register-username"
+              aria-describedby="register-nom"
               tabindex="1"
               autofocus
-              [ngClass]="{ 'is-invalid': submitted && f.username.errors }"
+              [ngClass]="{ 'is-invalid': submitted && f.nom.errors }"
             />
-            <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
-              <div *ngIf="f.username.errors.required">Username is required</div>
+            <div *ngIf="submitted && f.nom.errors" class="invalid-feedback">
+              <div *ngIf="f.nom.errors.required">Username is required</div>
             </div>
           </div>
+
+          <div class="form-group">
+            <label for="register-prenom" class="form-label">Last name</label>
+            <input
+              type="text"
+              formControlName="prenom"
+              class="form-control"
+              placeholder="johndoe"
+              aria-describedby="register-prenom"
+              tabindex="1"
+              autofocus
+              [ngClass]="{ 'is-invalid': submitted && f.prenom.errors }"
+            />
+            <div *ngIf="submitted && f.prenom.errors" class="invalid-feedback">
+              <div *ngIf="f.prenom.errors.required">lastname is required</div>
+            </div>
+          </div>
+
           <div class="form-group">
             <label for="register-email" class="form-label">Email</label>
             <input

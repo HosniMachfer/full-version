@@ -52,7 +52,8 @@ export class RoleListComponent implements OnInit {
     { name: 'Team', value: 'Team' }
   ];
   
-constructor(private roleListService: RoleListService,private _coreSidebarService: CoreSidebarService,private _coreTranslationService: CoreTranslationService) {
+constructor(private roleListService: RoleListService,private _coreSidebarService: CoreSidebarService,
+  private _coreTranslationService: CoreTranslationService) {
 
     this.languageOptions = {
       en: {
@@ -77,15 +78,7 @@ constructor(private roleListService: RoleListService,private _coreSidebarService
 
 ngOnInit(): void {
 
-	this.roleListService.getAll()
-	      .subscribe(
-	        data => {
-            this.rows = data;
-            console.log(this.rows);
-	        },
-	        error => {
-	          console.log(error);
-	        });
+this.getAll()
 
 }
   
@@ -93,7 +86,23 @@ ngOnInit(): void {
 toggleSidebar(name): void {
     this._coreSidebarService.getSidebarRegistry(name).toggleOpen();
 }
-  
+ getAll(){
+  this.roleListService.getAll()
+  .subscribe(
+    data => {
+      this.rows = data;
+      console.log(this.rows);
+    },
+    error => {
+      console.log(error);
+    });
+ }
+
+  delete(id: number) : void{
+    this.roleListService.delete(id).subscribe()
+    // this.roleListService.delete(id).subscribe((res)=>{ this.getAll()})
+  this.getAll()
+    }
 filterUpdate(event) {}
 filterByStatus(event) {}
 filterByRole(event) {}

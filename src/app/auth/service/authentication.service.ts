@@ -132,4 +132,9 @@ export class AuthenticationService {
     // notify
     this.currentUserSubject.next(null);
   }
+
+  register(data:any): Observable<any>{
+    
+    return this._http.post(`${environment.apiUrl}/user/register`,data)
+  }
 }

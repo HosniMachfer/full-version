@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy, ViewEncapsulation, ViewChild,Injectable } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Subject } from 'rxjs';
@@ -16,6 +16,7 @@ import { NgbDate, NgbTimeStruct } from '@ng-bootstrap/ng-bootstrap';
 import { NgbCalendar, NgbDateAdapter, NgbDateParserFormatter, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import * as snippet from 'app/main/forms/form-elements/date-time-picker/date-time-picker.snippetcode';
 import { ToastrService } from 'ngx-toastr';
+import { Role } from '../role';
 
 interface BrandObject {
   id: number;
@@ -94,6 +95,9 @@ export class RoleEditComponent implements OnInit, OnDestroy {
   public avatarImage: string;
   public privileges = [];
   public select_privileges = [];
+  id: number;
+  role:Role[]
+
   
   @ViewChild('accountForm') accountForm: NgForm;
 
@@ -131,9 +135,12 @@ export class RoleEditComponent implements OnInit, OnDestroy {
     private dataService: DataService, private modalService: NgbModal,
     private _roleListService: RoleListService ,private ngbCalendar: NgbCalendar,
     private dateAdapter: NgbDateAdapter<string>,   private _toastrService: ToastrService, 
-    private _privilegeListService: PrivilegeListService) {
+    private _privilegeListService: PrivilegeListService,
+     private activateRoute: ActivatedRoute,
+     ) {
     this._unsubscribeAll = new Subject();
     this.urlLastValue = this.url.substr(this.url.lastIndexOf('/') + 1);
+    
     
   }
 
@@ -152,20 +159,27 @@ export class RoleEditComponent implements OnInit, OnDestroy {
    *
    * @param form
    */
-  submit(form: { valid: any; }) {
+  submit(form) {
     if (form.valid) {
-      this._roleEditService.create(this.currentRow)
+  
+      this._roleEditService.update(this.currentRow)
       .subscribe(
         response => {
-          this._toastrService.success('Mise à jour privileg avec success', '');
+          this._roleEditService.update(this.role[0]).subscribe((res)=>{
+            console.log(this.role);
+            
+          this._toastrService.success('Mise ï¿½ jour privileg avec success', '');
           this.router.navigate(['apps/role/role-list']);
-        },
+        }
+        ,
         error => {
-          this._toastrService.error('Impossible de mettre à jour pribilége', error);
+          this._toastrService.error('Impossible de mettre ï¿½ jour pribilï¿½ge', error);
           console.log(error);
-        });
-    }
-  }
+        }) ;
+    })
+    
+
+  }}
 
   // Lifecycle Hooks
   // -----------------------------------------------------------------------------------------------------
@@ -173,6 +187,9 @@ export class RoleEditComponent implements OnInit, OnDestroy {
    * On init
    */
   ngOnInit(): void {
+
+    this.id= Number(this.activateRoute.snapshot.paramMap.get('id'));
+    this.getbyid(this.id)
     this._roleEditService.onRoleEditChanged.pipe(takeUntil(this._unsubscribeAll)).subscribe(response => {
             this.rows = response;
             this.rows.map(row => {
@@ -186,18 +203,22 @@ export class RoleEditComponent implements OnInit, OnDestroy {
       });
     });
 
-    this._privilegeListService.getAll()
-      .subscribe(
-        data => {
-          this.privileges = data;
-        },
-        error => {
-        console.log(" ici de la merde");
-          console.log(error);
-        });
+    // this._privilegeListService.getAll()
+    //   .subscribe(
+    //     data => {
+    //       this.privileges = data;
+    //     },
+    //     error => {
+    //       console.log(error);
+    //     });
     
   }
-
+  getbyid(id:number){
+    return this._roleEditService.getByid(id).subscribe((res)=>{
+   this.role=res
+   console.log(this.role);
+    })
+  }
   doTextareaValueChange(ev) {
     try {
       this.currentRow.description  = ev.target.value;

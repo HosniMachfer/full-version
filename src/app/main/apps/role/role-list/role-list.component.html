@@ -1,6 +1,7 @@
 <div class="content-wrapper container-xxl p-0">
   <div class="content-body">
     <!-- User List -->
+
     <section class="users-list-wrapper">
       <div class="card">
         <div class="row">
@@ -44,9 +45,9 @@
           [scrollbarH]="true"
         >
 
-          <ngx-datatable-column name="Code rôle" prop="code" [width]="200"></ngx-datatable-column>
-          <ngx-datatable-column name="Libellé rôle" prop="name" [width]="100">
-            <ng-template let-row="row" let-name="value" ngx-datatable-cell-template>
+          <ngx-datatable-column name="Code rôle" prop="idRole" [width]="200"></ngx-datatable-column>
+          <ngx-datatable-column name="Libellé rôle" prop="Role" [width]="100">
+            <!-- <ng-template let-row="row" let-name="value" ngx-datatable-cell-template>
                 <i
                   class="feather font-medium-3"
                   [ngClass]="{
@@ -58,11 +59,11 @@
                   }"
                 ></i>
                 {{name}}
-            </ng-template>
+            </ng-template> -->
           </ngx-datatable-column>
           
           
-          <ngx-datatable-column name="Commentaire Rôle" prop="description" [width]="100"></ngx-datatable-column>
+          <ngx-datatable-column name="Commentaire Rôle" prop="commentaire" [width]="100"></ngx-datatable-column>
           <!-- <ngx-datatable-column name="Status" prop="status" [width]="50">
             <ng-template let-status="value" ngx-datatable-cell-template>
               <div
@@ -84,12 +85,12 @@
                   <span [data-feather]="'more-vertical'" [class]="'cursor-pointer'"></span>
                 </button>
                 <div ngbDropdownMenu>
-                  <a routerLink="/apps/role/role-list/role-view/{{ row.id }}" ngbDropdownItem
-                    ><span [data-feather]="'file-text'" [size]="16" [class]="'mr-50'"></span> Details</a
-                  ><a routerLink="/apps/role/role-list/role-edit/{{ row.id }}" ngbDropdownItem
+                  <!-- <a [routerLink]="['/apps/role/role-list/role-view',row.idRole]" ngbDropdownItem
+                    ><span [data-feather]="'file-text'" [size]="16" [class]="'mr-50'"></span> Details</a > -->
+                  <a [routerLink]="['/apps/role/role-list/role-edit',row.idRole ]" ngbDropdownItem
                     ><span [data-feather]="'edit'" [size]="16" [class]="'mr-50'"></span> Modifier</a
-                  ><a href="javascript:;" ngbDropdownItem
-                    ><span [data-feather]="'trash'" [size]="16" [class]="'mr-50'"></span> Supprimer</a
+                  ><a href="javascript:;" ngbDropdownItem  (click)="delete(row.idRole)"
+                    ><span [data-feather]="'trash'" [size]="16" [class]="'mr-50'" ></span> Supprimer</a
                   >
                 </div>
               </div>
