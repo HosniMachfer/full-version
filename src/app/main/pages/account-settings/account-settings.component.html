@@ -54,18 +54,19 @@
                     <!--/ header media -->
 
                     <!-- form -->
-                    <form class="validate-form mt-2">
+                    <form class="validate-form mt-2"  
+                     #userForm="ngForm" (ngSubmit)="update()">
                       <div class="row">
                         <div class="col-12 col-sm-6">
                           <div class="form-group">
-                            <label for="account-username">Username</label>
+                            <label for="account-username">First name</label>
                             <input
                               type="text"
-                              [(ngModel)]="data.accountSetting.general.nom"
+                              [(ngModel)]="currentUser.Nom"
                               class="form-control"
-                              id="account-username"
+                              id="nom"
                               name="nom"
-                              placeholder="Username"
+                              placeholder="First name"  
                             />
                           </div>
                         </div>
@@ -74,11 +75,12 @@
                             <label for="account-name">Last Name</label>
                             <input
                               type="text"
-                              [(ngModel)]="data.accountSetting.general.prenom"
+                              [(ngModel)]="currentUser.Prenom"
                               class="form-control"
-                              id="account-name"
+                              id="prenom"
                               name="prenom"
-                              placeholder="Name"
+                              placeholder="Last Name"
+                              #prenom="ngModel"
                             />
                           </div>
                         </div>
@@ -87,7 +89,7 @@
                             <label for="account-e-mail">E-mail</label>
                             <input
                               type="email"
-                              [(ngModel)]="data.accountSetting.general.email"
+                              [(ngModel)]="currentUser.email"
                               class="form-control"
                               id="account-e-mail"
                               name="email"
@@ -97,18 +99,18 @@
                         </div>
                         <!-- <div class="col-12 col-sm-6">
                           <div class="form-group">
-                            <label for="account-company">Company</label>
+                            <label for="account-phone">Phone</label>
                             <input
                               type="text"
-                              [(ngModel)]="data.accountSetting.general.company"
+                              [(ngModel)]="currentUser.phone"
                               class="form-control"
-                              id="account-company"
-                              name="company"
-                              placeholder="Company name"
+                              id="phone"
+                              name="phone"
+                              placeholder="Phone"
                             />
                           </div>
-                        </div> -->
-                        <!-- <div class="col-12 mt-75">
+                        </div>  -->
+                         <!-- <div class="col-12 mt-75">
                           <div class="alert alert-warning mb-50" role="alert">
                             <h4 class="alert-heading">Your email is not confirmed. Please check your inbox.</h4>
                             <div class="alert-body">

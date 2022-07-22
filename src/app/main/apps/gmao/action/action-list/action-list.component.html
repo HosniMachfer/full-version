@@ -47,14 +47,14 @@
             <ngx-datatable-column name="Code" prop="code" [width]="50"></ngx-datatable-column>
   
                       
-            <ngx-datatable-column name="Libellé" prop="name" [width]="100">
+            <ngx-datatable-column name="Libellé" prop="Designation" [width]="100">
               <ng-template let-row="row" let-name="value" ngx-datatable-cell-template>
                   {{name}}
               </ng-template>
             </ngx-datatable-column>
   
-            <ngx-datatable-column name="Description" prop="description"></ngx-datatable-column>
-            <ngx-datatable-column name="Status" prop="status" [width]="50">
+            <ngx-datatable-column name="Description" prop="observation"></ngx-datatable-column>
+            <!-- <ngx-datatable-column name="Status" prop="status" [width]="50">
               <ng-template let-status="value" ngx-datatable-cell-template>
                 <div
                   class="badge badge-pill"
@@ -67,7 +67,7 @@
                   {{ status }}
                 </div>
               </ng-template>
-            </ngx-datatable-column>
+            </ngx-datatable-column> -->
             <ngx-datatable-column name="Action" [width]="40" [sortable]="false">
               <ng-template ngx-datatable-cell-template let-row="row">
                 <div ngbDropdown container="body">
@@ -75,12 +75,13 @@
                     <span [data-feather]="'more-vertical'" [class]="'cursor-pointer'"></span>
                   </button>
                   <div ngbDropdownMenu>
-                    <a routerLink="/apps/gmao/action/action-list/action-view/{{row.id}}" ngbDropdownItem
+                    <!-- <a routerLink="/apps/gmao/action/action-list/action-view/{{row.id}}" ngbDropdownItem
                       ><span [data-feather]="'file-text'" [size]="16" [class]="'mr-50'"></span> Details</a
-                    ><a routerLink="/apps/gmao/action/action-list/action-edit/{{ row.id }}" ngbDropdownItem
+                    > -->
+                    <a [routerLink]="['/apps/gmao/action/action-list/action-edit',row.IdAction]" ngbDropdownItem
                       ><span [data-feather]="'edit'" [size]="16" [class]="'mr-50'"></span> Modifier</a
-                    ><a href="javascript:;" ngbDropdownItem
-                      ><span [data-feather]="'trash'" [size]="16" [class]="'mr-50'"></span> Supprimer</a
+                    ><a href="javascript:;" ngbDropdownItem (click)="delete(row.IdAction)" >
+                      <span [data-feather]="'trash'" [size]="16" [class]="'mr-50'"></span> Supprimer</a
                     >
                   </div>
                 </div>

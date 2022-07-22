@@ -100,7 +100,7 @@ toggleSidebar(name): void {
 
   delete(id: number) : void{
     this.roleListService.delete(id).subscribe()
-    // this.roleListService.delete(id).subscribe((res)=>{ this.getAll()})
+    
   this.getAll()
     }
 filterUpdate(event) {}
