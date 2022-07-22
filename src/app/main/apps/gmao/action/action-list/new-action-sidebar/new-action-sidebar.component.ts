@@ -14,6 +14,8 @@ import { ActionListService } from '../action-list.service';
 export class NewActionSidebarComponent implements OnInit {
 
   public name;
+  public Designation;
+  public observation;
   public code;
   public roles = [];
   public select_roles = [];
@@ -51,13 +53,14 @@ export class NewActionSidebarComponent implements OnInit {
       response => {
         this._toastrService.success("L'ajout d'un nouveau privil�ge avec success", "");
         this.router.navigate(['apps/gmao/action/action-list/action-view/'+response.id]);
-      },
+      },  
       error => {
         this._toastrService.error("Impossible d'ajouter un noueau pribil�ge", "");
         console.log(error);
       });
     }
   }
+ 
 
   ngOnInit(): void {}
 

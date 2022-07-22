@@ -6,7 +6,6 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { FlatpickrOptions } from 'ng2-flatpickr';
 import { cloneDeep } from 'lodash';
-import { Observable } from 'rxjs';
 
 import { PrivilegeListService } from 'app/main/apps/privilege/privilege-list/privilege-list.service';
 import { RoleEditService } from 'app/main/apps/role/role-edit/role-edit.service';

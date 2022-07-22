@@ -16,6 +16,7 @@ export class NewRoleSidebarComponent implements OnInit {
   public commentaire;
   public privileges = [];
   public select_privileges = [];
+  role:any
 
   /**
    * Constructor
@@ -46,8 +47,8 @@ export class NewRoleSidebarComponent implements OnInit {
       this._roleEditService.create(form.value)
     .subscribe(
       response => {
-        this._toastrService.success("L'ajout d'un nouveau role avec success", "");
-        this.router.navigate(['apps/role/role-list/role-view/'+response.id]);
+        this._toastrService.success("L'ajout d'un nouveau role avec success", "")
+        // this.router.navigate(['apps/role/role-list/role-view/',response.id]);
       },
       error => {
         this._toastrService.error("Impossible d'ajouter un noueau role", "");

@@ -89,7 +89,7 @@
                         <textarea class="form-control mb-2" rows="4" placeholder="Comment" (change)="doTextareaValueChange($event)">{{currentRow.description}}</textarea>
                   </div>
                 </div>
-                
+
                 <div class="col-12 d-flex flex-sm-row flex-column mt-3">
                   <button type="submit" (click)="submit(accountForm)" class="btn btn-primary mb-1 mb-sm-0 mr-0 mr-sm-1" rippleEffect>Save Changes</button>
                   <button (click)="resetFormWithDefaultValues()" class="btn btn-outline-secondary mb-1 mb-sm-0 mr-0 mr-sm-1" rippleEffect>Reset</button>
@@ -113,7 +113,7 @@
                   <label> Rôle </label>
                   <input class="form-control" type="text" name="Role" #Role="ngModel"  [(ngModel)]="role[0].Role" >
                 </div>
-              </div> 
+              </div>
              <!-- <div class="col-sm-12 col-md-12 col-lg-12">
               <label> Etat </label>
               <input class="form-control" type="number" name="Etat" #Etat="ngModel" [(ngModel)]="role[0].Etat" >
@@ -129,7 +129,7 @@
               <!-- <button (click)="resetFormWithDefaultValues()" class="btn btn-outline-secondary mb-1 mb-sm-0 mr-0 mr-sm-1" rippleEffect>Reset</button> -->
               <a routerLink="/apps/role/role-list" class="btn btn-primary mb-1 mb-sm-0 mr-0 mr-sm-1" rippleEffect>Annuler</a>
              </div>
-        </div> 
+        </div>
           </form>
           </div>
         </div>

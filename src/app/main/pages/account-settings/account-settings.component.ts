@@ -5,6 +5,8 @@ import { takeUntil } from 'rxjs/operators';
 import { FlatpickrOptions } from 'ng2-flatpickr';
 
 import { AccountSettingsService } from 'app/main/pages/account-settings/account-settings.service';
+import { User } from './user';
+import { AuthenticationService } from 'app/auth/service';
 @Component({
   selector: 'app-account-settings',
   templateUrl: './account-settings.component.html',
@@ -22,18 +24,25 @@ export class AccountSettingsComponent implements OnInit, OnDestroy {
   public passwordTextTypeNew = false;
   public passwordTextTypeRetype = false;
   public avatarImage: string;
+  public currentUser: User;  
+
  
   // private
   private _unsubscribeAll: Subject<any>;
 
   /**
-   * Constructor
+   * Constructor  
    *
    * @param {AccountSettingsService} _accountSettingsService
    */
-  constructor(private _accountSettingsService: AccountSettingsService) {
+  constructor(private _accountSettingsService: AccountSettingsService,
+  private _authenticationService: AuthenticationService)
+  {
     this._unsubscribeAll = new Subject();
   }
+
+
+
 
   // Public Methods
   // -----------------------------------------------------------------------------------------------------
@@ -83,10 +92,14 @@ export class AccountSettingsComponent implements OnInit, OnDestroy {
    * On init
    */
   ngOnInit() {
+    this.getUSerByid()
+    
     this._accountSettingsService.onSettingsChanged.pipe(takeUntil(this._unsubscribeAll)).subscribe(response => {
       this.data = response;
       this.avatarImage = this.data.accountSetting.general.avatar;
     });
+
+
 
     // content header
     this.contentHeader = {
@@ -122,4 +135,18 @@ export class AccountSettingsComponent implements OnInit, OnDestroy {
     this._unsubscribeAll.next();
     this._unsubscribeAll.complete();
   }
+
+
+  
+  getUSerByid(){
+    return this._accountSettingsService.getUserByid(JSON.parse(localStorage.getItem('currentUser'))["user"].id).subscribe((res)=>{  
+      this.currentUser= res["user"][0]
+  
+    })
+   }
+   update(){
+     this._accountSettingsService.updateUser(this.currentUser).subscribe((res)=>{
+   
+     })
+   }
 }

@@ -1,12 +1,24 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
+import { environment } from 'environments/environment';
 
 import { BehaviorSubject, Observable } from 'rxjs';
+import { User } from './user';
 
+
+const httpoptions = { headers :new HttpHeaders
+  (
+    {
+      'Content-Type' : 'application/json'
+    }
+  )
+  } 
 @Injectable()
+
 export class AccountSettingsService implements Resolve<any> {
   rows: any;
+
   onSettingsChanged: BehaviorSubject<any>;
 
   /**
@@ -31,12 +43,12 @@ export class AccountSettingsService implements Resolve<any> {
       Promise.all([this.getDataTableRows()]).then(() => {
         resolve();
       }, reject);
-    });
+    }); 
   }
 
   /**
    * Get rows
-   */
+  //  */
   getDataTableRows(): Promise<any[]> {
     return new Promise((resolve, reject) => {
       this._httpClient.get('api/account-settings-data').subscribe((response: any) => {
@@ -46,4 +58,10 @@ export class AccountSettingsService implements Resolve<any> {
       }, reject);
     });
   }
+  updateUser(data:User): Observable<User> { 
+    return this._httpClient.put<User>(`${environment.apiUrl}/user`,data,httpoptions)
+    }
+  getUserByid(id:number): Observable<User>{
+   return this._httpClient.get<User>(`${environment.apiUrl}/user/${id}`)
+   }
 }

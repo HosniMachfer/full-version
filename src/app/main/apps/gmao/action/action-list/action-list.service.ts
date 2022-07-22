@@ -13,9 +13,13 @@ const httpOptions = {
 })
 export class ActionListService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,private _httpClient: HttpClient) { }
   
 getAll(): Observable<any[]> {
     return this.http.get<any[]>(`${environment.apiUrl}`+'/action',  httpOptions);
+}
+
+delete(id: number): Observable<any> {
+  return this._httpClient.delete(`${environment.apiUrl}/action/${id}` );
 }
 }

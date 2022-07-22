@@ -26,18 +26,18 @@ export class ActionListComponent implements OnInit {  private tempData = [];
 
  }
  ngOnInit(): void {
- this._service.getAll()
-	      .subscribe(
-	        data => {
-            this.rows = data;
-            this.tempData = this.rows;
-            console.log(this.rows);
-	        },
-	        error => {
-	          console.log(error);
-          });
+ this.getAll()
 }
-	        
+	getAll(){this._service.getAll()
+    .subscribe(
+      data => {
+        this.rows = data;
+        this.tempData = this.rows;
+        console.log(this.rows);
+      },
+      error => {
+        console.log(error);
+      });}        
 	        
 toggleSidebar(name): void {
   // console.log(name);
@@ -59,6 +59,13 @@ toggleSidebar(name): void {
     this.table.offset = 0;
 
  }
+
+ 
+
+  delete(id:number){
+    this._service.delete(id).subscribe((res)=>{
+      this.getAll()
+    })}
 }
 
 

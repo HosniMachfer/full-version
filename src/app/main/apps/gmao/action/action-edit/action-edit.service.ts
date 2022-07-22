@@ -60,6 +60,11 @@ getAll(): Observable<any[]> {
 create(data: any): Observable<any> {
     return this._httpClient.post(`${environment.apiUrl}`+'/action', data);
 }
+getByid(id:number):Observable<any>{
+  return this._httpClient.get(`${environment.apiUrl}/action/${id}`)
+  }
 
-
+  update(data: any): Observable<any> {
+    return this._httpClient.put(`${environment.apiUrl}`+'/action', data);
+  }
 }
