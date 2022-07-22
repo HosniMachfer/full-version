@@ -32,7 +32,7 @@ import { ContentHeaderModule } from 'app/layout/components/content-header/conten
 
 // routing
 const routes: Routes = [
-  {
+  { 
     path: 'user-list',
     component: UserListComponent,
     resolve: {

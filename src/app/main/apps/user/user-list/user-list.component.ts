@@ -218,42 +218,44 @@ export class UserListComponent implements OnInit {
    * On init
    */
   ngOnInit(): void { 
-    this.getAll();
-    this.selectedLanguage = this._translateService.currentLang;
-    this._translateService.use(this.selectedLanguage);
-    this._coreConfigService.setConfig({ app: { appLanguage: this.selectedLanguage } }, { emitEvent: true });
-    
-    // Subscribe config change
-    this._coreConfigService.config.pipe(takeUntil(this._unsubscribeAll)).subscribe(config => {
-      //! If we have zoomIn route Transition then load datatable after 450ms(Transition will finish in 400ms)
-      if (config.layout.animation === 'zoomIn') {
-        setTimeout(() => {
-          this._userListService.onUserListChanged.pipe(takeUntil(this._unsubscribeAll)).subscribe(response => {
-            this.rows = response;
-            this.tempData = this.rows;
-          });
-        }, 450);
-      } else {
-        this._userListService.onUserListChanged.pipe(takeUntil(this._unsubscribeAll)).subscribe(response => {
-          this.rows = response;
-          this.tempData = this.rows;
+    //this.getAll();
+      this._userListService.getAll()
+      .subscribe(
+        data => {
+          this.rows = data;
+          console.log('ttttttttt',this.rows);
+        },
+        error => {
+          console.log(error);
         });
-      }
-    });
+
+    // this._userListService.getDataTableRows();
+    // console.log("AZEZERTYUIO",this._userListService.getDataTableRows())
+     
+    // this.selectedLanguage = this._translateService.currentLang;
+    // this._translateService.use(this.selectedLanguage);
+    // this._coreConfigService.setConfig({ app: { appLanguage: this.selectedLanguage } }, { emitEvent: true });
+    
+    // // Subscribe config change
+    // this._coreConfigService.config.pipe(takeUntil(this._unsubscribeAll)).subscribe(config => {
+    //   //! If we have zoomIn route Transition then load datatable after 450ms(Transition will finish in 400ms)
+    //   if (config.layout.animation === 'zoomIn') {
+    //     setTimeout(() => {
+    //       this._userListService.onUserListChanged.pipe(takeUntil(this._unsubscribeAll)).subscribe(response => {
+    //         this.rows = response;
+    //         this.tempData = this.rows;
+    //       });
+    //     }, 450);
+    //   } else {
+    //     this._userListService.onUserListChanged.pipe(takeUntil(this._unsubscribeAll)).subscribe(response => {
+    //       this.rows = response;
+    //       this.tempData = this.rows;
+    //     });
+    //   }
+    // });
   }
 
-  getAll(){
-   
-    this._userListService.getAll()
-.subscribe(
-      data => {
-        this.rows = data;
-        console.log('eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee',this.rows);
-      },
-      error => {
-        console.log(error);
-      });
-   }
+
   /**
    * On destroy
    */

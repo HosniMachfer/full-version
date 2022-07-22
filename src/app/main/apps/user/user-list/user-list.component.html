@@ -82,7 +82,7 @@
           [footerHeight]="50"
           [scrollbarH]="true"
         >
-          <ngx-datatable-column name="{{ 'datatable.columns.user' | translate }}" prop="fullName" [width]="200">
+          <!-- <ngx-datatable-column name="{{ 'datatable.columns.user' | translate }}" prop="fullName" [width]="200">
             <ng-template let-row="row" let-name="value" ngx-datatable-cell-template>
               <div class="d-flex align-items-center">
                 <div *ngIf="row.avatar.length > 0; else customAvatar">
@@ -116,10 +116,13 @@
                 </div>
               </div>
             </ng-template>
-          </ngx-datatable-column>
+          </ngx-datatable-column> -->
+
           <ngx-datatable-column name="Email" prop="email" [width]="200"></ngx-datatable-column>
-          <ngx-datatable-column name="Role" prop="role" [width]="100">
-<!--             <ng-template let-role="value" ngx-datatable-cell-template> -->
+
+          <!--<ng-template let-role="value" ngx-datatable-cell-template> -->
+          <!-- <ngx-datatable-column name="Role" prop="Nom" [width]="100">
+
             <ng-template let-row="row" let-name="value" ngx-datatable-cell-template>
               <div  *ngFor="let userroles of row.roles; let i = index">
                 <i
@@ -135,9 +138,9 @@
                 {{userroles.name}}
               </div>
             </ng-template>
-          </ngx-datatable-column>
-          <ngx-datatable-column name="Status" prop="status" [width]="50">
-            <ng-template let-status="value" ngx-datatable-cell-template>
+          </ngx-datatable-column> -->
+          <ngx-datatable-column name="Prénom" prop="Prenom" [width]="50">
+            <!-- <ng-template let-status="value" ngx-datatable-cell-template>
               <div
                 class="badge badge-pill"
                 [ngClass]="{
@@ -148,7 +151,7 @@
               >
                 {{ status }}
               </div>
-            </ng-template>
+            </ng-template> -->
           </ngx-datatable-column>
           <ngx-datatable-column name="Actions" [width]="40" [sortable]="false">
             <ng-template ngx-datatable-cell-template let-row="row">

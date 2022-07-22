@@ -47,7 +47,7 @@ export class MachineNewService implements Resolve<any> {
    */
   getApiData(): Promise<any[]> {
     return new Promise((resolve, reject) => {
-      this._httpClient.get(`${environment.apiUrl}`+'/diva-erp-rest-api-gmao/machines').subscribe((response: any) => {
+      this._httpClient.get(`${environment.apiUrl}`+'/equipement').subscribe((response: any) => {
         this.apiData = response;
         this.onMachineNewChanged.next(this.apiData);
         resolve(this.apiData);
@@ -56,14 +56,14 @@ export class MachineNewService implements Resolve<any> {
   }
  
 getAll(): Observable<any[]> {
-    return this._httpClient.get<any[]>(`${environment.apiUrl}`+'/diva-erp-rest-api-gmao/machines',  httpOptions);
+    return this._httpClient.get<any[]>(`${environment.apiUrl}`+'/equipement',  httpOptions);
 }
 
 create(data: any): Observable<any> {
   console.log("-----------creationmachine-------------------------");
   console.log(data);
   console.log("------------------------------------");
-    return this._httpClient.post(`${environment.apiUrl}`+'/diva-erp-rest-api-gmao/add-machine', data);
+    return this._httpClient.post(`${environment.apiUrl}`+'/equipement', data);
 }
 upload(file: File): Observable<HttpEvent<any>> {
   const formData: FormData = new FormData();

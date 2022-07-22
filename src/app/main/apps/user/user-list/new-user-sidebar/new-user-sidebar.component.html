@@ -10,7 +10,7 @@
           aria-label="Close"
           (click)="toggleSidebar('new-user-sidebar')"
         >
-          ×
+          
         </button>
         <div class="modal-header mb-1">
           <h5 class="modal-title" id="exampleModalLabel">Ajouter nouveau utilsateur</h5>
@@ -83,8 +83,8 @@
                 [multiple]="true"
                 [closeOnSelect]="false"
                 [searchable]="true"
-                bindLabel="name"
-                placeholder="Select role"
+                bindLabel="Role"
+                placeholder="Sélectionner Rôle"
                 [(ngModel)]="select_roles"
               >
               </ng-select>

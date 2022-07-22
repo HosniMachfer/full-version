@@ -47,7 +47,7 @@ export class MachineEditService implements Resolve<any> {
    */
   getApiData(): Promise<any[]> {
     return new Promise((resolve, reject) => {
-      this._httpClient.get(`${environment.apiUrl}`+'/diva-erp-rest-api-gmao/machines').subscribe((response: any) => {
+      this._httpClient.get(`${environment.apiUrl}`+'/equipement').subscribe((response: any) => {
         this.apiData = response;
         console.log("--------getApiData----------------------------");
         console.log(response);
@@ -61,7 +61,7 @@ export class MachineEditService implements Resolve<any> {
 getAll(): Observable<any[]> {
   console.log("--------GETALL----------------------------");
 
-    return this._httpClient.get<any[]>(`${environment.apiUrl}`+'/diva-erp-rest-api-gmao/machines',  httpOptions);
+    return this._httpClient.get<any[]>(`${environment.apiUrl}`+'/equipement',  httpOptions);
 }
 
 create(data: any): Observable<any> {

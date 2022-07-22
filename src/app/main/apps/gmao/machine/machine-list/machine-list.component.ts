@@ -91,7 +91,7 @@ public searchModele = '';
           this.rows = data;
           this.tempData = this.rows;
           console.log(this.rows);
-          console.log(" list service");
+          console.log(" list service MACHINNNNE");
 
         },
         error => {
@@ -99,6 +99,7 @@ public searchModele = '';
           console.log("error list service");
 
     });
+    
     this.localiteListService.getAll()
       .subscribe(
         data => {

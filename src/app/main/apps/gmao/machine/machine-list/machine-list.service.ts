@@ -16,6 +16,6 @@ export class MachineListService {
   constructor(private http: HttpClient) { }
   
 getAll(): Observable<any[]> {
-    return this.http.get<any[]>(`${environment.apiUrl}`+'/diva-erp-rest-api-gmao/machines',  httpOptions);
+    return this.http.get<any[]>(`${environment.apiUrl}`+'/equipement',  httpOptions);
 }
 }

@@ -16,7 +16,7 @@ export class UserListService implements Resolve<any> {
    *
    * @param {HttpClient} _httpClient
    */
-  constructor(private _httpClient: HttpClient) {
+    constructor(private _httpClient: HttpClient) {
     // Set the defaults
     this.onUserListChanged = new BehaviorSubject({});
   }
