@@ -173,7 +173,8 @@ export class MachineEditComponent implements OnInit, OnDestroy {
     this._machineEditService.onMachineEditChanged.pipe(takeUntil(this._unsubscribeAll)).subscribe(response => {
             this.rows = response;
             this.rows.map(row => {
-        if (row.id == this.urlLastValue) {
+              
+        if (row.idEquipment == this.urlLastValue) {
           this.currentRow = row;
           this.currentRow.avatar;
           this.tempRow = cloneDeep(row);

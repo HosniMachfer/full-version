@@ -22,7 +22,7 @@
                       class="form-control"
                       placeholder="Réference"
                       name="fullName"
-                      [(ngModel)]="currentRow.reference"
+                      [(ngModel)]="currentRow.Reference"
                       [class.error]="accountForm.submitted && FullNameRef.invalid"
                       #FullNameRef="ngModel"
                       required
@@ -44,7 +44,7 @@
                       class="form-control"
                       placeholder="Désignation"
                       name="email"
-                      [(ngModel)]="currentRow.designation"
+                      [(ngModel)]="currentRow.Designation"
                       [class.error]="accountForm.submitted && EmailRef.invalid"
                       #EmailRef="ngModel"
                       required
@@ -168,7 +168,7 @@
                               <div class="col-12 col-md-3">
                                 <label class="d-flex align-items-center ml-1 ml-md-0" >Modèle:</label>
                                   <input
-                                  [(ngModel)]="currentRow.modele"
+                                  [(ngModel)]="currentRow.Modele"
                                   name="modele"
                                   placeholder="Modèle Machine"
                                   type="search"
@@ -187,7 +187,7 @@
                               <div class="col-12 col-md-3">
                                 <label class="d-flex align-items-center ml-1 ml-md-0" >Numéro de série:</label>
                                   <input
-                                  [(ngModel)]="currentRow.numeroDeSerie"
+                                  [(ngModel)]="currentRow.NumSerie"
                                   name="numeroDeSerie"
                                   placeholder="Numéro de série"
                                   type="search"
@@ -206,7 +206,7 @@
                               <div class="col-12 col-md-3">
                                 <label class="d-flex align-items-center ml-1 ml-md-0" >Numéro déclaration:</label>
                                   <input
-                                  [(ngModel)]="currentRow.numDeclaration"
+                                  [(ngModel)]="currentRow.NumDecla"
                                   name="numDeclaration"
                                   placeholder="Numéro déclaration"
                                   type="search"
@@ -247,7 +247,7 @@
                                       class="form-control"
                                       placeholder="dd-mm-yyyy"
                                       name="miseEnservice"
-                                      [(ngModel)]="currentRow.basicDPdata"
+                                      [(ngModel)]="currentRow.DateMes"
                                       ngbDatepicker
                                       #basicDP="ngbDatepicker"
                                     />
@@ -340,7 +340,7 @@
                               <div class="col-12 col-md-3">
                                 <label class="d-flex align-items-center ml-1 ml-md-0" >Prix d'achat:</label>
                                   <input
-                                  [(ngModel)]="currentRow.prixAchat"
+                                  [(ngModel)]="currentRow.PrixAchat"
                                   name="prixAchat"
                                   type="search"
                                   placeholder="Prix d'achat"
@@ -366,6 +366,7 @@
                                     bindLabel="code"
                                     placeholder="Devise"
                                   ></ng-select>
+                              
                                 </fieldset>
                               </div>
 
@@ -373,7 +374,7 @@
                               
                               <div class="col-12 col-md-3">
                                 <label class="d-flex align-items-center ml-1 ml-md-0" >Observation:</label>
-                                  <textarea class="form-control mb-2" name="Observation"  placeholder="Observations" (change)="doTextareaValueChange($event)">
+                                  <textarea class="form-control mb-2" name="Observation" [(ngModel)]="currentRow.Observation" placeholder="Observations" (change)="doTextareaValueChange($event)">
                                   </textarea>
                               </div>
 

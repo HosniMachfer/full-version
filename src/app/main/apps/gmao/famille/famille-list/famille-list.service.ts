@@ -16,6 +16,6 @@ export class FamilleGmaoListService {
   constructor(private http: HttpClient) { }
   
 getAll(): Observable<any[]> {
-    return this.http.get<any[]>(`${environment.apiUrl}`+'/diva-erp-rest-api-cfg/familles',  httpOptions);
+    return this.http.get<any[]>(`${environment.apiUrl}`+'/sousFamilleEquipement',  httpOptions);
 }
 }

@@ -186,8 +186,8 @@
                 </button>
                 <div ngbDropdownMenu>
                   <!-- <a routerLink="/apps/gmao/machine/machine-list/machine-view/{{ row.id }}" ngbDropdownItem><span [data-feather]="'file-text'" [size]="16" [class]="'mr-50'"></span> Details</a> -->
-                  <a routerLink="/apps/gmao/machine/machine-list/machine-edit/{{ row.id }}" ngbDropdownItem><span [data-feather]="'edit'" [size]="16" [class]="'mr-50'"></span> Modifier</a>
-                  <a href="javascript:;" ngbDropdownItem><span [data-feather]="'trash'" [size]="16" [class]="'mr-50'"></span> Supprimer</a>
+                  <a routerLink="/apps/gmao/machine/machine-list/machine-edit/{{ row.id }}" ngbDropdownItem (click)="update(row.idEquipment)"><span [data-feather]="'edit'" [size]="16" [class]="'mr-50'"></span> Modifier</a>
+                  <a href="javascript:;" ngbDropdownItem (click)="open(row.idEquipment)"><span [data-feather]="'trash'" [size]="16" [class]="'mr-50'"></span> Supprimer</a>
                 </div>
               </div>
             </ng-template>
@@ -198,5 +198,6 @@
     <!--/ User List -->
   </div>
 </div>
+
 
 

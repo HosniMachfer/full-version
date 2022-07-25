@@ -42,7 +42,7 @@ const routes: Routes = [
     }
   },
   {path: 'categorie-equipement-list/categorie-equipement-view',  redirectTo: '/apps/categorie-equipement/categorie-equipement-list'},
-  {path: 'categorie-equipement-list/categorie-equipement-edit',    redirectTo: '/apps/categorie-equipement/categorie-equipement-list' }
+  {path: 'categorie-equipement-list/categorie-equipement-edit/:id',    component: CategorieEquipementEditComponent }
 ];
 
 @NgModule({

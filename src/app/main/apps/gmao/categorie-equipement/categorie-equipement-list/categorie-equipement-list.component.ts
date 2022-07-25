@@ -10,6 +10,7 @@ import { locale as english } from 'app/main/apps/gmao/categorie-equipement/i18n/
 import { locale as french } from 'app/main/apps/gmao/categorie-equipement/i18n/fr';
 import { locale as german } from 'app/main/apps/gmao/categorie-equipement/i18n/de';
 import { locale as portuguese } from 'app/main/apps/gmao/categorie-equipement/i18n/pt';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -33,7 +34,7 @@ export class CategorieEquipementListComponent implements OnInit {
   public searchValue = '';
   
 
- constructor(private categorieEquipementListService: CategorieEquipementListService,private _coreSidebarService: CoreSidebarService,private _coreTranslationService: CoreTranslationService) { 
+ constructor(private categorieEquipementListService: CategorieEquipementListService, private router: Router, private _coreSidebarService: CoreSidebarService,private _coreTranslationService: CoreTranslationService) { 
  
     this.languageOptions = {
       en: {
@@ -68,7 +69,22 @@ export class CategorieEquipementListComponent implements OnInit {
 	          console.log(error);
           });
 }
-	        
+
+delete(id :number) {
+  this.categorieEquipementListService.delete(id).subscribe(
+    () => {
+      this.categorieEquipementListService.getAll()
+	      .subscribe(
+	        data => {
+            this.rows = data;
+          });
+    }
+  );
+}
+	    
+update(id :number) {
+  this.router.navigateByUrl('/apps/gmao/categorie-equipement/categorie-equipement-list/categorie-equipement-edit/' + id);
+}
 	        
 toggleSidebar(name): void {
   console.log(name);

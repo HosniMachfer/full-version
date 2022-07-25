@@ -16,6 +16,6 @@ export class EmplacementListService {
   constructor(private http: HttpClient) { }
   
 getAll(): Observable<any[]> {
-    return this.http.get<any[]>(`${environment.apiUrl}`+'/diva-erp-rest-api-gmao/emplacements',  httpOptions);
+    return this.http.get<any[]>(`${environment.apiUrl}`+'/emplacement',  httpOptions);
 }
 }

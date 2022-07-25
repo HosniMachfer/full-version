@@ -129,6 +129,7 @@ export class MachineNewComponent implements OnInit, OnDestroy {
   public selectCategorie: any = [];
   public selectEtatActuel: any = [];
   public selectEtatMachine: any = [];
+  public selectDevise: any = [];
   public numeroDeSerie : Number;
   public modele;
   public miseEnservice;
@@ -143,6 +144,7 @@ export class MachineNewComponent implements OnInit, OnDestroy {
   public categorieEquipement = [];
   public etatActuel = [];
   public etatMachine = [];
+  public devise = [];
 
 
 
@@ -335,12 +337,16 @@ selectedFiles?: FileList;
     console.log("------------------------------------------");
     if (form.valid) {
       console.log("--------------------v  a-----------------");
-
+      debugger
+      const tempDateAchat = form.value.dateAchat.split("-");
+      const tempDateMes = form.value.miseEnservice.split("-");
+      form.value.dateAchat = tempDateAchat[2] + "-" + tempDateAchat[1] + "-" + tempDateAchat[0];
+      form.value.miseEnservice = tempDateMes[2] + "-" + tempDateMes[1] + "-" + tempDateMes[0];
       this._machineEditService.create(form.value)
     .subscribe(
       response => {
         this._toastrService.success("L'ajout d'un nouveau privil�ge avec success", "");
-        this.router.navigate(['apps/gmao/machine/machine-list/machine-view/'+response.id]);
+        this.router.navigate(['apps/gmao/machine/machine-list/']);
       },
       error => {
         this._toastrService.error("Impossible d'ajouter un noueau pribil�ge", "");
@@ -429,6 +435,15 @@ selectedFiles?: FileList;
       error => {
         console.log(error);
     });
+    this.etatMachineListService.getDevise()
+    .subscribe(
+      data => {
+        this.selectDevise = data;
+      },
+      error => {
+        console.log(error);
+    });
+
 
 
     //Upload file 

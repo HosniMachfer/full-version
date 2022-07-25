@@ -49,6 +49,8 @@ export class UserListService implements Resolve<any> {
     });
   }
   getAll(): Observable<any[]> {
+    debugger
+    console.log('Debugging ', `${environment.apiUrl}`)
     return this._httpClient.get<any[]>(`${environment.apiUrl}`+'/user');
 }
   

@@ -68,7 +68,7 @@ create(data: any): Observable<any> {
   console.log("--------CREATE----------------------------");
   console.log(data);
   console.log("------------------------------------");
-    return this._httpClient.post(`${environment.apiUrl}`+'/diva-erp-rest-api-gmao/add-machine', data);
+    return this._httpClient.post(`${environment.apiUrl}`+'/equipement', data);
 }
 
 

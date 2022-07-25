@@ -151,7 +151,8 @@ export class CategorieEquipementEditComponent implements OnInit, OnDestroy {
    */
   submit(form: { valid: any; }) {
     if (form.valid) {
-      this._categorieEquipementEditService.create(this.currentRow)
+      debugger
+      this._categorieEquipementEditService.update(this.currentRow)
       .subscribe(
         response => {
           this._toastrService.success('Mise � jour privileg avec success', '');
@@ -170,10 +171,12 @@ export class CategorieEquipementEditComponent implements OnInit, OnDestroy {
    * On init
    */
   ngOnInit(): void {
-    this._categorieEquipementEditService.onCategorieEquipementEditChanged.pipe(takeUntil(this._unsubscribeAll)).subscribe(response => {
-            this.rows = response;
+    this._categorieEquipementEditService.getAll().pipe(takeUntil(this._unsubscribeAll)).subscribe(response => {
+      debugger      
+      this.rows = response;
             this.rows.map(row => {
-        if (row.id == this.urlLastValue) {
+              debugger
+        if (row.IdFamille_equip == this.urlLastValue) {
           this.currentRow = row;
           this.currentRow.avatar;
           this.tempRow = cloneDeep(row);

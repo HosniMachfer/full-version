@@ -16,6 +16,10 @@ export class EtatMachineListService {
   constructor(private http: HttpClient) { }
   
 getAll(): Observable<any[]> {
-    return this.http.get<any[]>(`${environment.apiUrl}`+'/diva-erp-rest-api-cfg/etat-machines',  httpOptions);
+    return this.http.get<any[]>(`${environment.apiUrl}`+'/etatMachine',  httpOptions);
+}
+
+getDevise(): Observable<any[]> {
+  return this.http.get<any[]>(`${environment.apiUrl}`+'/devise',  httpOptions);
 }
 }

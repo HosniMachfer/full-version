@@ -49,6 +49,7 @@ export class CategorieEquipementEditService implements Resolve<any> {
     return new Promise((resolve, reject) => {
       this._httpClient.get(`${environment.apiUrl}`+'/familleEquipement').subscribe((response: any) => {
         this.apiData = response;
+        debugger
         this.onCategorieEquipementEditChanged.next(this.apiData);
         resolve(this.apiData);
       }, reject);
@@ -63,5 +64,8 @@ create(data: any): Observable<any> {
     return this._httpClient.post(`${environment.apiUrl}`+'/familleEquipement', data);
 }
 
+update(data: any): Observable<any[]> {
+  return this._httpClient.put<any[]>(`${environment.apiUrl}/familleEquipement/`, data, httpOptions);
+}
 
 }

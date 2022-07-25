@@ -43,6 +43,7 @@ export class UserEditService implements Resolve<any> {
    */
   getApiData(): Promise<any[]> {
     return new Promise((resolve, reject) => {
+
       this._httpClient.get(`${environment.apiUrl}`+'/user').subscribe((response: any) => {
         this.apiData = response;
         this.onUserEditChanged.next(this.apiData);
@@ -59,7 +60,7 @@ getUserbyid(id:number):Observable<any>{
   return this._httpClient.get(`${environment.apiUrl},/user,${id}`)
 }
 create(data: any): Observable<any> {
-  return this._httpClient.post(`${environment.apiUrl}`+'/user', data);
+  return this._httpClient.post(`${environment.apiUrl}`+'/user/register', data);
 }
 
 }

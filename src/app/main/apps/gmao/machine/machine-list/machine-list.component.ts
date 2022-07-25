@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Component, Input, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { ColumnMode, DatatableComponent } from '@swimlane/ngx-datatable';
 import { LocaliteListService } from 'app/main/apps/gmao/localite/localite-list/localite-list.service';
 import { MarqueListService } from 'app/main/apps/gmao/marque/marque-list/marque-list.service';
@@ -13,7 +13,41 @@ import { FamilleGmaoListService } from '../../famille/famille-list/famille-list.
 import { CategorieEquipementListService } from '../../categorie-equipement/categorie-equipement-list/categorie-equipement-list.service';
 import { EtatMachineListService } from '../../etat-machine/etat-machine-list/etat-machine-list.service';
 import { EtatActuelListService } from '../../etat-actuel/etat-actuel-list/etat-actuel-list.service';
+import { Route, Router } from '@angular/router';
+import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
+@Component({
+  selector: 'ngbd-modal-content',
+  template: `
+    <div class="modal-header">
+  <h4 class="modal-title">Alert</h4>
+  <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"></button>
+</div>
+<div class="modal-body">
+  <p>Voulez vous vraiment supprimer ?</p>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Non</button>
+  <button type="button" class="btn btn-outline-dark" (click)="delete(rowId)">Oui</button>
+</div>
+  `
+})
+export class NgbdModalContents {
+
+  @Input() rowId;
+
+  constructor(public activeModal: NgbActiveModal, private machineListService: MachineListService) {}
+
+  delete(id: number) {
+    this.machineListService.delete(id).subscribe(
+      () => {
+        this.machineListService.getAll()
+          .subscribe(
+            data => window.location.reload());
+      }
+    );
+  }
+}
 
 @Component({
   selector: 'app-machine-list',
@@ -61,7 +95,7 @@ public searchModele = '';
              private _coreTranslationService: CoreTranslationService,private localiteListService: LocaliteListService,
              private marqueListService: MarqueListService,private familleGmaoListService: FamilleGmaoListService,
              private categorieListService: CategorieEquipementListService,private etatMachineListService: EtatMachineListService,
-             private etatActuelListService: EtatActuelListService) { 
+             private etatActuelListService: EtatActuelListService, private router: Router, private modalService: NgbModal) { 
  
     this.languageOptions = {
       en: {
@@ -265,4 +299,13 @@ toggleSidebar(name): void {
   // Whenever The Filter Changes, Always Go Back To The First Page
   this.table.offset = 0;
  }
+
+ update(id :number) {
+  this.router.navigateByUrl('/apps/gmao/machine/machine-list/machine-edit/' + id);
+}
+
+open(id :number) {
+  const modalRef = this.modalService.open(NgbdModalContents);
+  modalRef.componentInstance.rowId = id;
+}
 }

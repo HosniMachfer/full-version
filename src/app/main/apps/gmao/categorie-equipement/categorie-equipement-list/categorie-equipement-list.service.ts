@@ -18,4 +18,12 @@ export class CategorieEquipementListService {
 getAll(): Observable<any[]> {
     return this.http.get<any[]>(`${environment.apiUrl}`+'/familleEquipement',  httpOptions);
 }
+
+delete(id: number): Observable<any[]> {
+  return this.http.delete<any[]>(`${environment.apiUrl}/familleEquipement/'${id}'`,  httpOptions);
+}
+
+update(id: number): Observable<any[]> {
+  return this.http.put<any[]>(`${environment.apiUrl}/familleEquipement/'${id}'`,  httpOptions);
+}
 }

@@ -23,7 +23,7 @@
               class="form-control dt-full-name"
               id="basic-icon-default-fullname"
               placeholder="Nom"
-              name="fullName"
+              name="nom"
               [(ngModel)]="fullName"
               [class.error]="newUserForm.submitted && FNameRef.invalid"
               #FNameRef="ngModel"
@@ -44,7 +44,7 @@
               placeholder="Prénom"
               aria-label="jdoe1"
               aria-describedby="basic-icon-default-uname2"
-              name="firstName"
+              name="prenom"
               [(ngModel)]="firstName"
               [class.error]="newUserForm.submitted && FUserNameRef.invalid"
               #FUserNameRef="ngModel"
@@ -74,6 +74,46 @@
             </span>
             <small class="form-text text-muted"> You can use letters, numbers & periods </small>
           </div>
+
+
+          <div class="form-group">
+            <label for="register-password" class="form-label">Password</label>
+
+            <div class="input-group input-group-merge form-password-toggle">
+              <input
+                [type]="passwordTextType ? 'text' : 'password'"
+                name="password"
+                [(ngModel)]="password"
+                class="form-control form-control-merge"
+                placeholder="············"
+                aria-describedby="register-password"
+                ngModel
+                required
+                tabindex="3"
+                [ngClass]="{ 'is-invalid error': submitted && f.password.errors }"
+              />
+              <div class="input-group-append">
+                <span class="input-group-text cursor-pointer"
+                  ><i
+                    class="feather font-small-4"
+                    [ngClass]="{
+                      'icon-eye-off': passwordTextType,
+                      'icon-eye': !passwordTextType
+                    }"
+                    (click)="togglePasswordTextType()"
+                  ></i
+                ></span>
+              </div>
+            </div>
+            <div
+              *ngIf="submitted && f.password.errors"
+              class="invalid-feedback"
+              [ngClass]="{ 'd-block': submitted && f.password.errors }"
+            >
+              <div *ngIf="f.password.errors.required">Password is required</div>
+            </div>
+          </div>
+
           <div class="form-group">
             <label>Rôle(s)</label>
               <!-- Basic Multi select -->

@@ -44,10 +44,10 @@
           [scrollbarH]="true"
         >
           
-          <ngx-datatable-column name="Code" prop="code" [width]="50"></ngx-datatable-column>
+          <!-- <ngx-datatable-column name="Code" prop="code" [width]="50"></ngx-datatable-column> -->
 
                     
-          <ngx-datatable-column name="Libellé" prop="name" [width]="100">
+          <ngx-datatable-column name="Libellé" prop="Designation" [width]="100">
             <ng-template let-row="row" let-name="value" ngx-datatable-cell-template>
                 {{name}}
             </ng-template>
@@ -75,9 +75,9 @@
                   <span [data-feather]="'more-vertical'" [class]="'cursor-pointer'"></span>
                 </button>
                 <div ngbDropdownMenu>
-                  <a routerLink="/apps/gmao/marque/marque-list/marque-view/{{ row.id }}" ngbDropdownItem
-                    ><span [data-feather]="'file-text'" [size]="16" [class]="'mr-50'"></span> Details</a
-                  ><a routerLink="/apps/gmao/marque/marque-list/marque-edit/{{ row.id }}" ngbDropdownItem
+                  <!-- <a routerLink="/apps/gmao/marque/marque-list/marque-view/{{ row.id }}" ngbDropdownItem
+                    ><span [data-feather]="'file-text'" [size]="16" [class]="'mr-50'"></span> Details</a> -->
+                  <a routerLink="/apps/gmao/marque/marque-list/marque-edit/{{ row.id }}" ngbDropdownItem
                     ><span [data-feather]="'edit'" [size]="16" [class]="'mr-50'"></span> Modifier</a
                   ><a href="javascript:;" ngbDropdownItem
                     ><span [data-feather]="'trash'" [size]="16" [class]="'mr-50'"></span> Supprimer</a
