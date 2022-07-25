@@ -1,16 +1,16 @@
 export class  Action {
     IdAction:number;
     observation:string;
-    action:string;
+    Designation:string;
     code:string;
  
     constructor( IdAction:number,
-        action:string,
+        Designation:string,
         observation:string,
      code:string,
    ){
          this.IdAction=IdAction;
-         this.action=action;
+         this.Designation=Designation;
          this.observation=observation;
          this.code=code;
      }

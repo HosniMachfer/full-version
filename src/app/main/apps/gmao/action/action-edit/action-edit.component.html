@@ -5,21 +5,21 @@
         <div class="card">
           <div class="card-body">
             <div class="user-info mb-1">
-              <h4 class="mb-0">Edit role</h4>
+              <h4 class="mb-0">Edit Action</h4>
             </div>
             <!-- divider -->
             <div class="col-12">
               <hr class="my-1" />
             </div>
   
-              <form  class="form-group form-horizontal" #roleForm="ngForm"   (ngSubmit)="submit(roleForm)">
+              <form  class="form-group form-horizontal" #actionForm="ngForm"   (ngSubmit)="submit(actionForm)">
                   <div class="col-sm-12 col-md-12 col-lg-12">
                     <label> Code </label>
-                <input class="form-control" type="text" name="code" #code="ngModel"   [(ngModel)]="action.code" >
+                <input class="form-control" type="text" name="code" #code="ngModel"   [(ngModel)]="action[0].code" >
                </div>
                   <div class="col-sm-12 col-md-12 col-lg-12">
                     <label> Action </label>
-                <input class="form-control" type="text" name="action" #action="ngModel"  [(ngModel)]="action[0].action" >
+                <input class="form-control" type="text" name="Designation" #Designation="ngModel"  [(ngModel)]="action[0].Designation" >
                </div>
                <div class="col-sm-12 col-md-12 col-lg-12">
         
@@ -30,7 +30,7 @@
                <div class="col-12 d-flex flex-sm-row flex-column mt-3">
                 <button type="submit" class="btn btn-primary mb-1 mb-sm-0 mr-0 mr-sm-1" rippleEffect>Save Changes</button>
                 <!-- <button (click)="resetFormWithDefaultValues()" class="btn btn-outline-secondary mb-1 mb-sm-0 mr-0 mr-sm-1" rippleEffect>Reset</button> -->
-                <a routerLink="/apps/role/role-list" class="btn btn-primary mb-1 mb-sm-0 mr-0 mr-sm-1" rippleEffect>Liste des roles</a>
+                <a routerLink="apps/gmao/action/action-list/" class="btn btn-primary mb-1 mb-sm-0 mr-0 mr-sm-1" rippleEffect>Liste des Actions</a>
               </div>
             </form>
             </div>

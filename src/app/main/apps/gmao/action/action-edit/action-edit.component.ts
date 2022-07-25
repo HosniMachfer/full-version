@@ -45,7 +45,7 @@ export class ActionEditComponent implements OnInit {
             console.log(this.action);
             
           this._toastrService.success('Mise � jour privileg avec success', '');
-          this.router.navigate(['apps/role/role-list']);
+          this.router.navigate(['apps/gmao/action/action-list/']);
         }
         ,
         error => {

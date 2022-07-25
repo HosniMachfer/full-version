@@ -130,11 +130,11 @@
                                 <fieldset class="form-group">
                                   <ng-select
                                     [items]="selectCategorie"
-                                    [(ngModel)]="currentRow.categorieEquipement"
+                                    [(ngModel)]="currentRow.IdSFamille_equip"
                                     name="categorieEquipement"
                                     bindLabel="name"
                                     placeholder="Catégorie Machine"
-
+                                   
                                   ></ng-select>
                                 </fieldset>
                               </div>
@@ -144,7 +144,7 @@
                                 <fieldset class="form-group">
                                   <ng-select
                                     [items]="selectFamille"
-                                    [(ngModel)]="currentRow.famille"
+                                    [(ngModel)]="currentRow.IdSFamille_equip"
                                     name="famille"
                                     bindLabel="name"
                                     placeholder="Famille Machine"
@@ -157,7 +157,7 @@
                                 <fieldset class="form-group">
                                   <ng-select
                                     [items]="selectMarque"
-                                    [(ngModel)]="currentRow.marque"
+                                    [(ngModel)]="currentRow.IdMarque"
                                     name="marque"
                                     bindLabel="name"
                                     placeholder="Marque Machine"
@@ -170,7 +170,7 @@
                                   <input
                                   [(ngModel)]="currentRow.Modele"
                                   name="modele"
-                                  placeholder="Modèle Machine"
+                                  placeholder="currentRow.Modele"
                                   type="search"
                                   class="form-control ml-25"
                                   [class.error]="accountForm.submitted && EmailRef.invalid"
@@ -245,7 +245,7 @@
                                   <div class="input-group">
                                     <input
                                       class="form-control"
-                                      placeholder="dd-mm-yyyy"
+                                     
                                       name="miseEnservice"
                                       [(ngModel)]="currentRow.DateMes"
                                       ngbDatepicker
@@ -268,7 +268,7 @@
                                 <fieldset class="form-group">
                                   <ng-select
                                     [items]="selectLocalite"
-                                    [(ngModel)]="currentRow.localite"
+                                    [(ngModel)]="currentRow.IdEmplacement"
                                     name="localite"
                                     bindLabel="name"
                                     placeholder="Localité Machine"
@@ -291,7 +291,7 @@
                                 <fieldset class="form-group">
                                   <ng-select
                                     [items]="selectEmplacement"
-                                    [(ngModel)]="currentRow.emplacement"
+                                    [(ngModel)]="currentRow.IdEmplacement"
                                     name="emplacement"
                                     bindLabel="name"
                                     placeholder="Emplacement Machine"
@@ -304,7 +304,7 @@
                                 <fieldset class="form-group">
                                   <ng-select
                                     [items]="selectEtatMachine"
-                                    [(ngModel)]="currentRow.etatMachine"
+                                    [(ngModel)]="currentRow.IdEtatActuel"
                                     name="etatMachine"
                                     bindLabel="name"
                                     placeholder="Etat Actule"
@@ -321,7 +321,7 @@
                                       class="form-control"
                                       placeholder="dd-mm-yyyy"
                                       name="dateAchat"
-                                      [(ngModel)]="currentRow.basicDPdata"
+                                      [(ngModel)]="currentRow.PrixAchat"
                                       ngbDatepicker
                                       #basicDP="ngbDatepicker"
                                     />
